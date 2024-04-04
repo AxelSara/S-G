@@ -450,28 +450,9 @@ a {
 
 
 /*=============== banner ===============*/
-.banner{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
 
-#description{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.banner-content{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0rem 2rem;
-}
-
-ul{
-  list-style: none;
-  padding: 0;
+main a{
+  color: inherit;
 }
 
 main li{
@@ -487,22 +468,28 @@ main li a.active{
   color: var(--color-contraste);
 }
 
-main a{
-  color: inherit;
+ul{
+  list-style: none;
+  padding: 0;
+}
+
+#banner-menu{
+  display: flex;
+  align-items: center;
+}
+
+.banner-pdt{
+  margin: 0.5rem 0.5rem;
+  padding: 1rem;
+  box-shadow: 0px 0px 0px 2px var(--color-contraste);
+  border: none;
+  border-radius: 0rem;
 }
 
 .buttons{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-}
-
-.banner-pdt{
-  margin: 0.5rem 3rem;
-  padding: 1rem;
-  box-shadow: 0px 0px 0px 2px var(--color-contraste);
-  border: none;
-  border-radius: 0rem;
 }
 
 #buy{
@@ -512,21 +499,11 @@ main a{
 
 .slider{
   color: var(--color-contraste);
-  grid-template-columns: 35% 65%;
   position: relative;
   display: grid;
 }
 
-.slider .content_container{
-  padding: 40px;
-}
-
-.slider .slides{
-  overflow-y: auto;
-  scrollbar-width: none;
-}
-
-.slider .slides .slide{
+ .slides .slide{
   min-height: calc(100%);
   
   width: 100%;
@@ -535,14 +512,29 @@ main a{
   height: 95%;
 }
 
+ .slides{
+  overflow-y: auto;
+  scrollbar-width: none;
+  max-height: 900px;
+}
+
 .img-banner{
-  max-height: 800px;
   width: 100%;
-  margin: 0 auto;
+  max-height: 100vh;
+  /* margin: 0 auto;
   position: relative;
   z-index: 5;
-  height: 95%;
+  height: 95%; */
   object-fit: cover;
+}
+
+.description{
+  display: flex;
+  align-items: center;
+}
+
+.banner-content{
+  padding: 0rem 2rem;
 }
 
 

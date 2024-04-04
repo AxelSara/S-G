@@ -4,7 +4,6 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="icon" type="image/x-icon" href="./Frontend/assets/img/icon/icon-shoe.png">
    <title>Inicio</title>
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,21 +39,19 @@
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ms-auto">
                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../../../index.html">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
                      </li>
                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="./Frontend/assets/pages/lista-productos.html"
-                           id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
                            Productos
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                           <li><a class="dropdown-item" href="./Frontend/assets/pages/lista-productos.html">Mujer</a>
-                           </li>
+                           <li><a class="dropdown-item" href="./Frontend/assets/pages/lista-productos.html">Mujer</a></li>
                            <li>
                               <hr class="dropdown-divider">
                            </li>
-                           <li><a class="dropdown-item" href="./Frontend/assets/pages/lista-productos.html">Hombre</a>
-                           </li>
+                           <li><a class="dropdown-item" href="./Frontend/assets/pages/lista-productos.html">Hombre</a></li>
                         </ul>
                      </li>
                      <li class="nav-item">
@@ -103,57 +100,60 @@
 
       <!--banner-->
       <section>
-         <div class="banner">
-            <section class="slider">
-
-               <div class="content_container" id="description">
-                  <div class="banner-content d-sm-none d-none d-md-block">
-                     <ul class="slide_navigation">
-                        <li><a href="#" class="active">01</a></li>
-                        <li><a href="#">02</a></li>
-                        <li><a href="#">03</a></li>
-                     </ul>
+         <div class=" banner">
+            <div class="slider">
+               <div class="row">
+                  <div class="description col-md-4  col-lg-5">
+                     <div class="row">
+                        <div class="banner-content col-md-2 d-none d-lg-block">
+                           <ul class="slide_navigation">
+                              <li><a href="#" class="active">01</a></li>
+                              <li><a href="#">02</a></li>
+                              <li><a href="#">03</a></li>
+                           </ul>
+                        </div>
+                        <div class="banner-content col-md-10">
+                           <div>
+                              <h1>Modelo</h1>
+                              <p class="mt-5">Cillum laborum reprehenderit dolor tempor ullamco veniam in veniam mollit
+                                 ex
+                                 minim id anim
+                                 dolore
+                                 cillum.</p>
+                           </div>
+                           <div class="buttons">
+                              <div class="banner-button">
+                                 <button class="banner-pdt" id="buy">Comprar</button>
+                              </div>
+                              <div class="banner-button">
+                                 <p class="banner-pdt" id="price">$XXXX.XX</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
                   </div>
-                  <div class="banner-content d-sm-none d-none d-md-block">
-                     <div>
-                        <h1>Modelo</h1>
-                        <p class="mt-5">Cillum laborum reprehenderit dolor tempor ullamco veniam in veniam mollit ex
-                           minim id anim
-                           dolore
-                           cillum.</p>
+
+                  <div class="slides col-md-8 col-lg-7">
+                     <div class="slide">
+                        <div class="img-pdt inner_content">
+                           <img class="img-banner" src="./Frontend/assets/img/productos/01-gris-muestra.jpeg" alt="">
+                        </div>
                      </div>
 
-                     <div class="buttons">
-                        <div class="banner-button">
-                           <button class="banner-pdt" id="buy">Comprar</button>
+                     <div class="slide">
+                        <div class="img-pdt inner_content">
+                           <img class="img-banner" src="./Frontend/assets/img/productos/2015manta-marino-muestra.jpeg" alt="">
                         </div>
-                        <div class="banner-button">
-                           <p class="banner-pdt" id="price">$XXXX.XX</p>
+                     </div>
+
+                     <div class="slide">
+                        <div class="img-pdt inner_content">
+                           <img class="img-banner" src="./Frontend/assets/img/productos/2015-verde-muestra.jpeg" alt="">
                         </div>
                      </div>
                   </div>
                </div>
-
-               <div class="slides" style="height: 800px">
-                  <div class="slide">
-                     <div class="img-pdt inner_content">
-                        <img class="img-banner" src="./Frontend/assets/img/test/2015-Azul-Cafe.JPG" alt="">
-                     </div>
-                  </div>
-
-                  <div class="slide">
-                     <div class="img-pdt inner_content">
-                        <img class="img-banner" src="./Frontend/assets/img/test/test-4-3.jpg" alt="">
-                     </div>
-                  </div>
-
-                  <div class="slide">
-                     <div class="img-pdt inner_content">
-                        <img class="img-banner" src="./Frontend/assets/img/test/01-Miel.JPG" alt="">
-                     </div>
-                  </div>
-               </div>
-            </section>
+            </div>
 
          </div>
       </section>
@@ -161,189 +161,191 @@
 
       <section class="container list-products-home">
          <div class="titulo d-flex justify-content-between align-items-center">
-             <h1 class="titulo-letras">Productos recientes</h1>
-             <div class="d-grid gap-2 d-flex justify-content-md-end">
-                 <button class="btn me-md-0.2 btn-anterior" type="button"> < </button>
-                 <button class="btn btn-siguiente" type="button">></button>
-               </div>
+            <h1 class="titulo-letras">Productos recientes</h1>
+            <div class="d-grid gap-2 d-flex justify-content-md-end">
+               <button class="btn me-md-0.2 btn-anterior" type="button">
+                  < </button>
+                     <button class="btn btn-siguiente" type="button">></button>
+            </div>
          </div>
-        <div class="container-list-products">
-         <div class="card" id="producto1">
-             <div class="card-img">
-                 <img src="./Frontend/assets/img/test/2015-Azul-Cafe.JPG" alt="producto1">
-             </div>
-             <div class="info-card">
-                 <div class="text-product">
+         <div class="container-list-products">
+            <div class="card" id="producto1">
+               <div class="card-img">
+                  <img src="./Frontend/assets/img/test/2015-Azul-Cafe.JPG" alt="producto1">
+               </div>
+               <div class="info-card">
+                  <div class="text-product">
                      <p class="modelo d-flex justify-content-center">Model1</p>
                      <p class="modelo d-flex justify-content-center">Precio</p>
-   
-                 </div>
-   
-             </div>
-   
-         </div>
-         <div class="card" id="producto2">
-             <div class="card-img">
-                 <img src="./Frontend/assets/img/test/01-Miel.JPG" alt="producto2">
-             </div>
-             <div class="info-card">
-                 <div class="text-product">
+
+                  </div>
+
+               </div>
+
+            </div>
+            <div class="card" id="producto2">
+               <div class="card-img">
+                  <img src="./Frontend/assets/img/test/01-Miel.JPG" alt="producto2">
+               </div>
+               <div class="info-card">
+                  <div class="text-product">
                      <p class="modelo d-flex justify-content-center">Model2</p>
                      <p class="modelo d-flex justify-content-center">Precio</p>
-                 </div>
-   
-             </div>
-   
-         </div>
-         <div class="card" id="producto3">
-             <div class="card-img">
-                 <img src="./Frontend/assets/img/test/2015-Azul-Cafe.JPG" alt="producto3">
-             </div>
-             <div class="info-card">
-                 <div class="text-product">
+                  </div>
+
+               </div>
+
+            </div>
+            <div class="card" id="producto3">
+               <div class="card-img">
+                  <img src="./Frontend/assets/img/test/2015-Azul-Cafe.JPG" alt="producto3">
+               </div>
+               <div class="info-card">
+                  <div class="text-product">
                      <p class="modelo d-flex justify-content-center">Model3</p>
                      <p class="modelo d-flex justify-content-center">Precio</p>
-   
-                 </div>
-   
-             </div>
-   
-         </div>
-         <div class="card" id="producto4">
-             <div class="card-img">
-                 <img src="./Frontend/assets/img/test/01-Miel.JPG" alt="producto4">
-             </div>
-             <div class="info-card">
-                 <div class="text-product">
+
+                  </div>
+
+               </div>
+
+            </div>
+            <div class="card" id="producto4">
+               <div class="card-img">
+                  <img src="./Frontend/assets/img/test/01-Miel.JPG" alt="producto4">
+               </div>
+               <div class="info-card">
+                  <div class="text-product">
                      <p class="modelo d-flex justify-content-center">Model4</p>
                      <p class="modelo d-flex justify-content-center">Precio</p>
-   
-                 </div>
-   
-             </div>
-   
-         </div>
-   
-         <div class="card" id="producto5">
-             <div class="card-img">
-                 <img src="./Frontend/assets/img/test/2015-Azul-Cafe.JPG" alt="producto5">
-             </div>
-             <div class="info-card">
-                 <div class="text-product">
+
+                  </div>
+
+               </div>
+
+            </div>
+
+            <div class="card" id="producto5">
+               <div class="card-img">
+                  <img src="./Frontend/assets/img/test/2015-Azul-Cafe.JPG" alt="producto5">
+               </div>
+               <div class="info-card">
+                  <div class="text-product">
                      <p class="modelo d-flex justify-content-center">Model5</p>
                      <p class="modelo d-flex justify-content-center">Precio</p>
-                 </div>
-             </div>
-         </div>
-         <div class="card" id="producto6">
-             <div class="card-img">
-                 <img src="./Frontend/assets/img/test/01-Miel.JPG" alt="producto6">
-             </div>
-             <div class="info-card">
-                 <div class="text-product">
+                  </div>
+               </div>
+            </div>
+            <div class="card" id="producto6">
+               <div class="card-img">
+                  <img src="./Frontend/assets/img/test/01-Miel.JPG" alt="producto6">
+               </div>
+               <div class="info-card">
+                  <div class="text-product">
                      <p class="modelo d-flex justify-content-center">Model6</p>
                      <p class="modelo d-flex justify-content-center">Precio</p>
-                 </div>
-             </div>
-         </div>
-        </div>
-     </section>
-   
-   
-     <section class="container list-products-home">
-         <div class="titulo d-flex justify-content-between align-items-center">
-             <h1 class="titulo-letras">Más vistos</h1>
-             <div class="d-grid gap-2 d-flex justify-content-md-end">
-                 <button class="btn me-md-0.2 btn-anterior" type="button"> <</button>
-                 <button class="btn btn-siguiente" type="button">></button>
+                  </div>
                </div>
+            </div>
          </div>
-        <div class="container-list-products">
-         <div class="card">
-             <div class="card-img">
-                 <img src="./Frontend/assets/img/test/01-Miel.JPG" alt="producto1">
-             </div>
-             <div class="info-card">
-                 <div class="text-product">
+      </section>
+
+
+      <section class="container list-products-home">
+         <div class="titulo d-flex justify-content-between align-items-center">
+            <h1 class="titulo-letras">Más vistos</h1>
+            <div class="d-grid gap-2 d-flex justify-content-md-end">
+               <button class="btn me-md-0.2 btn-anterior" type="button">
+                  << /button>
+                     <button class="btn btn-siguiente" type="button">></button>
+            </div>
+         </div>
+         <div class="container-list-products">
+            <div class="card">
+               <div class="card-img">
+                  <img src="./Frontend/assets/img/test/01-Miel.JPG" alt="producto1">
+               </div>
+               <div class="info-card">
+                  <div class="text-product">
                      <p>Model1</p>
                      <p>Precio</p>
-   
-                 </div>
-   
-             </div>
-   
-         </div>
-         <div class="card">
-             <div class="card-img">
-                 <img src="./Frontend/assets/img/test/09-Azul.JPG" alt="producto2">
-             </div>
-             <div class="info-card">
-                 <div class="text-product">
+
+                  </div>
+
+               </div>
+
+            </div>
+            <div class="card">
+               <div class="card-img">
+                  <img src="./Frontend/assets/img/test/09-Azul.JPG" alt="producto2">
+               </div>
+               <div class="info-card">
+                  <div class="text-product">
                      <p>Model2</p>
                      <p>Precio</p>
-                 </div>
-   
-             </div>
-   
-         </div>
-         <div class="card">
-             <div class="card-img">
-                 <img src="./Frontend/assets/img/test/01-Miel.JPG" alt="producto3">
-             </div>
-             <div class="info-card">
-                 <div class="text-product">
+                  </div>
+
+               </div>
+
+            </div>
+            <div class="card">
+               <div class="card-img">
+                  <img src="./Frontend/assets/img/test/01-Miel.JPG" alt="producto3">
+               </div>
+               <div class="info-card">
+                  <div class="text-product">
                      <p>Model3</p>
                      <p>Precio</p>
-   
-                 </div>
-   
-             </div>
-   
-         </div>
-         <div class="card">
-             <div class="card-img">
-                 <img src="./Frontend/assets/img/test/09-Azul.JPG" alt="producto4">
-             </div>
-             <div class="info-card">
-                 <div class="text-product">
+
+                  </div>
+
+               </div>
+
+            </div>
+            <div class="card">
+               <div class="card-img">
+                  <img src="./Frontend/assets/img/test/09-Azul.JPG" alt="producto4">
+               </div>
+               <div class="info-card">
+                  <div class="text-product">
                      <p>Model4</p>
                      <p>Precio</p>
-   
-                 </div>
-   
-             </div>
-   
-         </div>
-   
-         <div class="card">
-             <div class="card-img">
-                 <img src="./Frontend/assets/img/test/01-Miel.JPG" alt="producto5">
-             </div>
-             <div class="info-card">
-                 <div class="text-product">
+
+                  </div>
+
+               </div>
+
+            </div>
+
+            <div class="card">
+               <div class="card-img">
+                  <img src="./Frontend/assets/img/test/01-Miel.JPG" alt="producto5">
+               </div>
+               <div class="info-card">
+                  <div class="text-product">
                      <p class="modelo d-flex justify-content-center">Model1</p>
                      <p class="modelo d-flex justify-content-center">Precio</p>
-   
-                 </div>
-   
-             </div>
-   
-         </div>
-         <div class="card">
-             <div class="card-img">
-                 <img src="./Frontend/assets/img/test/09-Azul.JPG" alt="producto6">
-             </div>
-             <div class="info-card">
-                 <div class="text-product">
+
+                  </div>
+
+               </div>
+
+            </div>
+            <div class="card">
+               <div class="card-img">
+                  <img src="./Frontend/assets/img/test/09-Azul.JPG" alt="producto6">
+               </div>
+               <div class="info-card">
+                  <div class="text-product">
                      <p class="modelo d-flex justify-content-center">Model2</p>
                      <p class="modelo d-flex justify-content-center">Precio</p>
-                 </div>
-   
-             </div>
-   
+                  </div>
+
+               </div>
+
+            </div>
          </div>
-        </div>
-     </section>
+      </section>
 
    </main>
 
