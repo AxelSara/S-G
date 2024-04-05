@@ -283,3 +283,7 @@ div.icons {
 main{
     height: 87vh;
 }
+ 
+.headerZapateria :hover{
+    background-color: var(--color-claro);
+ }
