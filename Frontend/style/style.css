@@ -157,10 +157,6 @@ body {
 
 
 #swiper-wrapperProductosRecientes{
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
   background-color: #d26d00;
   width: 100%;
   height: 400px;
@@ -168,35 +164,30 @@ body {
 
 
 
-#swiper-wrapperProductosRecientes > .cardProductosRecientes{
-  background-color: #5a4e64;
-  width: 300px;
-  height: 100%;
-  padding: 1%;
+.cardProductosRecientes{
+  position: relative;
+  text-align: start;
+  box-shadow: 0px 4px 4px rgba(196, 196, 196, 0.25);
+  background: #fff;
+  justify-content: center;
+  width: auto;
 }
 
 
 .cardProductosRecientes .card-imgProductosRecientes {
   width: 100%;
   height: 300px;
-  padding: 1.5%;
-  padding-left: 1.5%;
-  padding-right: 1.5%;
-  padding-top: 1.5%;
-  padding-bottom: 1.5%;
-  object-fit: cover;
+  padding: 1%;
+  
 }
 
 .cardProductosRecientes .card-imgProductosRecientes img {
   width: 100%;
   height: 300px;
-  padding: 1.5%;
-  padding-left: 1.5%;
-  padding-right: 1.5%;
-  padding-top: 1.5%;
-  padding-bottom: 1.5%;
   object-fit: cover;
 }
+
+/* == Fin de Carrousel de productos recentes ==*/
 
 
 
@@ -210,9 +201,7 @@ body {
 #nosotros {
   display: flex;
   flex-wrap: nowrap;
-  /* flex-direction: row; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
+
   background-color: var(--color-principal);
   height: 600px;
 }
@@ -221,6 +210,8 @@ body {
 #nosotros > .contenedor_imagen_nosotros {
   width: 50%;
   height: 550px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .contenedor_imagen_nosotros img{
