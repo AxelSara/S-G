@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:  border-box;
+}
+
+body {
+  background: #eee;
+  color: #000;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1{
+    font-size: 3rem;
+}
+ h2 {
+    position: absolute; /* Posiciona el título de forma absoluta dentro del contenedor */
+    top: 0; /* Lo coloca en la parte superior del contenedor */
+    left: 50%; /* Lo coloca en la mitad del ancho del contenedor */
+    transform: translateX(-50%); /* Centra horizontalmente el título */
+    z-index: 1; /* Asegura que el título esté por encima del carrusel */
+    padding: 10%; /* Añade un poco de espacio alrededor del texto */
+    margin-bottom: 10px;;
+    border-radius: 5px; /* Añade esquinas redondeadas al contenedor del título */
+    font-size: xx-large;
+} 
+
+.container{
+    width: 90%;
+    padding: 10px 40px;
+    /* height: 100%;
+    padding-left: 1.5%;
+    padding-right: 1.5%; */
+    
+}
+
+.container .swiper-container{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container .swiper-slide {
+    position: relative;
+    text-align: start;
+    box-shadow: 0px 4px 4px rgba(196, 196, 196, 0.25);
+    background: #fff;
+    justify-content: center;
+    width: auto;
+   
+  }
+
+  .text-product{
+    align-items: center;
+    justify-content: cover;
+    font-size: 25px;
+  }
+
+    .card-img{
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        object-fit: cover;
+        
+    }
+
+    .card-img img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        
+    }
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+img{
+    max-width: 100%;
+    height: 100%; 
+    justify-content: cover;
+    
+}
+
+.container .card-description .card-title, .container .card-description .card-text{
+   margin-bottom:0.5rem;
+   text-align: center;
+   padding: 2%;
+}
+.container .card-description .card-link .button-pr{
+    text-align: center;
+    width: 100%;
+    height:auto;
+    border: none;
+    color: white;
+    background-color: #645E4E;
+    border-width: 5px;
+    padding: 3%;
+    font-size: 1.5rem;
+}
+
+.card-title{
+    font-size: 2rem;
+}
+
+.card-text{
+    font-size: 1.5rem;
+}

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../img/icon/icon-shoe.png">
+    <title>Agregar zapato</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../style/style.css">
+
+    <!-- Incluye SweetAlert2 desde su CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+
+</head>
+<body>
+   <!--=============== HEADER ===============-->
+   <header class="headerZapateria">
+    <div class="header-nav">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid" id="navbar-bg" bg-transparent>
+                <a class="iconLogo mt-1" href="#">
+                    <img class="nav-link" src="../img/icon/logo.png" alt="LogoS&G" width="100" height="auto">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../../../index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="./lista-productos.html" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Productos
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="./lista-productos.html">Mujer</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="./lista-productos.html">Hombre</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./sobre-nosotros.html">Acerca de nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contactanos</a>
+                        </li>
+                    </ul>
+                    <style>
+                        a {
+                            text-decoration: none;
+                        }
+                    </style>
+                    <div class="icons">
+                        <a class="icon" href="./login.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-person"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                            </svg>
+                        </a>
+                        <a class="icon" href="./wishlist.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-heart"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                            </svg>
+                        </a>
+                        <a class="icon" href="./carrito.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-cart2 m-1"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+                            </svg>
+                        </a>
+                    </div>
+
+                </div>
+        </nav>
+    </div>
+</header>
+ <!--=============== HEADER ===============-->
+
+    <main>
+        <section>
+            <div class="container-fluid contenedor_principal_agregarZapato">
+
+                <header class="tituloAgregarZapato">
+                    <h1>Agregar zapato</h1>    
+                </header>
+                
+                <form class="form-group mt-3" id="form">
+
+                    <div class="row">
+                        <!-- Columna 1 de la fila 1 -->
+                        <div class="col-md-8 col-sm-12">
+                            <div class="form-group mt-2">
+
+                                <div>
+                                    <label for="nombreZapatoAgregar" class="form-label">Nombre del zapato</label>
+                                    <input type="text" class="form-control" id="nombre_zapato_agregar" name="nombreZapatoAgregar">
+                                </div>
+
+                                <!-- campo color -->
+                                <div>               
+                                    <label for="nombreZapatoAgregar" class="form-label">Color</label>
+                                    <input type="text" class="form-control" id="color_zapato_agregar" name="nombreZapatoAgregar">
+                                </div>
+
+                                <!-- campo precio -->
+                                <div>
+                                    
+                                    <label for="nombreZapatoAgregar" class="form-label">Precio</label>
+                                    <input type="text" class="form-control" id="precio_zapato_agregar" name="nombreZapatoAgregar">
+                                </div>
+
+                                <!-- campo marca -->
+                                <div class="mb-3">    
+                                    <label for="nombreZapatoAgregar" class="form-label">Marca</label>
+                                    <input type="text" class="form-control" id="marca_zapato_agregar" name="nombreZapatoAgregar">
+                                </div>
+
+    
+                                <!-- campo talla -->
+                                <label for="talla-selector">Seleccione las tallas </label>
+
+
+                                <div class="talla-selector">
+                                    
+                                    <div class="talla-checkbox">
+                                        <input type="checkbox" id="talla-24" value="24" name="talla">
+                                        <label for="talla-24">24</label>
+                                    </div>
+
+                                    <div class="talla-checkbox">
+                                        <input type="checkbox" id="talla-24.5" value="24.5" name="talla">
+                                        <label for="talla-24.5">24.5</label>
+                                    </div>
+
+                                    <div class="talla-checkbox">
+                                        <input type="checkbox" id="talla-25" value="25" name="talla">
+                                        <label for="talla-25">25</label>
+                                    </div>
+
+                                    <div class="talla-checkbox">
+                                        <input type="checkbox" id="talla-25.5" value="25.5" name="talla">
+                                        <label for="talla-25.5">25.5</label>
+                                    </div>
+
+                                    <div class="talla-checkbox">
+                                        <input type="checkbox" id="talla-26" value="26" name="talla">
+                                        <label for="talla-26">26</label>
+                                    </div>
+
+                                    <div class="talla-checkbox">
+                                        <input type="checkbox" id="talla-26.5" value="26.5" name="talla">
+                                        <label for="talla-26.5">26.5</label>
+                                    </div>
+
+                                    <div class="talla-checkbox">
+                                        <input type="checkbox" id="talla-27" value="27" name="talla">
+                                        <label for="talla-27">27</label>
+                                    </div>
+
+                                    <div class="talla-checkbox">
+                                        <input type="checkbox" id="talla-27.5" value="27.5" name="talla">
+                                        <label for="talla-27.5">27.5</label>
+                                    </div>
+
+                                    <div class="talla-checkbox">
+                                        <input type="checkbox" id="talla-28" value="28" name="talla">
+                                        <label for="talla-28">28</label>
+                                    </div>
+
+                                    <div class="talla-checkbox">
+                                        <input type="checkbox" id="talla-28.5" value="28.5" name="talla">
+                                        <label for="talla-28.5">28.5</label>
+                                    </div>
+
+                                    <div class="talla-checkbox">
+                                        <input type="checkbox" id="talla-29" value="29" name="talla">
+                                        <label for="talla-29">29</label>
+                                    </div>
+
+                                    <div class="talla-checkbox">
+                                        <input type="checkbox" id="talla-29.5" value="29.5" name="talla">
+                                        <label for="talla-29.5">29.5</label>
+                                    </div>
+
+                                    <div class="talla-checkbox">
+                                        <input type="checkbox" id="talla-30" value="30" name="talla">
+                                        <label for="talla-30">30</label>
+                                    </div>
+
+                                </div>
+                                <div class="talla-mostradas">
+                                    <p>Tallas seleccionadas: <span id="tallas-mostradas">Ninguna</span></p>
+                                </div>
+    
+                                <!-- campo genero -->
+                                <div class="form-group mt-3">
+                                    <label for="zapatosDisponiblesAgregar" class="form-label">Genero</label>
+                                    <input type="text" class="form-control" id="genero_zapato_agregar" name="zapatosDisponiblesAgregar" >
+                                </div>    
+    
+                            </div>                  
+                        </div>
+
+                        <!-- Columna 2 de la fila 1 -->
+                        <!-- campo imagen -->
+                        <div class="col-md-4 col-sm-12 form-group mt-3 contenedorImagenAgregarZapato">
+
+                            <!-- contenedor carousel -->
+
+                            <div id="carouselAddZapato" class="carousel slide " data-ride="carousel">
+                                <div class="carousel-inner">
+
+                                    <div class="carousel-item active contenedorImagenAgregar">
+                                        <label class="custom-file-label" for="img_captada_principal">Selecciona la imagen principal</label>
+                                        <img class="imagenSeleccionada" id="imagenPrincipal" src="../img/admin/subir.png" alt="Selecciona una imagen">
+                                        <input type="file" class="form-control-file" id="img_captada_principal" readonly>
+                                    </div>
+                                    
+                                    <div class="carousel-item contenedorImagenAgregar">
+                                        <label class="custom-file-label" for="img_captada_frontal">Selecciona una imagen frontal</label>
+                                        <img class="imagenSeleccionada" id="imagenFrontal" src="../img/admin/subir.png" alt="Selecciona una imagen">
+                                        <input type="file" class="custom-file-input" id="img_captada_frontal">
+                                    </div>
+                                    
+                                    <div class="carousel-item contenedorImagenAgregar">
+                                        <label class="custom-file-label" for="img_captada_lateral">Selecciona una imagen lateral</label>
+                                        <img class="imagenSeleccionada" id="imagenLateral" src="../img/admin/subir.png" alt="Selecciona una imagen">
+                                        <input type="file" class="custom-file-input" id="img_captada_lateral">
+                                    </div>
+                                    
+                                    <div class="carousel-item contenedorImagenAgregar"> 
+                                        <label class="custom-file-label" for="img_captada_superior">Selecciona una imagen superior</label>
+                                        <img class="imagenSeleccionada" id="imagenSuperior" src="../img/admin/subir.png" alt="Selecciona una imagen">
+                                        <input type="file" class="custom-file-input" id="img_captada_superior">
+                                    </div>
+                                    
+
+                                </div>
+                                <!-- Botones del carousel -->
+                                <div class="carousel-control-prev" id="previaImagenAgregarZapato" data-bs-target="#carouselAddZapato" data-bs-slide="prev">
+                                    <!-- Utiliza un div como el botón circular -->
+                                    <button class="carousel-control-icon" id="botonCarouselAgregarZapato" type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                        </svg>
+                                    </button>
+                                    <span class="visually-hidden">Previous</span>
+                                </div>
+                                <div class="carousel-control-next" id="siguienteImagenAgregarZapato" data-bs-target="#carouselAddZapato" data-bs-slide="next">
+                                    <!-- Utiliza un div como el botón circular -->
+                                    <button class="carousel-control-icon" id="botonCarouselAgregarZapato" type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </button>
+                                    <span class="visually-hidden">next</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                     </div> <!-- Fin de la fila -->
+
+                    <button type="submit" class="btn btn-primary btnSubmit">Agregar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container-fluid text-center">
+            <div class="row">
+                <div class="col-2 col-md-2 col-sm-12">
+                    <div class="caja">México | MXN | Español</div>
+                </div>
+                <div id="iconos" class="col-8 col-md-8 col-sm-12 d-flex justify-content-center align-items-center">
+                    <a href="./index.html"><img src="../img/icon/facebook.png" alt="iconoFacebook"></a>
+                    <a href="https://www.instagram.com/calzado_gus_prinsess?igsh=cWwxZWN3NTR3N2Zi"><img src="../img/icon/instagram.png" alt="iconoInstagram"></a>
+                    <a href="https://www.tiktok.com/@tamal404"><img src="../img/icon/tiktok.png" alt="iconoTiktok"></a>
+                    <a href="https://twitter.com"><img src="../img/icon/twitter.png" alt="iconoTwitter"></a>
+                    <a href="https://www.youtube.com"><img src="../img/icon/youtube.png" alt="iconoYoutube"></a>           
+                </div>
+                <div class="col-2 col-md-2 col-sm-12">
+                    <div class="caja">Tamal 404</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="../JavaScript/agregar-zapato.js"></script>
+       <!--------------- BOOTSTRAP --------------->  
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+</body>
+
+
+
+
+</html>
