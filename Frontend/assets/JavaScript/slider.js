@@ -66,33 +66,12 @@ banner();
 }());
 
 const dataProductos = async (url) => {
-    const response = await fetch("./Frontend/assets/json/productos.json");
+    const response = await fetch("./Frontend/json/productos.json");
     const data = await response.json();
     findData(data, url)
 }
 
-const findData = (data, url) => {
-    return data.map(dat => {
-        if (url === dat.imgMuestra) {
-            document.getElementById("Modelo").innerHTML = dat.modelo;
-            document.getElementById("Color").innerHTML = dat.color;
-            document.getElementById("price").innerHTML = `$${dat.precio}.00`;
-            document.getElementById("marca").innerHTML = dat.marca;
-        }
-    });
-};
-
-// Initialize a img for each slide
-
-const imgInit = async () => {
-    const response = await fetch("./Frontend/assets/json/productos.json");
-    const data = await response.json();
-    showImg(data, 0);
-    const imgElements = document.querySelectorAll(".img-pdt img");
-    findData(data, imgElements[0].src);
-}
-
-const showImg = (data, id) => {
+const showImg = (data) => {
     let banner = "";
     return data.map(dat => {
         if (0 === dat.id) {
@@ -124,7 +103,26 @@ const showImg = (data, id) => {
     });
 }
 
-imgInit();
+const findData = (data, url) => {
+    return data.map(dat => {
+        if (url === dat.imgMuestra) {
+            document.getElementById("Modelo").innerHTML = dat.modelo;
+            document.getElementById("Color").innerHTML = dat.color;
+            document.getElementById("price").innerHTML = `$${dat.precio}.00`;
+            document.getElementById("marca").innerHTML = dat.marca;
+        }
+    });
+};
+
+// Initialize a img for each slide
+
+const imgInit = async () => {
+    const response = await fetch("./Frontend/json/productos.json");
+    const data = await response.json();
+    showImg(data);
+    const imgElements = document.querySelectorAll(".img-pdt img");
+    findData(data, imgElements[0].src);
+}
 
 const indexBanner = () => {
 
@@ -150,7 +148,7 @@ let cart = [];
 const AddCarritoBanner = async () => {
     const modelo = document.getElementById("Modelo").innerHTML;
     const color = document.getElementById("Color").innerHTML;
-    const response = await fetch("./Frontend/assets/json/productos.json");
+    const response = await fetch("./Frontend/json/productos.json");
     const data = await response.json();
     for (const product of data) {
         if(modelo === product.modelo && color === product.color){
@@ -172,3 +170,5 @@ const AddCarritoBanner = async () => {
     const carritoLocalStorage = localStorage.getItem("carrito");
     console.log(carritoLocalStorage);
 }
+
+imgInit();
