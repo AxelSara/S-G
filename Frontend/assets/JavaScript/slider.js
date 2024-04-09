@@ -78,7 +78,7 @@ const showImg = (data) => {
             banner += `
             <div class="slide">
                 <div class="img-pdt inner_content">
-                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[7].imgMuestra}" alt="${data[7].imgMuestra}">
+                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[5].imgMuestra}" alt="${data[5].imgMuestra}">
                 </div>
             </div>
             `;
@@ -86,7 +86,7 @@ const showImg = (data) => {
             banner += `
             <div class="slide">
                 <div class="img-pdt inner_content">
-                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[11].imgMuestra}" alt="${data[11].imgMuestra}">
+                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[7].imgMuestra}" alt="${data[7].imgMuestra}">
                 </div>
             </div>
             `;
@@ -94,7 +94,7 @@ const showImg = (data) => {
             banner += `
             <div class="slide">
                 <div class="img-pdt inner_content">
-                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[13].imgMuestra}" alt="${data[13].imgMuestra}">
+                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[11].imgMuestra}" alt="${data[11].imgMuestra}">
                 </div>
             </div>
             `;
@@ -111,14 +111,12 @@ const showImgCarrusel = (data) => {
             <div class="carousel-item active">
                 <img src="./Frontend/assets/img/productos/${data[5].imgMuestra}" class="d-block w-100" alt="...">
                 <div class="carousel-caption">
-                    <div class="carruselBannerText">
-                        <h1 id="ModeloCarrusel">${data[5].modelo}</h1>
-                        <p id="ColorCarrusel">${data[5].color}</p>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
+                    <h1 id="ModeloCarrusel">${data[5].modelo}</h1>
+                    <p id="ColorCarrusel">${data[5].color}</p>
+                    <p>Some representative placeholder content for the first slide.</p>
                     <div class="buttons">
                         <div class="banner-button">
-                            <button class="buy banner-pdt" id="buy1"
+                            <button class="banner-pdt" id="buy"
                                 onclick="AddCarritoBannerCarrusel()">Comprar</button>
                         </div>
                         <div class="banner-button">
@@ -133,20 +131,18 @@ const showImgCarrusel = (data) => {
             <div class="carousel-item">
                 <img src="./Frontend/assets/img/productos/${data[7].imgMuestra}" class="d-block w-100" alt="...">
                 <div class="carousel-caption">
-                    <div class="carruselBannerText">
-                        <h1 id="ModeloCarrusel">${data[7].modelo}</h1>
-                        <p id="ColorCarrusel">${data[7].color}</p>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
+                    <h1 id="ModeloCarrusel">${data[7].modelo}</h1>
+                    <p id="ColorCarrusel">${data[7].color}</p>
+                    <p>Some representative placeholder content for the first slide.</p>
                     <div class="buttons">
-                        <div class="banner-button">
-                            <button class="buy banner-pdt" id="buy2"
-                                onclick="AddCarritoBannerCarrusel()">Comprar</button>
+                            <div class="banner-button">
+                                <button class="banner-pdt" id="buy"
+                                    onclick="AddCarritoBannerCarrusel()">Comprar</button>
+                            </div>
+                            <div class="banner-button">
+                                <p class="banner-pdt" id="price">$${data[7].precio}.00</p>
+                            </div>
                         </div>
-                        <div class="banner-button">
-                            <p class="banner-pdt" id="price">$${data[7].precio}.00</p>
-                        </div>
-                    </div>
                 </div>
             </div>
             `;
@@ -155,20 +151,18 @@ const showImgCarrusel = (data) => {
             <div class="carousel-item">
                 <img src="./Frontend/assets/img/productos/${data[11].imgMuestra}" class="d-block w-100" alt="...">
                 <div class="carousel-caption">
-                    <div class="carruselBannerText">
-                        <h1 id="ModeloCarrusel">${data[11].modelo}</h1>
-                        <p id="ColorCarrusel">${data[11].color}</p>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
+                    <h1 id="ModeloCarrusel">${data[11].modelo}</h1>
+                    <p id="ColorCarrusel">${data[11].color}</p>
+                    <p>Some representative placeholder content for the first slide.</p>
                     <div class="buttons">
-                        <div class="banner-button">
-                            <button class="buy banner-pdt" id="buy3"
-                                onclick="AddCarritoBannerCarrusel()">Comprar</button>
+                            <div class="banner-button">
+                                <button class="banner-pdt" id="buy"
+                                    onclick="AddCarritoBannerCarrusel()">Comprar</button>
+                            </div>
+                            <div class="banner-button">
+                                <p class="banner-pdt" id="price">$${data[11].precio}.00</p>
+                            </div>
                         </div>
-                        <div class="banner-button">
-                            <p class="banner-pdt" id="price">$${data[11].precio}.00</p>
-                        </div>
-                    </div>
                 </div>
             </div>
             `;
@@ -246,27 +240,13 @@ const AddCarritoBanner = async () => {
     const carritoLocalStorage = localStorage.getItem("carrito");
     console.log(carritoLocalStorage);
 }
-
 const AddCarritoBannerCarrusel = async () => {
     const modelo = document.getElementById("ModeloCarrusel").innerHTML;
     const color = document.getElementById("ColorCarrusel").innerHTML;
     const response = await fetch("./Frontend/json/productos.json");
     const data = await response.json();
+
     
-    const enlaces = document.querySelectorAll('button');
-    enlaces.forEach(function (enlace) {
-        enlace.addEventListener('click', function (event) {
-            event.preventDefault();
-            let id = this.id;
-            if (id == "buy1") {
-                console.log("1");
-            } else if (id == "buy2") {
-                console.log("2");
-            } else if (id == "buy3") {
-                console.log("3");
-            }
-        });
-    });
 
     for (const product of data) {
         if (modelo === product.modelo && color === product.color) {
