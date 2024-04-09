@@ -7,6 +7,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     const inputImgAgregarLateral = document.querySelector("#img_captada_lateral");
     const inputImgAgregarSuperior = document.querySelector("#img_captada_superior");
 
+
+    const imagenPrincipal = document.getElementById("imagenPrincipal");
+    const imagenFrontal = document.getElementById("imagenFrontal");
+    const imagenLateral = document.getElementById("imagenLateral");
+    const imagenSuperior = document.getElementById("imagenSuperior");
+
     //== Imagenes de salida ==
     const imagenSeleccionadaPrincipal = document.getElementById("imagenPrincipal");
     const imagenSeleccionadaFrontal = document.getElementById("imagenFrontal");
@@ -32,10 +38,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const nombre = document.getElementById("nombre_zapato_agregar").value;
         const talla = document.querySelectorAll("input[name='talla']:checked");
         const precio = document.getElementById("precio_zapato_agregar").value;
-        const imagenPrincipal = document.getElementById("imagenPrincipal").src;
-        const imagenFrontal = document.getElementById("imagenFrontal").src;
-        const imagenLateral = document.getElementById("imagenLateral").src;
-        const imagenSuperior = document.getElementById("imagenSuperior").src;
+
 
         const validacion = validarInputs(nombre, talla, precio, imagenPrincipal, imagenFrontal, imagenLateral, imagenSuperior);
         // validar que todos los campos estén completos 
@@ -50,10 +53,10 @@ document.addEventListener("DOMContentLoaded", async function () {
                 genero: generoZapato.value,
                 tallas: tallasSeleccionadas,
                 stock: 1,
-                imagen_muestra: img_principal.src,
-                img_frontal: img_frontal.src,
-                img_lateral: img_lateral.src,
-                img_superior: img_superior.src
+                imagen_muestra: imagenPrincipal.src,
+                img_frontal: imagenFrontal.src,
+                img_lateral: imagenLateral.src,
+                img_superior: imagenSuperior.src
             };
 
             console.log(zapato);
@@ -61,25 +64,25 @@ document.addEventListener("DOMContentLoaded", async function () {
             // agregar el zapato al localStorage
             agregarZapatoLocalStorage(zapato);
             // mostrar notificación de éxito
-            mostrarTaskZapato("Zapato agregado correctamente:", 3000);
+            mostrarTaskZapato("Zapato agregado correctamente:","success", 3000);
         }
     });
 
     // Eventos para los campos de imagen 
     inputImgAgregarPrincipal.addEventListener("change", function () {
-        cambiarImagen(this, imagenSeleccionadaPrincipal, "carouselAddZapato");
+        cambiarImagen(this, imagenPrincipal, "carouselAddZapato");
     });
 
     inputImgAgregarFrontal.addEventListener("change", function () {
-        cambiarImagen(this, imagenSeleccionadaFrontal, "carouselAddZapato");
+        cambiarImagen(this, imagenFrontal, "carouselAddZapato");
     });
 
     inputImgAgregarLateral.addEventListener("change", function () {
-        cambiarImagen(this, imagenSeleccionadaLateral, "carouselAddZapato");
+        cambiarImagen(this, imagenLateral, "carouselAddZapato");
     });
 
     inputImgAgregarSuperior.addEventListener("change", function () {
-        cambiarImagen(this, imagenSeleccionadaSuperior, "carouselAddZapato");
+        cambiarImagen(this, imagenSuperior, "carouselAddZapato");
     });
 
     // evento para seleccionar talla
@@ -116,6 +119,8 @@ async function cargarZapatos() {
             console.log(`Zapato ${index + 1}`, zapato);
         });
 
+        // Guardar el JSON existente en el localStorage
+        localStorage.setItem('zapatos', JSON.stringify(archivoJsonExistenteParseado));
         return archivoJsonExistenteParseado;
     } 
     catch (error) {
@@ -123,7 +128,6 @@ async function cargarZapatos() {
         return null;
     }
 }
-
 
 
 function imageToBase64(file) {
@@ -135,7 +139,7 @@ function imageToBase64(file) {
     });
 }
 
-function cambiarImagen(inputImgZapato, imagenSeleccionada, idCarousel) {
+function cambiarImagen(inputImgZapato, imagenSeleccionada) {
     // Verifica si se ha seleccionado un archivo en el input de tipo "file".
     if (inputImgZapato.files && inputImgZapato.files[0]) {
         // Si se seleccionó un archivo, crea un objeto FileReader.
@@ -160,14 +164,16 @@ function cambiarImagen(inputImgZapato, imagenSeleccionada, idCarousel) {
 function validarInputs(nombre, talla, precio, imagenPrincipal, imagenFrontal, imagenLateral, imagenSuperior) {
     console.log("img principal: " + imagenPrincipal);
 
+    const imgPredeterminada = "https://zapaterias-s-g.netlify.app/frontend/assets/img/admin/subir.png";
+
     let validacion = true;
     if (nombre == "" || talla.length === 0 || precio == "") {
         alert("Todos los campos son obligatorios");
         validacion = false;
     }
     // Verificar si se han seleccionado las cuatro imágenes
-    if (imagenPrincipal === "../img/admin/subir.png" || imagenFrontal === "../img/admin/subir.png" ||
-        imagenLateral === "../img/admin/subir.png" || imagenSuperior === "../img/admin/subir.png") {
+    if (imagenPrincipal === imgPredeterminada || imagenFrontal === imgPredeterminada ||
+        imagenLateral === imgPredeterminada || imagenSuperior === imgPredeterminada) {
         console.log("Entro al if de las imagenes");    
         alert("Debe seleccionar las cuatro imágenes");
         validacion = false;
@@ -190,7 +196,7 @@ function agregarZapatoLocalStorage(zapato) {
     }
 }
 
-function mostrarTaskZapato(mensaje, tiempoVisible = 3000) {
+function mostrarTaskZapato(mensaje, iconoTask, tiempoVisible = 3000) {
     console.log("Entro a mostrar el error");
     const toast = Swal.mixin({
         toast: true,
@@ -206,7 +212,7 @@ function mostrarTaskZapato(mensaje, tiempoVisible = 3000) {
 
     return toast.fire({
         title: mensaje,
-        icon: 'success',
+        icon: iconoTask,
         customClass: {
             popup: 'rounded'
         }
