@@ -21,8 +21,8 @@
 
 body {
   font-family: "Inter", sans-serif;
-  overflow-x: hidden;
-  /*elimina el scroll del eje x*/
+  overflow-x: hidden;/*elimina el scroll del eje x*/
+
 }
 
 /* ================ header ================ */
@@ -149,11 +149,11 @@ footer {
   justify-content: center;
   }
   
-  .list-products-home .btn{
-  background-color: #B2AB99; 
-  border-color: #B2AB99;
-  color: #645E4E;
-  }
+.list-products-home .btn{
+    background-color: #B2AB99; 
+    border-color: #B2AB99;
+    color: #645E4E;
+}
   
   .card-img{
   width: 100%;
@@ -188,67 +188,50 @@ footer {
 
 /* == Carrousel de productos recentes ==*/
 
-.carrouselProductosRecientes{
+/* Estilos base para el carrusel */
+.carrouselProductosRecientes {
   background-color: #0070d2;
   width: 100%;
   height: 400px;
-  padding-left: 1.5%;
-  padding-right: 1.5%;
-  overflow: hidden;
-}
-
-
-#swiper-containerProductosRecientes{
+  overflow-x: hidden;
+ }
+ 
+ .carrouselProductosRecientes > #swiper-containerProductosRecientes {
   background-color: #00d282;
   width: 100%;
   height: 400px;
-  padding-left: 1.5%;
-  padding-right: 1.5%;
-}
-
-
-#swiper-wrapperProductosRecientes{
+  overflow-x: hidden;
+ }
+ 
+ #swiper-wrapperProductosRecientes {
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
+  align-items: start;
+  justify-content: start;
   background-color: #d26d00;
   width: 100%;
   height: 400px;
-}
-
-
-
-#swiper-wrapperProductosRecientes > .cardProductosRecientes{
-  background-color: #5a4e64;
-  width: 300px;
-  height: 100%;
-  padding: 1%;
-}
-
-
-.cardProductosRecientes .card-imgProductosRecientes {
+ }
+ 
+ #swiper-wrapperProductosRecientes > .cardProductosRecientes {
+  position: relative;
+  box-shadow: 0px 4px 4px rgba(196, 196, 196, 0.25);
+  background: #fff;
+  justify-content: center;
+  width: auto;
+ }
+ 
+ .cardProductosRecientes .card-imgProductosRecientes {
   width: 100%;
   height: 300px;
   padding: 1.5%;
-  padding-left: 1.5%;
-  padding-right: 1.5%;
-  padding-top: 1.5%;
-  padding-bottom: 1.5%;
-  object-fit: cover;
-}
-
-.cardProductosRecientes .card-imgProductosRecientes img {
+ }
+ 
+ .cardProductosRecientes .card-imgProductosRecientes img {
   width: 100%;
   height: 300px;
-  padding: 1.5%;
-  padding-left: 1.5%;
-  padding-right: 1.5%;
-  padding-top: 1.5%;
-  padding-bottom: 1.5%;
   object-fit: cover;
-}
-
+ }
 
 /* == Fin de Carrousel de productos recentes ==*/
 
