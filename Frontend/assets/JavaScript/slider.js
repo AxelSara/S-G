@@ -74,32 +74,100 @@ const dataProductos = async (url) => {
 const showImg = (data) => {
     let banner = "";
     return data.map(dat => {
-        if (0 === dat.id) {
+        if (5 === dat.id) {
             banner += `
             <div class="slide">
                 <div class="img-pdt inner_content">
-                    <img class="img-banner" src="${data[0].imgMuestra}" alt="" id="img_1">
+                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[5].imgMuestra}" alt="${data[5].imgMuestra}">
                 </div>
             </div>
             `;
-        } else if (6 === dat.id) {
+        } else if (7 === dat.id) {
             banner += `
             <div class="slide">
                 <div class="img-pdt inner_content">
-                    <img class="img-banner" src="${data[6].imgMuestra}" alt="" id="img_1">
+                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[7].imgMuestra}" alt="${data[7].imgMuestra}">
                 </div>
             </div>
             `;
-        } else if (10 === dat.id) {
+        } else if (11 === dat.id) {
             banner += `
             <div class="slide">
                 <div class="img-pdt inner_content">
-                    <img class="img-banner" src="${data[10].imgMuestra}" alt="" id="img_1">
+                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[11].imgMuestra}" alt="${data[11].imgMuestra}">
                 </div>
             </div>
             `;
         }
         document.getElementById("img__banner").innerHTML = banner;
+    });
+}
+
+const showImgCarrusel = (data) => {
+    let banner = "";
+    return data.map(dat => {
+        if (5 === dat.id) {
+            banner += `
+            <div class="carousel-item active">
+                <img src="./Frontend/assets/img/productos/${data[5].imgMuestra}" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h1 id="ModeloCarrusel">${data[5].modelo}</h1>
+                    <p id="ColorCarrusel">${data[5].color}</p>
+                    <p>Some representative placeholder content for the first slide.</p>
+                    <div class="buttons">
+                        <div class="banner-button">
+                            <button class="banner-pdt" id="buy"
+                                onclick="AddCarritoBannerCarrusel()">Comprar</button>
+                        </div>
+                        <div class="banner-button">
+                            <p class="banner-pdt" id="price">$${data[5].precio}.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+        } else if (7 === dat.id) {
+            banner += `
+            <div class="carousel-item">
+                <img src="./Frontend/assets/img/productos/${data[7].imgMuestra}" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h1 id="ModeloCarrusel">${data[7].modelo}</h1>
+                    <p id="ColorCarrusel">${data[7].color}</p>
+                    <p>Some representative placeholder content for the first slide.</p>
+                    <div class="buttons">
+                            <div class="banner-button">
+                                <button class="banner-pdt" id="buy"
+                                    onclick="AddCarritoBannerCarrusel()">Comprar</button>
+                            </div>
+                            <div class="banner-button">
+                                <p class="banner-pdt" id="price">$${data[7].precio}.00</p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            `;
+        } else if (11 === dat.id) {
+            banner += `
+            <div class="carousel-item">
+                <img src="./Frontend/assets/img/productos/${data[11].imgMuestra}" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h1 id="ModeloCarrusel">${data[11].modelo}</h1>
+                    <p id="ColorCarrusel">${data[11].color}</p>
+                    <p>Some representative placeholder content for the first slide.</p>
+                    <div class="buttons">
+                            <div class="banner-button">
+                                <button class="banner-pdt" id="buy"
+                                    onclick="AddCarritoBannerCarrusel()">Comprar</button>
+                            </div>
+                            <div class="banner-button">
+                                <p class="banner-pdt" id="price">$${data[11].precio}.00</p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            `;
+        }
+        document.getElementById("carrusel__banner").innerHTML = banner;
     });
 }
 
@@ -120,8 +188,9 @@ const imgInit = async () => {
     const response = await fetch("./Frontend/json/productos.json");
     const data = await response.json();
     showImg(data);
+    showImgCarrusel(data);
     const imgElements = document.querySelectorAll(".img-pdt img");
-    findData(data, imgElements[0].src);
+    findData(data, imgElements[0].alt);
 }
 
 const indexBanner = () => {
@@ -133,13 +202,13 @@ const indexBanner = () => {
         enlace.addEventListener('click', function (event) {
             event.preventDefault();
             let id = this.id;
-            if(id == "li1"){
-                dataProductos(imgElements[0].src);
-            } else if(id == "li2"){
-                dataProductos(imgElements[1].src);
-            } else if(id == "li3"){
-                dataProductos(imgElements[2].src);
-            } 
+            if (id == "li1") {
+                dataProductos(imgElements[0].alt);
+            } else if (id == "li2") {
+                dataProductos(imgElements[1].alt);
+            } else if (id == "li3") {
+                dataProductos(imgElements[2].alt);
+            }
         });
     });
 }
@@ -151,11 +220,41 @@ const AddCarritoBanner = async () => {
     const response = await fetch("./Frontend/json/productos.json");
     const data = await response.json();
     for (const product of data) {
-        if(modelo === product.modelo && color === product.color){
-            cart.push( {
+        if (modelo === product.modelo && color === product.color) {
+            cart.push({
                 "id": product.id,
                 "modelo": product.modelo,
                 "color": product.color,
+                "genero": product.genero,
+                "talla": 7,
+                "precio": product.precio,
+                "marca": product.marca,
+                "imgMuestra": product.imgMuestra,
+                "imgLateral": product.imgLateral,
+                "imgFrontal": product.imgFrontal,
+                "imgSuperior": product.imgSuperior
+            });
+        }
+    }
+    localStorage.setItem("carrito", JSON.stringify(cart));
+    const carritoLocalStorage = localStorage.getItem("carrito");
+    console.log(carritoLocalStorage);
+}
+const AddCarritoBannerCarrusel = async () => {
+    const modelo = document.getElementById("ModeloCarrusel").innerHTML;
+    const color = document.getElementById("ColorCarrusel").innerHTML;
+    const response = await fetch("./Frontend/json/productos.json");
+    const data = await response.json();
+
+    
+
+    for (const product of data) {
+        if (modelo === product.modelo && color === product.color) {
+            cart.push({
+                "id": product.id,
+                "modelo": product.modelo,
+                "color": product.color,
+                "genero": product.genero,
                 "talla": 7,
                 "precio": product.precio,
                 "marca": product.marca,

@@ -1,5 +1,6 @@
 // Ruta al archivo JSON
-const rutaArchivoJSON = 'productos.json';
+const rutaArchivoJSON = '../../json/productos.json';
+const cartLocalStorage = JSON.parse(localStorage.getItem("carrito"));
 
 // Función para cargar y mostrar los datos del JSON
 async function cargarDatos() {
@@ -13,27 +14,56 @@ async function cargarDatos() {
         let totalCarrito = 0; // Inicializamos el total
 
         // Iterar sobre los elementos del JSON y agregarlos a la tabla
-        datos.forEach(elemento => {
+        cartLocalStorage.forEach(elemento => {
             const fila = document.createElement('tr');
-            fila.innerHTML = `
-                <td>
-                   ${elemento.name}<br>
-                   ${elemento.genero}
-                   </td>
-                
-                <td>${elemento.color}</td>     
-                <td>${elemento.price}</td>
-                <td>${elemento.talla}</td>
-                <td>
-                    <button onclick="restarCantidad(this)">-</button>
-                    <span>1</span>
-                    <button onclick="sumarCantidad(this)">+</button>
-                </td>
-                <td><button onclick="eliminarProducto(${elemento.id}, this)">Eliminar</button></td>
+
+            // Crear el elemento img y establecer su atributo src
+            const img = document.createElement('img');
+            img.src = "../img/productos/" + elemento.imgMuestra;
+            img.alt = "Imagen del producto";
+            img.classList.add('producto-imagen'); // Añadir una clase específica
+
+            // Insertar el elemento img en el primer td
+            const tdImg = document.createElement('td');
+            tdImg.appendChild(img);
+            fila.appendChild(tdImg);
+
+            // Añadir los demás td con la información
+            const tdInfo = document.createElement('td');
+            tdInfo.innerHTML = `
+                ${elemento.modelo}<br>
+                ${elemento.genero}
             `;
+            fila.appendChild(tdInfo);
+
+            const tdColor = document.createElement('td');
+            tdColor.textContent = elemento.color;
+            fila.appendChild(tdColor);
+
+            const tdPrecio = document.createElement('td');
+            tdPrecio.textContent = `$${elemento.precio}.00`; // Fatla agregar signo de peso y agregar centavos
+            fila.appendChild(tdPrecio);
+
+            const tdTalla = document.createElement('td');
+            // tdTalla.textContent = elemento.talla;
+            tdTalla.textContent = 7;
+            fila.appendChild(tdTalla);
+
+            const tdCantidad = document.createElement('td');
+            tdCantidad.innerHTML = `
+                <button class="buttonsumaresta" onclick="restarCantidad(this)">-</button>
+                <span>1</span>
+                <button class="buttonsumaresta" onclick="sumarCantidad(this)">+</button>
+            `;
+            fila.appendChild(tdCantidad);
+
+            const tdEliminar = document.createElement('td');
+            tdEliminar.innerHTML = `<button onclick="eliminarProducto(${elemento.id}, this)">Eliminar</button>`;
+            fila.appendChild(tdEliminar);
+
             tbody.appendChild(fila);
 
-            totalCarrito += parseFloat(elemento.price); // Sumamos el precio al total
+            totalCarrito += parseFloat(elemento.precio); // Sumamos el precio al total
         });
 
         // Actualizamos el total en el footer
@@ -55,7 +85,7 @@ function restarCantidad(button) {
     var cantidad = parseInt(spanCantidad.textContent);
     if (cantidad > 1) {
         spanCantidad.textContent = cantidad - 1;
-        actualizarTotal(); // Llamamos a la función para actualizar el total
+        actualizarTotal(); 
     }
 }
 
@@ -64,16 +94,16 @@ function sumarCantidad(button) {
     var spanCantidad = button.parentNode.querySelector('span');
     var cantidad = parseInt(spanCantidad.textContent);
     spanCantidad.textContent = cantidad + 1;
-    actualizarTotal(); // Llamamos a la función para actualizar el total
+    actualizarTotal(); 
 }
 
-// funcion para eliminar un producto de json segun su id 
+// Función para eliminar un producto de JSON según su id 
 function eliminarProducto(id, botonEliminar) {
     // Eliminamos la fila correspondiente al botón eliminar
     const filaAEliminar = botonEliminar.closest('tr');
     filaAEliminar.remove();
-    // Actualizamos el total después de eliminar el producto
     actualizarTotal();
+
 }
 
 // Función para actualizar el total del carrito
@@ -82,8 +112,9 @@ function actualizarTotal() {
 
     const filasProductos = document.querySelectorAll('#tablaProductos tbody tr');
     filasProductos.forEach(fila => {
-        const precio = parseFloat(fila.cells[2].textContent); // Obtener el precio de la celda correspondiente
-        const cantidad = parseInt(fila.querySelector('span').textContent); // Obtener la cantidad del producto
+        const precioTexto = fila.cells[3].textContent; 
+        const precio = parseFloat(precioTexto.replace('$', '')); 
+        const cantidad = parseInt(fila.querySelector('span').textContent); 
         totalCarrito += precio * cantidad;
     });
 
@@ -93,9 +124,7 @@ function actualizarTotal() {
 
 // Función para simular el proceso de pago
 function realizarPago() {
-    // Aquí podríamos agregar la lógica para procesar el pago
     console.log("Eso es todo, se está realizando el pago...");
 }
 
-// Asociamos la función realizarPago al botón de pago
 document.getElementById('checkoutBtn').addEventListener('click', realizarPago);

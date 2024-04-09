@@ -19,14 +19,13 @@
 </head>
 <body>
    <!--=============== HEADER ===============-->
-   <header class="headerZapateria">
+   <header id="headerZapateria">
     <div class="header-nav">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid" id="navbar-bg" bg-transparent>
                 <a class="iconLogo mt-1" href="#">
                     <img class="nav-link" src="../img/icon/logo.png" alt="LogoS&G" width="100" height="auto">
                 </a>
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -38,28 +37,37 @@
                             <a class="nav-link active" aria-current="page" href="../../../index.html">Inicio</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="./lista-productos.html" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#"
+                                id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Productos
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="./lista-productos.html">Mujer</a></li>
+                                <li><a class="dropdown-item"
+                                        href="#">Mujer</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="./lista-productos.html">Hombre</a></li>
+                                <li><a class="dropdown-item"
+                                        href="#">Hombre</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./sobre-nosotros.html">Acerca de nosotros</a>
+                            <a class="nav-link" href="./sobre-nosotros.html">Acerca de
+                                nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contactanos</a>
+                            <a class="nav-link" href="./contactanos.html">Contactanos</a>
                         </li>
                     </ul>
                     <style>
                         a {
                             text-decoration: none;
+                        }
+                        .nav-item:hover {
+                            background-color: #B8AA87 !important;
+                            /* Cambia el color de fondo al pasar el mouse */
+                            transition: background-color 0.3s ease;
+                            /* Agrega una transición suave */
                         }
                     </style>
                     <div class="icons">
@@ -85,12 +93,11 @@
                             </svg>
                         </a>
                     </div>
-
                 </div>
         </nav>
     </div>
 </header>
- <!--=============== HEADER ===============-->
+<!--=============== HEADER ===============-->
 
     <main>
         <section>

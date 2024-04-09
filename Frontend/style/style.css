@@ -850,6 +850,7 @@ ul {
   color: var(--color-contraste);
   position: relative;
   display: grid;
+  height: 100vh;
 }
 
 .slides .slide {
@@ -887,10 +888,24 @@ ul {
   padding: 0rem 2.5rem;
 }
 
+.carrusel-banner .carousel-caption{
+  color: black;
+  text-align: right;
+  /* background-color: rgb(100, 94, 78, 0.5); */
+}
+
+.carrusel-banner .banner-button{
+  font-size: medium;
+}
+
+.carrusel-banner .banner-pdt{
+  padding: 0.5rem 0.6rem;
+}
+
 @media (min-width: 0px) and (max-width: 767px) {
 
   .description {
-    margin: 1rem 0rem;
+    margin: 0.5rem 0rem;
     /* display: flex;
     flex-direction: column;
     justify-content: center;
