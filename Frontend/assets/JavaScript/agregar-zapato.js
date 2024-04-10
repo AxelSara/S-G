@@ -231,7 +231,7 @@ function validarInputs(nombre, color, precio, marca, genero, tallasSeleccionadas
     // Validar selección de imágenes
     if (imagenPrincipal === imgPredeterminada || imagenFrontal === imgPredeterminada ||
         imagenLateral === imgPredeterminada || imagenSuperior === imgPredeterminada) {
-        alert("Debe seleccionar las cuatro imágenes");
+        mostrarTaskZapato("Debe seleccionar las cuatro imágenes", "error", "top-right", 4000);
         validacion = false;
     }
 
