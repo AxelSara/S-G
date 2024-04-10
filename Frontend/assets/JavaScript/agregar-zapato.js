@@ -203,8 +203,8 @@ function cambiarImagen(inputImgZapato, imagenSeleccionada) {
 }
 
 function validarInputs(nombre, color, precio, marca, genero, tallasSeleccionadas, imagenPrincipal, imagenFrontal, imagenLateral, imagenSuperior) {
-    const imgPredeterminada = "../img/admin/subir.png";
-    console.log("imagen principal:", imagenPrincipal.src);
+    const imgPredeterminada = "https://zapaterias-s-g.netlify.app/frontend/assets/img/admin/subir.png";
+    console.log("imagen principal:", imagenPrincipal);
     let validacion = true;
 
     // Expresiones regulares
