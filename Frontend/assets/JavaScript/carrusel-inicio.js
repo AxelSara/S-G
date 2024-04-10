@@ -19,7 +19,7 @@ const showData = (data) => {
                         </div>
                         <div class="carrito-button col-7">   
                             <div class="card-link">
-                                <button class="buy button-pr"> Agregar al carrito </button>
+                                <button class="buy button-pr" onclick="addCartCarrusel(${dat.id})" id=""> Agregar al carrito </button>
                             </div>
                         </div>
                     </div>
@@ -32,6 +32,33 @@ const showData = (data) => {
       });
   }
   
+  const carrito = JSON.parse(localStorage.getItem("carrito"));
+  console.log(carrito);
+
+  const addCartCarrusel = async (id) =>{
+    const response = await fetch("./Frontend/json/productos.json");
+    const data = await response.json();
+    for (const product of data) {
+        if(id == product.id){
+            cart.push({
+                "id": product.id,
+                "modelo": product.modelo,
+                "color": product.color,
+                "genero": product.genero,
+                "talla": 7,
+                "precio": product.precio,
+                "marca": product.marca,
+                "imgMuestra": product.imgMuestra,
+                "imgLateral": product.imgLateral,
+                "imgFrontal": product.imgFrontal,
+                "imgSuperior": product.imgSuperior
+            });
+        }
+    }
+    localStorage.setItem("carrito", JSON.stringify(cart));
+    console.log(carrito);
+  }
+
   const carrusel = async () => {
     const response = await fetch("./Frontend/json/productos.json");
     const data = await response.json();
