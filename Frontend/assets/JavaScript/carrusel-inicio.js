@@ -33,7 +33,6 @@ const showData = (data) => {
   }
   
   const carrito = JSON.parse(localStorage.getItem("carrito"));
-  console.log(carrito);
 
   const addCartCarrusel = async (id) =>{
     const response = await fetch("./Frontend/json/productos.json");
@@ -56,7 +55,6 @@ const showData = (data) => {
         }
     }
     localStorage.setItem("carrito", JSON.stringify(cart));
-    console.log(carrito);
   }
 
   const carrusel = async () => {
