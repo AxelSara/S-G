@@ -204,6 +204,7 @@ function cambiarImagen(inputImgZapato, imagenSeleccionada) {
 
 function validarInputs(nombre, color, precio, marca, genero, tallasSeleccionadas, imagenPrincipal, imagenFrontal, imagenLateral, imagenSuperior) {
     const imgPredeterminada = "../img/admin/subir.png";
+    console.log("imagen principal:", imagenPrincipal.src);
     let validacion = true;
 
     // Expresiones regulares
@@ -223,7 +224,7 @@ function validarInputs(nombre, color, precio, marca, genero, tallasSeleccionadas
 
     // Validar selección de género
     if (!genero) {
-        alert("Debe seleccionar un género");
+        mostrarTaskZapato("Debe seleccionar un género", "error", "top-right", 3500);
         validacion = false;
     }
 
