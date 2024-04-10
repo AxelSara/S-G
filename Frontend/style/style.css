@@ -760,6 +760,10 @@ a {
 
 /* ======================= Page agregar zapato ======================= */
 
+#bodyAddZapato{
+  background-color: var(--color-principal);
+}
+
 .contenedor_principal_agregarZapato {
   background-color: var(--color-principal);
   margin-top: 20px;
@@ -773,7 +777,7 @@ a {
 
 @media (max-width: 768px) {
   .contenedor_principal_agregarZapato {
-    height: 1200px;
+    height: 1150px;
   }
 }
 
@@ -874,6 +878,27 @@ a {
 .talla-mostradas {
   font-weight: bold;
 }
+
+.hidden-radio {
+  display: none;
+}
+
+.form-check-label {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+
+.form-check-input:checked + .form-check-label {
+  background-color: #007bff;
+  color: white;
+}
+
+
 
 
 .contenedorBotonAgregarZapato{

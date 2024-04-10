@@ -17,13 +17,15 @@
     <!-- icono del footer -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-            <!-- ----------ICONS FONTAWESOME---------- -->
-            <script src="https://kit.fontawesome.com/d0be8199f6.js" crossorigin="anonymous"></script>
+    <!-- ----------ICONS FONTAWESOME---------- -->
+    <script src="https://kit.fontawesome.com/d0be8199f6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
 
 
 </head>
-<body>
+<body id="bodyAddZapato">
    <!--=============== HEADER ===============-->
    <header id="headerZapateria">
     <div class="header-nav">
@@ -119,7 +121,7 @@
 </header>
  <!--=============== HEADER ===============-->
 
-    <main>
+    <main id="mainAddZapato">
         <section>
             <div class="container-fluid contenedor_principal_agregarZapato">
 
@@ -235,11 +237,30 @@
                                     <p>Tallas seleccionadas: <span id="tallas-mostradas">Ninguna</span></p>
                                 </div>
     
-                                <!-- campo genero -->
+                                <!-- campo  radio boton género -->
                                 <div class="form-group mt-3">
-                                    <label for="zapatosDisponiblesAgregar" class="form-label">Genero</label>
-                                    <input type="text" class="form-control" id="genero_zapato_agregar" name="zapatosDisponiblesAgregar" >
-                                </div>    
+                                    <h6>Género</h6>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input hidden-radio" type="radio" name="inlineRadioOptions" id="inlineHombre1" value="Hombre">
+                                        <label class="form-check-label" for="inlineHombre1">
+                                            <i class="fas fa-male"></i> Hombre
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input hidden-radio" type="radio" name="inlineRadioOptions" id="inlineMujer" value="Mujer">
+                                        <label class="form-check-label" for="inlineMujer">
+                                            <i class="fas fa-female"></i> Mujer
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input hidden-radio" type="radio" name="inlineRadioOptions" id="inlineUnisex" value="Unisex">
+                                        <label class="form-check-label" for="inlineUnisex">
+                                            <i class="fas fa-genderless"></i> Unisex
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                
     
                             </div>                  
                         </div>
