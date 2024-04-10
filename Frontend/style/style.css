@@ -753,7 +753,7 @@ a {
 
   .formContactanos {
     color: #a1c9c1;
-    /* background-color: #645E4E; */
+    background-color: #fff9ec;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -779,7 +779,14 @@ a {
     margin-bottom: 0px;
     background-color: #645E4E;
   }
-
+  #titulocontacto,
+  #labelNombre,
+  #labelCorreo,
+  #labelTelefono,
+  #labelMensaje{
+    color: black;
+  }
+  
   .formContactanos {
     color: #a1c9c1;
     /* background-color: #645E4E; */
