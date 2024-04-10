@@ -1,0 +1,242 @@
+:root {
+    /*========== Colores ==========*/
+    --color-principal: #fff9ec;
+    --color-contraste: #645e4e;
+    --color-contraste-transparente: rgb(100, 94, 78, 0.9);
+    --color-claro: #b2ab99;
+    --color_footer: #a1c9c1;
+    --color-claro-azul: #d8fff9;
+    --color-header: background-color: rgba(255, 255, 255, 0); /* Fondo transparente */
+  }
+  
+  *{
+    font-optical-sizing: auto;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  } 
+  
+  body {
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;    /*elimina el scroll del eje x*/
+  }
+  
+ .warnings{
+  width: 200px;
+  text-align: center;
+  margin: auto;
+  color: red;
+  padding-top: 20px;
+ }
+  /* ================ HEADER ================ */
+  
+    #headerZapateria {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: var(--color-header);
+  
+    }
+  
+    .navbar{
+      margin: 20;
+      padding: 0;
+      
+    }
+    
+    .collapse{
+      background-color: rgba(255, 255, 255, 0.9);
+      z-index: 1000;
+    }
+   
+    .nav-link,
+    .nav-bg,
+    .icons,
+    .icon,
+    #navbar-bg{
+      background-color: var(--color-header);
+      z-index: 1000;
+    }
+  
+  #textCrear{  
+    margin-top: 80px;
+  }
+  
+  @media (min-width: 900px){
+  #headerZapateria {
+    position: fixed;
+    z-index: 1000;
+    background-color: var(--color-header);
+    width: 100%;
+  }
+  .navbar{
+    margin: 0;
+    padding: 0;
+    
+  }
+  
+  .collapse,
+  .nav-link,
+  .nav-bg,
+  .icons,
+  .icon,
+  #navbar-bg{
+    background-color: var(--color-header);
+  }
+  
+  #bannerId{
+    margin-top: 0px;
+  }
+  }
+  /* ================ HEADER ================ */
+
+  /* ================ FOOTER ================ */
+  
+    footer{
+       background-color: var(--color_footer);
+        padding: 1rem;
+        width: 100%;
+        height: 9%;
+    }
+  
+    .footer-bg,
+    .icon-footer,
+    #iconos{
+      background-color: var(--color_footer);
+    }
+    
+    .caja{
+      background-color: var(--color-claro-azul);
+      white-space: nowrap;
+      display: inline-block;
+      padding: 0.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+     }
+    
+    #iconos{
+      padding: 1rem;   
+      align-items: center;
+     }
+    
+    #iconos img{
+      white-space: nowrap;
+      display: inline-block;
+      margin-right: 2rem;
+    }
+  /* ================ FOOTER ================ */
+
+  /* ================ FORMULARIO ================ */
+
+.contenedor_principal_resgistro{
+    background-color: var(--color-principal);
+    margin-top: 0px;
+    left: 0;
+    height: 90vh; 
+    width: 100%;
+    z-index: 8;
+    margin-bottom: 5px;
+  }
+  .contenedor_imagen_registro{
+    background-color: var(--color-principal);
+    left: 0;
+    height: 90vh;
+    top: 0;
+    z-index: 1;
+    
+  }
+  
+  .contenedor_imagen_registro > img{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    object-fit: cover;
+    object-position: 0 30%;
+  }
+  
+  .formularioRegistro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 100%;
+    z-index: 2;
+  }
+  
+  .btnCrearCuenta{
+    color: white;
+    background-color: #645E4E;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  @media (min-width: 770px) and (max-width: 998px) {
+    .contenedor_principal_resgistro {
+        position: relative;
+        top : 0;
+        /* Reducir la altura del contenedor */
+        margin-top: 0px;
+        left: 0;
+        width: 100%;
+        margin-bottom: 0px;
+        background-color: #fff9ec;
+    }
+    .contenedor_imagen_registro{
+      background: rgba(255, 255, 255, 0.112);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+    
+
+    .formularioRegistro {
+      color: #a1c9c1;
+      background-color: #fff9ec;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 60px;
+      align-items: center;
+      width: 50%;
+      height: 80%;
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.112);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+    
+}
+
+@media (min-width: 230px) and (max-width: 575px) {
+  #textCrear{  
+    margin-top: 0px;
+  }
+    .contenedor_principal_resgistro {
+        top : 0;
+        margin-bottom: 0px;
+        background-color: #fff9ec;
+    }
+    .formularioRegistro{
+      color: #a1c9c1;
+      background-color: #fff9ec;
+      position: absolute;
+      top : 0;
+      /* Reducir la altura del contenedor */
+      margin-top: 80px;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+
+}
+    /* ================ FORMULARIO ================ */

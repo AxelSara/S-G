@@ -774,12 +774,15 @@ a {
 }
 
 @media (min-width: 230px) and (max-width: 575px) {
+  #textContactanos{
+    margin-top: 80px;
+  }
   .contenedor_principal_contactanos {
     top: 0;
     margin-bottom: 0px;
     background-color: #645E4E;
   }
-  #titulocontacto,
+  #textoContactanos,
   #labelNombre,
   #labelCorreo,
   #labelTelefono,
@@ -789,7 +792,7 @@ a {
   
   .formContactanos {
     color: #a1c9c1;
-    /* background-color: #645E4E; */
+    background-color: #fff9ec;
     position: absolute;
     top: 0;
     /* Reducir la altura del contenedor */
