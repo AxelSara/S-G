@@ -129,10 +129,10 @@ footer p {
 
 }
 
-/* .contenedorTituloFooter{
-  background-color: #A1C9C1;
-  padding: 20px;
-} */
+.titulo-footer a{
+  display: grid;
+  
+} 
 
 .footer-col .social-links a {
   display: inline-block;
