@@ -615,6 +615,79 @@ a {
   }
 }
 
+@media (min-width: 770px) and (max-width: 998px) {
+  .contenedor_principal_contactanos {
+    position: relative;
+    top: 0;
+    /* Reducir la altura del contenedor */
+    margin-top: 0px;
+    left: 0;
+    width: 100%;
+    margin-bottom: 0px;
+    background-color: #fff9ec;
+  }
+
+  .contenedor_imagen_contactanos {
+    background: rgba(255, 255, 255, 0.112);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+
+
+  .formContactanos {
+    color: #a1c9c1;
+    background-color: #fff9ec;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 60px;
+    align-items: center;
+    width: 50%;
+    height: 80%;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.112);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+
+}
+
+@media (min-width: 230px) and (max-width: 575px) {
+  #textContactanos{
+    margin-top: 80px;
+  }
+  .contenedor_principal_contactanos {
+    top: 0;
+    margin-bottom: 0px;
+    background-color: #fff9ec;
+  }
+  #textoContactanos,
+  #labelNombre,
+  #labelCorreo,
+  #labelTelefono,
+  #labelMensaje{
+    color: black;
+  }
+  
+  .formContactanos {
+    color: #a1c9c1;
+    background-color: #fff9ec;
+    position: absolute;
+    top: 0;
+    /* Reducir la altura del contenedor */
+    margin-top: 0px;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+
+}
+
 
 
 
@@ -729,80 +802,6 @@ a {
 
 .talla-mostradas {
   font-weight: bold;
-}
-
-
-@media (min-width: 770px) and (max-width: 998px) {
-  .contenedor_principal_contactanos {
-    position: relative;
-    top: 0;
-    /* Reducir la altura del contenedor */
-    margin-top: 0px;
-    left: 0;
-    width: 100%;
-    margin-bottom: 0px;
-    background-color: #645E4E;
-  }
-
-  .contenedor_imagen_contactanos {
-    background: rgba(255, 255, 255, 0.112);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-  }
-
-
-  .formContactanos {
-    color: #a1c9c1;
-    background-color: #fff9ec;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 60px;
-    align-items: center;
-    width: 50%;
-    height: 80%;
-    z-index: 2;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.112);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-  }
-
-}
-
-@media (min-width: 230px) and (max-width: 575px) {
-  #textContactanos{
-    margin-top: 80px;
-  }
-  .contenedor_principal_contactanos {
-    top: 0;
-    margin-bottom: 0px;
-    background-color: #645E4E;
-  }
-  #textoContactanos,
-  #labelNombre,
-  #labelCorreo,
-  #labelTelefono,
-  #labelMensaje{
-    color: black;
-  }
-  
-  .formContactanos {
-    color: #a1c9c1;
-    background-color: #fff9ec;
-    position: absolute;
-    top: 0;
-    /* Reducir la altura del contenedor */
-    margin-top: 0px;
-    left: 0;
-    width: 100%;
-    z-index: 2;
-  }
-
-
 }
 
 
