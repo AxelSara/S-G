@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.formContactanos');
     const contenedorErrores = document.querySelector('.contenedor_errores_contactanos');
 
+
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
@@ -14,12 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const comentario = formData.get('comentarioContactanos');
 
         // validar los inputs del formulario con expresiones regulares
-        const validar = validarInputs(nombre, email,telefono, comentario);
+        const validar = await validarInputs(nombre, email,telefono, comentario);
 
         if (!validar) {
             return;
         }
         else {
+
             const requestData = {
                 nombre: nombre,
                 email: email,
@@ -41,6 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(response.ok) {
                     console.log("Email enviado");
                     // crear un modal de exito
+                    modalEnvioEmail("Enviando correo","info","center");
+
+                    setTimeout(() => {
+                        mostrarAlertaExitoEnvio();
+                        form.reset();
+                    }, 4000);
+
                 }
                 else {
                     contenedorErrores.innerHTML = `
@@ -61,9 +70,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 }); 
 
+function modalEnvioEmail(mensaje, iconoTask, position = "center", tiempoVisible = 3000) {
+    Swal.fire({
+        title: mensaje,
+        icon: iconoTask,
+        confirmButtonText: 'Cerrar',
+        customClass: {
+            container: 'modal-ContactanosEmail', 
+            popup: 'modal-contactanosEmail-popup rounded' 
+        },
+        showCloseButton: true, // Muestra el botón de cerrar
+        allowOutsideClick: false, // Deshabilita el cierre al hacer clic fuera del modal
+        allowEscapeKey: false, // Deshabilita el cierre al presionar la tecla Escape
+        timer: tiempoVisible, // Tiempo de espera antes de cerrar automáticamente el modal
+        timerProgressBar: true, // Muestra una barra de progreso para el tiempo de espera
+        didOpen: () => {
+            Swal.showLoading(); // Muestra un indicador de carga mientras el modal está abierto
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            console.log('El modal fue cerrado');
+        }
+    });
+}
+
+  
+
+
 
 async function validarInputs(nombre, email,telefono, comentario) {
-
 
     console.log("Nombre: " + nombre);
     console.log("Email: " + email);
@@ -93,7 +128,7 @@ async function validarInputs(nombre, email,telefono, comentario) {
         validacion = false;
         // crear un contenedor de error
         contenedorErrores.innerHTML += `
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger mt-2" role="alert">
             El nombre contiene caracteres no válidos.
         </div>
         `;
@@ -120,7 +155,7 @@ async function validarInputs(nombre, email,telefono, comentario) {
 
         setTimeout(() => {
             contenedorErrores.innerHTML = '';
-        }, 4000)
+        }, 5500)
     }
 
     // validar que sean solo numeros 
@@ -135,24 +170,7 @@ async function validarInputs(nombre, email,telefono, comentario) {
         // Limpiar el contenedor de errores
         setTimeout(() => {
             contenedorErrores.innerHTML = '';
-        }, 4000)
-    }
-
-
-
-    // validacion del telefono
-    if (comentario.length < 10) {
-        validacion = false;
-        contenedorErrores.innerHTML += `
-        <div class="alert alert-danger" role="alert">
-            El telefono debe tener al menos 10 números.
-        </div>
-        `;
-
-        // Limpiar el contenedor de errores
-        setTimeout(() => {
-            contenedorErrores.innerHTML = '';
-        }, 4000)
+        }, 5500)
     }
 
     // validar que el comentario no exceda los 255 caracteres
@@ -161,14 +179,24 @@ async function validarInputs(nombre, email,telefono, comentario) {
         alert("El comentario no puede tener más de 255 caracteres.");
     }
 
-
-
-
-
-
     return validacion;
 
 }
+
+function mostrarAlertaExitoEnvio() {
+    Swal.fire({
+        title: '¡Correo enviado con éxito!',
+        text: 'Gracias por contactarnos. Nos pondremos en contacto contigo lo más pronto posible.',
+        icon: 'success',
+        confirmButtonText: 'Cerrar',
+        customClass: {
+            container: 'modal-exito-envio',
+            popup: 'modal-exito-envio-popup rounded'
+        }
+    });
+}
+
+
 
 
 function mostrarMensajeDeError(mensaje, tiempoVisible = 3000) {
@@ -193,9 +221,6 @@ function mostrarMensajeDeError(mensaje, tiempoVisible = 3000) {
       }
     });
   }
-  
-
-
 
 
 // async function enviarComentario (dataFormW) {

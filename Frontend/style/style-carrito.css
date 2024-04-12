@@ -57,99 +57,58 @@ body {
     font-style: normal;
 }
 
-
-.caja {
-    background-color: #D8FFF9;
-    white-space: nowrap;
-    display: inline-block;
-    padding: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-#iconos {
-    padding: 1rem;
-    align-items: center;
-}
-
-#iconos img {
-    white-space: nowrap;
-    display: inline-block;
-    margin-right: 2rem;
-}
-
-/*----footer----*/
-
-footer {
-    background-color: var(--color_footer);
-    padding: 1rem;
-    margin-top: 70px;
-
-}
-
-
-footer {
-    background-color: var(--color_footer);
-    padding: 2rem;
-    width: 100%;
-}
-
-
-.caja {
-    white-space: nowrap;
-    display: inline-block;
-    padding: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-#iconos {
-    padding: 1rem;
-    align-items: center;
-}
-
-#iconos img {
-    white-space: nowrap;
-    display: inline-block;
-    margin-right: 2rem;
-}
-
 /* ================ FOOTER ================ */
 
-footer {
-    background-color: var(--color_footer);
-    padding: 2rem;
+
+footer h2 {
+    /*margin: 0 0 10px;*/
+    font-size: 25px;
+    color: white;
+    padding-top: 5%;
+    padding-bottom: 4%;
+    
+  }
+  footer p {
+    margin: 0;
+  }
+  .row a{
+    color: black;
+    font-size: 20px;
+  } 
+  
+  
+  
+  .footer_section{
+    background: #A1C9C1;
+    color: rgb(255 255 255 / 50%);
+    bottom: 0;
+    height: 20%;
     width: 100%;
-}
-
-.footer-bg,
-.icon-footer,
-#iconos {
-    background-color: var(--color_footer);
-}
-
-.caja {
-    background-color: var(--color-claro-azul);
-    white-space: nowrap;
+  
+  }
+  
+  /* .contenedorTituloFooter{
+    background-color: #A1C9C1;
+    padding: 20px;
+  } */
+  
+  .footer-col .social-links a {
     display: inline-block;
-    padding: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-#iconos {
-    padding: 1rem;
-    align-items: center;
-}
-
-#iconos img {
-    white-space: nowrap;
-    display: inline-block;
-    margin-right: 2rem;
-}
-
-/*-----header-----*/
-
+    height: 40px;
+    width: 40px;
+    background-color: #ffffff33;
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: white;
+    transition: all 0.5s ease;
+  }
+  .footer-col .social-links a:hover {
+    color: #24262b;
+    background-color: white;
+  }
+  
 /* ================ header ================ */
 
 .navbar {

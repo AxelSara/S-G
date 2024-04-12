@@ -17,21 +17,25 @@
     <!-- icono del footer -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-            <!-- ----------ICONS FONTAWESOME---------- -->
-            <script src="https://kit.fontawesome.com/d0be8199f6.js" crossorigin="anonymous"></script>
+    <!-- ----------ICONS FONTAWESOME---------- -->
+    <script src="https://kit.fontawesome.com/d0be8199f6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
 
 
 </head>
-<body>
+<body id="bodyAddZapato">
    <!--=============== HEADER ===============-->
    <header id="headerZapateria">
     <div class="header-nav">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid" id="navbar-bg" bg-transparent>
                 <a class="iconLogo mt-1" href="#">
-                    <img class="nav-link" src="../img/icon/logo.png" alt="LogoS&G" width="100" height="auto">
+                    <img class="nav-link" src="../img/icon/logo.png" alt="LogoS&G" width="100"
+                        height="auto">
                 </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -43,8 +47,8 @@
                             <a class="nav-link active" aria-current="page" href="../../../index.html">Inicio</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="./lista-productos.html"
-                                id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="./lista-productos.html" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Productos
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -76,8 +80,12 @@
                             transition: background-color 0.3s ease;
                             /* Agrega una transición suave */
                         }
+                        .adminText{
+                            font-size: 8px;
+                        }
+                        
                     </style>
-                    <div class="icons">
+                    <div class="icons" >
                         <a class="icon" href="./login.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-person"
                                 viewBox="0 0 16 16">
@@ -99,14 +107,21 @@
                                     d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
                             </svg>
                         </a>
+                        <a class="icon" id="adminText" href="./agregar-zapato.html" style="color: black;"><small>Admin</small>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-person-gear" viewBox="0 0 16 16"> 
+                            <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1zm3.63-4.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/> 
+                          </svg>
+                        </a>
                     </div>
+
                 </div>
         </nav>
     </div>
+
 </header>
  <!--=============== HEADER ===============-->
 
-    <main>
+    <main id="mainAddZapato">
         <section>
             <div class="container-fluid contenedor_principal_agregarZapato">
 
@@ -222,11 +237,30 @@
                                     <p>Tallas seleccionadas: <span id="tallas-mostradas">Ninguna</span></p>
                                 </div>
     
-                                <!-- campo genero -->
+                                <!-- campo  radio boton género -->
                                 <div class="form-group mt-3">
-                                    <label for="zapatosDisponiblesAgregar" class="form-label">Genero</label>
-                                    <input type="text" class="form-control" id="genero_zapato_agregar" name="zapatosDisponiblesAgregar" >
-                                </div>    
+                                    <h6>Género</h6>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input hidden-radio" type="radio" name="inlineRadioOptions" id="inlineHombre1" value="Hombre">
+                                        <label class="form-check-label" for="inlineHombre1">
+                                            <i class="fas fa-male"></i> Hombre
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input hidden-radio" type="radio" name="inlineRadioOptions" id="inlineMujer" value="Mujer">
+                                        <label class="form-check-label" for="inlineMujer">
+                                            <i class="fas fa-female"></i> Mujer
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input hidden-radio" type="radio" name="inlineRadioOptions" id="inlineUnisex" value="Unisex">
+                                        <label class="form-check-label" for="inlineUnisex">
+                                            <i class="fas fa-genderless"></i> Unisex
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                
     
                             </div>                  
                         </div>
@@ -304,10 +338,9 @@
     </main>
 
     <footer >
-        <section class="container-fluid footer_section text-center">
+        <section class="container-fluid footer_section text-center" id="footerAdd">
             
             <!-- Fila 1 ( Encabezados)-->
-            <!-- Un comentario -->
            <!--  <div class="row contenedorTituloFooter"> -->
                 <!-- <div class="col-md-4 col-sm-12">
                    <h2> ZAPATERÍA P&G</h2>
@@ -320,7 +353,7 @@
                 <div class="col-md-4 col-sm-12">
                     <h2 id="title-socialmedia">REDES SOCIALES</h2>
                 </div>
-            </div> -->
+            </div> 
             <!-- Fin de la Fila 1 -->
 
             <!-- Fila 2: Contenido del footer -->
@@ -328,21 +361,22 @@
 
                 <div class="col-md-4 col-sm-12 titulo-footer">
                     <h2> ZAPATERÍA P&G</h2>
-                        <a href="./index.html">Inicio</a>
-                        <a href="./index.html">Nosotros</a>
-                        <a href="./index.html">Servicios</a>
-                        <a href="./index.html">Contacto</a>
-                    
+                    <ul>
+                        <li><a href="./index.html">Inicio</a></li>
+                        <li><a href="./index.html">Nosotros</a></li>
+                        <li><a href="./index.html">Servicios</a></li>
+                        <li><a href="./index.html">Contacto</a></li>
+                    </ul>
                 </div>
         
                 <div class="col-md-4 col-sm-12 titulo-footer">
                     <h2>CONTÁCTANOS</h2>
-                    
-                        <a href="./sobre-nosotros.html">Obtener ayuda</a>
-                        <a href="./sobre-nosotros.html">Política de privacidad</a>
-                        <a href="./sobre-nosotros.html">Términos y Condiciones</a>
-                        <a href="./sobre-nosotros.html">Preguntas frecuentes</a>
-                    
+                    <ul>
+                        <li><a href="./sobre-nosotros.html">Obtener ayuda</a></li>
+                        <li><a href="./sobre-nosotros.html">Política de privacidad</a></li>
+                        <li><a href="./sobre-nosotros.html">Términos y Condiciones</a></li>
+                        <li><a href="./sobre-nosotros.html">Preguntas frecuentes</a></li>
+                    </ul>
                 </div>
         
                 <div class="col-md-4 col-sm-12 titulo-footer footer-col">
