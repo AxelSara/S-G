@@ -99,30 +99,45 @@ body {
 
 }
 
+#headerZapateria:hover{
+  background-color: rgb(191, 181, 158, 0.8);
+}
+
 
 /* ================ FOOTER ================ */
 
+
 footer h2 {
   /*margin: 0 0 10px;*/
-  font-size: 12px;
+  font-size: 25px;
   color: white;
+  padding-top: 5%;
+  padding-bottom: 4%;
+  
 }
 footer p {
   margin: 0;
 }
+.row a{
+  color: black;
+  font-size: 20px;
+} 
+
+
 
 .footer_section{
   background: #A1C9C1;
   color: rgb(255 255 255 / 50%);
   bottom: 0;
-  height: 20vh;
+  height: 20%;
   width: 100%;
 
 }
 
-.contenedorTituloFooter{
-  background-color: #0070d2;
-}
+/* .contenedorTituloFooter{
+  background-color: #A1C9C1;
+  padding: 20px;
+} */
 
 .footer-col .social-links a {
   display: inline-block;
@@ -140,8 +155,6 @@ footer p {
   color: #24262b;
   background-color: white;
 }
-
-
 
 
 /* ============================================= */
@@ -173,7 +186,7 @@ footer p {
   display: grid;
   gap: 25px;
   }
-  
+
   
   @media screen and (max-width: 767px) {
   .container-list-products {
@@ -198,17 +211,44 @@ footer p {
 
 /* Estilos base para el carrusel */
 .carrouselProductosRecientes {
-  background-color: #0070d2;
+  /* background-color: #0070d2; */
   width: 100%;
-  height: 400px;
-  overflow-x: hidden;
+  height: 480px;
+  overflow: hidden;
  }
  
  .carrouselProductosRecientes > #swiper-containerProductosRecientes {
-  background-color: #00d282;
+  /* background-color: #00d282; */
   width: 100%;
   height: 400px;
-  overflow-x: hidden;
+  overflow: hidden;
+ }
+
+ .card-description{
+  padding: 1rem;
+ }
+
+ .card-title,
+ .card-text{
+  margin: 0rem 2rem;
+ }
+
+ .carrito-button{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+ }
+
+ /* .card-link button{
+  background-color: var(--color-contraste);
+  color: var(--color-principal);
+ } */
+
+
+ .card-link button{
+  margin: 0rem 0.5rem;
+  padding: 0.4rem 0.5rem;
+  /* border-radius:15px; */
  }
  
  #swiper-wrapperProductosRecientes {
@@ -216,9 +256,9 @@ footer p {
   flex-wrap: nowrap;
   align-items: start;
   justify-content: start;
-  background-color: #d26d00;
+  /* background-color: #d26d00; */
   width: 100%;
-  height: 400px;
+  height: 420px;
  }
  
  #swiper-wrapperProductosRecientes > .cardProductosRecientes {
@@ -240,6 +280,25 @@ footer p {
   height: 300px;
   object-fit: cover;
  }
+
+ /* .swiper-button-next,
+ .swiper-button-prev{
+  box-shadow: 0px 0px 0px 3px red;
+ } */
+
+ .swiper-button-next:after{
+  margin-top: 83rem;
+}
+.swiper-button-prev:after{
+  margin-top: 83rem;
+}
+
+@media screen and (max-width: 920px) {
+  .swiper-button-next,
+.swiper-button-prev{
+  visibility: hidden;
+}
+}
 
 /* == Fin de Carrousel de productos recentes ==*/
 
@@ -623,21 +682,103 @@ a {
   }
 }
 
+@media (min-width: 770px) and (max-width: 998px) {
+  .contenedor_principal_contactanos {
+    position: relative;
+    top: 0;
+    /* Reducir la altura del contenedor */
+    margin-top: 0px;
+    left: 0;
+    width: 100%;
+    margin-bottom: 0px;
+    background-color: #fff9ec;
+  }
+
+  .contenedor_imagen_contactanos {
+    background: rgba(255, 255, 255, 0.112);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
 
 
-/* =================================================================== */
+  .formContactanos {
+    color: #a1c9c1;
+    background-color: #fff9ec;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 60px;
+    align-items: center;
+    width: 50%;
+    height: 80%;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.112);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+
+}
+
+@media (min-width: 230px) and (max-width: 575px) {
+  #textContactanos{
+    margin-top: 80px;
+  }
+  .contenedor_principal_contactanos {
+    top: 0;
+    margin-bottom: 0px;
+    background-color: #fff9ec;
+  }
+  #textoContactanos,
+  #labelNombre,
+  #labelCorreo,
+  #labelTelefono,
+  #labelMensaje{
+    color: black;
+  }
+  
+  .formContactanos {
+    color: #a1c9c1;
+    background-color: #fff9ec;
+    position: absolute;
+    top: 0;
+    /* Reducir la altura del contenedor */
+    margin-top: 0px;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+
+}
+
+
+
+
 /* ======================= Page agregar zapato ======================= */
-/* =================================================================== */
 
+#bodyAddZapato{
+  background-color: var(--color-principal);
+}
 
 .contenedor_principal_agregarZapato {
   background-color: var(--color-principal);
   margin-top: 20px;
+  margin-bottom: 5rem;
   /* Reducir la altura del contenedor */
   height: 80vh;
   width: 100%;
   z-index: 8;
   padding-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .contenedor_principal_agregarZapato {
+    height: 1150px;
+  }
 }
 
 .tituloAgregarZapato {
@@ -738,6 +879,27 @@ a {
   font-weight: bold;
 }
 
+.hidden-radio {
+  display: none;
+}
+
+.form-check-label {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+
+.form-check-input:checked + .form-check-label {
+  background-color: #007bff;
+  color: white;
+}
+
+
+
 
 .contenedorBotonAgregarZapato{
   display: flex;
@@ -770,7 +932,7 @@ a {
     left: 0;
     width: 100%;
     margin-bottom: 0px;
-    background-color: #645E4E;
+    /* background-color: #645E4E; */
   }
 
   .contenedor_imagen_contactanos {
@@ -806,11 +968,11 @@ a {
   .contenedor_principal_contactanos {
     top: 0;
     margin-bottom: 0px;
-    background-color: #645E4E;
+    /* background-color: #645E4E; */
   }
 
   .formContactanos {
-    color: #a1c9c1;
+    color: var(--color-contraste);
     /* background-color: #645E4E; */
     position: absolute;
     top: 0;
@@ -829,6 +991,8 @@ a {
 main a {
   color: inherit;
 }
+
+
 
 main li {
   display: block;
@@ -867,7 +1031,7 @@ ul {
   justify-content: space-evenly;
 }
 
-#buy {
+.buy {
   background-color: var(--color-contraste);
   color: var(--color-principal);
 }
@@ -876,6 +1040,7 @@ ul {
   color: var(--color-contraste);
   position: relative;
   display: grid;
+  height: 100vh;
 }
 
 .slides .slide {
@@ -913,10 +1078,29 @@ ul {
   padding: 0rem 2.5rem;
 }
 
+.carrusel-banner .carousel-caption{
+  color: black;
+  text-align: right;
+}
+
+.carruselBannerText{
+  background-color: rgb(255, 255, 255, 0.4);
+  padding: 0.5rem 1rem;
+}
+
+
+.carrusel-banner .banner-button{
+  font-size: medium;
+}
+
+.carrusel-banner .banner-pdt{
+  padding: 0.5rem 0.6rem;
+}
+
 @media (min-width: 0px) and (max-width: 767px) {
 
   .description {
-    margin: 1rem 0rem;
+    margin: 0.5rem 0rem;
     /* display: flex;
     flex-direction: column;
     justify-content: center;
@@ -940,5 +1124,6 @@ ul {
     top: 0; */
   }
 
-
 }
+
+/*=============== banner ===============*/

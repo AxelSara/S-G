@@ -13,9 +13,35 @@ document.addEventListener("DOMContentLoaded", async function () {
     const btnSubmit = document.querySelector(".btnSubmitAddZapato");
     let tallasSeleccionadas = [];
 
+
+
+
+        // Manejo de los eventos de clic para los label que actúan como botones de radio
+        const labels = document.querySelectorAll('.form-check-label');
+        let generoSeleccionado = null; // Variable para almacenar el valor del género seleccionado
+    
+        labels.forEach(function(label) {
+            label.addEventListener('click', function(e) {
+                // Eliminar la clase 'selected' de todos los labels
+                labels.forEach(function(label) {
+                    label.classList.remove('selected');
+                });
+                // Añadir la clase 'selected' al label clickeado
+                this.classList.add('selected');
+    
+                // Obtener el valor del botón de radio asociado
+                const radio = document.getElementById(this.getAttribute('for'));
+                generoSeleccionado = radio.value; // Asignar el valor del botón de radio a la variable generoSeleccionado
+            });
+        });
+
+
+
+
+
     // cargar el contenido del archivo JSON existente
     cargarZapatos().then(zapatos => {
-        mostrarTaskZapato("Zapatos cargados correctamente", "success");
+        mostrarTaskZapato("Zapatos cargados correctamente","info","top-left", 3000);
         console.log("Total de zapatos:", zapatos.length);
 
         // borrarTodosLosZapatos().then(() => {
@@ -26,6 +52,7 @@ document.addEventListener("DOMContentLoaded", async function () {
            
         // });
 
+
         // Evento  click del botón
         btnSubmit.addEventListener("click", function (ev) {
             ev.preventDefault();
@@ -34,17 +61,17 @@ document.addEventListener("DOMContentLoaded", async function () {
             const colorZapato = document.getElementById("color_zapato_agregar");
             const precioZapato = document.getElementById("precio_zapato_agregar");
             const marcaZapato = document.getElementById("marca_zapato_agregar");
-            const generoZapato = document.getElementById("genero_zapato_agregar");
-    
-            const validacion = validarInputs(nombreZapato, colorZapato,precioZapato, marcaZapato,  generoZapato,tallasSeleccionadas, imagenPrincipal.src, imagenFrontal.src, imagenLateral.src, imagenSuperior.src);
+            
+            const validacion = validarInputs(nombreZapato.value, colorZapato.value,precioZapato.value, marcaZapato.value, generoSeleccionado,tallasSeleccionadas, imagenPrincipal.src, imagenFrontal.src, imagenLateral.src, imagenSuperior.src);
             if (validacion) {
+
                 const zapato = {
                     id: zapatos.length + 1,
                     nombre: nombreZapato.value,
                     color: colorZapato.value, 
                     precio: precioZapato.value,
                     marca: marcaZapato.value, 
-                    genero: generoZapato.value, 
+                    genero: generoSeleccionado,
                     tallas: tallasSeleccionadas,
                     stock: 1,
                     imagen_muestra: imagenPrincipal.src,
@@ -56,10 +83,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                 // convertir el objeto zapato a una cadena JSON
 
                 const zapatoJSON = JSON.stringify(zapato);
-                console.log("Zapato JSON:", zapatoJSON);
-                
+                console.log("Zapato JSON:", zapatoJSON);         
                 agregarZapatoIndexedDB(zapatoJSON);
-                mostrarTaskZapato("Zapato agregado correctamente:", "success", 3000);
+
             }
         });
     })
@@ -67,10 +93,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error("Error al cargar los zapatos:", error);
     });
     
-    
-
-
-
 
     inputImgAgregarPrincipal.addEventListener("change", function () {
         cambiarImagen(this, imagenPrincipal, "carouselAddZapato");
@@ -180,20 +202,43 @@ function cambiarImagen(inputImgZapato, imagenSeleccionada) {
     }
 }
 
-function validarInputs(nombre, talla, precio, imagenPrincipal, imagenFrontal, imagenLateral, imagenSuperior) {
+function validarInputs(nombre, color, precio, marca, genero, tallasSeleccionadas, imagenPrincipal, imagenFrontal, imagenLateral, imagenSuperior) {
     const imgPredeterminada = "https://zapaterias-s-g.netlify.app/frontend/assets/img/admin/subir.png";
+    console.log("imagen principal:", imagenPrincipal);
     let validacion = true;
-    if (nombre == "" || talla.length === 0 || precio == "") {
-        alert("Todos los campos son obligatorios");
+
+    // Expresiones regulares
+    const regexNombreMarca = /^[a-zA-Z\s]+$/; // Solo letras y espacios
+    const regexPrecio = /^\d+(\.\d{1,2})?$/; // Números con hasta dos decimales
+
+    // Validar campos de entrada
+    if (!nombre.match(regexNombreMarca) || !color.match(regexNombreMarca) || !precio.match(regexPrecio) || !marca.match(regexNombreMarca)) {
+        mostrarTaskZapato("Formato inválido en los campos de entrada. Por favor, verifique los datos ingresados", "error", "top-right", 5000);
         validacion = false;
     }
+    // Validar selección de tallas
+    if (tallasSeleccionadas.length === 0) {
+        mostrarTaskZapato("Debe seleccionar al menos una talla", "error", "top-right", 3000);
+        validacion = false;
+    }
+
+    // Validar selección de género
+    if (!genero) {
+        mostrarTaskZapato("Debe seleccionar un género", "error", "top-right", 3500);
+        validacion = false;
+    }
+
+    // Validar selección de imágenes
     if (imagenPrincipal === imgPredeterminada || imagenFrontal === imgPredeterminada ||
         imagenLateral === imgPredeterminada || imagenSuperior === imgPredeterminada) {
-        alert("Debe seleccionar las cuatro imágenes");
+        mostrarTaskZapato("Debe seleccionar las cuatro imágenes", "error", "top-right", 4000);
         validacion = false;
     }
     return validacion;
 }
+
+
+
 
 async function agregarZapatoIndexedDB(zapatoJSON) {
     try {
@@ -206,6 +251,12 @@ async function agregarZapatoIndexedDB(zapatoJSON) {
 
         request.onsuccess = function(event) {
             console.log("Zapato agregado a IndexedDB con éxito.");
+            mostrarTaskZapato("Zapato agregado correctamente:","success","top-end", 3000);
+            setTimeout(function() {
+                location.reload();
+            }, 3000);
+
+
         };
 
         request.onerror = function(event) {
@@ -216,10 +267,10 @@ async function agregarZapatoIndexedDB(zapatoJSON) {
     }
 }
 
-function mostrarTaskZapato(mensaje, iconoTask, tiempoVisible = 3000) {
+function mostrarTaskZapato(mensaje, iconoTask, position = "top-end", tiempoVisible = 3000) {
     const toast = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: position,
         showConfirmButton: false,
         timer: tiempoVisible,
         timerProgressBar: true,
