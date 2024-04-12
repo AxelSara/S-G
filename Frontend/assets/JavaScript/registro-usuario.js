@@ -6,12 +6,15 @@ const procesaTodo = (event) => {
     console.log(datos); 
 
     const datosCompletos = Object.fromEntries(datos.entries());
-    console.log(JSON.stringify(datosCompletos)); 
+    localStorage.setItem("usuarios", JSON.stringify(datosCompletos));
+    console.log(datosCompletos); 
 }
+    datosCompletos = JSON.parse(localStorage.getItem("usuarios"));
+    console.log(datosCompletos);
 
 formulario.addEventListener('submit',procesaTodo);
 
-const nombre = document.getElementById("inputNombreContactanos");
+const nombre = document.getElementById("inputNombreRegistro");
 const email = document.getElementById("inputEmailRegistro")
 const telefono = document.getElementById("inputTelefonoRegistro");
 const contraseña = document.getElementById("inputContraseña");

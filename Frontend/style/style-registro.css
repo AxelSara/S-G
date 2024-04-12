@@ -59,8 +59,14 @@
       z-index: 1000;
     }
   
-  #textCrear{  
-    margin-top: 80px;
+  #textCrear{
+    margin-top: 60px;
+  }
+  #regis{  
+    margin: 0px 0px 50px 0px;
+  }
+  #espacioFooter{
+    padding: 80px;
   }
   
   @media (min-width: 900px){
@@ -85,10 +91,7 @@
     background-color: var(--color-header);
   }
   
-  #bannerId{
-    margin-top: 0px;
-  }
-  }
+}
   /* ================ HEADER ================ */
 
   /* ================ FOOTER ================ */
@@ -175,6 +178,9 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
+  #espacioFooter{
+    margin-top: 70;
+  }
 
   @media (min-width: 770px) and (max-width: 998px) {
     .contenedor_principal_resgistro {
@@ -213,6 +219,9 @@
       backdrop-filter: blur(3px);
       -webkit-backdrop-filter: blur(3px);
     }
+    #espacioFooter{
+      margin-top: 70;
+    }
     
 }
 
@@ -236,7 +245,9 @@
       width: 100%;
       z-index: 2;
     }
-
+    #espacioFooter{
+      margin-top: 70;
+    }
 
 }
     /* ================ FORMULARIO ================ */
