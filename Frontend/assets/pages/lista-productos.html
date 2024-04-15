@@ -110,29 +110,40 @@
     </header>
     <!--=============== HEADER ===============-->
 
-    <main class="contenedor_principal_contactanos">
+    <main>
+        <section class="contenedor-lista-productos">
+            <div class="encabezado">
+                <h3>Calzado</h3>
+            </div><hr>
+            <div class="row">
+                <div class="filters col-sm-2 d-sm-block d-none">
+                    <div class="sidebar-menu-list" id="sidebar-menu-list-extended">
+                        
+                    </div>
+                    
+                </div>
+                <div class="filters col-sm-2 d-sm-none d-block">
+                    <p class="d-inline-flex gap-1" id="encabezado-filtro">
+                        <a data-bs-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false" aria-controls="collapseMenu">
+                          Filtros
+                        </a>
+                      </p>
+                      <div class="collapse" id="collapseMenu">
+                        <div class="sidebar-menu-list" id="sidebar-menu-list-extended">
+                        
+                        </div>
+                    </div><hr>
+                </div>
+                <div class="product-list row col-sm-10" id="lista">
+
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer >
         <section class="container-fluid footer_section text-center">
             
-            <!-- Fila 1 ( Encabezados)-->
-           <!--  <div class="row contenedorTituloFooter"> -->
-                <!-- <div class="col-md-4 col-sm-12">
-                   <h2> ZAPATERÍA P&G</h2>
-                </div>
-
-                <div class="col-md-4 col-sm-12">
-                    <h2>CONTÁCTANOS</h2>
-                </div>
-
-                <div class="col-md-4 col-sm-12">
-                    <h2 id="title-socialmedia">REDES SOCIALES</h2>
-                </div>
-            </div> -->
-            <!-- Fin de la Fila 1 -->
-
-            <!-- Fila 2: Contenido del footer -->
             <div class="row content-footer">
 
                 <div class="col-md-4 col-sm-12 titulo-footer">
@@ -193,7 +204,8 @@
 
 
 <!--=============== SCRIPTS ===============-->
-
+<script src="../JavaScript/lista-productos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!--------------- BOOTSTRAP --------------->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

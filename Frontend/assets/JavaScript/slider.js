@@ -114,7 +114,6 @@ const showImgCarrusel = (data) => {
                     <div class="carruselBannerText">
                         <h1 id="ModeloCarrusel1">${data[5].modelo}</h1>
                         <p id="ColorCarrusel1">${data[5].color}</p>
-                        <p>Some representative placeholder content for the first slide.</p>
                     </div>
                     <div class="buttons">
                         <div class="banner-button">
@@ -136,7 +135,6 @@ const showImgCarrusel = (data) => {
                     <div class="carruselBannerText">
                         <h1 id="ModeloCarrusel2">${data[7].modelo}</h1>
                         <p id="ColorCarrusel2">${data[7].color}</p>
-                        <p>Some representative placeholder content for the first slide.</p>
                     </div>
                     <div class="buttons">
                         <div class="banner-button">
@@ -158,7 +156,6 @@ const showImgCarrusel = (data) => {
                     <div class="carruselBannerText">
                         <h1 id="ModeloCarrusel3">${data[11].modelo}</h1>
                         <p id="ColorCarrusel3">${data[11].color}</p>
-                        <p>Some representative placeholder content for the first slide.</p>
                     </div>
                     <div class="buttons">
                         <div class="banner-button">
@@ -184,6 +181,7 @@ const findData = (data, url) => {
             document.getElementById("Color").innerHTML = dat.color;
             document.getElementById("price").innerHTML = `$${dat.precio}.00`;
             document.getElementById("marca").innerHTML = dat.marca;
+            document.getElementById("descripcionProducto").innerHTML = dat.descripcion;
         }
     });
 };
@@ -325,3 +323,4 @@ const AddCarritoBannerCarrusel3 = async () => {
 }
 
 imgInit();  
+
