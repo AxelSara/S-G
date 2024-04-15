@@ -119,41 +119,48 @@
         </div>
 
     </header>
-    <main class="contenedor_principal_contactanos">
+    <main class="contenedor-principal-iniciarsesion">
         <section>
-            <div class="container-fluid contenedor-principal-contactanos">
+            <div class="container-fluid contenedor-iniciarsesion">
                 <div class="row content-iniciarsesion-row">
-                    <div class="contenedor-imagen-iniciarsesion col-6">
+                    <div class="contenedor-imagen-iniciarsesion col-lg-6 d-none d-sm-block col-md-12 ">
                         <img src="../img/registro/fondo.jpg" alt="">
                     </div>
 
-                    <div class="contenedor-formulario-iniciarsesion col-6">
+                    <div class="contenedor-formulario-iniciarsesion col-lg-6 col-sm-12 order-1 col-md-12 2">
                         <div class="titulos-formulario">
                             <h1>Mi cuenta</h1>
                             <h4> Iniciar sesión</h4>
                         </div>
-                        <fieldset id="datos-iniciarsesion">
-                            <div class="campo-formulario">
-                                <label for="email"> Correo electrónico </label>
-                                <input type="email" id="email" placeholder="tucorreo@correo.com" name="correo">
+                        <form id="formulario-iniciar-sesion">
+                            <fieldset id="datos-iniciarsesion">
+                                <div class="campo-formulario">
+                                    <label for="correo"> Correo electrónico </label>
+                                    <input type="email" id="correo" placeholder="tucorreo@correo.com" name="correo">
+                                </div>
+    
+                                   
+                                    
+                                 <div class="campo-formulario">
+                                    <label for="passwordLogin">Contraseña</label>
+                                    <input type="password" id="passwordLogin" name="passwordLogin">
+                                    <a id="olvidaste-contraseña" href="#">¿Olvidaste tu contraseña?</a>
+                                </div>
+                    
+    
+                            </fieldset>
+                            <div class="boton-iniciarsesion text-center">
+                                <button type="submit" class="btn-iniciarsesion">Iniciar sesión</button>
+    
                             </div>
-
-                            <div class="campo-formulario">
-                                <label for="contraseña">Contraseña</label>
-                                <input type="password" id="contraseña" name="contraseña">
-                                <a href="">¿Olvidaste tu contraseña?</a>
+                            <div class="cuenta">
+                                <p>¿Aún no tienes una cuenta con nosotros?</p>
+                            
+                                 <a href="#">Registrate</a>
+    
                             </div>
-                            <button type="submit" class="btn-iniciarsesion2">Iniciar sesión2</button>
-
-                        </fieldset>
-                        <div class="boton-iniciarsesion">
-                            <button type="submit" class="btn-iniciarsesion">Iniciar sesión</button>
-
-                        </div>
-                        <div class="cuenta">
-                            <p>¿Aún no tienes una cuenta con nosotros? <a href="#">Registrate</a></p>
-
-                        </div>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
@@ -224,7 +231,31 @@
 
         </section>
     </footer>
-
+    <script>
+        const inputs = document.querySelectorAll(".input");
+    
+        function focusFunc() {
+            let parent = this.parentNode;
+            parent.classList.add("focus");
+        }
+    
+        function blurFunc() {
+            let parent = this.parentNode;
+            if (this.value == "") {
+                parent.classList.remove("focus");
+            }
+        }
+    
+        inputs.forEach((input) => {
+            input.addEventListener("focus", focusFunc);
+            input.addEventListener("blur", blurFunc);
+        });
+    
+    </script>
+<script src="../JavaScript/inicio-sesion.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

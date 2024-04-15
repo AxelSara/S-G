@@ -157,18 +157,20 @@ footer p {
 }
 
 
+/* ===================Iniciar Sesion============================ */
   /* Contenedores */
 
-.contenedor_principal_contactanos{
+.contenedor-principal-iniciarsesion{
     background-color: var(--color-principal);
 }
 
-.contenedor-dos-col{
+/* .contenedor-dos-col{
     background-color: yellow;
-}
+} */
 
 .content-iniciarsesion-row{
-    background-color: pink;
+    background-color: var(--color-principal);
+    color: var(--color-contraste);
 }
   .contenedor-imagen-iniciarsesion img{
     width: 100%;
@@ -181,19 +183,19 @@ footer p {
 
   /* Formulario */
 
-  .titulos-formulario {
-    text-align: center; /* Centrar los títulos horizontalmente */
+  /*.titulos-formulario{
+    /*text-align: center;  Centrar los títulos horizontalmente */
     /*margin-bottom: 15%;  Espacio entre los títulos y el formulario */
     /*margin-top: 15%;  Ajustar la posición vertical de los títulos */
-   /*  min-height: 80vh; */
+   /*  min-height: 80vh; 
+}/*
+
+.formulario-iniciar-sesion{
+  text-align: center;
+  justify-content: center;
 }
 
-#datos-iniciarsesion input{
-display: block;
-width: 100%;
-border-radius: 0.5rem;
 
-}
 
 .campo-formulario a{
     font-size: small;
@@ -208,41 +210,164 @@ border-radius: 0.5rem;
     background-color: var(--color-claro-azul);
 } */
  /* hhhhhhhhhh */
+
+ #datos-iniciarsesion input{
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+  border-color: var(--color-claro);
+  
+  }
+
+  .cuenta {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+.cuenta a{
+  display: block;
+  text-align: center;
+  /* margin: 0;
+  padding: 0; */
+}
+
+.cuenta p{
+  margin: 0;
+  padding: 0;
+}
+#olvidaste-contraseña{
+font-size: small;
+text-align: right;
+}
 .contenedor-formulario-iniciarsesion {
-   /* background-color: green;*/
+  
     display: flex;
     flex-direction: column; /* Alinear los elementos verticalmente */
     justify-content: center; /* Centrar verticalmente */
     align-items: center; /* Centrar horizontalmente */
+    height: auto;
   /*   min-height: 200vh; */
 }
-
+.formulario-iniciar-sesion{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 100%;
+  z-index: 2;
+}
  .campo-formulario {
-   
     margin-bottom: 30px; /* Espacio entre cada campo */
 } 
 
 fieldset{
-    width: 70%;
-   /* background-color: red;*/
-    margin-top: 50%;
-}
-.btn-iniciarsesion{
-    /*justify-content: center;*/
     width: 100%;
+    margin-top: 3rem;
+}
+
+
+.btn-iniciarsesion{
+    justify-content: center;
+    width: 80%;
     align-items: center;
+    background-color: var(--color-claro);
+    border: none;
+    border-color: var(--color-claro);
+    box-shadow: none;
+    color: white;
+    border-radius: 1rem;
+    padding: 0.25rem;
     
 }
-.btn-iniciarsesion2{
-    justify-content: center;
-    width: 70%;
-    align-items: center;
-    
+.campo-formulario a{
+  color: var(--color-contraste);
+}
+.cuenta{
+  margin: 2rem;
+  font-size: small;
 }
 .cuenta a{
     justify-content: center;
+    font-size: medium;
+    color: var(--color-contraste);
 }
 /* legend{
     text-align: left;
     font-size: 1.6em;
 } */
+
+/* @media (width >=640px) {
+  .contenedor-imagen-iniciarsesion{}
+  
+} */
+
+@media (min-width: 770px) and (max-width: 998px) {
+  .contenedor-principal-iniciarsesion {
+      position: relative;
+      top : 0;
+      /* Reducir la altura del contenedor */
+      margin-top: 0px;
+      left: 0;
+      width: 100%;
+      margin-bottom: 0px;
+      background-color: #fff9ec;
+  }
+  .contenedor-imagen-iniciarsesion{
+    background: rgba(255, 255, 255, 0.112);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+  
+
+  .formulario-iniciar-sesion {
+    color: #a1c9c1;
+    background-color: #fff9ec;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 60px;
+    align-items: center;
+    width: 50%;
+    height: 80%;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.112);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+  #espacioFooter{
+    margin-top: 70;
+  }
+  
+}
+
+@media (min-width: 230px) and (max-width: 575px) {
+#textCrear{  
+  margin-top: 0px;
+}
+  .contenedor-principal-iniciarsesion {
+      top : 0;
+      margin-bottom: 0px;
+      background-color: #fff9ec;
+  }
+  .formulario-iniciar-sesion{
+    color: #a1c9c1;
+    background-color: #fff9ec;
+    position: absolute;
+    top : 0;
+    /* Reducir la altura del contenedor */
+    margin-top: 80px;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+  }
+  #espacioFooter{
+    margin-top: 70;
+  }
+
+}
