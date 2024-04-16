@@ -13,9 +13,35 @@ document.addEventListener("DOMContentLoaded", async function () {
     const btnSubmit = document.querySelector(".btnSubmitAddZapato");
     let tallasSeleccionadas = [];
 
+
+
+
+        // Manejo de los eventos de clic para los label que actúan como botones de radio
+        const labels = document.querySelectorAll('.form-check-label');
+        let generoSeleccionado = null; // Variable para almacenar el valor del género seleccionado
+    
+        labels.forEach(function(label) {
+            label.addEventListener('click', function(e) {
+                // Eliminar la clase 'selected' de todos los labels
+                labels.forEach(function(label) {
+                    label.classList.remove('selected');
+                });
+                // Añadir la clase 'selected' al label clickeado
+                this.classList.add('selected');
+    
+                // Obtener el valor del botón de radio asociado
+                const radio = document.getElementById(this.getAttribute('for'));
+                generoSeleccionado = radio.value; // Asignar el valor del botón de radio a la variable generoSeleccionado
+            });
+        });
+
+
+
+
+
     // cargar el contenido del archivo JSON existente
     cargarZapatos().then(zapatos => {
-        mostrarTaskZapato("Zapatos cargados correctamente", "success");
+        mostrarTaskZapato("Zapatos cargados correctamente","info","top-left", 3000);
         console.log("Total de zapatos:", zapatos.length);
 
         // borrarTodosLosZapatos().then(() => {
@@ -25,6 +51,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         //     console.error("Error al borrar todos los zapatos:", error);
            
         // });
+
 
         // Evento  click del botón
         btnSubmit.addEventListener("click", function (ev) {
@@ -59,7 +86,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 console.log("Zapato JSON:", zapatoJSON);
                 
                 agregarZapatoIndexedDB(zapatoJSON);
-                mostrarTaskZapato("Zapato agregado correctamente:", "success", 3000);
+
             }
         });
     })
@@ -67,10 +94,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error("Error al cargar los zapatos:", error);
     });
     
-    
-
-
-
 
     inputImgAgregarPrincipal.addEventListener("change", function () {
         cambiarImagen(this, imagenPrincipal, "carouselAddZapato");
@@ -180,8 +203,9 @@ function cambiarImagen(inputImgZapato, imagenSeleccionada) {
     }
 }
 
-function validarInputs(nombre, talla, precio, imagenPrincipal, imagenFrontal, imagenLateral, imagenSuperior) {
+function validarInputs(nombre, color, precio, marca, genero, tallasSeleccionadas, imagenPrincipal, imagenFrontal, imagenLateral, imagenSuperior) {
     const imgPredeterminada = "https://zapaterias-s-g.netlify.app/frontend/assets/img/admin/subir.png";
+    console.log("imagen principal:", imagenPrincipal);
     let validacion = true;
 
     // Expresiones regulares
@@ -206,11 +230,14 @@ function validarInputs(nombre, talla, precio, imagenPrincipal, imagenFrontal, im
     }
     if (imagenPrincipal === imgPredeterminada || imagenFrontal === imgPredeterminada ||
         imagenLateral === imgPredeterminada || imagenSuperior === imgPredeterminada) {
-        alert("Debe seleccionar las cuatro imágenes");
+        mostrarTaskZapato("Debe seleccionar las cuatro imágenes", "error", "top-right", 4000);
         validacion = false;
     }
     return validacion;
 }
+
+
+
 
 async function agregarZapatoIndexedDB(zapatoJSON) {
     try {
@@ -223,6 +250,12 @@ async function agregarZapatoIndexedDB(zapatoJSON) {
 
         request.onsuccess = function(event) {
             console.log("Zapato agregado a IndexedDB con éxito.");
+            mostrarTaskZapato("Zapato agregado correctamente:","success","top-end", 3000);
+            setTimeout(function() {
+                location.reload();
+            }, 3000);
+
+
         };
 
         request.onerror = function(event) {
@@ -233,7 +266,7 @@ async function agregarZapatoIndexedDB(zapatoJSON) {
     }
 }
 
-function mostrarTaskZapato(mensaje, iconoTask, tiempoVisible = 3000) {
+function mostrarTaskZapato(mensaje, iconoTask, position = "top-end", tiempoVisible = 3000) {
     const toast = Swal.mixin({
         toast: true,
         position: position,

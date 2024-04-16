@@ -2,17 +2,47 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     const formulario = document.querySelector('#formulario-iniciar-sesion');
+    const usuariosParse  = JSON.parse(localStorage.getItem("usuarios"));
+    console.log(usuariosParse);
 
     formulario.addEventListener("submit", function(ev){
         ev.preventDefault();
         console.log(" === Evento submit =====");
 
         // const usuarios  = JSON.parse(localStorage.getItem("usuarios"));
-        const usuariosParse  = JSON.parse(localStorage.getItem("usuarios"));
+        
         addUsuario(formulario, usuariosParse);
 
     });
 });
+
+/* Validación de imputs */
+function validarDatos() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('passwordLogin').value;
+
+    // Verificar si los campos están vacíos
+    if (email.trim() == '' || password.trim() == '') {
+        alert('Por favor, completa todos los campos.');
+        return false;
+    }
+
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Ingresa un correo válido');
+        return false;
+    }
+
+    // Validar longitud de la contraseña
+    if (password.length < 9) {
+        alert('La contraseña debe tener al menos 8 caracteres.');
+        return false;
+    }
+
+    // Si todas las validaciones pasan, se puede enviar el formulario
+    return true;
+}
 
 function addUsuario(formulario, usuarios){
     const formData = new FormData(formulario);
@@ -32,70 +62,35 @@ function addUsuario(formulario, usuarios){
 
     console.log(usuario);
     
-    const verificacion = verificarUsuario(usuarios, correo, contrasena);
+    const verificacion = verificarUsuario(correo, contrasena);
+    console.log(verificacion);
 
     if(verificacion){
         console.log("Usuario verificado");
         console.log("USuario: ", verificacion);
+        if(verificacion.email==="correoadmin@gmail.com" && verificacion.contraseña==="contraseñaAdmin"){
+        console.log("Administrador");
+        }
     } else {
         console.log("Usuario no verificado");
     }
+    
 }
 
-function verificarUsuario(correo, contrasena) {
+function verificarUsuario(correo, contraseña) {
     const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
     // Verificar si el usuario existe en el localStorage y lo devuelve
-    return usuariosGuardados.find(usuario => usuario.correo === correo && usuario.contrasena === contrasena);
+    console.log(usuariosGuardados.length);
+    
+    return usuariosGuardados.find(usuario => usuario.email === correo && usuario.contraseña === contraseña);
+ 
 }
 
-
-
-
-/* //===============JSON==========//
-
-document.addEventListener("DOMContentLoaded", function() {
-    const formulario = document.querySelector('#formulario-iniciar-sesion');
-
-    formulario.addEventListener("submit", function(ev){
-        ev.preventDefault();
-        console.log(" === Evento submit =====");
-
-        // const usuarios  = JSON.parse(localStorage.getItem("usuarios"));
-        const usuariosParse  = JSON.parse(localStorage.getItem("usuarios"));
-        addUsuario(formulario, usuariosParse);
-
-    });
-});
-
-function addUsuario(formulario, usuarios){
-    console.log(formulario);
-    console.log(usuarios);
-    const formData = new FormData(formulario);
-    // obtener los valores del formulario 
-    const correo = formData.get('correo');
-    const contrasena = formData.get('passwordLogin');
-    
-    const usuario = {
-        correo: correo,
-        contrasena: contrasena,
-    }
-    console.log(usuarios);
-    usuarios.push(usuario); */
-    // localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    // alert("Usuario registrado con exito");
-    // window.location.href = "index.html";
-
-//}
+usuario.email==="correoadmin@gmail.com" && usuario.contraseña==="contraseñaAdmin"
 
 
 
 
-// const nombre = document.getElementById("inputNombreRegistro");
-// const email = document.getElementById("inputEmailRegistro")
-// const telefono = document.getElementById("inputTelefonoRegistro");
-// const contraseña = document.getElementById("inputContraseña");
-// const contraseñaConfirm = document.getElementById("inputConfirmarContraseña");
-// const parrafo = document.getElementById("warnings");
 
 // formularioRegistro.addEventListener("submit", e =>{
 //     e.preventDefault();
