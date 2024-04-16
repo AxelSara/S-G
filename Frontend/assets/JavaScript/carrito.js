@@ -103,7 +103,6 @@ function eliminarProducto(id, botonEliminar) {
     const filaAEliminar = botonEliminar.closest('tr');
     filaAEliminar.remove();
     actualizarTotal();
-
 }
 
 // Función para actualizar el total del carrito
@@ -122,9 +121,33 @@ function actualizarTotal() {
     totalCarritoCell.textContent = `$${totalCarrito.toFixed(2)}`;
 }
 
-// Función para simular el proceso de pago
+// Función para realizar el pago y limpiar el carrito
 function realizarPago() {
+    // Aquí puedes poner cualquier lógica relacionada con el pago
     console.log("Eso es todo, se está realizando el pago...");
+
+    // Limpiar el carrito del localStorage
+    
+    localStorage.removeItem("carrito");
+
+    // Actualizar la visualización del carrito (opcional)
+    const tablaProductos = document.getElementById('tablaProductos');
+    tablaProductos.getElementsByTagName('tbody')[0].innerHTML = ''; // Limpiar la tabla
+    const totalCarritoCell = document.getElementById('totalCarrito');
+    totalCarritoCell.textContent = '$0.00'; // Actualizar el total a cero
 }
 
+// Agregar el evento click al botón de checkout para llamar a la función realizarPago
 document.getElementById('checkoutBtn').addEventListener('click', realizarPago);
+
+// boton pagar reaccion alert modo alan 
+$('.checkout-btn').click(function() {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Tu pago se ha realizado con éxito",
+      showConfirmButton: false,
+      timer: 1500
+    });
+    // Aquí puedes agregar cualquier otra acción que necesites realizar después de que se haya hecho el pago
+  });
