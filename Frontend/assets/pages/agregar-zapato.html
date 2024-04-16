@@ -17,10 +17,8 @@
     <!-- icono del footer -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-    <!-- ----------ICONS FONTAWESOME---------- -->
-    <script src="https://kit.fontawesome.com/d0be8199f6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+            <!-- ----------ICONS FONTAWESOME---------- -->
+            <script src="https://kit.fontawesome.com/d0be8199f6.js" crossorigin="anonymous"></script>
 
 
 
@@ -131,7 +129,7 @@
                 <form class="form-group mt-3" id="form">
 
                     <div class="row">
-                        <!-- Columna 1 de la fila 1 -->
+                        <!-- Columna 1 de la fila 1 (campos de entrada)-->
                         <div class="col-md-8 col-sm-12">
                             <div class="form-group mt-2">
 
@@ -264,8 +262,7 @@
                             </div>                  
                         </div>
 
-                        <!-- Columna 2 de la fila 1 -->
-                        <!-- campo imagen -->
+                        <!-- Columna 2 de la fila 1  (Campo imagen)-->
                         <div class="col-md-4 col-sm-12 form-group mt-3 contenedorImagenAgregarZapato">
 
                             <!-- contenedor carousel -->
@@ -321,33 +318,76 @@
                             </div>
 
                         </div>
+                    
+                    </div> <!-- Fin de la fila -->
 
-                     </div> <!-- Fin de la fila -->
-
-                    <button type="submit" class="btn btn-primary btnSubmit">Agregar</button>
+                     <!-- Fila 2 -->
+                     
+                    <div class="row mt-3">
+                        <div class="col-md-12 contenedorBotonAgregarZapato">
+                            <button type="submit" class="btn btn-primary btnSubmitAddZapato">Agregar Zapato</button>
+                        </div>    
+                    </div>
+                    
                 </form>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container-fluid text-center">
-            <div class="row">
-                <div class="col-2 col-md-2 col-sm-12">
-                    <div class="caja">México | MXN | Español</div>
+    <footer >
+        <section class="footer_section container-fluid">
+            
+            <!-- Fila 1 ( Encabezados)-->
+            <div class="row contenedorTituloFooter">
+                <div class="col-4">
+                    <h2> ZAPATERÍA P&G</h2>
                 </div>
-                <div id="iconos" class="col-8 col-md-8 col-sm-12 d-flex justify-content-center align-items-center">
-                    <a href="./index.html"><img src="../img/icon/facebook.png" alt="iconoFacebook"></a>
-                    <a href="https://www.instagram.com/calzado_gus_prinsess?igsh=cWwxZWN3NTR3N2Zi"><img src="../img/icon/instagram.png" alt="iconoInstagram"></a>
-                    <a href="https://www.tiktok.com/@tamal404"><img src="../img/icon/tiktok.png" alt="iconoTiktok"></a>
-                    <a href="https://twitter.com"><img src="../img/icon/twitter.png" alt="iconoTwitter"></a>
-                    <a href="https://www.youtube.com"><img src="../img/icon/youtube.png" alt="iconoYoutube"></a>           
+
+                <div class="col-4">
+                    <h2>CONTÁCTANOS</h2>
                 </div>
-                <div class="col-2 col-md-2 col-sm-12">
-                    <div class="caja">Tamal 404</div>
+
+                <div class="col-4">
+                    <h2 id="title-socialmedia">REDES SOCIALES</h2>
                 </div>
             </div>
-        </div>
+            <!-- Fin de la Fila 1 -->
+
+            <!-- Fila 2: Contenido del footer -->
+            <div class="row">
+
+                <div class="col-4">
+                    <ul>
+                        <li><a href="./index.html">Inicio</a></li>
+                        <li><a href="./index.html">Nosotros</a></li>
+                        <li><a href="./index.html">Servicios</a></li>
+                        <li><a href="./index.html">Contacto</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col-4">
+
+                    <ul>
+                        <li><a href="./sobre-nosotros.html">Obtener ayuda</a></li>
+                        <li><a href="./sobre-nosotros.html">Política de privacidad</a></li>
+                        <li><a href="./sobre-nosotros.html">Términos y Condiciones</a></li>
+                        <li><a href="./sobre-nosotros.html">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col-4 footer-col">
+                    <div class="social-links">
+                        <a href="https://www.telegram.com" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+
+                </div>
+            
+            </div>
+      
+        </section>
     </footer>
 
 
