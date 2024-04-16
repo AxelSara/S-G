@@ -102,6 +102,10 @@ body {
   background-color: rgb(191, 181, 158, 0.8);
 }
 
+#headerZapateria:hover{
+  background-color: rgb(191, 181, 158, 0.8);
+}
+
 
 /* ================ FOOTER ================ */
 
@@ -114,9 +118,19 @@ footer h2 {
   padding-top: 5%;
   padding-bottom: 4%;
   
+  padding-top: 5%;
+  padding-bottom: 4%;
+  
 }
 footer p {
   margin: 0;
+}
+.row a{
+  color: black;
+  font-size: 20px;
+} 
+
+
 }
 .row a{
   color: black;
@@ -139,6 +153,10 @@ footer p {
   background-color: #A1C9C1;
   padding: 20px;
 } */
+/* .contenedorTituloFooter{
+  background-color: #A1C9C1;
+  padding: 20px;
+} */
 
 .footer-col .social-links a {
   display: inline-block;
@@ -156,6 +174,7 @@ footer p {
   color: #24262b;
   background-color: white;
 }
+
 
 
 /* ============================================= */
@@ -188,6 +207,7 @@ footer p {
   gap: 25px;
   }
 
+
   
   @media screen and (max-width: 767px) {
   .container-list-products {
@@ -213,16 +233,46 @@ footer p {
 /* Estilos base para el carrusel */
 .carrouselProductosRecientes {
   /* background-color: #0070d2; */
+  /* background-color: #0070d2; */
   width: 100%;
+  height: 480px;
   height: 480px;
   overflow: hidden;
  }
  
  .carrouselProductosRecientes > #swiper-containerProductosRecientes {
   /* background-color: #00d282; */
+  /* background-color: #00d282; */
   width: 100%;
   height: 400px;
   overflow: hidden;
+ }
+
+ .card-description{
+  padding: 1rem;
+ }
+
+ .card-title,
+ .card-text{
+  margin: 0rem 2rem;
+ }
+
+ .carrito-button{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+ }
+
+ /* .card-link button{
+  background-color: var(--color-contraste);
+  color: var(--color-principal);
+ } */
+
+
+ .card-link button{
+  margin: 0rem 0.5rem;
+  padding: 0.4rem 0.5rem;
+  /* border-radius:15px; */
  }
 
  .card-description{
@@ -258,7 +308,9 @@ footer p {
   align-items: start;
   justify-content: start;
   /* background-color: #d26d00; */
+  /* background-color: #d26d00; */
   width: 100%;
+  height: 420px;
   height: 420px;
  }
  
@@ -756,6 +808,79 @@ a {
 
 }
 
+@media (min-width: 770px) and (max-width: 998px) {
+  .contenedor_principal_contactanos {
+    position: relative;
+    top: 0;
+    /* Reducir la altura del contenedor */
+    margin-top: 0px;
+    left: 0;
+    width: 100%;
+    margin-bottom: 0px;
+    background-color: #fff9ec;
+  }
+
+  .contenedor_imagen_contactanos {
+    background: rgba(255, 255, 255, 0.112);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+
+
+  .formContactanos {
+    color: #a1c9c1;
+    background-color: #fff9ec;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 60px;
+    align-items: center;
+    width: 50%;
+    height: 80%;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.112);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+
+}
+
+@media (min-width: 230px) and (max-width: 575px) {
+  #textContactanos{
+    margin-top: 80px;
+  }
+  .contenedor_principal_contactanos {
+    top: 0;
+    margin-bottom: 0px;
+    background-color: #fff9ec;
+  }
+  #textoContactanos,
+  #labelNombre,
+  #labelCorreo,
+  #labelTelefono,
+  #labelMensaje{
+    color: black;
+  }
+  
+  .formContactanos {
+    color: #a1c9c1;
+    background-color: #fff9ec;
+    position: absolute;
+    top: 0;
+    /* Reducir la altura del contenedor */
+    margin-top: 0px;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+
+}
+
 
 
 
@@ -801,7 +926,7 @@ a {
     -7px -10px 10px -1px rgba(255, 255, 255, 0.40);
 }
 
-.contenedorImagenAgregarZapato > img {
+.contenedorImagenAgregarZapato>img {
   width: 90%;
   height: 90%;
   object-fit: cover;
@@ -826,19 +951,22 @@ a {
 
 #botonCarouselAgregarZapato {
   width: 40px;
+  /* ajusta el tamaño según tus necesidades */
   height: 40px;
   border-radius: 50%;
+  /* convierte el botón en circular */
   background-color: var(--color-contraste);
 }
 
 #previaImagenAgregarZapato {
   margin-left: 0;
+  /* Ajusta el margen izquierdo del control previo */
   left: 0;
 }
 
 #siguienteImagenAgregarZapato {
   margin-right: 0;
-  right: 0;
+  /* Ajusta el margen derecho del control siguiente */
 }
 
 .contenedorImagenAgregar {
@@ -1031,7 +1159,7 @@ ul {
   justify-content: space-evenly;
 }
 
-.buy {
+#buy {
   background-color: var(--color-contraste);
   color: var(--color-principal);
 }
@@ -1081,13 +1209,8 @@ ul {
 .carrusel-banner .carousel-caption{
   color: black;
   text-align: right;
+  /* background-color: rgb(100, 94, 78, 0.5); */
 }
-
-.carruselBannerText{
-  background-color: rgb(255, 255, 255, 0.4);
-  padding: 0.5rem 1rem;
-}
-
 
 .carrusel-banner .banner-button{
   font-size: medium;

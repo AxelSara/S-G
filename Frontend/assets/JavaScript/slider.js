@@ -78,7 +78,7 @@ const showImg = (data) => {
             banner += `
             <div class="slide">
                 <div class="img-pdt inner_content">
-                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[7].imgMuestra}" alt="${data[7].imgMuestra}">
+                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[5].imgMuestra}" alt="${data[5].imgMuestra}">
                 </div>
             </div>
             `;
@@ -86,7 +86,7 @@ const showImg = (data) => {
             banner += `
             <div class="slide">
                 <div class="img-pdt inner_content">
-                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[11].imgMuestra}" alt="${data[11].imgMuestra}">
+                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[7].imgMuestra}" alt="${data[7].imgMuestra}">
                 </div>
             </div>
             `;
@@ -94,7 +94,7 @@ const showImg = (data) => {
             banner += `
             <div class="slide">
                 <div class="img-pdt inner_content">
-                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[13].imgMuestra}" alt="${data[13].imgMuestra}">
+                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[11].imgMuestra}" alt="${data[11].imgMuestra}">
                 </div>
             </div>
             `;
@@ -111,15 +111,13 @@ const showImgCarrusel = (data) => {
             <div class="carousel-item active">
                 <img src="./Frontend/assets/img/productos/${data[5].imgMuestra}" class="d-block w-100" alt="${data[5].imgMuestra}">
                 <div class="carousel-caption">
-                    <div class="carruselBannerText">
-                        <h1 id="ModeloCarrusel1">${data[5].modelo}</h1>
-                        <p id="ColorCarrusel1">${data[5].color}</p>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
+                    <h1 id="ModeloCarrusel">${data[5].modelo}</h1>
+                    <p id="ColorCarrusel">${data[5].color}</p>
+                    <p>Some representative placeholder content for the first slide.</p>
                     <div class="buttons">
                         <div class="banner-button">
-                            <button class="buy banner-pdt" id="buy1"
-                                onclick="AddCarritoBannerCarrusel1()">Comprar</button>
+                            <button class="banner-pdt" id="buy"
+                                onclick="AddCarritoBannerCarrusel()">Comprar</button>
                         </div>
                         <div class="banner-button">
                             <p class="banner-pdt" id="price">$${data[5].precio}.00</p>
@@ -133,20 +131,18 @@ const showImgCarrusel = (data) => {
             <div class="carousel-item">
                 <img src="./Frontend/assets/img/productos/${data[7].imgMuestra}" class="d-block w-100" alt="${data[7].imgMuestra}">
                 <div class="carousel-caption">
-                    <div class="carruselBannerText">
-                        <h1 id="ModeloCarrusel2">${data[7].modelo}</h1>
-                        <p id="ColorCarrusel2">${data[7].color}</p>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
+                    <h1 id="ModeloCarrusel">${data[7].modelo}</h1>
+                    <p id="ColorCarrusel">${data[7].color}</p>
+                    <p>Some representative placeholder content for the first slide.</p>
                     <div class="buttons">
-                        <div class="banner-button">
-                            <button class="buy banner-pdt" id="buy2"
-                                onclick="AddCarritoBannerCarrusel2()">Comprar</button>
+                            <div class="banner-button">
+                                <button class="banner-pdt" id="buy"
+                                    onclick="AddCarritoBannerCarrusel()">Comprar</button>
+                            </div>
+                            <div class="banner-button">
+                                <p class="banner-pdt" id="price">$${data[7].precio}.00</p>
+                            </div>
                         </div>
-                        <div class="banner-button">
-                            <p class="banner-pdt" id="price">$${data[7].precio}.00</p>
-                        </div>
-                    </div>
                 </div>
             </div>
             `;
@@ -155,20 +151,18 @@ const showImgCarrusel = (data) => {
             <div class="carousel-item">
                 <img src="./Frontend/assets/img/productos/${data[11].imgMuestra}" class="d-block w-100" alt="${data[11].imgMuestra}">
                 <div class="carousel-caption">
-                    <div class="carruselBannerText">
-                        <h1 id="ModeloCarrusel3">${data[11].modelo}</h1>
-                        <p id="ColorCarrusel3">${data[11].color}</p>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
+                    <h1 id="ModeloCarrusel">${data[11].modelo}</h1>
+                    <p id="ColorCarrusel">${data[11].color}</p>
+                    <p>Some representative placeholder content for the first slide.</p>
                     <div class="buttons">
-                        <div class="banner-button">
-                            <button class="buy banner-pdt" id="buy3"
-                                onclick="AddCarritoBannerCarrusel3()">Comprar</button>
+                            <div class="banner-button">
+                                <button class="banner-pdt" id="buy"
+                                    onclick="AddCarritoBannerCarrusel()">Comprar</button>
+                            </div>
+                            <div class="banner-button">
+                                <p class="banner-pdt" id="price">$${data[11].precio}.00</p>
+                            </div>
                         </div>
-                        <div class="banner-button">
-                            <p class="banner-pdt" id="price">$${data[11].precio}.00</p>
-                        </div>
-                    </div>
                 </div>
             </div>
             `;
@@ -245,64 +239,14 @@ const AddCarritoBanner = async () => {
     localStorage.setItem("carrito", JSON.stringify(cart));
     const carritoLocalStorage = localStorage.getItem("carrito");
 }
-
-const AddCarritoBannerCarrusel1 = async () => {
-    const modelo = document.getElementById("ModeloCarrusel1").innerHTML;
-    const color = document.getElementById("ColorCarrusel1").innerHTML;
+const AddCarritoBannerCarrusel = async () => {
+    const modelo = document.getElementById("ModeloCarrusel").innerHTML;
+    const color = document.getElementById("ColorCarrusel").innerHTML;
     const response = await fetch("./Frontend/json/productos.json");
     const data = await response.json();
-    for (const product of data) {
-        if (modelo === product.modelo && color === product.color) {
-            cart.push({
-                "id": product.id,
-                "modelo": product.modelo,
-                "color": product.color,
-                "genero": product.genero,
-                "talla": 7,
-                "precio": product.precio,
-                "marca": product.marca,
-                "imgMuestra": product.imgMuestra,
-                "imgLateral": product.imgLateral,
-                "imgFrontal": product.imgFrontal,
-                "imgSuperior": product.imgSuperior
-            });
-        }
-    }
-    localStorage.setItem("carrito", JSON.stringify(cart));
-    const carritoLocalStorage = localStorage.getItem("carrito");
-}
 
-const AddCarritoBannerCarrusel2 = async () => {
-    const modelo = document.getElementById("ModeloCarrusel2").innerHTML;
-    const color = document.getElementById("ColorCarrusel2").innerHTML;
-    const response = await fetch("./Frontend/json/productos.json");
-    const data = await response.json();
-    for (const product of data) {
-        if (modelo === product.modelo && color === product.color) {
-            cart.push({
-                "id": product.id,
-                "modelo": product.modelo,
-                "color": product.color,
-                "genero": product.genero,
-                "talla": 7,
-                "precio": product.precio,
-                "marca": product.marca,
-                "imgMuestra": product.imgMuestra,
-                "imgLateral": product.imgLateral,
-                "imgFrontal": product.imgFrontal,
-                "imgSuperior": product.imgSuperior
-            });
-        }
-    }
-    localStorage.setItem("carrito", JSON.stringify(cart));
-    const carritoLocalStorage = localStorage.getItem("carrito");
-}
+    
 
-const AddCarritoBannerCarrusel3 = async () => {
-    const modelo = document.getElementById("ModeloCarrusel3").innerHTML;
-    const color = document.getElementById("ColorCarrusel3").innerHTML;
-    const response = await fetch("./Frontend/json/productos.json");
-    const data = await response.json();
     for (const product of data) {
         if (modelo === product.modelo && color === product.color) {
             cart.push({

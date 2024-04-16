@@ -31,7 +31,7 @@ const showData = (data) => {
         document.getElementById("swiper-wrapperProductosRecientes").innerHTML = banner;
       });
   }
-  
+   
   const carrito = JSON.parse(localStorage.getItem("carrito"));
 
   const addCartCarrusel = async (id) =>{
