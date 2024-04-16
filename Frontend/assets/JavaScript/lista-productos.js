@@ -200,6 +200,7 @@ const filtros = `
         </div>
         <div class="sidebar-menu-button" id="filter__buttons">
             <button onclick="filters()">Aplicar filtros</button>
+            <button onclick="init()" id="remove-filters">Quitar filtros</button>
         </div>
     </ul>
 `;
@@ -285,11 +286,11 @@ const filters = async () => {
             }
         }
     }
-    document.getElementById("filter__buttons").innerHTML=`
-        <button onclick="filters()">Aplicar filtros</button>
-        <button onclick="init()" id="remove-filters" disable>Quitar filtros</button>
-    `;
     filterData(filtro, data);
+    // document.getElementById("filter__buttons").innerHTML=`
+    //     <button onclick="filters()">Aplicar filtros</button>
+    //     <button onclick="init()" id="remove-filters" disable>Quitar filtros</button>
+    // `;
 }
 
 const filtersTalla = (data) => {
