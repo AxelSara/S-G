@@ -78,7 +78,7 @@ const showImg = (data) => {
             banner += `
             <div class="slide">
                 <div class="img-pdt inner_content">
-                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[7].imgMuestra}" alt="${data[7].imgMuestra}">
+                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[5].imgMuestra}" alt="${data[5].imgMuestra}">
                 </div>
             </div>
             `;
@@ -86,7 +86,7 @@ const showImg = (data) => {
             banner += `
             <div class="slide">
                 <div class="img-pdt inner_content">
-                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[11].imgMuestra}" alt="${data[11].imgMuestra}">
+                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[7].imgMuestra}" alt="${data[7].imgMuestra}">
                 </div>
             </div>
             `;
@@ -94,7 +94,7 @@ const showImg = (data) => {
             banner += `
             <div class="slide">
                 <div class="img-pdt inner_content">
-                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[13].imgMuestra}" alt="${data[13].imgMuestra}">
+                    <img class="img-banner" src="./Frontend/assets/img/productos/${data[11].imgMuestra}" alt="${data[11].imgMuestra}">
                 </div>
             </div>
             `;
