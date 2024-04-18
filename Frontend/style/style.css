@@ -11,7 +11,6 @@
 }
 
 * {
-
   font-optical-sizing: auto;
   box-sizing: border-box;
   padding: 0;
@@ -118,6 +117,10 @@ body {
 
 
 
+}
+
+#headerZapateria:hover {
+  background-color: rgb(191, 181, 158, 0.8);
 }
 
 #headerZapateria:hover {
@@ -980,7 +983,7 @@ a {
   /* Reducir la altura del contenedor */
   height: 80vh;
   width: 100%;
-  z-index: 8;
+  /* z-index: 8; */
   padding-top: 40px;
 }
 
@@ -992,8 +995,8 @@ a {
 
 .tituloAgregarZapato {
   background-color: var(--color-principal);
-  margin-top: 20px;
-  height: 10%;
+  margin-top: 10px;
+  height: 5vh;
   z-index: 5;
   /* background-color: #0f0f0f; */
 }
@@ -1002,14 +1005,14 @@ a {
   background-color: var(--color-principal);
   /* width: 40%; */
   height: 50vh;
-  z-index: 3;
+  /* z-index: 3; */
   padding: 30px;
   border-radius: 15px;
   box-shadow: 10px 10px 10px -1px rgba(10, 99, 169, 0.16),
     -7px -10px 10px -1px rgba(255, 255, 255, 0.40);
 }
 
-.contenedorImagenAgregarZapato>img {
+.contenedorImagenAgregarZapato > img {
   width: 90%;
   height: 90%;
   object-fit: cover;
@@ -1034,22 +1037,19 @@ a {
 
 #botonCarouselAgregarZapato {
   width: 40px;
-  /* ajusta el tamaño según tus necesidades */
   height: 40px;
   border-radius: 50%;
-  /* convierte el botón en circular */
   background-color: var(--color-contraste);
 }
 
 #previaImagenAgregarZapato {
   margin-left: 0;
-  /* Ajusta el margen izquierdo del control previo */
   left: 0;
 }
 
 #siguienteImagenAgregarZapato {
   margin-right: 0;
-  /* Ajusta el margen derecho del control siguiente */
+  right: 0;
 }
 
 .contenedorImagenAgregar {

@@ -1,34 +1,16 @@
 document.addEventListener("DOMContentLoaded", async function () {
-
     const contenedor_principal_agregarZapato = document.querySelector(".contenedor_principal_agregarZapato");
-    //== Campos de entrada ==
     const inputImgAgregarPrincipal = document.querySelector("#img_captada_principal");
     const inputImgAgregarFrontal = document.querySelector("#img_captada_frontal");
     const inputImgAgregarLateral = document.querySelector("#img_captada_lateral");
     const inputImgAgregarSuperior = document.querySelector("#img_captada_superior");
-
 
     const imagenPrincipal = document.getElementById("imagenPrincipal");
     const imagenFrontal = document.getElementById("imagenFrontal");
     const imagenLateral = document.getElementById("imagenLateral");
     const imagenSuperior = document.getElementById("imagenSuperior");
 
-    //== Imagenes de salida ==
-    const imagenSeleccionadaPrincipal = document.getElementById("imagenPrincipal");
-    const imagenSeleccionadaFrontal = document.getElementById("imagenFrontal");
-    const imagenSeleccionadaLateral = document.getElementById("imagenLateral");
-    const imagenSeleccionadaSuperior = document.getElementById("imagenSuperior");
-
-    const btnSubmit = document.querySelector(".btnSubmit");
-
-    //cargar el contenido del archivo JSON existente
-    const zapatos = await cargarZapatos();
-
-    console.log("Tipo de zapatos:", typeof zapatos);
-    console.log("Total de zapatos:", zapatos.length);
-
-    // remueve los elementos del localStorage
-    localStorage.removeItem("zapatos");
+    const btnSubmit = document.querySelector(".btnSubmitAddZapato");
     let tallasSeleccionadas = [];
 
 
@@ -79,17 +61,17 @@ document.addEventListener("DOMContentLoaded", async function () {
             const colorZapato = document.getElementById("color_zapato_agregar");
             const precioZapato = document.getElementById("precio_zapato_agregar");
             const marcaZapato = document.getElementById("marca_zapato_agregar");
-            
-            const validacion = validarInputs(nombreZapato.value, colorZapato.value,precioZapato.value, marcaZapato.value, generoSeleccionado,tallasSeleccionadas, imagenPrincipal.src, imagenFrontal.src, imagenLateral.src, imagenSuperior.src);
+            const generoZapato = document.getElementById("genero_zapato_agregar");
+    
+            const validacion = validarInputs(nombreZapato, colorZapato,precioZapato, marcaZapato,  generoZapato,tallasSeleccionadas, imagenPrincipal.src, imagenFrontal.src, imagenLateral.src, imagenSuperior.src);
             if (validacion) {
-
                 const zapato = {
                     id: zapatos.length + 1,
                     nombre: nombreZapato.value,
                     color: colorZapato.value, 
                     precio: precioZapato.value,
                     marca: marcaZapato.value, 
-                    genero: generoSeleccionado,
+                    genero: generoZapato.value, 
                     tallas: tallasSeleccionadas,
                     stock: 1,
                     imagen_muestra: imagenPrincipal.src,
@@ -101,7 +83,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 // convertir el objeto zapato a una cadena JSON
 
                 const zapatoJSON = JSON.stringify(zapato);
-                console.log("Zapato JSON:", zapatoJSON);         
+                console.log("Zapato JSON:", zapatoJSON);
+                
                 agregarZapatoIndexedDB(zapatoJSON);
 
             }
@@ -128,7 +111,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         cambiarImagen(this, imagenSuperior, "carouselAddZapato");
     });
 
-    // evento para seleccionar talla
     const checkboxes = document.querySelectorAll('input[name="talla"]');
     const tallaMostradas = document.getElementById('tallas-mostradas');
 
@@ -141,34 +123,61 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
             });
             tallaMostradas.textContent = tallasSeleccionadas.join(', ') || 'Ninguna';
-
-            console.log("total seleccionados", tallasSeleccionadas);
-
         });
-
     });
-
 });
+
+
+
+
+function openDatabase() {
+    const dbName = "ZapatosDB";
+    const dbVersion = 1;
+    return new Promise((resolve, reject) => {
+        const openRequest = indexedDB.open(dbName, dbVersion);
+
+        openRequest.onupgradeneeded = function(event) {
+            const db = event.target.result;
+            const objectStore = db.createObjectStore("Zapatos", { keyPath: "id", autoIncrement: true });
+            objectStore.createIndex("nombre", "nombre", { unique: false });
+        };
+
+        openRequest.onsuccess = function(event) {
+            db = event.target.result;
+            console.log("Base de datos abierta con éxito");
+            resolve(db);
+        };
+
+        openRequest.onerror = function(event) {
+            console.error("Error al abrir la base de datos:", event.target.error);
+            reject(event.target.error);
+        };
+    });
+}
 
 
 async function cargarZapatos() {
     try {
-        //cargar el json preveniente del github
-        const archivoJsonExistente = await fetch("https://raw.githubusercontent.com/JoceJeronimo/Tamal404/main/Frontend/json/productos.json");
-        const archivoJsonExistenteParseado = await archivoJsonExistente.json();
-        
-        //Imprimir los zapatos
-        archivoJsonExistenteParseado.forEach((zapato, index) => {
-            console.log(`Zapato ${index + 1}`, zapato);
-        });
+        let db = await openDatabase();
+        const transaction = db.transaction(["Zapatos"], "readonly");
+        const objectStore = transaction.objectStore("Zapatos");
+        const request = objectStore.getAll();
 
-        // Guardar el JSON existente en el localStorage
-        localStorage.setItem('zapatos', JSON.stringify(archivoJsonExistenteParseado));
-        return archivoJsonExistenteParseado;
-    } 
-    catch (error) {
-        console.error("Ocurrió un error al cargar los zapatos:", error);
-        return null;
+        // TODO: Convertir la solicitud en una promesa
+        return new Promise((resolve, reject) => {
+            request.onsuccess = function(event) {
+                console.log("Zapatos cargados desde IndexedDB:", request.result);
+                resolve(request.result); // Resolver la promesa con los resultados
+            };
+
+            request.onerror = function(event) {
+                console.error("Error al cargar los zapatos desde IndexedDB:", event.target.error);
+                reject(event.target.error); // Rechazar la promesa si hay un error
+            };
+        });
+    } catch (error) {
+        console.error("Error al abrir la base de datos:", error);
+        throw error; // Propagar el error si la base de datos no se puede abrir
     }
 }
 
@@ -183,22 +192,13 @@ function imageToBase64(file) {
 }
 
 function cambiarImagen(inputImgZapato, imagenSeleccionada) {
-    // Verifica si se ha seleccionado un archivo en el input de tipo "file".
     if (inputImgZapato.files && inputImgZapato.files[0]) {
-        // Si se seleccionó un archivo, crea un objeto FileReader.
         const reader = new FileReader();
-
-        // Cuando se complete la carga del archivo, esta función se ejecutará.
         reader.onload = function (e) {
-            // Cambia la fuente (src) de la imagen "imagenSeleccionada" por la URL del archivo seleccionado.
             imagenSeleccionada.src = e.target.result;
         };
-
-        // Inicia la lectura del archivo como una URL de datos.
         reader.readAsDataURL(inputImgZapato.files[0]);
     } else {
-        console.log("No se seleccionó ningún archivo");
-        // Si no se selecciona ningún archivo, aquí puedes restablecer la imagen por defecto.
         imagenSeleccionada.src = "../img/admin/subir.png";
     }
 }
@@ -228,14 +228,11 @@ function validarInputs(nombre, color, precio, marca, genero, tallasSeleccionadas
         mostrarTaskZapato("Debe seleccionar un género", "error", "top-right", 3500);
         validacion = false;
     }
-
-    // Validar selección de imágenes
     if (imagenPrincipal === imgPredeterminada || imagenFrontal === imgPredeterminada ||
         imagenLateral === imgPredeterminada || imagenSuperior === imgPredeterminada) {
         mostrarTaskZapato("Debe seleccionar las cuatro imágenes", "error", "top-right", 4000);
         validacion = false;
     }
-
     return validacion;
 }
 
@@ -265,7 +262,7 @@ async function agregarZapatoIndexedDB(zapatoJSON) {
             console.error("Error al agregar el zapato a IndexedDB:", event.target.error);
         };
     } catch (error) {
-        console.error("Error al agregar el zapato al localStorage:", error);
+        console.error("Error al abrir la base de datos:", error);
     }
 }
 
@@ -289,4 +286,24 @@ function mostrarTaskZapato(mensaje, iconoTask, position = "top-end", tiempoVisib
             popup: 'rounded'
         }
     });
+}
+
+
+async function borrarTodosLosZapatos() {
+    try {
+        const db = await openDatabase();
+        const transaction = db.transaction(["Zapatos"], "readwrite");
+        const objectStore = transaction.objectStore("Zapatos");
+        const request = objectStore.clear();
+
+        request.onsuccess = function(event) {
+            console.log("Todos los zapatos eliminados con éxito.");
+        };
+
+        request.onerror = function(event) {
+            console.error("Error al eliminar todos los zapatos:", event.target.error);
+        };
+    } catch (error) {
+        console.error("Error al abrir la base de datos:", error);
+    }
 }
