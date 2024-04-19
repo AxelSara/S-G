@@ -131,431 +131,7 @@
     background-color: rgb(191, 181, 158, 0.8);
   }
   
-  
-  
-  /* ============================================= */
-  /* ============ page inicio ==================== */
-  /* ============================================= */
-  
-  
-  /*=============== home products ===============*/
-  
-  .list-products-home img {
-    max-width: 100%;
-    height: 100%;
-    justify-content: center;
-  }
-  
-  .list-products-home .btn {
-    background-color: #B2AB99;
-    border-color: #B2AB99;
-    color: #645E4E;
-  }
-  
-  .card-img {
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-  }
-  
-  .container-list-products {
-    grid-template-columns: repeat(4, 1fr);
-    display: grid;
-    gap: 25px;
-  }
-  
-  
-  
-  @media screen and (max-width: 767px) {
-    .container-list-products {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    
-
-  }
-  
-  .text-product {
-    text-align: center;
-  }
-  
-  .info-card {
-    background-color: #645E4E;
-    color: white;
-  }
-  
-  .titulo-letras {
-    color: #645E4E;
-  }
-  
-  
-  .indicarContenidoAbajo {
-    background-color: #007bff;
-    z-index: 10;
-    right: 10px;
-    bottom: 0;
-    position: absolute;
-    /* margin-bottom: 50px; */
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-    /* margin-right: 10px; */
-  }
-  
-  .indicarContenidoAbajo>button {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-  }
-  
-  
-  /* ===== Carrousel de productos recentes ====*/
-  
-  /* Estilos base para el carrusel */
-  .carrouselProductosRecientes {
-    /* background-color: #0070d2; */
-    /* background-color: #0070d2; */
-    width: 100%;
-    height: 480px;
-    height: 480px;
-    overflow: hidden;
-  }
-
-  
-  .carrouselProductosRecientes>#swiper-containerProductosRecientes {
-    /* background-color: #00d282; */
-    /* background-color: #00d282; */
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-  }
-  
-  .card-description {
-    padding: 1rem;
-  }
-  
-  .card-title,
-  .card-text {
-    margin: 0rem 2rem;
-  }
-  
-  .carrito-button {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-  }
-  
- /* .card-link button{
-    background-color: var(--color-contraste);
-    color: var(--color-principal);
-   } */
-  
-  
-  /*.card-link button {
-    margin: 0rem 0.5rem;
-    padding: 0.4rem 0.5rem;
-    /* border-radius:15px; 
-  }*/
-  
-  .card-description {
-    padding: 1rem;
-  }
-  
-  .card-title,
-  .card-text {
-    margin: 0rem 2rem;
-  }
-  
-  .carrito-button {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-  }
-  
-  /*.card-link button{
-    background-color: var(--color-contraste);
-    color: var(--color-principal);
-   } */
-  
-  
-  .card-link button {
-    margin: 0rem 0.5rem;
-    padding: 0.4rem 0.5rem;
-    /* border-radius:15px; */
-  }
-  
-  #swiper-wrapperProductosRecientes {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: start;
-    justify-content: start;
-    /* background-color: #d26d00; */
-    /* background-color: #d26d00; */
-    width: 100%;
-    height: 420px;
-    height: 420px;
-  }
-  
-  #swiper-wrapperProductosRecientes>.cardProductosRecientes {
-    position: relative;
-    box-shadow: 0px 4px 4px rgba(196, 196, 196, 0.25);
-    background: #fff;
-    justify-content: center;
-    width: auto;
-  }
-  
-  .cardProductosRecientes .card-imgProductosRecientes {
-    width: 100%;
-    height: 300px;
-    padding: 1.5%;
-  }
-  
-  .cardProductosRecientes .card-imgProductosRecientes img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-  }
-  
-  
-  .cardProductosRecientes > .contenedor_Botonfavorito{
-    position: absolute;
-    top: 12px;
-    left: 13px;
-  }
-  
-  .contenedor_Botonfavorito > .boton_favorito{
-    width: 35px;
-    border: none;
-    outline: none;
-    background: var(--color-contraste);
-    color: white;
-    height: 35px;
-    border-radius: 50%;
-    font-size: 12px;
-    cursor: pointer;
-  }
-  
-  .boton_favorito:hover{
-    background-color: #7cc25c;
-  }
-  
-  
-  
-  
-  /*.swiper-button-next,
-   .swiper-button-prev{
-    box-shadow: 0px 0px 0px 3px red;
-   } */
-  
-  /*.swiper-button-next:after {
-    margin-top: 83rem;
-  }
-  
-  .swiper-button-prev:after {
-    margin-top: 83rem;
-  }*/
-  
-  @media screen and (max-width: 920px) {
-  
-  /* .swiper-button-next,
-    .swiper-button-prev {
-      visibility: hidden;
-    }*/
-    .container-fluid.carrouselProductosRecientes {
-        position: relative;
-    }
-    
-    .swiper-containerProductosRecientes {
-        position: relative;
-    }
-    
-    .swiper-button-next,
-    .swiper-button-prev {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 1000; /* Un valor alto de z-index para que estén por encima del contenido */       
-    }
-    
-    .swiper-button-next {
-        right: 10px; /* Ajusta la posición del botón siguiente */
-    }
-    
-    .swiper-button-prev {
-        left: 10px; /* Ajusta la posición del botón anterior */
-    }
-    
-  }
-
-  /*---------------------------------------------------*/
-
-  .container-fluid.carrouselProductosRecientes {
-    position: relative;
-}
-
-.swiper-containerProductosRecientes {
-    position: relative;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1000; 
-   
-}
-
-.swiper-button-next {
-    right: 10px; /* Ajusta la posición del botón siguiente */
-}
-
-.swiper-button-prev {
-    left: 10px; /* Ajusta la posición del botón anterior */
-}
-
-  
-  /* == Fin de Carrousel de productos recentes ==*/
-
-  /*=============== banner ===============*/
-
-main a {
-  color: inherit;
-}
-
-
-
-main li {
-  display: block;
-  margin-top: 10px;
-  color: var(--color-contraste);
-  font-size: x-large;
-}
-
-main li a.active {
-  font-weight: bold;
-  font-size: xx-large;
-  color: var(--color-contraste);
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-#banner-menu {
-  display: flex;
-  align-items: center;
-}
-
-.banner-pdt {
-  margin: 0.5rem 0.5rem;
-  padding: 1rem;
-  box-shadow: 0px 0px 0px 2px var(--color-contraste);
-  border: none;
-  border-radius: 0rem;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-#buy {
-  background-color: var(--color-contraste);
-  color: var(--color-principal);
-}
-
-.slider {
-  color: var(--color-contraste);
-  position: relative;
-  display: grid;
-  height: 93vh;
-}
-
-.slides .slide {
-  min-height: calc(100%);
-
-  width: 100%;
-  position: relative;
-  z-index: 5;
-  height: 95%;
-}
-
-.slides {
-  overflow-y: auto;
-  scrollbar-width: none;
-  height: 93vh;
-  max-height: 900px;
-  max-width: 100%;
-  overflow: hidden;
-}
-
-.img-banner {
-  width: 100%;
-  max-height: 100vh;
-  /* margin: 0 auto;
-  position: relative;
-  z-index: 5;
-  height: 95%; */
-  object-fit: cover;
-}
-
-.description {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.banner-content {
-  padding: 0rem 2.5rem;
-}
-
-.carrusel-banner .carousel-caption {
-  color: black;
-  text-align: right;
-  /* background-color: rgb(100, 94, 78, 0.5); */
-}
-
-.carrusel-banner .banner-button {
-  font-size: medium;
-}
-
-.carrusel-banner .banner-pdt {
-  padding: 0.5rem 0.6rem;
-}
-
-@media (min-width: 0px) and (max-width: 767px) {
-
-  .description {
-    margin: 0.5rem 0rem;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-    position: absolute;
-    top: 0; */
-  }
-
-  #img__banner {
-    order: -1;
-    max-height: 30rem;
-    align-items: center;
-    justify-content: center;
-    vertical-align: baseline;
-    box-shadow: 0px 0px 0px 3px green;
-    overflow: hidden;
-  }
-
-}
-
-/*=============== banner ===============*/
-
- /* ============================================== */
+  /* ============================================== */
   /* ==================== FOOTER ================== */
   /* ============================================== */
   
@@ -628,3 +204,431 @@ ul {
     background-color: white;
   }
   
+  
+  
+  /* ============================================= */
+  /* ============ page inicio ==================== */
+  /* ============================================= */
+  
+  
+  /*=============== home products ===============*/
+  
+  .list-products-home img {
+    max-width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+  
+  .list-products-home .btn {
+    background-color: #B2AB99;
+    border-color: #B2AB99;
+    color: #645E4E;
+  }
+  
+  .card-img {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+  
+  .container-list-products {
+    grid-template-columns: repeat(4, 1fr);
+    display: grid;
+    gap: 25px;
+  }
+  
+  
+  
+  @media screen and (max-width: 767px) {
+    .container-list-products {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .text-product {
+    text-align: center;
+  }
+  
+  .info-card {
+    background-color: #645E4E;
+    color: white;
+  }
+  
+  .titulo-letras {
+    color: #645E4E;
+  }
+  
+  
+  .indicarContenidoAbajo {
+    background-color: #007bff;
+    z-index: 10;
+    right: 10px;
+    bottom: 0;
+    position: absolute;
+    /* margin-bottom: 50px; */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    /* margin-right: 10px; */
+  }
+  
+  .indicarContenidoAbajo>button {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  
+  /* ===== Carrousel de productos recentes ====*/
+  
+  /* Estilos base para el carrusel */
+  .carrouselProductosRecientes {
+    /* background-color: #0070d2; */
+    /* background-color: #0070d2; */
+    width: 100%;
+    height: 480px;
+    height: 480px;
+    overflow: hidden;
+  }
+  
+  .carrouselProductosRecientes>#swiper-containerProductosRecientes {
+    /* background-color: #00d282; */
+    /* background-color: #00d282; */
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+  }
+  
+  .card-description {
+    padding: 1rem;
+  }
+  
+  .card-title,
+  .card-text {
+    margin: 0rem 2rem;
+  }
+  
+  .carrito-button {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  
+  /* .card-link button{
+    background-color: var(--color-contraste);
+    color: var(--color-principal);
+   } */
+  
+  
+  .card-link button {
+    margin: 0rem 0.5rem;
+    padding: 0.4rem 0.5rem;
+    /* border-radius:15px; */
+  }
+  
+  .card-description {
+    padding: 1rem;
+  }
+  
+  .card-title,
+  .card-text {
+    margin: 0rem 2rem;
+  }
+  
+  .carrito-button {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  
+  /* .card-link button{
+    background-color: var(--color-contraste);
+    color: var(--color-principal);
+   } */
+  
+  
+  .card-link button {
+    margin: 0rem 0.5rem;
+    padding: 0.4rem 0.5rem;
+    /* border-radius:15px; */
+  }
+  
+  #swiper-wrapperProductosRecientes {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: start;
+    justify-content: start;
+    /* background-color: #d26d00; */
+    /* background-color: #d26d00; */
+    width: 100%;
+    height: 420px;
+    height: 420px;
+  }
+  
+  #swiper-wrapperProductosRecientes>.cardProductosRecientes {
+    position: relative;
+    box-shadow: 0px 4px 4px rgba(196, 196, 196, 0.25);
+    background: #fff;
+    justify-content: center;
+    width: auto;
+  }
+  
+  .cardProductosRecientes .card-imgProductosRecientes {
+    width: 100%;
+    height: 300px;
+    padding: 1.5%;
+  }
+  
+  .cardProductosRecientes .card-imgProductosRecientes img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+  
+  
+  .cardProductosRecientes > .contenedor_Botonfavorito{
+    position: absolute;
+    top: 12px;
+    left: 13px;
+  }
+  
+  .contenedor_Botonfavorito > .boton_favorito{
+    width: 35px;
+    border: none;
+    outline: none;
+    background: var(--color-contraste);
+    color: white;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  
+  .boton_favorito:hover{
+    background-color: #7cc25c;
+  }
+  
+  
+  
+  
+  /* .swiper-button-next,
+   .swiper-button-prev{
+    box-shadow: 0px 0px 0px 3px red;
+   } */
+  
+  /*.swiper-button-next:after {
+    margin-top: 83rem;
+  }
+  
+  .swiper-button-prev:after {
+    margin-top: 83rem;
+  }*/
+  
+  @media screen and (max-width: 920px) {
+  
+   /* .swiper-button-next,
+    .swiper-button-prev {
+      visibility: hidden;
+    }*/
+    
+  .container-fluid.carrouselProductosRecientes {
+    position: relative;
+}
+
+.swiper-containerProductosRecientes {
+    position: relative;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000; 
+   
+}
+
+.swiper-button-next {
+    right: 10px; /* Ajusta la posición del botón siguiente */
+}
+
+.swiper-button-prev {
+    left: 10px; /* Ajusta la posición del botón anterior */
+}
+
+  }
+
+  
+  .container-fluid.carrouselProductosRecientes {
+    position: relative;
+}
+
+.swiper-containerProductosRecientes {
+    position: relative;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000; 
+   
+}
+
+.swiper-button-next {
+    right: 10px; /* Ajusta la posición del botón siguiente */
+}
+
+.swiper-button-prev {
+    left: 10px; /* Ajusta la posición del botón anterior */
+}
+
+
+  
+/*=============== banner ===============*/
+
+main a {
+    color: inherit;
+  }
+  
+  
+  
+  main li {
+    display: block;
+    margin-top: 10px;
+    color: var(--color-contraste);
+    font-size: x-large;
+  }
+  
+  main li a.active {
+    font-weight: bold;
+    font-size: xx-large;
+    color: var(--color-contraste);
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #banner-menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .banner-pdt {
+    margin: 0.5rem 0.5rem;
+    padding: 1rem;
+    box-shadow: 0px 0px 0px 2px var(--color-contraste);
+    border: none;
+    border-radius: 0rem;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  #buy {
+    background-color: var(--color-contraste);
+    color: var(--color-principal);
+  }
+  
+  .slider {
+    color: var(--color-contraste);
+    position: relative;
+    display: grid;
+    height: 93vh;
+  }
+  
+  .slides .slide {
+    min-height: calc(100%);
+  
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    height: 95%;
+  }
+  
+  .slides {
+    overflow-y: auto;
+    scrollbar-width: none;
+    height: 93vh;
+    max-height: 900px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  .img-banner {
+    width: 100%;
+    max-height: 100vh;
+    /* margin: 0 auto;
+    position: relative;
+    z-index: 5;
+    height: 95%; */
+    object-fit: cover;
+  }
+  
+  .description {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .banner-content {
+    padding: 0rem 2.5rem;
+  }
+  
+  .carrusel-banner .carousel-caption {
+    color: black;
+    text-align: right;
+    /* background-color: rgb(100, 94, 78, 0.5); */
+  }
+  
+  .carrusel-banner .banner-button {
+    font-size: medium;
+  }
+  
+  .carrusel-banner .banner-pdt {
+    padding: 0.5rem 0.6rem;
+  }
+  
+  @media (min-width: 0px) and (max-width: 767px) {
+  
+    .description {
+      margin: 0.5rem 0rem;
+      /* display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      position: absolute;
+      top: 0; */
+    }
+  
+    #img__banner {
+      order: -1;
+      max-height: 30rem;
+      align-items: center;
+      justify-content: center;
+      vertical-align: baseline;
+      box-shadow: 0px 0px 0px 3px green;
+      overflow: hidden;
+    }
+  
+  }
+  
+  /*=============== banner ===============*/
+
+
+
+
+
+  /* == Fin de Carrousel de productos recentes ==*/
+
+

@@ -1,16 +1,21 @@
 //===============JSON==========//
-const formulario = document.querySelector('#formularioRegistro');
-const procesaTodo = (event) => {
-    event.preventDefault();
-    const datos = new FormData(event.target);
-    console.log(datos); 
+let dataUsuarios = [];
 
-    const datosCompletos = Object.fromEntries(datos.entries());
-    localStorage.setItem("usuarios", JSON.stringify(datosCompletos));
-    console.log(datosCompletos); 
+const formulario = document.querySelector('#formularioRegistro');
+
+
+const procesaTodo = (event) =>{
+    event.preventDefault();
+    dataUsuarios.push({
+        "nombre": nombre.value,
+        "telefono": telefono.value,
+        "email": email.value,
+        "contraseña": contraseña.value
+    });
+    console.log(dataUsuarios);
+    localStorage.setItem("usuarios", JSON.stringify(dataUsuarios));
+    const usuariosLocalStorage = localStorage.getItem("usuarios");
 }
-    datosCompletos = JSON.parse(localStorage.getItem("usuarios"));
-    console.log(datosCompletos);
 
 formulario.addEventListener('submit',procesaTodo);
 
@@ -58,4 +63,3 @@ formularioRegistro.addEventListener("submit", e =>{
     }
 
 })
-
