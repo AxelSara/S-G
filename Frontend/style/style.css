@@ -134,17 +134,63 @@ body {
 /* ============================================== */
 /* ==================== FOOTER ================== */
 /* ============================================== */
-
-
-
 footer h2 {
   /*margin: 0 0 10px;*/
-  font-size: 25px;
   font-size: 25px;
   color: white;
   padding-top: 5%;
   padding-bottom: 4%;
 
+}
+footer p {
+  margin: 0;
+}
+.row a{
+  color: black;
+  font-size: 20px;
+} 
+
+
+
+.footer_section{
+  background: #A1C9C1;
+  color: rgb(255 255 255 / 50%);
+  bottom: 0;
+  height: 20%;
+  width: 100%;
+
+}
+
+.titulo-footer a{
+  display: grid;
+  text-align: center;
+
+} 
+
+.footer-col .social-links a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: #ffffff33;
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: white;
+  transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover {
+  color: #24262b;
+  background-color: white;
+}
+
+
+/* footer h2 {
+  font-size: 25px;
+  font-size: 25px;
+  color: white;
+  padding-top: 5%;
+  padding-bottom: 4%;
   padding-top: 5%;
   padding-bottom: 4%;
 
@@ -176,7 +222,7 @@ footer p {
   width: 100%;
 
 }
-
+ */
 /* .contenedorTituloFooter{
   background-color: #A1C9C1;
   padding: 20px;
@@ -186,7 +232,7 @@ footer p {
   padding: 20px;
 } */
 
-.footer-col .social-links a {
+/* .footer-col .social-links a {
   display: inline-block;
   height: 40px;
   width: 40px;
@@ -202,7 +248,7 @@ footer p {
 .footer-col .social-links a:hover {
   color: #24262b;
   background-color: white;
-}
+} */
 
 
 
@@ -472,7 +518,10 @@ footer p {
 #contenedor_vision {
   height: auto;
 }
-
+#contenedor_vision p{
+  text-align: justify;
+  justify-content: center;
+}
 
 a {
   text-decoration: none;
@@ -579,6 +628,8 @@ a {
 
 .card__data p {
   background-color: var(--color-contraste);
+  text-align: justify;
+  justify-content: center;
 }
 
 .card__name {
@@ -771,6 +822,7 @@ a {
 
   .contenedor_principal_contactanos {
     height: 80vh;
+    align-items: left;
     /* Reducir la altura del contenedor */
     margin-top: 0px;
     left: 0;
