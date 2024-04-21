@@ -7,7 +7,7 @@
     <title>Inicio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="./Frontend/style/style.css">
+    <link rel="stylesheet" href="./Frontend/style/index.css">
     <!-- icono del footer -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
@@ -81,7 +81,7 @@
                             </li>
 
                             <li>
-                                <a class="icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cuenta" href="./Frontend/assets/pages/login.html">
+                                <a class="icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cuenta" href="./Frontend/assets/pages/iniciar-sesion.html">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-person"
                                         viewBox="0 0 16 16">
                                         <path
@@ -192,8 +192,7 @@
 
             </div>
 
-            <!-- Carrousel de productos agregados recientemente -->
-
+            <!-- Banner Mobile -->
             <div class="carrusel-banner d-block d-md-none">
                 <div id="carouselExampleCaptions" class="carousel slide">
                     <div class="carousel-indicators">
@@ -228,13 +227,13 @@
 
             <h2> Productos recientes</h2>
 
-            <div class="swiper-container swiper-containerProductosRecientes">
+            <div class="carousel slide swiper-containerProductosRecientes" data-ride="carousel">
                 <div class="swiper-wrapper" id="swiper-wrapperProductosRecientes">
                     
                 </div>
                 <!-- Botones -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next botonSiguienteProductosRecientes"></div>
+                <div class="swiper-button-prev botonAnteriorProductosRecientes"></div>
             </div>
 
         </section>
@@ -332,10 +331,10 @@
     <!--=============== PRODUCTOS RECIENTES ===============-->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        var swiper = new Swiper(".swiper-containerProductosRecientes", {
+        const swiper = new Swiper(".swiper-containerProductosRecientes", {
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+                nextEl: ".botonSiguienteProductosRecientes",
+                prevEl: ".botonAnteriorProductosRecientes",
             },
             slidesPerView: 1,
             spaceBetween: 10,

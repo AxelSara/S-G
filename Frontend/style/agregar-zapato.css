@@ -1,0 +1,462 @@
+:root {
+    /*========== Colores ==========*/
+    --color-principal: #fff9ec;
+    --color-contraste: #645e4e;
+    --color-contraste-transparente: rgb(100, 94, 78, 0.9);
+    --color-claro: #b2ab99;
+    --color_footer: #a1c9c1;
+    --color-claro-azul: #d8fff9;
+    --color-header: background-color: rgba(255, 255, 255, 0);
+    /* Fondo transparente */
+  }
+  
+  * {
+    font-optical-sizing: auto;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /* background-color: var(--color-principal); */
+  }
+  
+  body {
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+    /*elimina el scroll del eje x*/
+  
+  }
+  /* ============================================== */
+  /* =================== header =================== */
+  /* ============================================== */
+  
+  
+  #headerZapateria {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--color-header);
+  
+  }
+  
+  .navbar {
+    margin: 20;
+    padding: 0;
+  
+  }
+  
+  .collapse {
+    /*background-color: rgba(128, 128, 128, 0.9);*/
+    /* background-color: rgba(255, 255, 255, 0.9); */
+    z-index: 1000;
+  }
+  
+  .nav-link,
+  .nav-bg,
+  .icons,
+  .icon,
+  #navbar-bg {
+    background-color: var(--color-header);
+    z-index: 1000;
+  }
+  
+  #bannerId {
+    margin-top: 80px;
+  }
+  
+  .contenedorFavoritos{
+    visibility: hidden;
+    position: fixed;
+    top: 60px;
+    right: 12px;
+    width: 55vh;
+    height: 90vh;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    box-shadow: -2px 0 4% hsl(0 4% 15% / 10%);
+    transition: 0.8s;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 15;
+  
+  }
+  
+  .zapatoFavorito {
+    width: 100%;
+    height: auto; /* Ajusta la altura según el contenido */
+    /* background-color: blue; */
+    box-shadow: -2px 0 4% hsl(0 4% 15% / 10%);
+    transition: 0.8s;
+    position: relative; /* Añade posición relativa */
+    margin-bottom: 10px; 
+    border-radius: 10px; /* Ajusta el radio de la esquina */
+  }
+  
+  .card-img-zapato {
+    width: 100%;
+    max-width: 200px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
+  }
+  
+  .card-img-zapato > img {
+    width: 100%;
+    height: auto; /* Ajusta la altura de la imagen automáticamente */
+  }
+  
+  .contenedorBotonQuitarFavorito {
+    position: absolute;
+    right: -20px;
+    top: -6px;
+    display: flex;
+    justify-content: center; /* Ajusta el contenido horizontalmente */
+    align-items: center; /* Ajusta el contenido verticalmente */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Hace el botón redondo */
+    background-color: rgba(255, 255, 255, 0.5); 
+  }
+  
+  .btnQuitarFavorito {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  #headerZapateria:hover {
+    background-color: rgb(191, 181, 158, 0.8);
+  }
+  
+  #headerZapateria:hover {
+    background-color: rgb(191, 181, 158, 0.8);
+  }
+  
+  #headerZapateria:hover {
+    background-color: rgb(191, 181, 158, 0.8);
+  }
+  
+  /* ============================================== */
+  /* ==================== FOOTER ================== */
+  /* ============================================== */
+  
+
+
+  footer h2 {
+    /*margin: 0 0 10px;*/
+    font-size: 25px;
+    color: white;
+    padding-top: 5%;
+    padding-bottom: 4%;
+  
+  }
+  footer p {
+    margin: 0;
+  }
+  .row a{
+    color: black;
+    font-size: 20px;
+  } 
+  
+  .footer_section{
+    background: #A1C9C1;
+    color: rgb(255 255 255 / 50%);
+    bottom: 0;
+    height: 20%;
+    width: 100%;
+  
+  }
+  
+  .titulo-footer a{
+    display: grid;
+    text-align: center;
+  
+  } 
+  
+  .footer-col .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: #ffffff33;
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: white;
+    transition: all 0.5s ease;
+  }
+  .footer-col .social-links a:hover {
+    color: #24262b;
+    background-color: white;
+  }
+
+
+
+
+
+/* ======================= Page agregar zapato ======================= */
+
+#bodyAddZapato {
+    background-color: var(--color-principal);
+  }
+  
+  .contenedor_principal_agregarZapato {
+    background-color: var(--color-principal);
+    margin-top: 20px;
+    margin-bottom: 5rem;
+    /* Reducir la altura del contenedor */
+    height: 80vh;
+    width: 100%;
+    /* z-index: 8; */
+    padding-top: 40px;
+  }
+  
+  @media (max-width: 768px) {
+    .contenedor_principal_agregarZapato {
+      height: 1150px;
+    }
+  }
+  
+  .tituloAgregarZapato {
+    background-color: var(--color-principal);
+    margin-top: 10px;
+    height: 5vh;
+    z-index: 5;
+    /* background-color: #0f0f0f; */
+  }
+  
+  .contenedorImagenAgregarZapato {
+    background-color: var(--color-principal);
+    /* width: 40%; */
+    height: 50vh;
+    /* z-index: 3; */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 10px 10px 10px -1px rgba(10, 99, 169, 0.16),
+      -7px -10px 10px -1px rgba(255, 255, 255, 0.40);
+  }
+  
+  .contenedorImagenAgregarZapato > img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+  
+  
+  .contenedorImagenAgregarZapato .imagenSeleccionada {
+    padding: 5px;
+    width: 100%;
+    /* Rellena el contenedor horizontalmente */
+    height: 40vh;
+    object-fit: cover;
+    /* Escala y recorta la imagen para que encaje en el cuadrado */
+    background-color: var(--color-principal);
+    border: none;
+    backdrop-filter: blur(12px);
+  }
+  
+  
+  /* === carousel agregar zapato === */
+  
+  #botonCarouselAgregarZapato {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-contraste);
+  }
+  
+  #previaImagenAgregarZapato {
+    margin-left: 0;
+    left: 0;
+  }
+  
+  #siguienteImagenAgregarZapato {
+    margin-right: 0;
+    right: 0;
+  }
+  
+  .contenedorImagenAgregar {
+    /* background-color: #645e4e; */
+    text-align: center;
+    margin-bottom: 5px;
+    border-radius: 15px;
+  }
+  
+  /* === seleccionador de talla === */
+  .talla-selector {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .talla-checkbox {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .talla-checkbox input[type="checkbox"] {
+    display: none;
+  }
+  
+  .talla-checkbox label {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .talla-checkbox input[type="checkbox"]:checked+label {
+    background-color: #0070d2;
+    color: white;
+  }
+  
+  .talla-mostradas {
+    font-weight: bold;
+  }
+  
+  .hidden-radio {
+    display: none;
+  }
+  
+  .form-check-label {
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  
+  .form-check-input:checked+.form-check-label {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  
+  
+  
+  .contenedorBotonAgregarZapato {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    z-index: 5;
+  }
+  
+  .btnSubmitAddZapato {
+    background-color: var(--color-contraste);
+    color: var(--color-principal);
+    padding: 10px 70px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transform: scaleY(0.9);
+  }
+  
+  /* ========== Media queries ========== */
+  
+
+/* ======================= MEDIA QUERIES ======================== */
+@media (max-width: 900px) {
+    #headerZapateria {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+  }
+  
+  @media (min-width: 900px) {
+    #headerZapateria {
+      position: fixed;
+      z-index: 1000;
+      background-color: var(--color-header);
+      /* border: 4px solid black; */
+      width: 100%;
+    }
+  
+    .navbar {
+      margin: 0;
+      padding: 0;
+  
+    }
+  
+    .collapse,
+    .nav-link,
+    .nav-bg,
+    .icons,
+    .icon,
+    #navbar-bg {
+      background-color: var(--color-header);
+    }
+  
+    #bannerId {
+      margin-top: 0px;
+    }
+  
+  }
+
+  
+
+
+  @media (min-width: 770px) and (max-width: 998px) {
+    .contenedor_principal_contactanos {
+      position: relative;
+      top: 0;
+      margin-top: 0px;
+      left: 0;
+      width: 100%;
+      margin-bottom: 0px;
+      /* background-color: #645E4E; */
+    }
+  
+    .contenedor_imagen_contactanos {
+      background: rgba(255, 255, 255, 0.112);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+  
+  
+    .formContactanos {
+      color: #a1c9c1;
+      /* background-color: #645E4E; */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 60px;
+      align-items: center;
+      width: 50%;
+      height: 80%;
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.112);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+  
+  }
+  
+  @media (min-width: 230px) and (max-width: 575px) {
+    .contenedor_principal_contactanos {
+      top: 0;
+      margin-bottom: 0px;
+      /* background-color: #645E4E; */
+    }
+  
+    .formContactanos {
+      color: var(--color-contraste);
+      /* background-color: #645E4E; */
+      position: absolute;
+      top: 0;
+      /* Reducir la altura del contenedor */
+      margin-top: 0px;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+  
+  
+  }

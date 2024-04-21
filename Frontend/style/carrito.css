@@ -1,0 +1,462 @@
+
+:root {
+  /*========== Colores ==========*/
+  --color-principal: #fff9ec;
+  --color-contraste: #645e4e;
+  --color-contraste-transparente: rgb(100, 94, 78, 0.9);
+  --color-claro: #b2ab99;
+  --color_footer: #a1c9c1;
+  --color-claro-azul: #d8fff9;
+  --color-header: background-color: rgba(255, 255, 255, 0);
+  /* Fondo transparente */
+}
+
+* {
+  font-optical-sizing: auto;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  /* background-color: var(--color-principal); */
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  /*elimina el scroll del eje x*/
+
+}
+/* ============================================== */
+/* =================== header =================== */
+/* ============================================== */
+
+
+#headerZapateria {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--color-header);
+
+}
+
+.navbar {
+  margin: 20;
+  padding: 0;
+
+}
+
+.collapse {
+  /*background-color: rgba(128, 128, 128, 0.9);*/
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  z-index: 1000;
+}
+
+.nav-link,
+.nav-bg,
+.icons,
+.icon,
+#navbar-bg {
+  background-color: var(--color-header);
+  z-index: 1000;
+}
+
+#bannerId {
+  margin-top: 80px;
+}
+
+.contenedorFavoritos{
+  visibility: hidden;
+  position: fixed;
+  top: 60px;
+  right: 12px;
+  width: 55vh;
+  height: 90vh;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: aliceblue;
+  box-shadow: -2px 0 4% hsl(0 4% 15% / 10%);
+  transition: 0.8s;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 15;
+
+}
+
+.zapatoFavorito {
+  width: 100%;
+  height: auto; /* Ajusta la altura según el contenido */
+  /* background-color: blue; */
+  box-shadow: -2px 0 4% hsl(0 4% 15% / 10%);
+  transition: 0.8s;
+  position: relative; /* Añade posición relativa */
+  margin-bottom: 10px; 
+  border-radius: 10px; /* Ajusta el radio de la esquina */
+}
+
+.card-img-zapato {
+  width: 100%;
+  max-width: 200px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
+}
+
+.card-img-zapato > img {
+  width: 100%;
+  height: auto; /* Ajusta la altura de la imagen automáticamente */
+}
+
+.contenedorBotonQuitarFavorito {
+  position: absolute;
+  right: -20px;
+  top: -6px;
+  display: flex;
+  justify-content: center; /* Ajusta el contenido horizontalmente */
+  align-items: center; /* Ajusta el contenido verticalmente */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Hace el botón redondo */
+  background-color: rgba(255, 255, 255, 0.5); 
+}
+
+.btnQuitarFavorito {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+#headerZapateria:hover {
+  background-color: rgb(191, 181, 158, 0.8);
+}
+
+#headerZapateria:hover {
+  background-color: rgb(191, 181, 158, 0.8);
+}
+
+#headerZapateria:hover {
+  background-color: rgb(191, 181, 158, 0.8);
+}
+
+/* ============================================== */
+/* ==================== FOOTER ================== */
+/* ============================================== */
+
+
+
+footer h2 {
+  /*margin: 0 0 10px;*/
+  font-size: 25px;
+  color: white;
+  padding-top: 5%;
+  padding-bottom: 4%;
+
+}
+footer p {
+  margin: 0;
+}
+.row a{
+  color: black;
+  font-size: 20px;
+} 
+
+.footer_section{
+  background: #A1C9C1;
+  color: rgb(255 255 255 / 50%);
+  bottom: 0;
+  height: 20%;
+  width: 100%;
+
+}
+
+.titulo-footer a{
+  display: grid;
+  text-align: center;
+
+} 
+
+.footer-col .social-links a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: #ffffff33;
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: white;
+  transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover {
+  color: #24262b;
+  background-color: white;
+}
+
+
+
+/* ==================== Carrito ================== */
+
+h1 {
+  text-align: center;
+}
+
+.col-6 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+
+body {
+  background-color: #FFF9EC;
+  margin: auto;
+
+}
+
+.container {
+  margin-top: 40px;
+
+}
+
+.btn {
+  color: white;
+  background-color: #B2AB99;
+  margin-bottom: 50px;
+}
+
+.text-center {
+  margin: auto;
+  margin-top: 150px;
+}
+
+.formulario {
+  margin-top: 70px;
+}
+
+.right {
+  margin-left: 200px;
+}
+
+
+
+/*----------------*/
+#contenedorZap {
+  max-width: 30%;
+  /* La imagen no puede ser más ancha que el contenedor */
+  overflow: hidden;
+  /* Oculta el contenido que desborda el contenedor */
+  display: flex;
+  justify-content: right;
+}
+
+#contenedorZap img {
+  width: auto;
+  /* La imagen ocupa todo el ancho del contenedor */
+  height: auto;
+  /* La altura se ajusta automáticamente para mantener la proporción */
+
+  transform: translateX(20px);
+}
+
+/* Media query para colapsar la imagen cuando el ancho de la ventana sea menor o igual a 1600px */
+@media (max-width: 900px) {
+  #contenedorZap {
+
+      /* max-width: 0%; /* La imagen no puede ser más ancha que el 100% del contenedor */
+      width: 100%;
+      margin-top: 20px;
+      /* Ajusta según sea necesario */
+      max-width: 153px;
+      justify-content: center;
+      overflow: visible;
+
+
+  }
+
+}
+
+
+@media (max-width: 750px) {
+  .col-6 {
+
+      width: -webkit-fill-available;
+
+
+  }
+
+}
+
+@media (max-width: 750px) {
+  .container {
+
+      text-align: center;
+      margin-right: 0px;
+      width: 100%;
+      overflow: auto;
+
+  }
+
+}
+
+
+@media (max-width: 750px) {
+  .row {
+      padding-left: calc(var(--bs-gutter-x)* 1.5);
+  }
+
+}
+
+/*--------------------------------------*/
+
+
+.container {
+  max-width: 100%;
+  margin: 0;
+  margin-left: 0%;
+  margin-top: 0%;
+  padding: 20px;
+  height: 649px;
+  overflow-y: scroll;
+
+}
+
+button {
+  padding: 0.5rem;
+  border: none;
+  background-color: #E8E2D5;
+  border-radius: 10%;
+
+}
+
+.buttonsumaresta {
+  border-radius: 100%;
+  padding: 2px 8px;
+}
+
+#tablaProductos {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 20px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: transparent;
+  color: black;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+.checkout-btn {
+  background-color: #B2AB99;
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.checkout-btn:hover {
+  background-color: #B2AB99;
+}
+
+@media screen and (max-width: 880px) {
+  .content {
+      flex-direction: column;
+      width: 150%;
+  }
+
+  .container {
+      max-width: 100%;
+  }
+
+}
+
+.producto-imagen {
+
+  width: 100px;
+  height: auto;
+  border-radius: 15%;
+
+}
+
+/* ================ header ================ */
+
+#headerZapateria {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--color-header);
+
+}
+
+.navbar {
+  margin: 20;
+  padding: 0;
+
+}
+
+.collapse {
+  /*background-color: rgba(128, 128, 128, 0.9);*/
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  z-index: 1000;
+}
+
+.nav-link,
+.nav-bg,
+.icons,
+.icon,
+#navbar-bg {
+  background-color: var(--color-header);
+  z-index: 1000;
+}
+
+#bannerId {
+  margin-top: 80px;
+}
+
+@media (max-width: 900px) {
+  #headerZapateria{
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+@media (min-width: 900px) {
+  #headerZapateria {
+    position: fixed;
+    z-index: 1000;
+    background-color: var(--color-header);
+    /* border: 4px solid black; */
+    width: 100%;
+  }
+
+  .navbar {
+    margin: 0;
+    padding: 0;
+
+  }
+
+  .collapse,
+  .nav-link,
+  .nav-bg,
+  .icons,
+  .icon,
+  #navbar-bg {
+    background-color: var(--color-header);
+  }
+
+  #bannerId {
+    margin-top: 0px;
+  }
+
+
+
+}
+
+
+/* ================ FOOTER ================ */
