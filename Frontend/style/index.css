@@ -22,7 +22,6 @@
     font-family: "Inter", sans-serif;
     overflow-x: hidden;
     /*elimina el scroll del eje x*/
-  
   }
   /* ============================================== */
   /* =================== header =================== */
@@ -68,55 +67,58 @@
     position: fixed;
     top: 60px;
     right: 12px;
-    width: 40vh;
-    height: 80vh;
-    padding: 10px;
+    width: 45vh;
+    height: 90vh;
+    padding: 20px;
+    border-radius: 10px;
     background-color: aliceblue;
     box-shadow: -2px 0 4% hsl(0 4% 15% / 10%);
     transition: 0.8s;
     overflow-x: hidden;
     overflow-y: scroll;
     z-index: 15;
+  
   }
   
-  
-  
-  @media (max-width: 900px) {
-    #headerZapateria {
-      background-color: rgba(255, 255, 255, 0.4);
-    }
+  .zapatoFavorito {
+    width: 100%;
+    height: auto; /* Ajusta la altura según el contenido */
+    /* background-color: blue; */
+    box-shadow: -2px 0 4% hsl(0 4% 15% / 10%);
+    transition: 0.8s;
+    position: relative; /* Añade posición relativa */
+    margin-bottom: 10px; 
+    border-radius: 10px; /* Ajusta el radio de la esquina */
   }
   
-  @media (min-width: 900px) {
-    #headerZapateria {
-      position: fixed;
-      z-index: 1000;
-      background-color: var(--color-header);
-      /* border: 4px solid black; */
-      width: 100%;
-    }
+  .card-img-zapato {
+    width: 100%;
+    max-width: 200px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
+  }
   
-    .navbar {
-      margin: 0;
-      padding: 0;
+  .card-img-zapato > img {
+    width: 100%;
+    height: auto; /* Ajusta la altura de la imagen automáticamente */
+  }
   
-    }
+  .contenedorBotonQuitarFavorito {
+    position: absolute;
+    right: -20px;
+    top: -6px;
+    display: flex;
+    justify-content: center; /* Ajusta el contenido horizontalmente */
+    align-items: center; /* Ajusta el contenido verticalmente */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Hace el botón redondo */
+    background-color: rgba(255, 255, 255, 0.5); 
+  }
   
-    .collapse,
-    .nav-link,
-    .nav-bg,
-    .icons,
-    .icon,
-    #navbar-bg {
-      background-color: var(--color-header);
-    }
-  
-    #bannerId {
-      margin-top: 0px;
-    }
-  
-  
-  
+  .btnQuitarFavorito {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
   }
   
   #headerZapateria:hover {
@@ -134,8 +136,6 @@
   /* ============================================== */
   /* ==================== FOOTER ================== */
   /* ============================================== */
-  
-  
   
   footer h2 {
     /*margin: 0 0 10px;*/
@@ -237,8 +237,6 @@
     gap: 25px;
   }
   
-  
-  
   @media screen and (max-width: 767px) {
     .container-list-products {
       grid-template-columns: repeat(2, 1fr);
@@ -293,7 +291,7 @@
     height: 480px;
     overflow: hidden;
   }
-  
+
   .carrouselProductosRecientes>#swiper-containerProductosRecientes {
     /* background-color: #00d282; */
     /* background-color: #00d282; */
@@ -305,6 +303,8 @@
   .card-description {
     padding: 1rem;
   }
+
+
   
   .card-title,
   .card-text {
@@ -316,19 +316,7 @@
     align-items: center;
     justify-content: end;
   }
-  
-  /* .card-link button{
-    background-color: var(--color-contraste);
-    color: var(--color-principal);
-   } */
-  
-  
-  .card-link button {
-    margin: 0rem 0.5rem;
-    padding: 0.4rem 0.5rem;
-    /* border-radius:15px; */
-  }
-  
+      
   .card-description {
     padding: 1rem;
   }
@@ -338,43 +326,41 @@
     margin: 0rem 2rem;
   }
   
-  .carrito-button {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-  }
-  
-  /* .card-link button{
-    background-color: var(--color-contraste);
-    color: var(--color-principal);
-   } */
-  
   
   .card-link button {
     margin: 0rem 0.5rem;
     padding: 0.4rem 0.5rem;
     /* border-radius:15px; */
   }
+
+
+/* ======= Zona critica ============ */
+
   
-  #swiper-wrapperProductosRecientes {
+  
+#swiper-wrapperProductosRecientes {
+    position: relative;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap; 
+    /* display: flex;
+    flex-wrap: nowrap; 
     align-items: start;
     justify-content: start;
-    /* background-color: #d26d00; */
-    /* background-color: #d26d00; */
     width: 100%;
-    height: 420px;
-    height: 420px;
-  }
+    height: 420px; */
+} 
+
   
   #swiper-wrapperProductosRecientes>.cardProductosRecientes {
-    position: relative;
+    /* position: relative; */
     box-shadow: 0px 4px 4px rgba(196, 196, 196, 0.25);
     background: #fff;
     justify-content: center;
     width: auto;
   }
+
+  /* ======= Fin de Zona critica ============ */
+
   
   .cardProductosRecientes .card-imgProductosRecientes {
     width: 100%;
@@ -410,92 +396,43 @@
   .boton_favorito:hover{
     background-color: #7cc25c;
   }
+  .swiper-button-next,
+  .swiper-button-prev {
+      position: absolute;/* Ajusta las flechas a una posición absoluta dentro del contenedor del carrusel */
+      top: 37% !important ;
+      transform: translateY(-50%);
+      z-index: 1000; 
+     
+  }
+
   
-  
-  
-  
-  /* .swiper-button-next,
-   .swiper-button-prev{
-    box-shadow: 0px 0px 0px 3px red;
-   } */
-  
-  /*.swiper-button-next:after {
-    margin-top: 83rem;
+  .swiper-button-prev {
+      left: 10px; /* Ajusta la posición de la flecha izquierda */
   }
   
-  .swiper-button-prev:after {
-    margin-top: 83rem;
-  }*/
-  
+.swiper-button-next {
+      right: 10px; /* Ajusta la posición de la flecha derecha */
+}
+
+
+/*   
   @media screen and (max-width: 920px) {
   
-   /* .swiper-button-next,
+    .swiper-button-next,
     .swiper-button-prev {
       visibility: hidden;
-    }*/
-    
-  .container-fluid.carrouselProductosRecientes {
-    position: relative;
-}
-
-.swiper-containerProductosRecientes {
-    position: relative;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1000; 
-   
-}
-
-.swiper-button-next {
-    right: 10px; /* Ajusta la posición del botón siguiente */
-}
-
-.swiper-button-prev {
-    left: 10px; /* Ajusta la posición del botón anterior */
-}
-
-  }
-
+    }
+  } */
   
-  .container-fluid.carrouselProductosRecientes {
-    position: relative;
-}
-
-.swiper-containerProductosRecientes {
-    position: relative;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1000; 
-   
-}
-
-.swiper-button-next {
-    right: 10px; /* Ajusta la posición del botón siguiente */
-}
-
-.swiper-button-prev {
-    left: 10px; /* Ajusta la posición del botón anterior */
-}
-
-
+  /* == Fin de Carrousel de productos recentes ==*/
   
+
+
 /*=============== banner ===============*/
 
 main a {
     color: inherit;
   }
-  
-  
   
   main li {
     display: block;
@@ -621,14 +558,41 @@ main a {
       overflow: hidden;
     }
   
+  }  
+
+  
+  @media (max-width: 900px) {
+    #headerZapateria {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
   }
   
-  /*=============== banner ===============*/
-
-
-
-
-
-  /* == Fin de Carrousel de productos recentes ==*/
-
-
+  @media (min-width: 900px) {
+    #headerZapateria {
+      position: fixed;
+      z-index: 1000;
+      background-color: var(--color-header);
+      /* border: 4px solid black; */
+      width: 100%;
+    }
+  
+    .navbar {
+      margin: 0;
+      padding: 0;
+  
+    }
+  
+    .collapse,
+    .nav-link,
+    .nav-bg,
+    .icons,
+    .icon,
+    #navbar-bg {
+      background-color: var(--color-header);
+    }
+  
+    #bannerId {
+      margin-top: 0px;
+    }
+  
+  }

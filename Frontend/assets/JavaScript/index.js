@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', function(event){
 });
 
 // ===================== Sección carrousel ===============
-const showData = (data, event) => {
+const showData = (data,event) => {
     let banner = "";
-    data.reverse().map(dat => {
+    return data.reverse().map(dat => {
         for (let i = data.length; i >= 0; i--) {
-            if (i == dat.id && i > data.length - 7) {
+            if(i == dat.id && i > data.length - 7){
                 banner += `
                 <div class="swiper-slide cardProductosRecientes">
                     <div class="card-imgProductosRecientes">
@@ -44,9 +44,9 @@ const showData = (data, event) => {
                 `;
             }
         }
+        document.getElementById("swiper-wrapperProductosRecientes").innerHTML = banner;
     });
-    document.getElementById("swiper-wrapperProductosRecientes").innerHTML = banner;
-};
+}
 
 function addZapatoFavorito(button) {
 
@@ -73,58 +73,63 @@ function addZapatoFavorito(button) {
         
     }
 
-    
 }
 
 function guardarZapatoFavorito(zapatoFavorito) {
+
+    // borrar los elementos del localStorage
+    // localStorage.removeItem("zapatosFavoritos");
+
     let zapatosFavoritos = JSON.parse(localStorage.getItem("zapatosFavoritos") || "[]");
 
-    // Agregar el nuevo zapato al array existente o crear uno nuevo
-    zapatosFavoritos.push(zapatoFavorito);
-
-    // Guardar el array actualizado en el localStorage
-    localStorage.setItem("zapatosFavoritos", JSON.stringify(zapatosFavoritos));
-
     console.log("zapatosFavoritos:", zapatosFavoritos);
-    const contenedorZapatos = document.querySelector(".contenedorFavoritos");
-
-    if (!contenedorZapatos) {
-        console.error("El contenedor de zapatos favoritos no se encontró en el DOM.");
-        return; // O manejar el error de otra manera
+    // verifica si el zapato ya existe en el localStorage
+    const zapatoAgregado = zapatosFavoritos.some((zapato) => zapato.id === zapatoFavorito.id);
+    if (zapatoAgregado) {
+        mostrarTaskFavoritos("El zapato ya fue agregado", "error");
     }
 
-    console.log("contenedor zapatos en index: ", contenedorZapatos);
+    else{
+        // Agregar el nuevo zapato al array existente o crear uno nuevo
+        zapatosFavoritos.push(zapatoFavorito);
+        // actualizar el localStorage con el nuevo array
+        localStorage.setItem("zapatosFavoritos", JSON.stringify(zapatosFavoritos));
+        console.log("========== zapatosFavoritos ===========");
+        console.log("zapatosFavoritos:", zapatosFavoritos);
+        const contenedorZapatos = document.querySelector(".contenedorFavoritos");
 
+        if (!contenedorZapatos) {
+            console.error("El contenedor de zapatos favoritos no se encontró en el DOM.");
+            return; 
+        }
 
+        console.log("contenedor zapatos en index: ", contenedorZapatos);
 
-    const zapatofavorito  = document.createElement("div");
-    zapatofavorito.className = "zapatofavorito";
-    
-    zapatofavorito.innerHTML = `
-        <div class="card-zapatoFavorito">
-            <div class="card-img-zapato">
-                <img src="${zapatoFavorito.productImg}" alt="Zapato">
-            </div>
+        const zapatofavorito  = document.createElement("div");
+        zapatofavorito.className = "zapatofavorito mt-3";
 
-            <div class="card-description-zapato">
+        zapatofavorito.innerHTML = `
+            <div class="card-zapatoFavorito">
+                <div class="card-img-zapato">
+                    <img src="${zapatoFavorito.productImg}" alt="Zapato">
                 </div>
-                    <h3>${zapatoFavorito.title}</h3>
-                    <p>$${zapatoFavorito.price}</p>
+                <div class="card-description-zapato">
+                    </div>
+                        <h3>${zapatoFavorito.title}</h3>
+                        <p>$${zapatoFavorito.price}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    `;
+        `;
 
-    console.log("zapato en index: ", zapatoFavorito);
-    contenedorZapatos.appendChild(zapatofavorito, true);
+        console.log("zapato en index: ", zapatoFavorito);
+        contenedorZapatos.appendChild(zapatofavorito, true);
     
-    mostrarTaskFavoritos("Agregado a favoritos", "success", "top-end", 3000);
+        mostrarTaskFavoritos("Agregado a favoritos", "success", "top-end", 3000);
+    }
 }
 
-
-
-
-  const carrito = JSON.parse(localStorage.getItem("carrito"));
+const carrito = JSON.parse(localStorage.getItem("carrito"));
 
   const addCartCarrusel = async (id) =>{
     const response = await fetch("./Frontend/json/productos.json");
