@@ -59,9 +59,7 @@
     z-index: 1000;
   }
   
-  #bannerId {
-    margin-top: 80px;
-  }
+
   
   .contenedorFavoritos{
     visibility: hidden;
@@ -198,7 +196,6 @@
   #nosotros {
     display: flex;
     flex-wrap: nowrap;
-  
     background-color: var(--color-principal);
     height: 600px;
   }
@@ -215,6 +212,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+   margin-top: 0%;
   }
   
   
