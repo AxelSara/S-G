@@ -1248,26 +1248,26 @@ ul {
   color: var(--color-principal);
 }
 
-.slider {
+.slider-banner {
   color: var(--color-contraste);
   position: relative;
   display: grid;
-  height: 93vh;
+  height: 100vh;
 }
 
-.slides .slide {
+.slides-banner .slide-banner {
   min-height: calc(100%);
 
   width: 100%;
   position: relative;
   z-index: 5;
-  height: 95%;
+  height: 100%;
 }
 
-.slides {
+.slides-banner {
   overflow-y: auto;
   scrollbar-width: none;
-  height: 93vh;
+  height: 100vh;
   max-height: 900px;
   max-width: 100%;
   overflow: hidden;
@@ -1293,10 +1293,9 @@ ul {
   padding: 0rem 2.5rem;
 }
 
-.carrusel-banner .carousel-caption {
+.carrusel-banner .carousel-caption-banner {
   color: black;
   text-align: right;
-  /* background-color: rgb(100, 94, 78, 0.5); */
 }
 
 .carrusel-banner .banner-button {

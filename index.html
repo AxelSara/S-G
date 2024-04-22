@@ -7,7 +7,7 @@
     <title>Inicio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="./Frontend/style/style.css">
+    <link rel="stylesheet" href="./Frontend/style/style-home.css">
     <!-- icono del footer -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
@@ -21,7 +21,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <script src="https://kit.fontwesome.com/fedcf461c1.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontwesome.com/fedcf461c1.js" crossorigin="anonymous"></script> -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -139,9 +139,9 @@
     <main>
 
         <!--=============== BANNER ===============-->
-        <section>
+        <section id="banner-home">
             <div class=" banner d-none d-md-block">
-                <div class="slider">
+                <div class="slider-banner">
                     <div class="row">
                         <div class="description col-md-4  col-lg-5">
                             <div class="row">
@@ -172,16 +172,20 @@
                             </div>
                         </div>
 
-                        <div class="slides col-md-8 col-lg-7" id="img__banner">
+                        <div class="slides-banner col-md-8 col-lg-7" id="img__banner">
 
                         </div>
                     </div>
 
-                    <div class="indicarContenidoAbajo">
+                    <div class="indicarContenidoAbajo" id="showBottomContent">
                         <button id="scrollButton" onclick="scrollDown()">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
                               <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v10.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 12.293V1.5A.5.5 0 0 1 8 1z"/>
-                            </svg>
+                            </svg> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                                <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                              </svg>
                         </button>
                     </div>
 
@@ -224,10 +228,9 @@
 
         <!-- ===== Productos recientes  =======-->
 
-        <section class="container-fluid carrouselProductosRecientes">
+        <section class="container-fluid carrouselProductosRecientes" id="recent-products-home">
 
             <h2> Productos recientes</h2>
-
             <div class="swiper-container swiper-containerProductosRecientes">
                 <div class="swiper-wrapper" id="swiper-wrapperProductosRecientes">
                     
