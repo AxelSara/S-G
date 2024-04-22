@@ -1,8 +1,33 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+:root {
+  /*========== Colores ==========*/
+  --color-principal: #fff9ec;
+  --color-contraste: #645e4e;
+  --color-contraste-transparente: rgb(100, 94, 78, 0.9);
+  --color-claro: #b2ab99;
+  --color_footer: #a1c9c1;
+  --color-claro-azul: #d8fff9;
+  --color-header: background-color: rgba(255, 255, 255, 0);
+  /* Fondo transparente */
 }
+
+* {
+  font-optical-sizing: auto;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  /* background-color: var(--color-principal); */
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  /*elimina el scroll del eje x*/
+
+}
+
+
+/* ==================== Carrito ================== */
 
 h1 {
   text-align: center;
@@ -42,120 +67,6 @@ body {
 
 .right {
   margin-left: 200px;
-}
-
-:root {
-  --color_footer: #A1C9C1;
-
-}
-
-* {
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 100%;
-  font-weight: 0;
-  font-style: normal;
-}
-
-/* ================ FOOTER ================ */
-
-
-footer h2 {
-    /*margin: 0 0 10px;*/
-    font-size: 25px;
-    color: white;
-    padding-top: 5%;
-    padding-bottom: 4%;
-    
-  }
-  footer p {
-    margin: 0;
-  }
-  .row a{
-    color: black;
-    font-size: 20px;
-  } 
-  
-  
-  
-  .footer_section{
-    background: #A1C9C1;
-    color: rgb(255 255 255 / 50%);
-    bottom: 0;
-    height: 20%;
-    width: 100%;
-  
-  }
-  
-  /* .contenedorTituloFooter{
-    background-color: #A1C9C1;
-    padding: 20px;
-  } */
-  
-  .footer-col .social-links a {
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    background-color: #ffffff33;
-    margin: 0 10px 10px 0;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 50%;
-    color: white;
-    transition: all 0.5s ease;
-  }
-  .footer-col .social-links a:hover {
-    color: #24262b;
-    background-color: white;
-  }
-  
-/* ================ header ================ */
-
-.navbar {
-  margin: 0;
-  padding: 0;
-}
-
-.collapse,
-.nav-link,
-.nav-bg,
-.icons,
-.icon,
-#navbar-bg {
-  background-color: var(--color-principal);
-}
-
-.container-fluid {
-  padding-left: calc(var(--bs-gutter-x)* -0.5);
-
-}
-
-
-
-nav {
-  background-color: transparent;
-
-}
-
-
-div.icons {
-  background-color: transparent;
-}
-
-/* ================ header ================ */
-
-.navbar {
-  margin: 0;
-  padding: 0;
-}
-
-.collapse,
-.nav-link,
-.nav-bg,
-.icons,
-.icon,
-#navbar-bg {
-  background-color: var(--color-principal);
 }
 
 

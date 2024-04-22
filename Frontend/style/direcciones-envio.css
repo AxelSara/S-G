@@ -1,0 +1,68 @@
+:root {
+  /*========== Colores ==========*/
+  --color-principal: #fff9ec;
+  --color-contraste: #645e4e;
+  --color-contraste-transparente: rgb(100, 94, 78, 0.9);
+  --color-claro: #b2ab99;
+  --color_footer: #a1c9c1;
+  --color-claro-azul: #d8fff9;
+  --color-header: background-color: rgba(255, 255, 255, 0);
+  /* Fondo transparente */
+}
+
+* {
+  font-optical-sizing: auto;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  /*background-color: var(--color-principal); */
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;/*elimina el scroll del eje x*/
+  background-color: var(--color-principal);
+ }
+
+/* --------------------------Direcciones-------------------- */
+.contenedorDirecciones{
+  /* display: flex;
+  flex-direction: row; */
+  align-items:center;
+  height: 80vh;
+  /* background-color: pink; */
+  margin-top: 60px; /* Puedes ajustar este valor según sea necesario */
+  padding: 20px;
+
+}
+
+.container-izquierda-formulario{
+background-color: yellow;
+}
+
+.container-derecha-direcciones{
+background-color: red;
+}
+
+#formulario-direccion{
+display: flex;
+flex-wrap: wrap;
+height: 50vh;
+width: 100%;
+z-index: 2;
+}
+
+.campo-formulario-direccion{
+background-color: blue;
+width: 30%;
+}
+
+
+/* .campo-formulario-direccion {
+ /*  margin-bottom: 10px;  */
+
+fieldset{
+  width: 100%;
+  margin-top: 3rem;
+}
+

@@ -71,35 +71,48 @@ function cargarContenedorFavoritos(valor) {
 
         contenedorFavoritos.innerHTML = `
 
-        <div class="row">
+            <div class="row">
+                
+                <div class="col-10">
+                    <h3>Favoritos</h3>
+                </div>
 
-            <div class="col-10 bg-info">
-                <h3>Favoritos</h3>
-            </div>
-
-            <!-- icono de cerrar el contenedor de favoritos -->
-            <div class="col-2 text-end">
-                <div class="cerrarContenedorFavoritos">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
-                        <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
-                    </svg>
+                <!-- icono de cerrar el contenedor de favoritos -->
+                <div class="col-2 text-end">
+                    <div class="cerrarContenedorFavoritos">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                            <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                        </svg>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-12 contenedorZapatosFavoritos">
-
+            <div class="row">
+                <div class="col-12 contenedorZapatosFavoritos">
+                </div>
             </div>
-        </div>
 
-
-`;
-
-
+        `;
         // Añadir el contenedor al DOM
         document.body.appendChild(contenedorFavoritos);
+        contenidoFavoritos();
+
+
+        const cerrarContenedorFavoritos = document.querySelector(".cerrarContenedorFavoritos");
+        cerrarContenedorFavoritos.addEventListener("click", function () {
+            const contenedorFavoritos = document.querySelector(".contenedorFavoritos");
+            contenedorFavoritos.remove();
+        });
+
+        // Cierra el menú hamburguesa si está abierto
+        const navbar = document.getElementById("navbarSupportedContent");
+        if (navbar.classList.contains("show")) {
+            navbar.classList.remove("show");
+        }
+
+
+
     }
 
     // Mostrar u ocultar el contenedor según el valor
@@ -109,4 +122,62 @@ function cargarContenedorFavoritos(valor) {
     } else {
         contenedorFavoritos.style.visibility = "hidden";
     }
+
+    // cerrar la navbar al 
+        // const zapatosFavoritos = document.querySelectorAll(".zapatoFavorito");
+        // zapatosFavoritos.forEach(function (zapato) {
+        //     zapato.addEventListener("click", function () {
+        //         const contenedorFavoritos = document.querySelector(".contenedorFavoritos");
+        //         contenedorFavoritos.remove();
+        //     });
+        // });
+
+
+}
+
+
+function contenidoFavoritos() {
+    console.log("====== cargando contenido favoritos ========");
+    const zapatosFavoritos = JSON.parse(localStorage.getItem("zapatosFavoritos") || "[]");
+
+    console.log("=========== zapatos existentes  ================");
+    console.log("Zapatos existentes: ", zapatosFavoritos);
+
+    const contenedorZapatosFavoritos = document.querySelector(".contenedorZapatosFavoritos");
+
+    zapatosFavoritos.forEach(function (zapato) { // Cambio aquí
+        const zapatoCard = document.createElement("div");
+        zapatoCard.className = "zapatoFavorito mt-3";
+        zapatoCard.innerHTML = `
+        <div class="row zapatoFavorito mt-3">
+        <div class="col-6 card-img-zapato">
+            <img src="${zapato.productImg}" alt="Zapato"> 
+        </div>
+        <div class="col-6 card-description-zapato">
+            <h3>${zapato.title}</h3> 
+            <p>${zapato.price}</p> 
+        </div>
+        <div class="col-12">
+            <button class="col-12 btn btn-success btnAgregar" data-id="${zapato.id}">Agregar</button>
+            <div class="contenedorBotonQuitarFavorito mt-2">
+                <button class="btnQuitarFavorito" data-id="${zapato.id}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    
+        `;
+        contenedorZapatosFavoritos.appendChild(zapatoCard);
+    });
+
+}
+
+
+function cerrarContenedorFavoritos() {
+
 }
