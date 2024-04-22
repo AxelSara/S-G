@@ -99,7 +99,17 @@ function cargarContenedorFavoritos(valor) {
         contenidoFavoritos();
 
 
-        cerrarContenedorFavoritos();
+        const cerrarContenedorFavoritos = document.querySelector(".cerrarContenedorFavoritos");
+        cerrarContenedorFavoritos.addEventListener("click", function () {
+            const contenedorFavoritos = document.querySelector(".contenedorFavoritos");
+            contenedorFavoritos.remove();
+        });
+
+        // Cierra el menú hamburguesa si está abierto
+        const navbar = document.getElementById("navbarSupportedContent");
+        if (navbar.classList.contains("show")) {
+            navbar.classList.remove("show");
+        }
 
 
 
@@ -112,6 +122,17 @@ function cargarContenedorFavoritos(valor) {
     } else {
         contenedorFavoritos.style.visibility = "hidden";
     }
+
+    // cerrar la navbar al 
+        // const zapatosFavoritos = document.querySelectorAll(".zapatoFavorito");
+        // zapatosFavoritos.forEach(function (zapato) {
+        //     zapato.addEventListener("click", function () {
+        //         const contenedorFavoritos = document.querySelector(".contenedorFavoritos");
+        //         contenedorFavoritos.remove();
+        //     });
+        // });
+
+
 }
 
 
@@ -158,9 +179,5 @@ function contenidoFavoritos() {
 
 
 function cerrarContenedorFavoritos() {
-    const cerrarContenedorFavoritos = document.querySelector(".cerrarContenedorFavoritos");
-    cerrarContenedorFavoritos.addEventListener("click", function () {
-        const contenedorFavoritos = document.querySelector(".contenedorFavoritos");
-        contenedorFavoritos.remove();
-    });
+
 }
