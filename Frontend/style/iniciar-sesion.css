@@ -220,6 +220,7 @@ text-align: right;
 }
 
 .formulario-iniciar-sesion{
+  background-color: #24262b;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -308,9 +309,9 @@ fieldset{
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
   }
-  #espacioFooter{
+ /*  #espacioFooter{
     margin-top: 70;
-  }
+  } */
   
 }
 

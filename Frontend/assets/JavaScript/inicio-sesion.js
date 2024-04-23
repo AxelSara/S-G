@@ -69,19 +69,31 @@ function addUsuario(formulario, usuarios){
         console.log("Usuario verificado");
         console.log("USuario: ", verificacion);
         if(verificacion.email==="correoadmin@gmail.com" && verificacion.contraseña==="contraseñaAdmin"){
-        console.log("Administrador");
+            console.log("Administrador");
+            // guardar el usuario en el localStorage para poder usarlo en direcciones
+            localStorage.setItem(verificacion,"usuarioAdmin"); // saber cual es usuario actual
+            // falta reedirigir a la pagina index
         }
-    } else {
+        //usuario normal 
+        else{
+            // guardar el usuario en el localStorage para poder usarlo en direcciones
+            localStorage.setItem(verificacion,"usuarioActual"); // saber cual es usuario actual
+           // reedirigir
+           const usuarioGuardado = localStorage.getItem
+        }
+    } 
+    
+    else {
         console.log("Usuario no verificado");
+        // Falta mostrar un popup
     }
     
 }
 
 function verificarUsuario(correo, contraseña) {
-    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || []; // registro
     // Verificar si el usuario existe en el localStorage y lo devuelve
     console.log(usuariosGuardados.length);
-    
     return usuariosGuardados.find(usuario => usuario.email === correo && usuario.contraseña === contraseña);
  
 }
