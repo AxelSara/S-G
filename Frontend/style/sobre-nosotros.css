@@ -24,6 +24,171 @@
     /*elimina el scroll del eje x*/
   
   }
+
+  /* ============================================== */
+  /* =================== header =================== */
+  /* ============================================== */
+  
+  
+  #headerZapateria {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--color-header);
+  
+  }
+  
+  .navbar {
+    margin: 20;
+    padding: 0;
+  
+  }
+  
+  .collapse {
+    /*background-color: rgba(128, 128, 128, 0.9);*/
+    /* background-color: rgba(255, 255, 255, 0.9); */
+    z-index: 1000;
+  }
+  
+  .nav-link,
+  .nav-bg,
+  .icons,
+  .icon,
+  #navbar-bg {
+    background-color: var(--color-header);
+    z-index: 1000;
+  }
+  
+
+  
+  .contenedorFavoritos{
+    visibility: hidden;
+    position: fixed;
+    top: 60px;
+    right: 12px;
+    width: 55vh;
+    height: 90vh;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    box-shadow: -2px 0 4% hsl(0 4% 15% / 10%);
+    transition: 0.8s;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 15;
+  
+  }
+  
+  .zapatoFavorito {
+    width: 100%;
+    height: auto; /* Ajusta la altura según el contenido */
+    /* background-color: blue; */
+    box-shadow: -2px 0 4% hsl(0 4% 15% / 10%);
+    transition: 0.8s;
+    position: relative; /* Añade posición relativa */
+    margin-bottom: 10px; 
+    border-radius: 10px; /* Ajusta el radio de la esquina */
+  }
+  
+  .card-img-zapato {
+    width: 100%;
+    max-width: 200px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
+  }
+  
+  .card-img-zapato > img {
+    width: 100%;
+    height: auto; /* Ajusta la altura de la imagen automáticamente */
+  }
+  
+  .contenedorBotonQuitarFavorito {
+    position: absolute;
+    right: -20px;
+    top: -6px;
+    display: flex;
+    justify-content: center; /* Ajusta el contenido horizontalmente */
+    align-items: center; /* Ajusta el contenido verticalmente */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Hace el botón redondo */
+    background-color: rgba(255, 255, 255, 0.5); 
+  }
+  
+  .btnQuitarFavorito {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  #headerZapateria:hover {
+    background-color: rgb(191, 181, 158, 0.8);
+  }
+  
+  #headerZapateria:hover {
+    background-color: rgb(191, 181, 158, 0.8);
+  }
+  
+  #headerZapateria:hover {
+    background-color: rgb(191, 181, 158, 0.8);
+  }
+  
+  /* ============================================== */
+  /* ==================== FOOTER ================== */
+  /* ============================================== */
+  
+
+
+  footer h2 {
+    /*margin: 0 0 10px;*/
+    font-size: 25px;
+    color: white;
+    padding-top: 5%;
+    padding-bottom: 4%;
+  
+  }
+  footer p {
+    margin: 0;
+  }
+  .row a{
+    color: black;
+    font-size: 20px;
+  } 
+  
+  .footer_section{
+    background: #A1C9C1;
+    color: rgb(255 255 255 / 50%);
+    bottom: 0;
+    height: 20%;
+    width: 100%;
+  
+  }
+  
+  .titulo-footer a{
+    display: grid;
+    text-align: center;
+  
+  } 
+  
+  .footer-col .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: #ffffff33;
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: white;
+    transition: all 0.5s ease;
+  }
+  .footer-col .social-links a:hover {
+    color: #24262b;
+    background-color: white;
+  }
+
+
+
   
   /* ===================================================== */
   /* ============ page sobre nosotros ==================== */
@@ -32,7 +197,6 @@
   #nosotros {
     display: flex;
     flex-wrap: nowrap;
-  
     background-color: var(--color-principal);
     height: 600px;
   }
@@ -49,6 +213,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+   margin-top: 0%;
   }
   
   
@@ -250,6 +415,50 @@
   }
     
 
-/* ======================= MEDIA QUERIES ======================== */
 
+
+
+
+
+
+
+
+/* ======================= MEDIA QUERIES ======================== */
+  @media (max-width: 900px) {
+    #headerZapateria {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+  }
+  
+  @media (min-width: 900px) {
+    #headerZapateria {
+      position: fixed;
+      z-index: 1000;
+      background-color: var(--color-header);
+      /* border: 4px solid black; */
+      width: 100%;
+    }
+  
+    .navbar {
+      margin: 0;
+      padding: 0;
+  
+    }
+  
+    .collapse,
+    .nav-link,
+    .nav-bg,
+    .icons,
+    .icon,
+    #navbar-bg {
+      background-color: var(--color-header);
+    }
+  
+    #bannerId {
+      margin-top: 0px;
+    }
+  
+  }
+
+  
   
