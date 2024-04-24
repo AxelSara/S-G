@@ -15,7 +15,6 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    /* background-color: var(--color-principal); */
   }
   
   body {
@@ -25,7 +24,7 @@
   
   }
 
-  #buy {
+  .buy {
     background-color: var(--color-contraste);
     color: var(--color-principal);
   }
@@ -243,6 +242,14 @@ main a {
   #banner-menu {
     display: flex;
     align-items: center;
+  }
+  
+  .button-pr{
+    margin: 0.5rem 0.5rem;
+    padding: 1rem;
+    box-shadow: 0px 0px 0px 2px var(--color-contraste);
+    border: none;
+    border-radius: 0rem;
   }
   
   .banner-pdt {
@@ -464,7 +471,6 @@ main a {
   .card-link button {
     margin: 0rem 0.5rem;
     padding: 0.4rem 0.5rem;
-    /* border-radius:15px; */
   }
   
   .card-description {
@@ -480,18 +486,6 @@ main a {
     display: flex;
     align-items: center;
     justify-content: end;
-  }
-  
-  /* .card-link button{
-    background-color: var(--color-contraste);
-    color: var(--color-principal);
-   } */
-  
-  
-  .card-link button {
-    margin: 0rem 0.5rem;
-    padding: 0.4rem 0.5rem;
-    /* border-radius:15px; */
   }
   
   #swiper-wrapperProductosRecientes {
@@ -557,13 +551,13 @@ main a {
     box-shadow: 0px 0px 0px 3px red;
    } */
   
-  .swiper-button-next:after {
+  /* .swiper-button-next:after {
     margin-top: 83rem;
   }
   
   .swiper-button-prev:after {
     margin-top: 83rem;
-  }
+  } */
   
   @media screen and (max-width: 920px) {
   

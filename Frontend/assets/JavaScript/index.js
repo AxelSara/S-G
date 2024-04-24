@@ -109,7 +109,7 @@ function guardarZapatoFavorito(zapatoFavorito) {
         zapatofavorito.className = "zapatofavorito mt-3";
 
         zapatofavorito.innerHTML = `
-            <div class="card-zapatoFavorito">
+            <!-- <div class="card-zapatoFavorito">
                 <div class="card-img-zapato">
                     <img src="${zapatoFavorito.productImg}" alt="Zapato">
                 </div>
@@ -117,6 +117,26 @@ function guardarZapatoFavorito(zapatoFavorito) {
                     </div>
                         <h3>${zapatoFavorito.title}</h3>
                         <p>$${zapatoFavorito.price}</p>
+                    </div>
+                </div>
+            </div> -->
+            <div class="row zapatoFavorito mt-3">
+                <div class="col-6 card-img-zapato">
+                    <img src="${zapatoFavorito.productImg}" alt="Zapato"> 
+                </div>
+                <div class="col-6 card-description-zapato">
+                    <h3>${zapatoFavorito.title}</h3> 
+                    <p>${zapatoFavorito.price}</p> 
+                </div>
+            <div class="col-12">
+                <button class="col-12 btn btn-success btnAgregar" onclick="addCarritoFav(${zapatoFavorito.id})" data-id="${zapatoFavorito.id}">Agregar</button>
+                <div class="contenedorBotonQuitarFavorito mt-2">
+                    <button class="btnQuitarFavorito" onclick="removeCarritoFav(${zapatoFavorito.id})" data-id="${zapatoFavorito.id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                            <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                        </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -127,6 +147,28 @@ function guardarZapatoFavorito(zapatoFavorito) {
     
         mostrarTaskFavoritos("Agregado a favoritos", "success", "top-end", 3000);
     }
+}
+
+function alert() {
+    const toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+    });
+
+    return toast.fire({
+        title: "Añadido a favoritos",
+        icon: "success",
+        customClass: {
+            popup: 'rounded'
+        }
+    });
 }
 
 const carrito = JSON.parse(localStorage.getItem("carrito"));
@@ -152,6 +194,7 @@ const carrito = JSON.parse(localStorage.getItem("carrito"));
         }
     }
     localStorage.setItem("carrito", JSON.stringify(cart));
+    alert()
   }
 
   const carrusel = async (event) => {

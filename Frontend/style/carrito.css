@@ -40,7 +40,7 @@ h1 {
 
 
 body {
-  background-color: #FFF9EC;
+  background-color: var(--color-principal);
   margin: auto;
 
 }

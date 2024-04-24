@@ -217,6 +217,28 @@ const indexBanner = () => {
     });
 }
 
+function alert() {
+    const toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+    });
+
+    return toast.fire({
+        title: "Añadido a favoritos",
+        icon: "success",
+        customClass: {
+            popup: 'rounded'
+        }
+    });
+}
+
 let cart = [];
 const AddCarritoBanner = async () => {
     const modelo = document.getElementById("Modelo").innerHTML;
@@ -242,6 +264,7 @@ const AddCarritoBanner = async () => {
     }
     localStorage.setItem("carrito", JSON.stringify(cart));
     const carritoLocalStorage = localStorage.getItem("carrito");
+    alert();
 }
 
 const AddCarritoBannerCarrusel1 = async () => {
@@ -268,6 +291,7 @@ const AddCarritoBannerCarrusel1 = async () => {
     }
     localStorage.setItem("carrito", JSON.stringify(cart));
     const carritoLocalStorage = localStorage.getItem("carrito");
+    alert();
 }
 
 const AddCarritoBannerCarrusel2 = async () => {
@@ -294,6 +318,7 @@ const AddCarritoBannerCarrusel2 = async () => {
     }
     localStorage.setItem("carrito", JSON.stringify(cart));
     const carritoLocalStorage = localStorage.getItem("carrito");
+    alert();
 }
 
 const AddCarritoBannerCarrusel3 = async () => {
@@ -320,6 +345,7 @@ const AddCarritoBannerCarrusel3 = async () => {
     }
     localStorage.setItem("carrito", JSON.stringify(cart));
     const carritoLocalStorage = localStorage.getItem("carrito");
+    alert();
 }
 
 imgInit();  
