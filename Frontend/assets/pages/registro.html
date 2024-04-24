@@ -11,101 +11,123 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../../style/registro.css"">
+    <link rel="stylesheet" href="../../style/registro.css">
 </head>
 
 <body>
-   <!--=============== HEADER ===============-->
-   <header id=" headerZapateria">
-    <div class="header-nav">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid" id="navbar-bg" bg-transparent>
-                <a class="iconLogo mt-1" href="#">
-                    <img class="nav-link" src="/Frontend/assets/img/icon/logo.png" alt="LogoS&G" width="100"
-                        height="auto">
-                </a>
-
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+     <!--=============== HEADER ===============-->
+     <header id="headerZapateria">
+        <div class="header-nav">
+           <nav class="navbar navbar-expand-lg">
+              <div class="container-fluid" id="navbar-bg" bg-transparent>
+                 <a class="iconLogo mt-1" href="/index.html">
+                    <img class="nav-link" src="../img/icon/logo.png" alt="LogoS&G" width="100"
+                       height="auto">
+                 </a>
+  
+                 <!-- Boton hamburguesa en pantallas pequeñas -->
+                 <button class="navbar-toggler btnHamburguesa" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="/Frontend/assets/pages/lista-productos.html"
-                                id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Productos
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item"
-                                        href="/Frontend/assets/pages/lista-productos.html">Mujer</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item"
-                                        href="/Frontend/assets/pages/lista-productos.html">Hombre</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Frontend/assets/pages/sobre-nosotros.html">Acerca de
-                                nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Frontend/assets/pages/contactanos.html">Contactanos</a>
-                        </li>
+                 </button>
+  
+                 <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto listaElementosNavbar">
+                       <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="../../../index.html">Inicio</a>
+                       </li>
+                       <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href=""
+                             id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                             Productos
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                             <li><a class="dropdown-item" href="../pages/lista-productos.html">Mujer</a>
+                             </li>
+                             <li>
+                                <hr class="dropdown-divider">
+                             </li>
+                             <!-- Elemento Hombre -->
+                             <li>
+                                <a class="dropdown-item" href="../pages/lista-productos.html">
+                                   Hombre
+                                </a>
+                             </li>
+                          </ul>
+                       </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="../pages/sobre-nosotros.html">Acerca de
+                             nosotros</a>
+                       </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="../pages/contactanos.html">Contactanos</a>
+                       </li>
+  
+                       <li class="nav-item-icon">
+                          <a class="icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cuenta" href="../../assets/pages/iniciar-sesion.html">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-person"
+                                  viewBox="0 0 16 16">
+                                  <path
+                                      d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                              </svg>
+                          </a>
+                      </li>
+  
+                      <li class="nav-item-icon">
+                          <a data-bs-toggle="tooltip" data-bs-placement="bottom" title="Favoritos"   class="botonFavoritoNavbar">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-heart"
+                                  viewBox="0 0 16 16">
+                                  <path
+                                      d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                              </svg>
+                          </a>
+                      </li>
+  
+                      <li class="nav-item-icon">
+                          <a class="icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Carrito" href="../../assets/pages/carrito.html">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-cart2 m-1"
+                                  viewBox="0 0 16 16">
+                                  <path
+                                      d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+                              </svg>
+                          </a>
+                         
+                      </li>
+  
+  
                     </ul>
                     <style>
-                        a {
-                            text-decoration: none;
-                        }
-
-                        .nav-item:hover {
-                            background-color: #B8AA87 !important;
-                            /* Cambia el color de fondo al pasar el mouse */
-                            transition: background-color 0.3s ease;
-                            /* Agrega una transición suave */
-                        }
-
-                        .adminText {
-                            font-size: 8px;
-                        }
+                       a {
+                          text-decoration: none;
+                          margin-right: 12px;
+                       }
+  
+                       .nav-item:hover {
+                          background-color: #B8AA87 !important;
+                          /* Cambia el color de fondo al pasar el mouse */
+                          transition: background-color 0.3s ease;
+                          /* Agrega una transición suave */
+                          border-radius: 20px;
+                       }
+                       .nav-item-icon:hover {
+                                  background-color: #B8AA87 !important;
+                                  /* Cambia el color de fondo al pasar el mouse */
+                                  transition: background-color 0.3s ease;
+                                  /* Agrega una transición suave */
+                                  border-radius: 65px;
+                              }
+  
+                       .adminText {
+                          font-size: 8px;
+                       }
                     </style>
-                    <div class="icons">
-                        <a class="icon" href="/Frontend/assets/pages/login.html">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-person"
-                                viewBox="0 0 16 16">
-                                <path
-                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-                            </svg>
-                        </a>
-                        <a class="icon" href="/Frontend/assets/pages/wishlist.html">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-heart"
-                                viewBox="0 0 16 16">
-                                <path
-                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                            </svg>
-                        </a>
-                        <a class="icon" href="/Frontend/assets/pages/carrito.html">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-cart2 m-1"
-                                viewBox="0 0 16 16">
-                                <path
-                                    d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
-                            </svg>
-                        </a>
-
-                    </div>
-
-                </div>
-        </nav>
-    </div>
-
-    </header>
-    <!--=============== HEADER ===============-->
+                 </div>
+           </nav>
+        </div>
+  
+     </header>
+     <!--=============== HEADER ===============-->
 
     <main class="contenedor_principal_resgistro">
         <div class="row" id="regis">
@@ -152,7 +174,7 @@
                             <input type="checkbox" name="checkTerminosPrivacidad" class="form-check-input"
                                 id="terminosPrivacidad" required>
                             <label class="form-check-label" for="terminosPrivacidad">
-                                Acepto los <a href="../pages/terminos-condiciones.html">terminos y condiciones</a>
+                                Acepto los <a href="../pages/terminos-condiciones.html"><strong id="terminos">terminos y condiciones</strong> </a>
                             </label>
                         </div>
 
@@ -171,7 +193,7 @@
                 </form>
 
                 <div class="cuenta">
-                    <p>¿Ya tienes una cuenta con nosotros? <a href="../pages/iniciar-sesion.html">Iniciar sesión</a></p>
+                    <p id="CuentaExistente">¿Ya tienes una cuenta con nosotros? <a href="../pages/iniciar-sesion.html"><strong id="inicioSecion">Iniciar sesión</strong> </a></p>
 
                 </div>
 
@@ -183,13 +205,14 @@
                     .left-aling {
                         text-align: left !important;
                     }
+                    
                 </style>
             </div>
 
     </main>
 
     <!--=============== FOOTER ===============-->
-    <footer>
+    <footer class="footer" id="footer">
 
         <section class="container-fluid footer_section text-center" id="spacefooter">
             <div class="row content-footer">
@@ -278,6 +301,7 @@
 
 
     <!--=============== SCRIPTS ===============-->
+    <script src="../../assets/JavaScript/navbar.js"></script>
     <script src="../JavaScript/registro-usuario.js"></script>
     <!--------------- BOOTSTRAP --------------->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

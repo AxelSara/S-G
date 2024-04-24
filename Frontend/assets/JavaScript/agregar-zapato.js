@@ -61,17 +61,17 @@ document.addEventListener("DOMContentLoaded", async function () {
             const colorZapato = document.getElementById("color_zapato_agregar");
             const precioZapato = document.getElementById("precio_zapato_agregar");
             const marcaZapato = document.getElementById("marca_zapato_agregar");
-            const generoZapato = document.getElementById("genero_zapato_agregar");
-    
-            const validacion = validarInputs(nombreZapato, colorZapato,precioZapato, marcaZapato,  generoZapato,tallasSeleccionadas, imagenPrincipal.src, imagenFrontal.src, imagenLateral.src, imagenSuperior.src);
+            
+            const validacion = validarInputs(nombreZapato.value, colorZapato.value,precioZapato.value, marcaZapato.value, generoSeleccionado,tallasSeleccionadas, imagenPrincipal.src, imagenFrontal.src, imagenLateral.src, imagenSuperior.src);
             if (validacion) {
+
                 const zapato = {
                     id: zapatos.length + 1,
                     nombre: nombreZapato.value,
                     color: colorZapato.value, 
                     precio: precioZapato.value,
                     marca: marcaZapato.value, 
-                    genero: generoZapato.value, 
+                    genero: generoSeleccionado,
                     tallas: tallasSeleccionadas,
                     stock: 1,
                     imagen_muestra: imagenPrincipal.src,
@@ -83,8 +83,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 // convertir el objeto zapato a una cadena JSON
 
                 const zapatoJSON = JSON.stringify(zapato);
-                console.log("Zapato JSON:", zapatoJSON);
-                
+                console.log("Zapato JSON:", zapatoJSON);         
                 agregarZapatoIndexedDB(zapatoJSON);
 
             }
@@ -228,11 +227,25 @@ function validarInputs(nombre, color, precio, marca, genero, tallasSeleccionadas
         mostrarTaskZapato("Debe seleccionar un género", "error", "top-right", 3500);
         validacion = false;
     }
+    // Validar selección de tallas
+    if (tallasSeleccionadas.length === 0) {
+        mostrarTaskZapato("Debe seleccionar al menos una talla", "error", "top-right", 3000);
+        validacion = false;
+    }
+
+    // Validar selección de género
+    if (!genero) {
+        mostrarTaskZapato("Debe seleccionar un género", "error", "top-right", 3500);
+        validacion = false;
+    }
+
+    // Validar selección de imágenes
     if (imagenPrincipal === imgPredeterminada || imagenFrontal === imgPredeterminada ||
         imagenLateral === imgPredeterminada || imagenSuperior === imgPredeterminada) {
         mostrarTaskZapato("Debe seleccionar las cuatro imágenes", "error", "top-right", 4000);
         validacion = false;
     }
+
     return validacion;
 }
 
