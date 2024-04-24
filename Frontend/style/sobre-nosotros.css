@@ -22,7 +22,7 @@
     font-family: "Inter", sans-serif;
     overflow-x: hidden;
     /*elimina el scroll del eje x*/
-  
+    background-color: var(--color-principal);
   }
   /* ============================================== */
   /* =================== header =================== */
