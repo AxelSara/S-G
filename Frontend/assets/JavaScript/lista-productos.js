@@ -1,6 +1,16 @@
 const rutaJSON = "../../json/productos.json";
 const rutaIMG = "../img/productos/";
 
+const datLS = async () => {
+    const responseJson = await fetch(rutaJSON);
+    const dataLS = await responseJson.json();
+    localStorage.setItem("database", JSON.stringify(dataLS));
+    const dataLocalStorage = JSON.parse(localStorage.getItem("database"));
+    console.log(dataLocalStorage)
+}
+
+datLS();
+
 const findData = (data) => {
     let cards = "";
     data.map(dat => {
@@ -68,9 +78,10 @@ const filterData = (fildata, data) => {
 }
 
 const init = async () => {
-    const response = await fetch(rutaJSON);
-    const data = await response.json();
-    findData(data)
+    const responseJson = await fetch(rutaJSON);
+    const dataLS = await responseJson.json();
+    const dataLocalStorage = JSON.parse(localStorage.getItem("database"));
+    findData(dataLS)
 }
 
 init();

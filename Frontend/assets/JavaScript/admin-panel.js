@@ -7,11 +7,9 @@ const datLS = async () => {
     const dataLS = await responseJson.json();
     localStorage.setItem("database", JSON.stringify(dataLS));
     const dataLocalStorage = JSON.parse(localStorage.getItem("database"));
-    console.log(dataLocalStorage)
 }
 
 datLS();
-
 
 const showData = (data) =>{
     let table = "";
@@ -20,53 +18,56 @@ const showData = (data) =>{
         <tr>
             <th scope="row">${dat.id}</th>
             <td><label>
-                <input type="text" class="input-${dat.id}" value="${dat.modelo}" disabled>
+                <input type="text" class="input-${dat.id}" id="modelo-${dat.id}" value="${dat.modelo}" disabled>
             </label></td>
             <td><label>
-                <input type="text" class="input-${dat.id}" value="${dat.color}" disabled>
+                <input type="text" class="input-${dat.id}" id="color-${dat.id}" value="${dat.color}" disabled>
             </label></td>
             <td><label>
-                <input type="text" class="input-${dat.id}" value="${dat.genero}" disabled>
+                <input type="text" class="input-${dat.id}" id="genero-${dat.id}" value="${dat.genero}" disabled>
             </label></td>
             <td><label>
-                <input type="text" class="input-${dat.id}" value="${dat.precio}" disabled>
+                <input type="text" class="input-${dat.id}" id="precio-${dat.id}" value="${dat.precio}" disabled>
             </label></td>
             <td><label>
-                <input type="text" class="input-${dat.id}" value="${dat.marca}" disabled>
+                <input type="text" class="input-${dat.id}" id="marca-${dat.id}" value="${dat.marca}" disabled>
             </label></td>
             <td><label>
-                <input type="text" class="input-${dat.id}" value="${dat.imgMuestra}" disabled>
+                <input type="text" class="input-${dat.id}" id="muestra-${dat.id}" value="${dat.imgMuestra}" disabled>
             </label></td>
             <td><label>
-                <input type="text" class="input-${dat.id}" value="${dat.imgLateral}" disabled>
+                <input type="text" class="input-${dat.id}" id="lateral-${dat.id}" value="${dat.imgLateral}" disabled>
             </label></td>
             <td><label>
-                <input type="text" class="input-${dat.id}" value="${dat.imgFrontal}" disabled>
+                <input type="text" class="input-${dat.id}" id="frontal-${dat.id}" value="${dat.imgFrontal}" disabled>
             </label></td>
-            <td><label  onmouseover="showImg(${dat.imgSuperior})">
-                <input type="text" class="input-${dat.id}" value="${dat.imgSuperior}" disabled>
+            <td><label>
+                <input type="text" class="input-${dat.id}" id="superior-${dat.id}" value="${dat.imgSuperior}" disabled>
             </label></td>
             <!--<td><img src="${dat.imgMuestra}" alt=""></td>
             <td><img src="${dat.imgLateral}" alt=""></td>
             <td><img src="${dat.imgFrontal}" alt=""></td>
             <td><img src="${dat.imgSuperior}" alt=""></td>-->
-            <td><button id="edit-${dat.id}" title="Editar" onclick="editTable(${dat.id})"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
-          </svg></button></td>
-            <td><button id="edit-${dat.id}" title="Eliminar"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-          </svg></button></td>
+            <td id="edit-${dat.id}">
+                <button title="Editar" onclick="editTable(${dat.id})">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/></svg>
+                </button>
+            </td>
+            <td id="delete-${dat.id}">
+                <button title="Eliminar" onclick="removeTable(${dat.id})">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                    </svg>
+                </button>
+            </td>
         </tr>
         `;
     });
     document.getElementById("admin-table-data").innerHTML = table;
 }
 
-// const init = () => {
-    
-// }
-
-const table = async () => {
+const table = () => {
     // const response = await fetch(rutaJSON);
     // const data = await response.json();
     const dataLocalStorage = JSON.parse(localStorage.getItem("database"));
@@ -102,245 +103,247 @@ const table = async () => {
 
 const agregarZapato = () => {
     document.getElementById("admin-panel").innerHTML = `
-    <div class=" contenedor_principal_agregarZapato">
+    <section class="admin-add">
+        <div class="container-fluid contenedor_principal_agregarZapato">
 
-                <header class="tituloAgregarZapato">
-                    <h1>Agregar zapato</h1>
-                </header>
+        <header class="tituloAgregarZapato">
+            <h1>Agregar zapato</h1>
+        </header>
 
-                <form class="form-group mt-3" id="form">
+        <form class="form-group mt-3" id="form">
 
-                    <div class="row">
-                        <!-- Columna 1 de la fila 1 (campos de entrada)-->
-                        <div class="col-md-8 col-sm-12">
-                            <div class="form-group mt-2">
+            <div class="row">
+                <!-- Columna 1 de la fila 1 (campos de entrada)-->
+                <div class="col-md-8 col-sm-12">
+                    <div class="form-group mt-2">
 
-                                <div>
-                                    <label for="nombreZapatoAgregar" class="form-label">Nombre del zapato</label>
-                                    <input type="text" class="form-control" id="nombre_zapato_agregar"
-                                        name="nombreZapatoAgregar">
-                                </div>
-
-                                <!-- campo color -->
-                                <div>
-                                    <label for="nombreZapatoAgregar" class="form-label">Color</label>
-                                    <input type="text" class="form-control" id="color_zapato_agregar"
-                                        name="nombreZapatoAgregar">
-                                </div>
-
-                                <!-- campo precio -->
-                                <div>
-
-                                    <label for="nombreZapatoAgregar" class="form-label">Precio</label>
-                                    <input type="text" class="form-control" id="precio_zapato_agregar"
-                                        name="nombreZapatoAgregar">
-                                </div>
-
-                                <!-- campo marca -->
-                                <div class="mb-3">
-                                    <label for="nombreZapatoAgregar" class="form-label">Marca</label>
-                                    <input type="text" class="form-control" id="marca_zapato_agregar"
-                                        name="nombreZapatoAgregar">
-                                </div>
-
-
-                                <!-- campo talla -->
-                                <label for="talla-selector">Seleccione las tallas </label>
-
-
-                                <div class="talla-selector">
-
-                                    <div class="talla-checkbox">
-                                        <input type="checkbox" id="talla-24" value="24" name="talla">
-                                        <label for="talla-24">24</label>
-                                    </div>
-
-                                    <div class="talla-checkbox">
-                                        <input type="checkbox" id="talla-24.5" value="24.5" name="talla">
-                                        <label for="talla-24.5">24.5</label>
-                                    </div>
-
-                                    <div class="talla-checkbox">
-                                        <input type="checkbox" id="talla-25" value="25" name="talla">
-                                        <label for="talla-25">25</label>
-                                    </div>
-
-                                    <div class="talla-checkbox">
-                                        <input type="checkbox" id="talla-25.5" value="25.5" name="talla">
-                                        <label for="talla-25.5">25.5</label>
-                                    </div>
-
-                                    <div class="talla-checkbox">
-                                        <input type="checkbox" id="talla-26" value="26" name="talla">
-                                        <label for="talla-26">26</label>
-                                    </div>
-
-                                    <div class="talla-checkbox">
-                                        <input type="checkbox" id="talla-26.5" value="26.5" name="talla">
-                                        <label for="talla-26.5">26.5</label>
-                                    </div>
-
-                                    <div class="talla-checkbox">
-                                        <input type="checkbox" id="talla-27" value="27" name="talla">
-                                        <label for="talla-27">27</label>
-                                    </div>
-
-                                    <div class="talla-checkbox">
-                                        <input type="checkbox" id="talla-27.5" value="27.5" name="talla">
-                                        <label for="talla-27.5">27.5</label>
-                                    </div>
-
-                                    <div class="talla-checkbox">
-                                        <input type="checkbox" id="talla-28" value="28" name="talla">
-                                        <label for="talla-28">28</label>
-                                    </div>
-
-                                    <div class="talla-checkbox">
-                                        <input type="checkbox" id="talla-28.5" value="28.5" name="talla">
-                                        <label for="talla-28.5">28.5</label>
-                                    </div>
-
-                                    <div class="talla-checkbox">
-                                        <input type="checkbox" id="talla-29" value="29" name="talla">
-                                        <label for="talla-29">29</label>
-                                    </div>
-
-                                    <div class="talla-checkbox">
-                                        <input type="checkbox" id="talla-29.5" value="29.5" name="talla">
-                                        <label for="talla-29.5">29.5</label>
-                                    </div>
-
-                                    <div class="talla-checkbox">
-                                        <input type="checkbox" id="talla-30" value="30" name="talla">
-                                        <label for="talla-30">30</label>
-                                    </div>
-
-                                </div>
-                                <div class="talla-mostradas">
-                                    <p>Tallas seleccionadas: <span id="tallas-mostradas">Ninguna</span></p>
-                                </div>
-
-                                <!-- campo  radio boton género -->
-                                <div class="form-group mt-3">
-                                    <h6>Género</h6>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input hidden-radio" type="radio"
-                                            name="inlineRadioOptions" id="inlineHombre1" value="Hombre">
-                                        <label class="form-check-label" for="inlineHombre1">
-                                            <i class="fas fa-male"></i> Hombre
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input hidden-radio" type="radio"
-                                            name="inlineRadioOptions" id="inlineMujer" value="Mujer">
-                                        <label class="form-check-label" for="inlineMujer">
-                                            <i class="fas fa-female"></i> Mujer
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input hidden-radio" type="radio"
-                                            name="inlineRadioOptions" id="inlineUnisex" value="Unisex">
-                                        <label class="form-check-label" for="inlineUnisex">
-                                            <i class="fas fa-genderless"></i> Unisex
-                                        </label>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
+                        <div>
+                            <label for="nombreZapatoAgregar" class="form-label">Nombre del zapato</label>
+                            <input type="text" class="form-control" id="nombre_zapato_agregar"
+                                name="nombreZapatoAgregar">
                         </div>
 
-                        <!-- Columna 2 de la fila 1  (Campo imagen)-->
-                        <div class="col-md-4 col-sm-12 form-group mt-3 contenedorImagenAgregarZapato">
+                        <!-- campo color -->
+                        <div>
+                            <label for="nombreZapatoAgregar" class="form-label">Color</label>
+                            <input type="text" class="form-control" id="color_zapato_agregar"
+                                name="nombreZapatoAgregar">
+                        </div>
 
-                            <!-- contenedor carousel -->
+                        <!-- campo precio -->
+                        <div>
 
-                            <div id="carouselAddZapato" class="carousel slide " data-ride="carousel">
-                                <div class="carousel-inner">
+                            <label for="nombreZapatoAgregar" class="form-label">Precio</label>
+                            <input type="text" class="form-control" id="precio_zapato_agregar"
+                                name="nombreZapatoAgregar">
+                        </div>
 
-                                    <div class="carousel-item active contenedorImagenAgregar">
-                                        <label class="custom-file-label" for="img_captada_principal">Selecciona la
-                                            imagen principal</label>
-                                        <img class="imagenSeleccionada" id="imagenPrincipal"
-                                            src="../img/admin/subir.png" alt="Selecciona una imagen">
-                                        <input type="file" class="form-control-file" id="img_captada_principal"
-                                            readonly>
-                                    </div>
-
-                                    <div class="carousel-item contenedorImagenAgregar">
-                                        <label class="custom-file-label" for="img_captada_frontal">Selecciona una imagen
-                                            frontal</label>
-                                        <img class="imagenSeleccionada" id="imagenFrontal" src="../img/admin/subir.png"
-                                            alt="Selecciona una imagen">
-                                        <input type="file" class="custom-file-input" id="img_captada_frontal">
-                                    </div>
-
-                                    <div class="carousel-item contenedorImagenAgregar">
-                                        <label class="custom-file-label" for="img_captada_lateral">Selecciona una imagen
-                                            lateral</label>
-                                        <img class="imagenSeleccionada" id="imagenLateral" src="../img/admin/subir.png"
-                                            alt="Selecciona una imagen">
-                                        <input type="file" class="custom-file-input" id="img_captada_lateral">
-                                    </div>
-
-                                    <div class="carousel-item contenedorImagenAgregar">
-                                        <label class="custom-file-label" for="img_captada_superior">Selecciona una
-                                            imagen superior</label>
-                                        <img class="imagenSeleccionada" id="imagenSuperior" src="../img/admin/subir.png"
-                                            alt="Selecciona una imagen">
-                                        <input type="file" class="custom-file-input" id="img_captada_superior">
-                                    </div>
+                        <!-- campo marca -->
+                        <div class="mb-3">
+                            <label for="nombreZapatoAgregar" class="form-label">Marca</label>
+                            <input type="text" class="form-control" id="marca_zapato_agregar"
+                                name="nombreZapatoAgregar">
+                        </div>
 
 
-                                </div>
-                                <!-- Botones del carousel -->
-                                <div class="carousel-control-prev" id="previaImagenAgregarZapato"
-                                    data-bs-target="#carouselAddZapato" data-bs-slide="prev">
-                                    <!-- Utiliza un div como el botón circular -->
-                                    <button class="carousel-control-icon" id="botonCarouselAgregarZapato" type="button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-                                        </svg>
-                                    </button>
-                                    <span class="visually-hidden">Previous</span>
-                                </div>
-                                <div class="carousel-control-next" id="siguienteImagenAgregarZapato"
-                                    data-bs-target="#carouselAddZapato" data-bs-slide="next">
-                                    <!-- Utiliza un div como el botón circular -->
-                                    <button class="carousel-control-icon" id="botonCarouselAgregarZapato" type="button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                        </svg>
-                                    </button>
-                                    <span class="visually-hidden">next</span>
-                                </div>
+                        <!-- campo talla -->
+                        <label for="talla-selector">Seleccione las tallas </label>
+
+
+                        <div class="talla-selector">
+
+                            <div class="talla-checkbox">
+                                <input type="checkbox" id="talla-24" value="24" name="talla">
+                                <label for="talla-24">24</label>
+                            </div>
+
+                            <div class="talla-checkbox">
+                                <input type="checkbox" id="talla-24.5" value="24.5" name="talla">
+                                <label for="talla-24.5">24.5</label>
+                            </div>
+
+                            <div class="talla-checkbox">
+                                <input type="checkbox" id="talla-25" value="25" name="talla">
+                                <label for="talla-25">25</label>
+                            </div>
+
+                            <div class="talla-checkbox">
+                                <input type="checkbox" id="talla-25.5" value="25.5" name="talla">
+                                <label for="talla-25.5">25.5</label>
+                            </div>
+
+                            <div class="talla-checkbox">
+                                <input type="checkbox" id="talla-26" value="26" name="talla">
+                                <label for="talla-26">26</label>
+                            </div>
+
+                            <div class="talla-checkbox">
+                                <input type="checkbox" id="talla-26.5" value="26.5" name="talla">
+                                <label for="talla-26.5">26.5</label>
+                            </div>
+
+                            <div class="talla-checkbox">
+                                <input type="checkbox" id="talla-27" value="27" name="talla">
+                                <label for="talla-27">27</label>
+                            </div>
+
+                            <div class="talla-checkbox">
+                                <input type="checkbox" id="talla-27.5" value="27.5" name="talla">
+                                <label for="talla-27.5">27.5</label>
+                            </div>
+
+                            <div class="talla-checkbox">
+                                <input type="checkbox" id="talla-28" value="28" name="talla">
+                                <label for="talla-28">28</label>
+                            </div>
+
+                            <div class="talla-checkbox">
+                                <input type="checkbox" id="talla-28.5" value="28.5" name="talla">
+                                <label for="talla-28.5">28.5</label>
+                            </div>
+
+                            <div class="talla-checkbox">
+                                <input type="checkbox" id="talla-29" value="29" name="talla">
+                                <label for="talla-29">29</label>
+                            </div>
+
+                            <div class="talla-checkbox">
+                                <input type="checkbox" id="talla-29.5" value="29.5" name="talla">
+                                <label for="talla-29.5">29.5</label>
+                            </div>
+
+                            <div class="talla-checkbox">
+                                <input type="checkbox" id="talla-30" value="30" name="talla">
+                                <label for="talla-30">30</label>
                             </div>
 
                         </div>
+                        <div class="talla-mostradas">
+                            <p>Tallas seleccionadas: <span id="tallas-mostradas">Ninguna</span></p>
+                        </div>
 
-                    </div> <!-- Fin de la fila -->
+                        <!-- campo  radio boton género -->
+                        <div class="form-group mt-3">
+                            <h6>Género</h6>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input hidden-radio" type="radio"
+                                    name="inlineRadioOptions" id="inlineHombre1" value="Hombre">
+                                <label class="form-check-label" for="inlineHombre1">
+                                    <i class="fas fa-male"></i> Hombre
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input hidden-radio" type="radio"
+                                    name="inlineRadioOptions" id="inlineMujer" value="Mujer">
+                                <label class="form-check-label" for="inlineMujer">
+                                    <i class="fas fa-female"></i> Mujer
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input hidden-radio" type="radio"
+                                    name="inlineRadioOptions" id="inlineUnisex" value="Unisex">
+                                <label class="form-check-label" for="inlineUnisex">
+                                    <i class="fas fa-genderless"></i> Unisex
+                                </label>
+                            </div>
+                        </div>
 
-                    <!-- Fila 2 -->
 
-                    <div class="row mt-3">
-                        <div class="col-md-12 contenedorBotonAgregarZapato">
-                            <button type="submit" class="btn btn-primary btnSubmitAddZapato">Agregar Zapato</button>
+
+                    </div>
+                </div>
+
+                <!-- Columna 2 de la fila 1  (Campo imagen)-->
+                <div class="col-md-4 col-sm-12 form-group mt-3 contenedorImagenAgregarZapato">
+
+                    <!-- contenedor carousel -->
+
+                    <div id="carouselAddZapato" class="carousel slide " data-ride="carousel">
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active contenedorImagenAgregar">
+                                <label class="custom-file-label" for="img_captada_principal">Selecciona la
+                                    imagen principal</label>
+                                <img class="imagenSeleccionada" id="imagenPrincipal"
+                                    src="../img/admin/subir.png" alt="Selecciona una imagen">
+                                <input type="file" class="form-control-file" id="img_captada_principal"
+                                    readonly>
+                            </div>
+
+                            <div class="carousel-item contenedorImagenAgregar">
+                                <label class="custom-file-label" for="img_captada_frontal">Selecciona una imagen
+                                    frontal</label>
+                                <img class="imagenSeleccionada" id="imagenFrontal" src="../img/admin/subir.png"
+                                    alt="Selecciona una imagen">
+                                <input type="file" class="custom-file-input" id="img_captada_frontal">
+                            </div>
+
+                            <div class="carousel-item contenedorImagenAgregar">
+                                <label class="custom-file-label" for="img_captada_lateral">Selecciona una imagen
+                                    lateral</label>
+                                <img class="imagenSeleccionada" id="imagenLateral" src="../img/admin/subir.png"
+                                    alt="Selecciona una imagen">
+                                <input type="file" class="custom-file-input" id="img_captada_lateral">
+                            </div>
+
+                            <div class="carousel-item contenedorImagenAgregar">
+                                <label class="custom-file-label" for="img_captada_superior">Selecciona una
+                                    imagen superior</label>
+                                <img class="imagenSeleccionada" id="imagenSuperior" src="../img/admin/subir.png"
+                                    alt="Selecciona una imagen">
+                                <input type="file" class="custom-file-input" id="img_captada_superior">
+                            </div>
+
+
+                        </div>
+                        <!-- Botones del carousel -->
+                        <div class="carousel-control-prev" id="previaImagenAgregarZapato"
+                            data-bs-target="#carouselAddZapato" data-bs-slide="prev">
+                            <!-- Utiliza un div como el botón circular -->
+                            <button class="carousel-control-icon" id="botonCarouselAgregarZapato" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                                </svg>
+                            </button>
+                            <span class="visually-hidden">Previous</span>
+                        </div>
+                        <div class="carousel-control-next" id="siguienteImagenAgregarZapato"
+                            data-bs-target="#carouselAddZapato" data-bs-slide="next">
+                            <!-- Utiliza un div como el botón circular -->
+                            <button class="carousel-control-icon" id="botonCarouselAgregarZapato" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </button>
+                            <span class="visually-hidden">next</span>
                         </div>
                     </div>
 
-                </form>
+                </div>
+
+            </div> <!-- Fin de la fila -->
+
+            <!-- Fila 2 -->
+
+            <div class="row mt-3">
+                <div class="col-md-12 contenedorBotonAgregarZapato">
+                    <button type="submit" class="btn btn-primary btnSubmitAddZapato">Agregar Zapato</button>
+                </div>
             </div>
+
+        </form>
+    </div>
+    </section>
     `;
 }
 
 const blank = () => {
     document.getElementById("admin-panel").innerHTML = `
-    <div>
+    <div id="blank-panel">
         <ul>
             <h5>Menú administrador</h5>
             <li>
@@ -372,13 +375,59 @@ const editTable = (id) => {
 
     elements.forEach((e)=> {
         e.disabled = false;
-    })
-    
+    });
+
     document.getElementById(idButton).innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
-    <path d="M11 2H9v3h2z"/>
-    <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
-  </svg>
+        <button title="Guardar" onclick="saveTable(${id})">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+                <path d="M11 2H9v3h2z"/>
+                <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+            </svg>
+        </button>
+    `;
+}
+
+const saveTable = (id) => {
+    const modelo = document.getElementById(`modelo-`+id).value;
+    const color = document.getElementById(`color-`+id).value;
+    const genero = document.getElementById(`genero-`+id).value;
+    const precio = document.getElementById(`precio-`+id).value;
+    const marca = document.getElementById(`marca-`+id).value;
+    const muestra = document.getElementById(`muestra-`+id).value;
+    const lateral = document.getElementById(`lateral-`+id).value;
+    const frontal = document.getElementById(`frontal-`+id).value;
+    const superior = document.getElementById(`superior-`+id).value;
+    const dataLocalStorage = JSON.parse(localStorage.getItem("database"));
+    dataLocalStorage.map(dat => {
+        if(id === dat.id){
+            dat.modelo = modelo;
+            dat.color = color;
+            dat.genero = genero;
+            dat.precio = precio;
+            dat.marca = marca;
+            dat.imgMuestra = muestra;
+            dat.imgLateral = lateral;
+            dat.imgFrontal = frontal;
+            dat.imgSuperior = superior;
+        }
+    })
+
+    localStorage.setItem("database", JSON.stringify(dataLocalStorage));
+    console.log(dataLocalStorage);
+
+    const idInput = `.input-`+id;
+    const idButton = `edit-`+id;
+    const elements = document.querySelectorAll(idInput);
+
+    elements.forEach((e)=> {
+        e.disabled = true;
+    });
+
+    document.getElementById(idButton).innerHTML = `
+        <button title="Editar" onclick="editTable(${id})">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/></svg>
+        </button>
     `;
 }
 

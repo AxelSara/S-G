@@ -168,7 +168,14 @@
   flex-grow: 1;
 }
 
-#admin-panel div{
+#blank-panel{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#blank-panel .admin-table{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -217,7 +224,7 @@
 /*=================Side-menu====================*/
 
 .side-menu-admin{
-  box-shadow: 0px 0px 0px 3px red;
+
   background-color: rgb(178, 171, 153, 0.5);
   height: 80vh;
   width: 10vh;
@@ -228,13 +235,19 @@
   box-sizing: border-box;
 }
 
-.side-menu-admin a{
-  position: relative;
+.side-menu-admin ul{
+  margin: 0;
+  padding: 0rem 0.5rem;
+  list-style-type: none;
 }
 
 .side-menu-admin li{
   padding: 1rem 0rem;
 }
+
+/* .side-menu-admin a{
+  position: relative;
+} */
 
 .side-menu-admin svg{
   color: #979284;
@@ -244,11 +257,20 @@
   color: var(--color-contraste);
 }
 
-.side-menu-admin a:hover{
-  background: #fbc02d;
+.side-menu-admin div:hover{
+  background: var(--color-claro);
 }
 
-.side-menu-admin span{
+.side-menu-list{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.side-menu-list span{
+  /* position: fixed;
+  top: 50%;
+  left: 10%; */
   color: black;
   padding: 1rem;
 }
@@ -257,19 +279,173 @@
   position: relative;
   width: 70px;
   height: 70px;
-  top: 14px;
+  top: 0px;
   text-align: center;
 }
 
-.nav-item-menu{
+/* .nav-item-menu{
   position: relative;
   top: 12px;
   margin-left: 10px;
-}
+} */
 
 main nav:hover{
   width: 280px;
   transition: all 0.5s ease;
 }
 
-/*=================Add====================*/
+/* ======================= Page agregar zapato ======================= */
+
+.contenedor_principal_agregarZapato {
+  /* background-color: var(--color-principal); */
+  /* margin-top: 20px; */
+  /* margin-bottom: 5rem; */
+  /* Reducir la altura del contenedor */
+  height: 80vh;
+  width: 100%;
+  /* z-index: 8; */
+  /* padding-top: 40px; */
+  /* box-shadow: 0px 0px 0px 3px red; */
+}
+
+.tituloAgregarZapato {
+  text-align: left;
+  /* background-color: var(--color-principal); */
+  /* margin-top: 10px; */
+  height: 5vh;
+  z-index: 5;
+}
+
+.contenedorImagenAgregarZapato {
+  /* background-color: var(--color-principal); */
+  /* width: 40%; */
+  height: 50vh;
+  /* z-index: 3; */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 10px -1px rgba(10, 99, 169, 0.16),
+    -7px -10px 10px -1px rgba(255, 255, 255, 0.40);
+}
+
+.contenedorImagenAgregarZapato > img {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+
+.contenedorImagenAgregarZapato .imagenSeleccionada {
+  padding: 5px;
+  width: 100%;
+  /* Rellena el contenedor horizontalmente */
+  height: 40vh;
+  object-fit: cover;
+  /* Escala y recorta la imagen para que encaje en el cuadrado */
+  /* background-color: var(--color-principal); */
+  border: none;
+  backdrop-filter: blur(12px);
+}
+
+
+/* === carousel agregar zapato === */
+
+#botonCarouselAgregarZapato {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-contraste);
+}
+
+#previaImagenAgregarZapato {
+  margin-left: 0;
+  left: 0;
+}
+
+#siguienteImagenAgregarZapato {
+  margin-right: 0;
+  right: 0;
+}
+
+.contenedorImagenAgregar {
+  /* background-color: #645e4e; */
+  text-align: center;
+  margin-bottom: 5px;
+  border-radius: 15px;
+}
+
+/* === seleccionador de talla === */
+.talla-selector {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.talla-checkbox {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.talla-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.talla-checkbox label {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.talla-checkbox input[type="checkbox"]:checked+label {
+  background-color: #0070d2;
+  color: white;
+}
+
+.talla-mostradas {
+  font-weight: bold;
+}
+
+.hidden-radio {
+  display: none;
+}
+
+.form-check-label {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+
+.form-check-input:checked+.form-check-label {
+  background-color: #007bff;
+  color: white;
+}
+
+
+
+
+.contenedorBotonAgregarZapato {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  z-index: 5;
+}
+
+.btnSubmitAddZapato {
+  background-color: var(--color-contraste);
+  color: var(--color-principal);
+  padding: 10px 70px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  transform: scaleY(0.9);
+}
+
