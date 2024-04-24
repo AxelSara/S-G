@@ -79,7 +79,7 @@ function addUsuario(formulario, usuarios){
             // guardar el usuario en el localStorage para poder usarlo en direcciones
             localStorage.setItem(verificacion,"usuarioActual"); // saber cual es usuario actual
            // reedirigir
-            // window.location.href = "index.html";
+            window.location.href = "index.html";
         }
     } 
     
