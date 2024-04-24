@@ -148,38 +148,102 @@
                     <h2>Mis direcciones</h2>
                 </div>
 
-                <div class="col-8 container-izquierda-formulario">
+                <article class="col-8 container-izquierda-formulario">
                     <h3>Formulario</h3>
-                    <form class="form-control">
-                        <div class="row">
-                          <div class="col-5">
-                            <label for="calle">Calle</label>
-                            <input type="text" class="form-control" placeholder="Ingresa tu calle">
-                          </div>
-                          <div class="col-5">
-                            <input type="text" class="form-control" placeholder="Número">
-                          </div>
-                        </div>
-                            <div class="row">
-                              <div class="col-5">
-                                <input type="text" class="form-control" placeholder="Colonia">
-                              </div>
-                              <div class="col-5">
-                                <input type="text" class="form-control" placeholder="">
-                              </div>
+                    <form class="form-control" id="formulario-direcciones-envio">
+                        <!-- Fila 1 -->
+                        <section class="row mt-2">
+
+                            <div class="col-8 col-sm-12">
+                              <label for="nombre_domicilio">Nombre de mi domicilio</label>
+                              <input type="text" class="form-control" placeholder="Ejemplo casa, oficina, edif abuela, etc"
+                                name="nombre_domicilio"                                
+                              >
                             </div>
-                            <div class="row">
-                                <div class="col-5">
-                                  <input type="text" class="form-control" placeholder="First name">
-                                </div>
-                                <div class="col-5">
-                                  <input type="text" class="form-control" placeholder="Last name">
-                                </div>
+
+                            <div class="col-8">
+                                <label for="calleDireccion">Calle</label>
+                                <input type="text" class="form-control" placeholder="Indica tú calle"
+                                  name="calleDireccion"                                
+                                >
+                            </div>
+
+                            <div class="col-2">
+                              <label for="No_exterior">No. Exterior</label>
+                              <input type="text" class="form-control" placeholder="Número"
+                                name="noExterior"
+                              >
+                            </div>
+
+                            <div class="col-2">
+                                <label for="No_interior">No. Interior</label>
+                                <input type="text" class="form-control" placeholder="Número"
+                                  name="noInterior"
+                                >
+                            </div>
+
+                        </section>
+
+                        <!-- Fila 2 -->
+                        <section class="row mt-4">
+                            <div class="col-6">
+                              <label for="codigo_postal">Código postal</label>
+                              <input type="number" class="form-control" placeholder="Código postal"
+                                name="codigo_postal"
+                              >
+                            </div>
+                            <div class="col-5">
+                              <label for="telefono">Telefono</label>
+                              <input type="text" class="form-control" placeholder="Indica tu telefono"
+                                name="telefonoDireccion"
+                              >
+                            </div>
+                        </section>
+
+
+                        <!-- Fila 3 -->
+                        <section class="row mt-4">
+
+                            <div class="col-6">
+                                <label for="Estado">Estado</label>
+                                <input type="text" class="form-control" placeholder="Estado"
+                                  name="estadoDireccion"
+                                >
                               </div>
+
+                            <div class="col-6">
+                                <label for="delegacion_municipio">Delegación o municipio</label>
+                                <input type="text" class="form-control" placeholder="Indica donde vive"
+                                  name="delegacion_municipio"
+                                >
+                            </div>
+   
+                        </section>
+
+                        <section>
+                            <label for="Colonia">Colonia</label>
+                            <input type="text" class="form-control" placeholder="Indica tú colonia"
+                              name="coloniaDireccion"
+                            >
+                        </section>
+
+                        <section >
+                            <label for="indicaciones_especiales">Indicaciones especiales</label>
+                            <input type="text" class="form-control" placeholder="Ej piso, entre calles, referencias, etc"
+                              name="indicaciones_especiales"
+                            >
+                        </section>
+
+
+                        <section id="contenedorBotonGuardarDireccion">
+                            <button type="submit" class="btn btn-primary mt-4">Guardar</button>
+                        </section>
+
+
 
 
                       </form>
-                </div>
+                </article>
 
                 <div class="col-4 container-derecha-direcciones">
                     <h3>Mis direcciones</h3>

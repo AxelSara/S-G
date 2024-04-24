@@ -37,7 +37,7 @@ body {
 }
 
 .container-izquierda-formulario{
-background-color: yellow;
+  background-color: yellow;
 }
 
 .container-derecha-direcciones{
@@ -57,12 +57,16 @@ background-color: blue;
 width: 30%;
 }
 
-
+#contenedorBotonGuardarDireccion{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 /* .campo-formulario-direccion {
  /*  margin-bottom: 10px;  */
 
-fieldset{
+/* fieldset{
   width: 100%;
   margin-top: 3rem;
-}
+} */
 
