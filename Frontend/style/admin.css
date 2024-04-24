@@ -221,15 +221,7 @@
   background-color: rgb(178, 171, 153, 0.5);
   height: 80vh;
   width: 10vh;
-}
 
-.side-menu-admin ul{
-  margin: 0;
-  padding: 0rem 0.5rem;
-  text-decoration: none;
-}
-
-.side-menu-admin{
   overflow: hidden;
   transition: width 0.2s linear;
   box-shadow: 0px 20px 35px #b2ab99;
@@ -259,7 +251,6 @@
 .side-menu-admin span{
   color: black;
   padding: 1rem;
-  flex-wrap: 1;
 }
 
 .side-menu-extended .bi{
