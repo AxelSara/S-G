@@ -539,6 +539,10 @@ a {
   width: 100%; 
 } */
 
+.text-start{
+background-color: var(--color-principal);
+}
+
 #texto_equipo_desarrollo {
   text-align: center;
   color: var(--color-contraste);
