@@ -1,7 +1,22 @@
 //===============JSON==========//
-let dataUsuarios = [];
+document.addEventListener("DOMContentLoaded", function() {
+    
+    let dataUsuarios = [];
+    const formulario = document.querySelector('#formularioRegistro');
 
-const formulario = document.querySelector('#formularioRegistro');
+    formulario.addEventListener('submit',function(ev){
+        ev.preventDefault();
+
+        const validarCamposDeEntrada = validarCamposRegistro();
+
+        if(validarCamposDeEntrada == false){
+            return;
+        }
+        else{
+            procesaTodo(ev, dataUsuarios);
+        }
+    });
+})
 
 
 const procesaTodo = (event) =>{
@@ -17,49 +32,98 @@ const procesaTodo = (event) =>{
     const usuariosLocalStorage = localStorage.getItem("usuarios");
 }
 
-formulario.addEventListener('submit',procesaTodo);
 
-const nombre = document.getElementById("inputNombreRegistro");
-const email = document.getElementById("inputEmailRegistro")
-const telefono = document.getElementById("inputTelefonoRegistro");
-const contraseña = document.getElementById("inputContraseña");
-const contraseñaConfirm = document.getElementById("inputConfirmarContraseña");
-const parrafo = document.getElementById("warnings");
+function validarCamposRegistro(){   
+    let validacion = true;
+    const contenedorErrores = document.querySelector('.contenedor_errores_registro');
 
-formularioRegistro.addEventListener("submit", e =>{
-    e.preventDefault();
-    let warnings = ""; 
-    let entrar = false; 
+
+    const nombre = document.getElementById("inputNombreRegistro");
+    const email = document.getElementById("inputEmailRegistro")
+    const telefono = document.getElementById("inputTelefonoRegistro");
+    const contraseña = document.getElementById("inputContraseña");
+    const contraseñaConfirm = document.getElementById("inputConfirmarContraseña");
+    const parrafo = document.getElementById("warnings");
+
     let regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    parrafo.innerHTML = ""; 
+
     if(nombre.value.length < 4){
-        warnings += 'El nombre no es valido <br>';  
+        contenedorErrores.innerHTML += `
+        <div class="alert alert-danger" role="alert">
+            El correo contiene caracteres no válidos.
+        </div>
+        `;
+        validacion = false; 
     }
     console.log(regexEmail.test(email.value));
     if (!regexEmail.test(email.value)) {
-        warnings += 'El email no es valido <br>';
-        entrar = true;
+        contenedorErrores.innerHTML += `
+        <div class="alert alert-danger" role="alert">
+            El correo contiene caracteres no válidos.
+        </div>
+        `;
+
+        validacion = false; 
+
+        setTimeout(() => {
+            parrafo.innerHTML = "";
+        }, 5500);
     }
     if (telefono.value.length < 10) {
-        warnings += 'El numero de telefono no es valido, debe contener 10 digitos <br>';
-        entrar = true;
+
+        contenedorErrores.innerHTML += `
+        <div class="alert alert-danger" role="alert">
+            El numero de telefono no es valido, debe contener 10 digitos;
+        </div>
+        `;
+
+        validacion = false; 
+
+        setTimeout(() => {
+            contenedorErrores.innerHTML = "";
+        }, 5500);
     }
+
     if (contraseña.value.length < 8 ) {
-        warnings += 'La contraseña no es valida, debe contener por lo menos caracteres <br>';
-        entrar = true;
+
+        contenedorErrores.innerHTML += `
+        <div class="alert alert-danger" role="alert">
+            La contraseña no es valida, debe contener por lo menos caracteres;
+        </div>
+        `;
+
+        validacion = false; 
+
+        setTimeout(() => {
+            contenedorErrores.innerHTML = "";
+        }, 5500);
     }
+
     if (contraseñaConfirm.value.length < 8) {
-        warnings += 'La contraseña no es valida, debe contener por lo menos caracteres <br>';
-        entrar = true;
+        contenedorErrores.innerHTML += `
+        <div class="alert alert-danger" role="alert">
+            La contraseña no es valida, debe contener por lo menos caracteres;
+        </div>
+        `;
+        validacion = false; 
+
+        setTimeout(() => {
+            contenedorErrores.innerHTML = "";
+        }, 5500);
     }
+
     if (contraseña.value != contraseñaConfirm.value) {
-        warnings += 'La contraseña no coincide <br>';
-        entrar = true;
-    }
 
-    if (entrar) {
-        parrafo.innerHTML = warnings; 
-        
+        contenedorErrores.innerHTML += `
+            <div class="alert alert-danger" role="alert">
+                'La contraseña no coincide;
+            </div>
+        `;
+        validacion = false; 
+        setTimeout(() => {
+            contenedorErrores.innerHTML = "";
+        }, 5500);
     }
+}
 
-})
+
