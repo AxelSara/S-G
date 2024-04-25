@@ -270,6 +270,40 @@ fieldset{
     color: var(--color-contraste);
 }
 
+@media (min-width: 768px) and (max-width: 768px) {
+
+  .contenedor-imagen-iniciarsesion {
+    background: rgba(255, 255, 255, 0.112);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    height: 500px;
+    position: relative; /* Asegura que el contenedor de la imagen sea relativo para que otros elementos puedan superponerse sobre él */
+  }
+
+  .formulario-iniciar-sesion {
+    color: #a1c9c1;
+    background-color: #fff9ec;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+    align-items: center;
+    width: 80%; /* Reducido el ancho del formulario */
+    height: auto; /* Establecido en auto para que se ajuste al contenido */
+    z-index: 2; /* Asegura que el formulario esté sobre el contenedor de la imagen */
+    position: relative; /* Restaura la posición relativa */
+    margin-left: auto; /* Centra horizontalmente */
+    margin-right: auto; /* Centra horizontalmente */
+  }
+
+
+
+  #espacioFooter {
+    margin-top: 70px; /* Ajusta el margen superior según sea necesario */
+  }
+}
+
+
 
 @media (min-width: 770px) and (max-width: 998px) {
   .contenedor-principal-iniciarsesion {

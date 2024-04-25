@@ -28,39 +28,7 @@
   /* =================== header =================== */
   /* ============================================== */
   
-  #headerZapateria {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: var(--color-header);
-  
-  }
-  
-  .navbar {
-    margin: 20;
-    padding: 0;
-  
-  }
-  
-  .collapse {
-    /*background-color: rgba(128, 128, 128, 0.9);*/
-    /* background-color: rgba(255, 255, 255, 0.9); */
-    z-index: 1000;
-  }
-  
-  .nav-link,
-  .nav-bg,
-  .icons,
-  .icon,
-  #navbar-bg {
-    background-color: var(--color-header);
-    z-index: 1000;
-  }
-  
-  #bannerId {
-    margin-top: 80px;
-  }
+
   
   .contenedorFavoritos{
     visibility: hidden;
@@ -121,76 +89,6 @@
     padding: 5px;
   }
   
-  #headerZapateria:hover {
-    background-color: rgb(191, 181, 158, 0.8);
-  }
-  
-  #headerZapateria:hover {
-    background-color: rgb(191, 181, 158, 0.8);
-  }
-  
-  #headerZapateria:hover {
-    background-color: rgb(191, 181, 158, 0.8);
-  }
-  
-
-
-  
-  /* ============================================== */
-  /* ==================== FOOTER ================== */
-  /* ============================================== */
-  
-
-
-  footer h2 {
-    /*margin: 0 0 10px;*/
-    font-size: 25px;
-    color: white;
-    padding-top: 5%;
-    padding-bottom: 4%;
-  
-  }
-  footer p {
-    margin: 0;
-  }
-  .row a{
-    color: black;
-    font-size: 20px;
-  } 
-  
-  .footer_section{
-    background: #A1C9C1;
-    color: rgb(255 255 255 / 50%);
-    bottom: 0;
-    height: 20%;
-    width: 100%;
-  
-  }
-  
-  .titulo-footer a{
-    display: grid;
-    text-align: center;
-  
-  } 
-  
-  .footer-col .social-links a {
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    background-color: #ffffff33;
-    margin: 0 10px 10px 0;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 50%;
-    color: white;
-    transition: all 0.5s ease;
-  }
-  .footer-col .social-links a:hover {
-    color: #24262b;
-    background-color: white;
-  }
-
-
 
 /* ==========================================
 ============ page contactanos ============
@@ -275,6 +173,111 @@
     }
   
   }
+
+  @media only screen and (max-width: 768px) {
+
+    .contenedor_principal_contactanos {
+      position: relative;
+      top : 0;
+      /* Reducir la altura del contenedor */
+      margin-top: 60px;
+      left: 0;
+      width: 100%;
+      margin-bottom: 0px;
+      background-color: #fff9ec;
+      height: 40% !important;
+      overflow-x: scroll;
+      margin-bottom: 0;
+    }
+    #imagenFondoContacto{
+      object-fit: cover !important; /* Esto hará que la imagen se ajuste al tamaño del contenedor sin distorsionarla */
+  }
+  
+    .contenedor_imagen_contactanos {
+      background: rgba(255, 255, 255, 0.112);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      height: 30%;
+      width: 100%;
+      padding-right: 0;
+    }
+  
+  
+    .formContactanos {
+      color: #a1c9c1;
+      background-color: #fff9ec;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 50px;
+      align-items: center;
+      width: 50%;
+      height: 45vh;
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.112);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+    .footer{
+      margin-top: 0;
+    }
+  }
+  @media only screen and (max-width: 1024px) {
+    
+    .contenedor_principal_contactanos {
+      position:relative;
+      top : 0;
+      /* Reducir la altura del contenedor */
+      margin-top: 60px;
+      left: 0;
+      right: 0 !important;
+      width: 100%;
+      margin-bottom: 0px;
+      background-color: #fff9ec;
+      height: 30% !important;
+      margin-bottom: 0;
+    }
+    #imagenFondoContacto{
+      object-fit: cover !important;
+  }
+  
+    .contenedor_imagen_contactanos {
+      background: rgba(255, 255, 255, 0.112);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      height: 30%;
+      width: 100%;
+      padding-right: 0;
+    }
+  
+  
+    .formContactanos {
+      color: #a1c9c1;
+      background-color: #fff9ec;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 60px;
+      align-items: center;
+      width: 50%;
+      height: 35vh;
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.112);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+    .footer{
+      margin-top: 0;
+    }
+  }
   
   @media screen and (min-width: 701px) and (max-width: 1119px) {
     .card__content {
@@ -342,7 +345,7 @@
   
   @media (min-width: 770px) and (max-width: 998px) {
     .contenedor_principal_contactanos {
-      height: 100vh;
+      height: 80vh;
       position: relative;
       top: 0;
       /* Reducir la altura del contenedor */
@@ -369,7 +372,7 @@
       margin-top: 60px;
       align-items: center;
       width: 50%;
-      height: 80%;
+      height: 80vh;
       z-index: 2;
       position: absolute;
       top: 0;
@@ -388,7 +391,12 @@
     }
   
     .contenedor_principal_contactanos {
-      top: 0;
+      position: relative;
+      top : 0;
+      /* Reducir la altura del contenedor */
+      margin-top: 40px;
+      left: 0;
+      width: 100%;
       margin-bottom: 0px;
       background-color: #fff9ec;
     }
@@ -404,24 +412,24 @@
     .formContactanos {
       color: #a1c9c1;
       background-color: #fff9ec;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 30%;
+      align-items: center;
+      width: 90%;
+      height: 30vh !important;
+      z-index: 2;
       position: absolute;
       top: 0;
-      /* Reducir la altura del contenedor */
-      margin-top: 0px;
-      left: 0;
-      width: 100%;
-      z-index: 2;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 15px;
     }
-  
-  
   }
   
 
-
-    
-
-
-/* ======================= MEDIA QUERIES ======================== */
+/* ===================== MEDIA QUERIES ======================== */
   @media (max-width: 900px) {
     #headerZapateria {
       background-color: rgba(255, 255, 255, 0.4);
@@ -451,10 +459,53 @@
     #navbar-bg {
       background-color: var(--color-header);
     }
-  .footer{
-   margin-top: 150px;
-  }
+
 
   }
 
+  @media (min-width: 430px) and (max-width: 430px) {
+    
+    #textContactanos {
+      margin-top: 80px;
+    }
   
+    .contenedor_principal_contactanos {
+      position: relative;
+      top : 0;
+      /* Reducir la altura del contenedor */
+      margin-top: 40px;
+      left: 0;
+      width: 100%;
+      margin-bottom: 0px;
+      background-color: #fff9ec;
+    }
+  
+    #textoContactanos,
+    #labelNombre,
+    #labelCorreo,
+    #labelTelefono,
+    #labelMensaje {
+      color: black;
+    }
+  
+    .formContactanos {
+      color: #a1c9c1;
+      background-color: #fff9ec;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 30%;
+      align-items: center;
+      width: 90%;
+      height: 30vh !important;
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 15px;
+    }
+  
+  }
+
+

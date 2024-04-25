@@ -23,46 +23,13 @@ body {
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
   /*elimina el scroll del eje x*/
-
+  background-color: var(--color-principal);
 }
 /* ============================================== */
 /* =================== header =================== */
 /* ============================================== */
 
 
-#headerZapateria {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: var(--color-header);
-
-}
-
-.navbar {
-  margin: 20;
-  padding: 0;
-
-}
-
-.collapse {
-  /*background-color: rgba(128, 128, 128, 0.9);*/
-  /* background-color: rgba(255, 255, 255, 0.9); */
-  z-index: 1000;
-}
-
-.nav-link,
-.nav-bg,
-.icons,
-.icon,
-#navbar-bg {
-  background-color: var(--color-header);
-  z-index: 1000;
-}
-
-#bannerId {
-  margin-top: 80px;
-}
 
 .contenedorFavoritos{
   visibility: hidden;
@@ -123,17 +90,7 @@ body {
   padding: 5px;
 }
 
-#headerZapateria:hover {
-  background-color: rgb(191, 181, 158, 0.8);
-}
 
-#headerZapateria:hover {
-  background-color: rgb(191, 181, 158, 0.8);
-}
-
-#headerZapateria:hover {
-  background-color: rgb(191, 181, 158, 0.8);
-}
 
 /* ============================================== */
 /* ==================== FOOTER ================== */
@@ -259,15 +216,15 @@ body {
   #contenedorZap {
 
       /* max-width: 0%; /* La imagen no puede ser más ancha que el 100% del contenedor */
-      width: 100%;
+      width: 90%;
       margin-top: 20px;
       /* Ajusta según sea necesario */
       max-width: 153px;
       justify-content: center;
       overflow: visible;
 
-
   }
+
 
 }
 
@@ -289,10 +246,11 @@ body {
       margin-right: 0px;
       width: 100%;
       overflow: auto;
-
+      
   }
 
 }
+
 
 
 @media (max-width: 750px) {
@@ -313,6 +271,7 @@ body {
   padding: 20px;
   height: 649px;
   overflow-y: scroll;
+  overflow-x: hidden;
 
 }
 
