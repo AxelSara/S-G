@@ -122,7 +122,9 @@ function actualizarTotal() {
 }
 
 // Función para realizar el pago y limpiar el carrito
+// Función para realizar el pago y limpiar el carrito
 function realizarPago() {
+    // Aquí puedes poner cualquier lógica relacionada con el pago
     // Aquí puedes poner cualquier lógica relacionada con el pago
     console.log("Eso es todo, se está realizando el pago...");
 

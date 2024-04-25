@@ -125,7 +125,7 @@
     background: #A1C9C1;
     color: rgb(255 255 255 / 50%);
     bottom: 0;
-    height: 24vh;
+    height: auto;
     width: 100%;
   }
 
@@ -204,6 +204,65 @@
 
   #bannerId {
     margin-top: 0px;
+  }
+}
+
+@media (min-width: 230px) and (max-width: 575px) {
+  .footer_section{
+     /* background: #A1C9C1; */
+     background-color: rebeccapurple;
+     color: rgb(255 255 255 / 50%);
+     bottom: 0;
+     height: auto;
+     width: 100%;
+   }
+ 
+   .titulo-footer h2 {
+     /*margin: 0 0 10px;*/
+     font-size: 15px !important;
+     color: white;
+     padding-top: 0.5%;
+     padding-bottom: 3%;
+   
+   }
+   .titulo-footer a{
+     display: flex;
+     justify-content: center !important;
+     color: black;
+     font-size: 13px;
+   } 
+   #titulosFooter2,
+   #titulosFooter{
+     flex: 1;
+   }
+     
+   .footer-col .social-links a {
+     display: inline-block;
+     height: 40px;
+     width: 40px;
+     background-color: #ffffff33;
+     margin: 0 10px 10px 0;
+     text-align: center;
+     line-height: 40px;
+     border-radius: 50%;
+     color: white;
+     transition: all 0.5s ease;
+   }
+   .footer-col .social-links a:hover {
+     color: #24262b;
+     background-color: white;
+   }
+  
+ }
+
+ @media (min-width: 576px) and (max-width: 800px) {
+  .footer_section{
+    /* background: #A1C9C1; */
+    background-color: rebeccapurple;
+    color: rgb(255 255 255 / 50%);
+    bottom: 0;
+    height: auto;
+    width: 100%;
   }
 
 }

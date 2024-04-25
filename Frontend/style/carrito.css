@@ -138,8 +138,6 @@ body {
 
 }
 
-/*--------------------------------------*/
-
 
 .container {
   max-width: 100%;
@@ -219,80 +217,3 @@ tr:hover {
   border-radius: 15%;
 
 }
-
-/* ================ header ================ */
-
-#headerZapateria {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: var(--color-header);
-
-}
-
-.navbar {
-  margin: 20;
-  padding: 0;
-
-}
-
-.collapse {
-  /*background-color: rgba(128, 128, 128, 0.9);*/
-  /* background-color: rgba(255, 255, 255, 0.9); */
-  z-index: 1000;
-}
-
-.nav-link,
-.nav-bg,
-.icons,
-.icon,
-#navbar-bg {
-  background-color: var(--color-header);
-  z-index: 1000;
-}
-
-#bannerId {
-  margin-top: 80px;
-}
-
-@media (max-width: 900px) {
-  #headerZapateria{
-    background-color: rgba(255, 255, 255, 0.4);
-  }
-}
-
-@media (min-width: 900px) {
-  #headerZapateria {
-    position: fixed;
-    z-index: 1000;
-    background-color: var(--color-header);
-    /* border: 4px solid black; */
-    width: 100%;
-  }
-
-  .navbar {
-    margin: 0;
-    padding: 0;
-
-  }
-
-  .collapse,
-  .nav-link,
-  .nav-bg,
-  .icons,
-  .icon,
-  #navbar-bg {
-    background-color: var(--color-header);
-  }
-
-  #bannerId {
-    margin-top: 0px;
-  }
-
-
-
-}
-
-
-/* ================ FOOTER ================ */

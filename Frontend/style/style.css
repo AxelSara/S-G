@@ -211,6 +211,19 @@ footer p {
 
 
 
+.row a {
+  color: black;
+  font-size: 20px;
+}
+
+
+.row a {
+  color: black;
+  font-size: 20px;
+}
+
+
+
 .footer_section {
   background: #A1C9C1;
   color: rgb(255 255 255 / 50%);
@@ -225,10 +238,7 @@ footer p {
   background-color: #A1C9C1;
   padding: 20px;
 } */
-/* .contenedorTituloFooter{
-  background-color: #A1C9C1;
-  padding: 20px;
-} */
+
 
 .footer-col .social-links a {
   display: inline-block;

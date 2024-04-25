@@ -53,7 +53,6 @@ body {
 /* ================ FORMULARIO ================ */
 
 .contenedor_formularioRegistro {
-  background-color: rebeccapurple;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,20 +86,30 @@ body {
 }
 
 @media (min-width: 760px) and (max-width: 998px) {
-  .contenedor_principal_resgistro {
+  .contenedor_principal_registro {
+    
     position: relative;
     top: 0;
     margin-top: 0px;
-    left: 0;
     width: 100%;
+    padding: 0;
     margin-bottom: 0px;
     background-color: #fff9ec;
   }
 
   .contenedor_imagen_registro {
-    background: rgba(255, 255, 255, 0.112);
+    background-color: #645E4E;
+    /* background: rgba(255, 255, 255, 0.112); */
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
+  }
+
+  .contenedor_imagen_registro img {
+    width: 102%;
+    height: 101vh;
+    z-index: 1;
+    object-fit: cover;
+    object-position: 0 30%;
   }
 
 
@@ -110,10 +119,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 60px;
     align-items: center;
     width: 50%;
-    height: 80%;
+    height: 100%;
     z-index: 2;
     position: absolute;
     top: 0;
@@ -123,11 +131,6 @@ body {
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
   }
-
-  #espacioFooter {
-    margin-top: 70;
-  }
-
 }
 
 @media (min-width: 230px) and (max-width: 750px) {

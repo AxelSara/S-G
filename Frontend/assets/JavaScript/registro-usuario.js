@@ -2,48 +2,51 @@
 document.addEventListener("DOMContentLoaded", function() {
     
     let dataUsuarios = [];
-    const formulario = document.querySelector('#formularioRegistro');
-
-    formulario.addEventListener('submit',function(ev){
-        ev.preventDefault();
-
-        const validarCamposDeEntrada = validarCamposRegistro();
-
-        if(validarCamposDeEntrada == false){
-            return;
-        }
-        else{
-            procesaTodo(ev, dataUsuarios);
-        }
-    });
-})
-
-
-const procesaTodo = (event) =>{
-    event.preventDefault();
-    dataUsuarios.push({
-        "nombre": nombre.value,
-        "telefono": telefono.value,
-        "email": email.value,
-        "contraseña": contraseña.value
-    });
-    console.log(dataUsuarios);
-    localStorage.setItem("usuarios", JSON.stringify(dataUsuarios));
-    const usuariosLocalStorage = localStorage.getItem("usuarios");
-}
-
-
-function validarCamposRegistro(){   
-    let validacion = true;
-    const contenedorErrores = document.querySelector('.contenedor_errores_registro');
-
+    const formulario = document.querySelector('.formularioRegistro');
 
     const nombre = document.getElementById("inputNombreRegistro");
     const email = document.getElementById("inputEmailRegistro")
     const telefono = document.getElementById("inputTelefonoRegistro");
     const contraseña = document.getElementById("inputContraseña");
     const contraseñaConfirm = document.getElementById("inputConfirmarContraseña");
-    const parrafo = document.getElementById("warnings");
+
+    const usuariosLocalStorage = localStorage.getItem("usuarios") || [];
+    dataUsuarios = JSON.parse(usuariosLocalStorage);
+
+    console.log("======== usuarios existentes ============");
+    console.log(dataUsuarios);
+
+    formulario.addEventListener('submit',function(ev){
+        ev.preventDefault();
+
+        const validarCamposDeEntrada = validarCamposRegistro(nombre, email, telefono, contraseña, contraseñaConfirm);
+
+        console.log("Nombre: ", nombre.value);
+        console.log("Email: ", email.value);
+        console.log("telefono: ", telefono.value);
+        console.log("contraseña: ", contraseña.value);
+        console.log("contraseñaConfirm: ", contraseñaConfirm.value);
+
+
+        if(validarCamposDeEntrada == false){
+            return;
+        }
+        else{
+            dataUsuarios.push({
+                "nombre": nombre.value,
+                "telefono": telefono.value,
+                "email": email.value,
+                "contraseña": contraseña.value
+            });
+            console.log(dataUsuarios);
+            localStorage.setItem("usuarios", JSON.stringify(dataUsuarios));
+        }
+    });
+})
+
+function validarCamposRegistro(nombre, email, telefono, contraseña, contraseñaConfirm){   
+    let validacion = true;
+    const contenedorErrores = document.querySelector('.contenedor_errores_registro');
 
     let regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
@@ -66,7 +69,7 @@ function validarCamposRegistro(){
         validacion = false; 
 
         setTimeout(() => {
-            parrafo.innerHTML = "";
+            contenedorErrores.innerHTML = "";
         }, 5500);
     }
     if (telefono.value.length < 10) {
@@ -124,6 +127,8 @@ function validarCamposRegistro(){
             contenedorErrores.innerHTML = "";
         }, 5500);
     }
+
+    return validacion;
 }
 
 

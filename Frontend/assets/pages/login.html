@@ -5,18 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../img/icon/icon-shoe.png">
-    <title>Productos</title>
+    <title>Login</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../../style/navbar_footer.css">
-    <link rel="stylesheet" href="../../style/lista-productos.css">
+    <link rel="stylesheet" href="../../style/style-registro.css">
 </head>
 
 <body>
-    <!--=============== HEADER ===============-->
+
     <header id="headerZapateria">
         <div class="header-nav">
             <nav class="navbar navbar-expand-lg">
@@ -107,80 +106,85 @@
                     </div>
             </nav>
         </div>
-                    </div>
-            </nav>
-        </div>
 
     </header>
-    <!--=============== HEADER ===============-->
 
-    <main>
-        <section class="contenedor-lista-productos">
-            <div class="encabezado">
-                <h3>Calzado</h3>
+    <main class="contenedor_principal_resgistro">
+        <div class="row">
+            <div class="contenedor_imagen_registro col-6 col-md-12 col-lg-6 d-none d-md-block ">
+                <img src="../img/registro/fondo.jpg" alt="imagenFondo_registro">
             </div>
-            <hr>
-            <div class="row">
-                <div class="filters col-sm-2 d-sm-block d-none">
-                    <div class="sidebar-menu-list" id="sidebar-menu-list-extended">
+            <div class="col-6 col-md-12 col-sm-12 col-lg-6 contenedor_formularioRegistro ">
 
+                <form class="formularioRegistro col-sm-12" id="formularioRegistro">
+
+                    <div class="mb-3 text-center" id="textCrear">
+                        <h1 style="color: black;"><strong>Crea tu cuenta</strong> </h1>
+                        <h2 style="color: gray;">Registra tus datos</h2>
                     </div>
 
-    </header>
-    <!--=============== HEADER ===============-->
-
-    <main>
-        <section class="contenedor-lista-productos">
-            <div class="encabezado">
-                <h3>Calzado</h3>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="filters col-sm-2 d-sm-block d-none">
-                    <div class="sidebar-menu-list" id="sidebar-menu-list-extended">
-
-                    </div>
-
-                </div>
-                <div class="filters col-sm-2 d-sm-none d-block">
-                    <p class="d-inline-flex gap-1" id="encabezado-filtro">
-                        <a data-bs-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false"
-                            aria-controls="collapseMenu">
-                            Filtros
-                        </a>
-                    </p>
-                    <div class="collapse" id="collapseMenu">
-                        <div class="sidebar-menu-list" id="sidebar-menu-list-extended">
-
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="inputNombreRegistro" class="form-label" >Nombre completo</label>
+                            <input type="text" name="inputNombreContactanos" class="form-control" id="inputNombreRegistro"
+                                placeholder="ej. Juan Pérez" required>
                         </div>
-                    </div>
-                    <hr>
-                <div class="filters col-sm-2 d-sm-none d-block">
-                    <p class="d-inline-flex gap-1" id="encabezado-filtro">
-                        <a data-bs-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false"
-                            aria-controls="collapseMenu">
-                            Filtros
-                        </a>
-                    </p>
-                    <div class="collapse" id="collapseMenu">
-                        <div class="sidebar-menu-list" id="sidebar-menu-list-extended">
-
+                        <div class="form-group">
+                            <label for="inputEmailRegistro" class="form-label">Correo electrónico</label>
+                            <input type="email" name="inputEmailRegistro" class="form-control" id="inputEmailRegistro"
+                                placeholder="ej. Juanperez@gmail.com" required>
                         </div>
-                    </div>
-                    <hr>
-                </div>
-                <div class="product-list row col-sm-10" id="lista">
-                <div class="product-list row col-sm-10" id="lista">
 
-                </div>
+
+                        <div class="form-group">
+                            <label for="inputTelefonoRegistro" class="form-label">Telefono</label>
+                            <input type="number" name="inputTelefonoRegistro" class="form-control" id="inputTelefonoRegistro"
+                                placeholder="debes ingresar 10 numeros" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputContraseña" class="form-label">Contraseña</label>
+                            <input type="password" name="inputContraseña" class="form-control" id="inputContraseña"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputConfirmarContraseña" class="form-label">Confirmar contraseña</label>
+                            <input type="password" name="inputConfirmarContraseña" class="form-control"
+                                id="inputConfirmarContraseña" required>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" name="checkTerminosPrivacidad" class="form-check-input"
+                                id="terminosPrivacidad" required>
+                            <label class="form-check-label" for="terminosPrivacidad">He leido y acepto los terminos de
+                                privacidad</label>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" name="checkPromociones" class="form-check-input"
+                                id="promocionesOfertas">
+                            <label class="form-check-label" for="promocionesOfertas">Recibir promociones y ofertas via
+                                correo electronico</label>
+                        </div>
+                        <div class="col-6 col-md-12 col-sm-12 col-lg-6 text-center contenedor_botonCrearCuenta ">
+                            <button type="submit" class="btnCrearCuenta">Crear cuenta</button>
+                        </div>
+                        <div>
+                            <p class="warnings" id="warnings"></p>
+                        </div>
+                </form>
+                <style>
+                    .form-group {
+                        color: gray;
+                    }
+
+                    .left-aling {
+                        text-align: left !important;
+                    }
+                </style>
             </div>
-        </section>
     </main>
 
-    <!-- ================ FOOTER =============== -->
     <footer>
         <section class="container-fluid footer_section text-center">
-            <div class="row content-footer">
+            <div class="row content-footer" id="footerEspacio">
 
                 <div class="col-md-4 col-sm-12 titulo-footer">
                     <h2> ZAPATERÍA P&G</h2>
@@ -235,33 +239,39 @@
 
                 </div>
 
-
             </div>
-
 
         </section>
     </footer>
-    <!-- =============== Fin del footer =============== -->
-    <!-- =============== Fin del footer =============== -->
 </body>
 
 
+<!-- Script del focus y blur -->
+<script>
+    const inputs = document.querySelectorAll(".input");
 
+    function focusFunc() {
+        let parent = this.parentNode;
+        parent.classList.add("focus");
+    }
+
+    function blurFunc() {
+        let parent = this.parentNode;
+        if (this.value == "") {
+            parent.classList.remove("focus");
+        }
+    }
+
+    inputs.forEach((input) => {
+        input.addEventListener("focus", focusFunc);
+        input.addEventListener("blur", blurFunc);
+    });
+
+</script>
 
 
 <!--=============== SCRIPTS ===============-->
-<script src="../JavaScript/lista-productos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!--------------- BOOTSTRAP --------------->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-<!--------------- BOOTSTRAP --------------->
-<!--=============== SCRIPTS ===============-->
-
-<!--=============== SCRIPTS ===============-->
-<script src="../JavaScript/lista-productos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/Frontend/assets/JavaScript/registro-usuario.js"></script>
 <!--------------- BOOTSTRAP --------------->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isAdmin) {
         const adminSection = document.createElement('li');
         adminSection.innerHTML = `
-            <a id="navbarAdmin" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Admin" class="icon" id="adminText" href="./Frontend/assets/pages/agregar-zapato.html" style="color: black;">
+            <a id="navbarAdmin" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Admin" class="icon" id="adminText" href="./Frontend/assets/pages/admin.html" style="color: black;">
                 <small>Admin</small>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-person-gear" viewBox="0 0 16 16"> 
                     <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1zm3.63-4.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/> 
@@ -159,25 +159,25 @@ function contenidoFavoritos() {
         zapatoCard.className = "zapatoFavorito mt-3";
         zapatoCard.innerHTML = `
         <div class="row zapatoFavorito mt-3">
-        <div class="col-6 card-img-zapato">
-            <img src="${zapato.productImg}" alt="Zapato"> 
-        </div>
-        <div class="col-6 card-description-zapato">
-            <h3>${zapato.title}</h3> 
-            <p>${zapato.price}</p> 
-        </div>
+            <div class="col-6 card-img-zapato">
+                <img src="${zapato.productImg}" alt="Zapato"> 
+            </div>
+            <div class="col-6 card-description-zapato">
+                <h3>${zapato.title}</h3> 
+                <p>${zapato.price}</p> 
+            </div>
         <div class="col-12">
-            <button class="col-12 btn btn-success btnAgregar" data-id="${zapato.id}">Agregar</button>
+            <button class="col-12 btn btn-success btnAgregar" onclick="addCarritoFav(${zapato.id})" data-id="${zapato.id}">Agregar</button>
             <div class="contenedorBotonQuitarFavorito mt-2">
-                <button class="btnQuitarFavorito" data-id="${zapato.id}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
-                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
-                </svg>
-                </button>
+                <button class="btnQuitarFavorito" onclick="removeCarritoFav(${zapato.id})" data-id="${zapato.id}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                        <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                    </svg>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
     
     
         `;
@@ -186,7 +186,48 @@ function contenidoFavoritos() {
 
 }
 
-
 function cerrarContenedorFavoritos() {
 
+}
+
+const carritoLocalStorage = JSON.parse(localStorage.getItem("carrito"));
+const addCarritoFav = async (id) => {
+    const response = await fetch("./Frontend/json/productos.json");
+    const data = await response.json();
+    data.map(dat => {
+        if(id == dat.id){
+            carritoLocalStorage.push({
+                "id": dat.id,
+                "modelo": dat.modelo,
+                "color": dat.color,
+                "genero": dat.genero,
+                "talla": 7,
+                "precio": dat.precio,
+                "marca": dat.marca,
+                "imgMuestra": dat.imgMuestra,
+                "imgLateral": dat.imgLateral,
+                "imgFrontal": dat.imgFrontal,
+                "imgSuperior": dat.imgSuperior
+            })
+        }
+    });
+    localStorage.setItem("carrito", JSON.stringify(carritoLocalStorage));
+}
+
+const favoritosLocalStorage = JSON.parse(localStorage.getItem("zapatosFavoritos"));
+const removeCarritoFav = (id) => {
+    let index = 0;
+    console.log(favoritosLocalStorage)
+    favoritosLocalStorage.map(cart => {
+        if(id != cart.id) index++;
+        else if(id == cart.id){
+            // console.log(cart);
+            console.log(index);
+            console.log(favoritosLocalStorage[index])
+            favoritosLocalStorage.splice(index, 1);
+            localStorage.setItem("zapatosFavoritos", JSON.stringify(favoritosLocalStorage));
+            document.querySelector(".contenedorZapatosFavoritos").innerHTML="";
+            contenidoFavoritos();
+        }
+    })
 }
