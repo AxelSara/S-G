@@ -227,17 +227,6 @@ function validarInputs(nombre, color, precio, marca, genero, tallasSeleccionadas
         mostrarTaskZapato("Debe seleccionar un género", "error", "top-right", 3500);
         validacion = false;
     }
-    // Validar selección de tallas
-    if (tallasSeleccionadas.length === 0) {
-        mostrarTaskZapato("Debe seleccionar al menos una talla", "error", "top-right", 3000);
-        validacion = false;
-    }
-
-    // Validar selección de género
-    if (!genero) {
-        mostrarTaskZapato("Debe seleccionar un género", "error", "top-right", 3500);
-        validacion = false;
-    }
 
     // Validar selección de imágenes
     if (imagenPrincipal === imgPredeterminada || imagenFrontal === imgPredeterminada ||

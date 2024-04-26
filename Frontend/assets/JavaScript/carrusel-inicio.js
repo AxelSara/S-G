@@ -4,7 +4,7 @@ const showData = (data) => {
         for (let i = data.length; i >= 0; i--) {
             if(i == dat.id && i > data.length - 7){
                 banner += `
-                <div class="cardProductosRecientes">
+                <div class="swiper-slide cardProductosRecientes">
                     <div class="card-imgProductosRecientes">
                         <img src="./Frontend/assets/img/productos/${dat.imgMuestra}" alt="${dat.imgMuestra}">
                     </div>
@@ -31,7 +31,7 @@ const showData = (data) => {
         document.getElementById("swiper-wrapperProductosRecientes").innerHTML = banner;
       });
   }
-   
+  
   const carrito = JSON.parse(localStorage.getItem("carrito"));
 
   const addCartCarrusel = async (id) =>{
