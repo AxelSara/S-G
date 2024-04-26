@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Estilos css -->
-    <link rel="stylesheet" href="./Frontend/style/style-home.css">
+    <!-- <link rel="stylesheet" href="./Frontend/style/style-home.css"> -->
     <link rel="stylesheet" href="./Frontend/style/navbar_footer.css">
     <link rel="stylesheet" href="./Frontend/style/index.css">
     <!-- icono del footer -->
@@ -53,7 +53,7 @@
                     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto listaElementosNavbar">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                                <a class="nav-link active" aria-current="page" href="index.html" id="navbar_inicio">Inicio</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="./Frontend/assets/pages/lista-productos.html" id="navbarDropdown" role="button"
@@ -62,29 +62,42 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item"
-                                            href="./Frontend/assets/pages/lista-productos.html">Mujer</a></li>
+                                            href="./Frontend/assets/pages/lista-productos.html"
+                                            id="navbar_listaProductosHombre"
+                                            >Mujer</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
                                     <!-- Elemento Hombre -->
                                     <li>
                                         <a class="dropdown-item"
-                                            href="./Frontend/assets/pages/lista-productos.html">
+                                            href="./Frontend/assets/pages/lista-productos.html"
+                                            id="navbar_listaProductosMujer"
+                                            
+                                            >
                                             Hombre
                                         </a>
                                     </li>
                                 </ul>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link" href="./Frontend/assets/pages/sobre-nosotros.html">Acerca de
+                                <a class="nav-link" id="navbar_sobreNosotros" href="./Frontend/assets/pages/sobre-nosotros.html">Acerca de
                                     nosotros</a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link" href="./Frontend/assets/pages/contactanos.html">Contactanos</a>
+                                <a class="nav-link" href="./Frontend/assets/pages/contactanos.html"
+                                    id="navbar_contactanos"
+                                >
+                                    Contactanos
+                                </a>
                             </li>
 
                             <li class="nav-item-icon">
-                                <a class="icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cuenta" href="./Frontend/assets/pages/iniciar-sesion.html">
+                                <a class="icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cuenta" href="./Frontend/assets/pages/loginRegistro.html"
+                                id="navbar_cuenta"
+                                >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-person"
                                         viewBox="0 0 16 16">
                                         <path
@@ -94,7 +107,7 @@
                             </li>
 
                             <li class="nav-item-icon">
-                                <a data-bs-toggle="tooltip" data-bs-placement="bottom" title="Favoritos"   class="botonFavoritoNavbar">
+                                <a data-bs-toggle="tooltip" data-bs-placement="bottom" title="Favoritos"   class="botonFavoritoNavbar" id="navbar_favoritos">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-heart"
                                         viewBox="0 0 16 16">
                                         <path
@@ -104,7 +117,7 @@
                             </li>
 
                             <li class="nav-item-icon">
-                                <a class="icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Carrito" href="./Frontend/assets/pages/carrito.html">
+                                <a class="icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Carrito" href="./Frontend/assets/pages/carrito.html" id="navbar_carrito">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-cart2 m-1"
                                         viewBox="0 0 16 16">
                                         <path
@@ -156,9 +169,9 @@
             <div class=" banner d-none d-md-block">
                 <div class="slider-banner">
                     <div class="row">
-                        <div class="description col-md-4  col-lg-5">
+                        <div class="description col-md-4 col-lg-5 col-sm-6">
                             <div class="row">
-                                <div class="banner-content col-md-3 d-none d-md-block">
+                                <div class="banner-content col-md-3 d-none d-md-block" id="index-buttons">
                                     <ul class="slide_navigation" id="banner__menu">
                                         <li id="li1"><a id="a1" href="#" class="active">01</a></li>
                                         <li id="li2"><a id="a2" href="#">02</a></li>
@@ -185,13 +198,13 @@
                             </div>
                         </div>
 
-                        <div class="slides-banner col-md-8 col-lg-7" id="img__banner">
+                        <div class="slides-banner col-md-8 col-lg-7 col-sm-6" id="img__banner">
 
                         </div>
                     </div>
 
                     <div class="indicarContenidoAbajo" id="showBottomContent">
-                        <button id="scrollButton" onclick="scrollDown()">
+                        <button id="scrollButton" onclick="scrollPageDown()">
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
                               <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v10.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 12.293V1.5A.5.5 0 0 1 8 1z"/>
                             </svg> -->
@@ -203,9 +216,6 @@
                     </div>
 
                 </div>
-
-
-
 
             </div>
 
@@ -379,6 +389,70 @@
             productosRecientesSection.scrollIntoView({ behavior: 'smooth' }); // se llama al metodo scrollIntoView y genera una animacion de deplazamiento 
         }
     }
+
+
+    const navbar_inicio = document.getElementById("navbar_inicio");
+
+    const navbar_listaProductosHombre = document.getElementById("navbar_listaProductosHombre");
+    const navbar_listaProductosMujer = document.getElementById("navbar_listaProductosMujer");
+
+    const navbar_sobreNosotros = document.getElementById("navbar_sobreNosotros");
+    const navbar_contactanos = document.getElementById("navbar_contactanos");
+    // const navbar_productos = document.getElementById("navbar_productos");
+    const navbar_cuenta = document.getElementById("navbar_cuenta");
+
+    const navbar_carrito = document.getElementById("navbar_carrito");
+
+    // saber si se presiono navbar_sobreNosotros
+
+    navbar_inicio.addEventListener("click", () => {
+        console.log("SE hizo click sobre inicio")
+        window.location.href = "index.html";
+    });
+
+
+    navbar_listaProductosHombre.addEventListener("click", () => {
+        console.log("SE hizo click sobre hombre")
+        window.location.href = "./Frontend/assets/pages/lista-productos.html";
+    });
+
+
+    navbar_listaProductosMujer.addEventListener("click", () => {    
+        console.log("SE hizo click sobre mujer")
+        window.location.href = "./Frontend/assets/pages/lista-productos.html";
+    });
+
+
+    navbar_sobreNosotros.addEventListener("click", () => {
+        console.log("SE hizo click sobre nosotros")
+        window.location.href = "./Frontend/assets/pages/sobre-nosotros.html";
+    });
+
+
+    navbar_contactanos.addEventListener("click", () => {
+        console.log("SE hizo click sobre nosotros")
+        window.location.href = "./Frontend/assets/pages/contactanos.html";
+    });
+
+
+    // navbar_productos.addEventListener("click", () => {
+    //     // scrollDown();
+    //     console.log("SE hizo click sobre nosotros")
+    //     window.location.href = "./Frontend/assets/pages/sobre-nosotros.html";
+    // });
+
+    navbar_cuenta.addEventListener("click", () => {
+        console.log("SE hizo click sobre cuenta")
+        window.location.href = "./Frontend/assets/pages/loginRegistro.html";
+    });
+
+    navbar_carrito.addEventListener("click", () => {
+        console.log("SE hizo click sobre carrito")
+        window.location.href = "./Frontend/assets/pages/carrito.html";
+    });
+
+
+
 
     </script>
 

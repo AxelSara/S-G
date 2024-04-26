@@ -1,8 +1,8 @@
 //===============JSON==========//
+    let dataUsuarios = [];
 document.addEventListener("DOMContentLoaded", function() {
     
-    let dataUsuarios = [];
-    const formulario = document.querySelector('#formularioRegistro');
+    const formulario = document.querySelector('.formularioRegistro');
 
     formulario.addEventListener('submit',function(ev){
         ev.preventDefault();
@@ -22,10 +22,10 @@ document.addEventListener("DOMContentLoaded", function() {
 const procesaTodo = (event) =>{
     event.preventDefault();
     dataUsuarios.push({
-        "nombre": nombre.value,
-        "telefono": telefono.value,
-        "email": email.value,
-        "contraseña": contraseña.value
+        "nombre": document.getElementById("inputNombreRegistro").value,
+        "telefono": document.getElementById("inputTelefonoRegistro").value,
+        "email": document.getElementById("inputEmailRegistro").value,
+        "contraseña": document.getElementById("inputContraseña").value
     });
     console.log(dataUsuarios);
     localStorage.setItem("usuarios", JSON.stringify(dataUsuarios));
@@ -39,7 +39,7 @@ function validarCamposRegistro(){
 
 
     const nombre = document.getElementById("inputNombreRegistro");
-    const email = document.getElementById("inputEmailRegistro")
+    const email = document.getElementById("inputEmailRegistro");
     const telefono = document.getElementById("inputTelefonoRegistro");
     const contraseña = document.getElementById("inputContraseña");
     const contraseñaConfirm = document.getElementById("inputConfirmarContraseña");
@@ -84,11 +84,11 @@ function validarCamposRegistro(){
         }, 5500);
     }
 
-    if (contraseña.value.length < 8 ) {
+    if (contraseña.value.length < 9 ) {
 
         contenedorErrores.innerHTML += `
         <div class="alert alert-danger" role="alert">
-            La contraseña no es valida, debe contener por lo menos caracteres;
+            La contraseña no es valida, debe contener por lo menos 9 caracteres;
         </div>
         `;
 
@@ -99,10 +99,10 @@ function validarCamposRegistro(){
         }, 5500);
     }
 
-    if (contraseñaConfirm.value.length < 8) {
+    if (contraseñaConfirm.value.length < 9) {
         contenedorErrores.innerHTML += `
         <div class="alert alert-danger" role="alert">
-            La contraseña no es valida, debe contener por lo menos caracteres;
+            La contraseña no es valida, debe contener por lo menos 9 caracteres;
         </div>
         `;
         validacion = false; 

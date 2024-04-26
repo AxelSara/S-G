@@ -10,22 +10,31 @@ document.addEventListener('DOMContentLoaded', function(event){
 });
 
 // ===================== Sección carrousel ===============
-const showData = (data,event) => {
-    let banner = "";
-    return data.reverse().map(dat => {
+const showData = (data, event) => {
+    const banner = document.querySelector("#swiper-wrapperProductosRecientes");
+
+    console.log("========== banner ===========");
+    console.log("banner: ", banner);
+
+    data.reverse().forEach(dat => {
         for (let i = data.length; i >= 0; i--) {
-            if(i == dat.id && i > data.length - 7){
-                banner += `
-                <div class="swiper-slide cardProductosRecientes">
-                    <div class="card-imgProductosRecientes">
-                        <img src="./Frontend/assets/img/productos/${dat.imgMuestra}" id="${dat.id}" alt="${dat.imgMuestra}">
-                    </div>
+            if (i == dat.id && i > data.length - 7) {
+                const cardProductos = document.createElement("div");
+                cardProductos.classList.add("swiper-slide");
+                cardProductos.classList.add("cardProductosRecientes");
+
+                cardProductos.innerHTML = `
                     <div class="contenedor_Botonfavorito">
                         <button class="boton_favorito">
                           <i class="fas fa-heart"></i>
                         </button>
                     </div>
-                    <div class="row">
+
+                    <div class="card-imgProductosRecientes">
+                        <img src="./Frontend/assets/img/productos/${dat.imgMuestra}" id="${dat.id}" alt="${dat.imgMuestra}">
+                    </div>
+
+                    <div class="row card-datosProductosRecientes">
                         <div class="card-description col-5">
                             <div class="card-title">
                                 <h4>${dat.modelo} ${dat.color}</h4>
@@ -40,13 +49,14 @@ const showData = (data,event) => {
                             </div>
                         </div>
                     </div>
-                </div>
                 `;
+
+                banner.appendChild(cardProductos);
             }
         }
-        document.getElementById("swiper-wrapperProductosRecientes").innerHTML = banner;
     });
 }
+
 
 function addZapatoFavorito(button) {
 

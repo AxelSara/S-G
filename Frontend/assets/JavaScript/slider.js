@@ -350,8 +350,8 @@ const AddCarritoBannerCarrusel3 = async () => {
 
 imgInit();  
 
-const scrollDown = () => {
-    const landingPage = document.getElementById("recent-products-home");
+const scrollPageDown = () => {
+    const landingPage = document.getElementById("productosRecientesSection");
     landingPage.scrollIntoView({behavior: 'smooth'})
     document.getElementById("showBottomContent").innerHTML= `
         <button id="scrollButton" onclick="scrollUp()">
@@ -370,7 +370,7 @@ const scrollUp = () => {
     const landingPage = document.getElementById("banner-home");
     landingPage.scrollIntoView({behavior: 'smooth'})
     document.getElementById("showBottomContent").innerHTML= `
-        <button id="scrollButton" onclick="scrollDown()">
+        <button id="scrollButton" onclick="scrollPageDown()">
             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v10.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 12.293V1.5A.5.5 0 0 1 8 1z"/>
             </svg> -->

@@ -32,7 +32,7 @@ const findData = (data) => {
                         <p class="list-card-precio">$${dat.precio}.00</p>
                     </div>
                     <div class="list-card-button col-7">
-                        <button>Comprar</button>
+                        <a href="./producto.html" onclick="producto(${dat.id})">Comprar</a>
                     </div>
                 </div>
             </div>
@@ -40,6 +40,11 @@ const findData = (data) => {
         `;
     });
     document.getElementById("lista").innerHTML = cards;
+}
+
+const producto = () => {
+    const idProducto = id;
+    localStorage.setItem("id-producto", JSON.stringify(idProducto));
 }
 
 const filterData = (fildata, data) => {

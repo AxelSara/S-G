@@ -1,4 +1,9 @@
+
 document.addEventListener("DOMContentLoaded", async function () {
+
+    console.log("===== DOM cargado de agregar zapato =====");
+
+
     const contenedor_principal_agregarZapato = document.querySelector(".contenedor_principal_agregarZapato");
     const inputImgAgregarPrincipal = document.querySelector("#img_captada_principal");
     const inputImgAgregarFrontal = document.querySelector("#img_captada_frontal");
@@ -11,6 +16,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     const imagenSuperior = document.getElementById("imagenSuperior");
 
     const btnSubmit = document.querySelector(".btnSubmitAddZapato");
+    console.log(" ===== Boton ============");
+    console.log(btnSubmit);
+
+
+
+
     let tallasSeleccionadas = [];
 
 
@@ -253,9 +264,9 @@ async function agregarZapatoIndexedDB(zapatoJSON) {
         request.onsuccess = function(event) {
             console.log("Zapato agregado a IndexedDB con éxito.");
             mostrarTaskZapato("Zapato agregado correctamente:","success","top-end", 3000);
-            // setTimeout(function() {
-            //     location.reload();
-            // }, 3000);
+            setTimeout(function() {
+                location.reload();
+            }, 3000);
 
 
         };
