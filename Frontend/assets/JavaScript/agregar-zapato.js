@@ -1,4 +1,9 @@
+
 document.addEventListener("DOMContentLoaded", async function () {
+
+    console.log("===== DOM cargado de agregar zapato =====");
+
+
     const contenedor_principal_agregarZapato = document.querySelector(".contenedor_principal_agregarZapato");
     const inputImgAgregarPrincipal = document.querySelector("#img_captada_principal");
     const inputImgAgregarFrontal = document.querySelector("#img_captada_frontal");
@@ -11,78 +16,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     const imagenSuperior = document.getElementById("imagenSuperior");
 
     const btnSubmit = document.querySelector(".btnSubmitAddZapato");
-    const btnSubmit = document.querySelector(".btnSubmitAddZapato");
+    console.log(" ===== Boton ============");
+    console.log(btnSubmit);
+
     let tallasSeleccionadas = [];
-
-
-
-
-        // Manejo de los eventos de clic para los label que actúan como botones de radio
-        const labels = document.querySelectorAll('.form-check-label');
-        let generoSeleccionado = null; // Variable para almacenar el valor del género seleccionado
-    
-        labels.forEach(function(label) {
-            label.addEventListener('click', function(e) {
-                // Eliminar la clase 'selected' de todos los labels
-                labels.forEach(function(label) {
-                    label.classList.remove('selected');
-                });
-                // Añadir la clase 'selected' al label clickeado
-                this.classList.add('selected');
-    
-                // Obtener el valor del botón de radio asociado
-                const radio = document.getElementById(this.getAttribute('for'));
-                generoSeleccionado = radio.value; // Asignar el valor del botón de radio a la variable generoSeleccionado
-            });
-        });
-
-
-
-
-
-    // cargar el contenido del archivo JSON existente
-    cargarZapatos().then(zapatos => {
-        mostrarTaskZapato("Zapatos cargados correctamente","info","top-left", 3000);
-        console.log("Total de zapatos:", zapatos.length);
-
-        // borrarTodosLosZapatos().then(() => {
-        //     console.log("Todos los zapatos han sido borrados.");
-            
-        // }).catch(error => {
-        //     console.error("Error al borrar todos los zapatos:", error);
-           
-        // });
-
-
-        // Evento  click del botón
-        btnSubmit.addEventListener("click", function (ev) {
-            ev.preventDefault();
-    
-            const nombreZapato = document.getElementById("nombre_zapato_agregar");
-            const colorZapato = document.getElementById("color_zapato_agregar");
-            const precioZapato = document.getElementById("precio_zapato_agregar");
-            const marcaZapato = document.getElementById("marca_zapato_agregar");
-            
-            const validacion = validarInputs(nombreZapato.value, colorZapato.value,precioZapato.value, marcaZapato.value, generoSeleccionado,tallasSeleccionadas, imagenPrincipal.src, imagenFrontal.src, imagenLateral.src, imagenSuperior.src);
-            if (validacion) {
-
-                const zapato = {
-                    id: zapatos.length + 1,
-                    nombre: nombreZapato.value,
-                    color: colorZapato.value, 
-                    precio: precioZapato.value,
-                    marca: marcaZapato.value, 
-                    genero: generoSeleccionado,
-                    tallas: tallasSeleccionadas,
-                    stock: 1,
-                    imagen_muestra: imagenPrincipal.src,
-                    img_frontal: imagenFrontal.src,
-                    img_lateral: imagenLateral.src,
-                    img_superior: imagenSuperior.src
-                };
-
-
-
         // Manejo de los eventos de clic para los label que actúan como botones de radio
         const labels = document.querySelectorAll('.form-check-label');
         let generoSeleccionado = null; // Variable para almacenar el valor del género seleccionado
@@ -148,19 +85,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                 };
 
                 // convertir el objeto zapato a una cadena JSON
-                // convertir el objeto zapato a una cadena JSON
-
-                const zapatoJSON = JSON.stringify(zapato);
-                console.log("Zapato JSON:", zapatoJSON);         
-                agregarZapatoIndexedDB(zapatoJSON);
-
-            }
-        });
-    })
-    .catch(error => {
-        console.error("Error al cargar los zapatos:", error);
-    });
-    
 
                 const zapatoJSON = JSON.stringify(zapato);
                 console.log("Zapato JSON:", zapatoJSON);         
@@ -205,40 +129,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     });
 });
-
-
-
-
-function openDatabase() {
-    const dbName = "ZapatosDB";
-    const dbVersion = 1;
-    return new Promise((resolve, reject) => {
-        const openRequest = indexedDB.open(dbName, dbVersion);
-
-        openRequest.onupgradeneeded = function(event) {
-            const db = event.target.result;
-            const objectStore = db.createObjectStore("Zapatos", { keyPath: "id", autoIncrement: true });
-            objectStore.createIndex("nombre", "nombre", { unique: false });
-        };
-
-        openRequest.onsuccess = function(event) {
-            db = event.target.result;
-            console.log("Base de datos abierta con éxito");
-            resolve(db);
-        };
-
-        openRequest.onerror = function(event) {
-            console.error("Error al abrir la base de datos:", event.target.error);
-            reject(event.target.error);
-        };
-    });
-}
-        });
-    });
-});
-
-
-
 
 function openDatabase() {
     const dbName = "ZapatosDB";
@@ -288,26 +178,6 @@ async function cargarZapatos() {
     } catch (error) {
         console.error("Error al abrir la base de datos:", error);
         throw error; // Propagar el error si la base de datos no se puede abrir
-        let db = await openDatabase();
-        const transaction = db.transaction(["Zapatos"], "readonly");
-        const objectStore = transaction.objectStore("Zapatos");
-        const request = objectStore.getAll();
-
-        // TODO: Convertir la solicitud en una promesa
-        return new Promise((resolve, reject) => {
-            request.onsuccess = function(event) {
-                console.log("Zapatos cargados desde IndexedDB:", request.result);
-                resolve(request.result); // Resolver la promesa con los resultados
-            };
-
-            request.onerror = function(event) {
-                console.error("Error al cargar los zapatos desde IndexedDB:", event.target.error);
-                reject(event.target.error); // Rechazar la promesa si hay un error
-            };
-        });
-    } catch (error) {
-        console.error("Error al abrir la base de datos:", error);
-        throw error; // Propagar el error si la base de datos no se puede abrir
     }
 }
 
@@ -334,9 +204,7 @@ function cambiarImagen(inputImgZapato, imagenSeleccionada) {
 }
 
 function validarInputs(nombre, color, precio, marca, genero, tallasSeleccionadas, imagenPrincipal, imagenFrontal, imagenLateral, imagenSuperior) {
-function validarInputs(nombre, color, precio, marca, genero, tallasSeleccionadas, imagenPrincipal, imagenFrontal, imagenLateral, imagenSuperior) {
     const imgPredeterminada = "https://zapaterias-s-g.netlify.app/frontend/assets/img/admin/subir.png";
-    console.log("imagen principal:", imagenPrincipal);
     console.log("imagen principal:", imagenPrincipal);
     let validacion = true;
 
@@ -362,11 +230,8 @@ function validarInputs(nombre, color, precio, marca, genero, tallasSeleccionadas
     }
 
     // Validar selección de imágenes
-
-    // Validar selección de imágenes
     if (imagenPrincipal === imgPredeterminada || imagenFrontal === imgPredeterminada ||
         imagenLateral === imgPredeterminada || imagenSuperior === imgPredeterminada) {
-        mostrarTaskZapato("Debe seleccionar las cuatro imágenes", "error", "top-right", 4000);
         mostrarTaskZapato("Debe seleccionar las cuatro imágenes", "error", "top-right", 4000);
         validacion = false;
     }
@@ -374,10 +239,6 @@ function validarInputs(nombre, color, precio, marca, genero, tallasSeleccionadas
     return validacion;
 }
 
-
-
-
-async function agregarZapatoIndexedDB(zapatoJSON) {
 
 
 
@@ -393,9 +254,9 @@ async function agregarZapatoIndexedDB(zapatoJSON) {
         request.onsuccess = function(event) {
             console.log("Zapato agregado a IndexedDB con éxito.");
             mostrarTaskZapato("Zapato agregado correctamente:","success","top-end", 3000);
-            // setTimeout(function() {
-            //     location.reload();
-            // }, 3000);
+            setTimeout(function() {
+                location.reload();
+            }, 3000);
 
 
         };
@@ -405,15 +266,12 @@ async function agregarZapatoIndexedDB(zapatoJSON) {
         };
     } catch (error) {
         console.error("Error al abrir la base de datos:", error);
-        console.error("Error al abrir la base de datos:", error);
     }
 }
 
 function mostrarTaskZapato(mensaje, iconoTask, position = "top-end", tiempoVisible = 3000) {
-function mostrarTaskZapato(mensaje, iconoTask, position = "top-end", tiempoVisible = 3000) {
     const toast = Swal.mixin({
         toast: true,
-        position: position,
         position: position,
         showConfirmButton: false,
         timer: tiempoVisible,
