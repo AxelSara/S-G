@@ -255,12 +255,15 @@
 
 
 @media (min-width: 1024px) and (max-width: 1024px) {
+  .footer{
+    margin-top: 30% !important;
+  }
     .footer_section{
         background: #A1C9C1;
         color: rgb(255 255 255 / 50%);
         bottom: 0;
-        height: 71.2vh ;
-        width: 100%;
+        height: 20vh ;
+        width: 100% !important;
       }
     
     
