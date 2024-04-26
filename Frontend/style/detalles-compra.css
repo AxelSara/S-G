@@ -15,13 +15,13 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    /*background-color: var(--color-principal); */
+    background-color: var(--color-principal);
   }
   
   body {
     font-family: "Inter", sans-serif;
     overflow-x: hidden;/*elimina el scroll del eje x*/
-    /* background-color: var(--color-principal); */
+    background-color: var(--color-principal);
    }
 
 .contenedor_principal_detallesCompra{

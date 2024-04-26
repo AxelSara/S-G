@@ -12,9 +12,9 @@
 
   /*==================Agregar zapato================*/
 
-  /* .contenedor_principal_agregarZapato {
+  .contenedor_principal_agregarZapato {
     background-color: var(--color-principal);
-  } */
+  }
   
   @media (max-width: 768px) {
     .contenedor_principal_agregarZapato {

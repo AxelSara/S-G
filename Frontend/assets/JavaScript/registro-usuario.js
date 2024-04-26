@@ -1,5 +1,5 @@
 //===============JSON==========//
-    let dataUsuarios = [];
+let dataUsuarios = [];
 document.addEventListener("DOMContentLoaded", function() {
     
     const formulario = document.querySelector('.formularioRegistro');
@@ -7,13 +7,24 @@ document.addEventListener("DOMContentLoaded", function() {
     formulario.addEventListener('submit',function(ev){
         ev.preventDefault();
 
-        const validarCamposDeEntrada = validarCamposRegistro();
+        const validarCamposDeEntrada = validarCamposRegistro(nombre, email, telefono, contraseña, contraseñaConfirm);
+
+        console.log("Nombre: ", nombre.value);
+        console.log("Email: ", email.value);
+        console.log("telefono: ", telefono.value);
+        console.log("contraseña: ", contraseña.value);
+        console.log("contraseñaConfirm: ", contraseñaConfirm.value);
+
 
         if(validarCamposDeEntrada == false){
             return;
         }
         else{
             procesaTodo(ev, dataUsuarios);
+            mostrarTaskSession("Usuario registrado con exito", "success");
+            setTimeout(function() {
+                window.location.href = "../../../index.html";
+            }, 3300);
         }
     });
 })
@@ -30,10 +41,10 @@ const procesaTodo = (event) =>{
     console.log(dataUsuarios);
     localStorage.setItem("usuarios", JSON.stringify(dataUsuarios));
     const usuariosLocalStorage = localStorage.getItem("usuarios");
+    // mostrar una alerta de usuario registrado
 }
 
-
-function validarCamposRegistro(){   
+function validarCamposRegistro(nombre, email, telefono, contraseña, contraseñaConfirm){   
     let validacion = true;
     const contenedorErrores = document.querySelector('.contenedor_errores_registro');
 
@@ -66,7 +77,7 @@ function validarCamposRegistro(){
         validacion = false; 
 
         setTimeout(() => {
-            parrafo.innerHTML = "";
+            contenedorErrores.innerHTML = "";
         }, 5500);
     }
     if (telefono.value.length < 10) {
@@ -124,6 +135,31 @@ function validarCamposRegistro(){
             contenedorErrores.innerHTML = "";
         }, 5500);
     }
+
+    return validacion;
+}
+
+
+function mostrarTaskSession(mensaje, iconoTask, position = "top-end", tiempoVisible = 3000) {
+    const toast = Swal.mixin({
+        toast: true,
+        position: position,
+        showConfirmButton: false,
+        timer: tiempoVisible,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+    });
+
+    return toast.fire({
+        title: mensaje,
+        icon: iconoTask,
+        customClass: {
+            popup: 'rounded'
+        }
+    });
 }
 
 
