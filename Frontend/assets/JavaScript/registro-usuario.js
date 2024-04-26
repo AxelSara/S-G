@@ -7,6 +7,13 @@ document.addEventListener("DOMContentLoaded", function() {
     formulario.addEventListener('submit',function(ev){
         ev.preventDefault();
 
+        const nombre = document.getElementById("inputNombreRegistro");
+        const email = document.getElementById("inputEmailRegistro");
+        const telefono = document.getElementById("inputTelefonoRegistro");
+        const contraseña = document.getElementById("inputContraseña");
+        const contraseñaConfirm = document.getElementById("inputConfirmarContraseña");
+        const parrafo = document.getElementById("warnings");
+
         const validarCamposDeEntrada = validarCamposRegistro(nombre, email, telefono, contraseña, contraseñaConfirm);
 
         console.log("Nombre: ", nombre.value);
@@ -48,13 +55,6 @@ function validarCamposRegistro(nombre, email, telefono, contraseña, contraseña
     let validacion = true;
     const contenedorErrores = document.querySelector('.contenedor_errores_registro');
 
-
-    const nombre = document.getElementById("inputNombreRegistro");
-    const email = document.getElementById("inputEmailRegistro");
-    const telefono = document.getElementById("inputTelefonoRegistro");
-    const contraseña = document.getElementById("inputContraseña");
-    const contraseñaConfirm = document.getElementById("inputConfirmarContraseña");
-    const parrafo = document.getElementById("warnings");
 
     let regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
