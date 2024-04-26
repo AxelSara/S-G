@@ -1,7 +1,7 @@
 //===============JSON==========//
 
 document.addEventListener("DOMContentLoaded", function() {
-    const formulario = document.querySelector('#formulario-iniciar-sesion');
+    const formulario = document.querySelector('.formulario-iniciar-sesion');
     const usuariosParse  = JSON.parse(localStorage.getItem("usuarios"));
     console.log(usuariosParse);
 
@@ -11,40 +11,68 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // const usuarios  = JSON.parse(localStorage.getItem("usuarios"));
         
-        addUsuario(formulario, usuariosParse);
+        const resValidarDatos = validarDatos();
+
+        if( resValidarDatos == false ) {
+            return;
+        }
+        else{
+            iniciarSesionUsuario(formulario, usuariosParse);
+        }
+        
 
     });
 });
 
 /* Validación de imputs */
 function validarDatos() {
-    const email = document.getElementById('email').value;
+    let validacion = true;
+    const contenedorErrores = document.querySelector('.contenedor_errores_login');
+    const email = document.getElementById('emailLogin').value;
     const password = document.getElementById('passwordLogin').value;
 
-    // Verificar si los campos están vacíos
-    if (email.trim() == '' || password.trim() == '') {
-        alert('Por favor, completa todos los campos.');
-        return false;
-    }
+    console.log(email, password);
+
 
     // Validar formato de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-        alert('Ingresa un correo válido');
-        return false;
+        // crear un contenedor de error
+        contenedorErrores.innerHTML += `
+        <div class="alert alert-danger" role="alert">
+            El correo contiene caracteres no válidos.
+        </div>
+        `;
+
+        // Limpiar el contenedor de errores
+
+        setTimeout(() => {
+            contenedorErrores.innerHTML = '';
+        }, 5500)
+
+        validacion = false;
     }
 
     // Validar longitud de la contraseña
     if (password.length < 9) {
-        alert('La contraseña debe tener al menos 8 caracteres.');
-        return false;
+        contenedorErrores.innerHTML += `
+        <div class="alert alert-danger" role="alert">
+            La contraseña debe tener al menos 8 caracteres.
+        </div>
+        `;
+        validacion = false;
+
+        // Limpiar el contenedor de errore
+        setTimeout(() => {
+            contenedorErrores.innerHTML = '';
+        }, 5500)
     }
 
-    // Si todas las validaciones pasan, se puede enviar el formulario
-    return true;
+    return validacion;
 }
 
-function addUsuario(formulario, usuarios){
+function iniciarSesionUsuario(formulario, usuarios){
+
     const formData = new FormData(formulario);
 
     // Obtener los valores del formulario
@@ -73,13 +101,15 @@ function addUsuario(formulario, usuarios){
             // guardar el usuario en el localStorage para poder usarlo en direcciones
             localStorage.setItem(verificacion,"usuarioAdmin"); // saber cual es usuario actual
             // falta reedirigir a la pagina index
+            window.location.href = "../../../index.html";
         }
         //usuario normal 
         else{
             // guardar el usuario en el localStorage para poder usarlo en direcciones
-            localStorage.setItem(verificacion,"usuarioActual"); // saber cual es usuario actual
+            localStorage.setItem("usuarioActual", JSON.stringify(verificacion)); // saber cual es usuario actual
            // reedirigir
            const usuarioGuardado = localStorage.getItem
+           window.location.href = "../../../index.html";
         }
     } 
     
@@ -98,47 +128,25 @@ function verificarUsuario(correo, contraseña) {
  
 }
 
-usuario.email==="correoadmin@gmail.com" && usuario.contraseña==="contraseñaAdmin"
 
+function mostrarTaskSession(mensaje, iconoTask, position = "top-end", tiempoVisible = 3000) {
+    const toast = Swal.mixin({
+        toast: true,
+        position: position,
+        showConfirmButton: false,
+        timer: tiempoVisible,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+    });
 
-
-
-
-// formularioRegistro.addEventListener("submit", e =>{
-//     e.preventDefault();
-//     let warnings = ""; 
-//     let entrar = false; 
-//     let regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-//     parrafo.innerHTML = ""; 
-//     if(nombre.value.length < 4){
-//         warnings += 'El nombre no es valido <br>';  
-//     }
-//     console.log(regexEmail.test(email.value));
-//     if (!regexEmail.test(email.value)) {
-//         warnings += 'El email no es valido <br>';
-//         entrar = true;
-//     }
-//     if (telefono.value.length < 10) {
-//         warnings += 'El numero de telefono no es valido, debe contener 10 digitos <br>';
-//         entrar = true;
-//     }
-//     if (contraseña.value.length < 8 ) {
-//         warnings += 'La contraseña no es valida, debe contener por lo menos caracteres <br>';
-//         entrar = true;
-//     }
-//     if (contraseñaConfirm.value.length < 8) {
-//         warnings += 'La contraseña no es valida, debe contener por lo menos caracteres <br>';
-//         entrar = true;
-//     }
-//     if (contraseña.value != contraseñaConfirm.value) {
-//         warnings += 'La contraseña no coincide <br>';
-//         entrar = true;
-//     }
-
-//     if (entrar) {
-//         parrafo.innerHTML = warnings; 
-        
-//     }
-
-// })
-
+    return toast.fire({
+        title: mensaje,
+        icon: iconoTask,
+        customClass: {
+            popup: 'rounded'
+        }
+    });
+}

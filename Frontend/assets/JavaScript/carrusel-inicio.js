@@ -4,7 +4,7 @@ const showData = (data) => {
         for (let i = data.length; i >= 0; i--) {
             if(i == dat.id && i > data.length - 7){
                 banner += `
-                <div class="swiper-slide cardProductosRecientes">
+                <div class="cardProductosRecientes">
                     <div class="card-imgProductosRecientes">
                         <img src="./Frontend/assets/img/productos/${dat.imgMuestra}" alt="${dat.imgMuestra}">
                     </div>
@@ -31,6 +31,28 @@ const showData = (data) => {
         document.getElementById("swiper-wrapperProductosRecientes").innerHTML = banner;
       });
   }
+
+  function alert() {
+    const toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+    });
+
+    return toast.fire({
+        title: "Añadido a favoritos",
+        icon: "success",
+        customClass: {
+            popup: 'rounded'
+        }
+    });
+}
    
   const carrito = JSON.parse(localStorage.getItem("carrito"));
 

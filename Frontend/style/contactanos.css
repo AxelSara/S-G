@@ -6,7 +6,7 @@
   --color-claro: #b2ab99;
   --color_footer: #a1c9c1;
   --color-claro-azul: #d8fff9;
-  --color-header: rgba(255, 255, 255, 0);
+  --color-header: background-color: rgba(255, 255, 255, 0);
   /* Fondo transparente */
 }
 
@@ -15,19 +15,16 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  background-color: var(--color-principal);
 }
 
 body {
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
-
+  /*elimina el scroll del eje x*/
 }
 
-/* ===================Iniciar Sesion============================ */
-/* Contenedores */
 
-.contenedor_principal_iniciarsesion {
+.contenedor_principal_contactanos {
   background-color: var(--color-principal);
   margin-top: 0px;
   left: 0;
@@ -36,28 +33,26 @@ body {
   z-index: 8;
 }
 
-
-.contenedor-imagen-iniciarsesion {
-  height: 100vh;
+.contenedor_imagen_registro {
+  background-color: var(--color-principal);
   left: 0;
+  height: 100vh;
   top: 0;
   z-index: 1;
+
 }
 
-
-#imgIniciarSesion {
+.contenedor_imagen_registro> img {
   width: 100%;
   height: 100%;
+  z-index: 1;
   object-fit: cover;
   object-position: 0 30%;
-
-
 }
 
 /* ================ FORMULARIO ================ */
 
-.contenedor-formulario-iniciarsesion {
-  /* background-color: blueviolet; */
+.contenedor_formularioRegistro {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,9 +60,7 @@ body {
   height: auto;
 }
 
-
-.formulario-iniciar-sesion {
-  /* background-color: rebeccapurple; */
+.formularioContactanos {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -77,56 +70,7 @@ body {
   z-index: 2;
 }
 
-.campo-formulario {
-  width: 60vh;
-  /* background-color: #645E4E; */
-  margin-bottom: 30px;
-}
-
-
-
-.campo-formulario input {
-  display: block;
-  width: 100%;
-  border-radius: 0.5rem;
-  border-color: var(--color-claro);
-  padding: 4px 10px;
-
-}
-.campo-formulario a {
-  color: var(--color-contraste);
-}
-
-
-.cuenta {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  margin: 2rem;
-  font-size: small;
-}
-
-.cuenta a {
-  justify-content: center;
-  font-size: medium;
-  color: var(--color-contraste);
-}s
-
-.cuenta p {
-  font-size: 10px;
-  margin: 0;
-  padding: 0;
-}
-
-#olvidaste-contraseña {
-  font-size: small;
-  text-align: right;
-}
-
-
-.btn-iniciarsesion {
-
+.btnCrearCuenta {
   color: white;
   background-color: #645E4E;
   border: none;
@@ -137,40 +81,52 @@ body {
   transition: background-color 0.3s ease;
 }
 
-#registrate:hover{
-  color: var(--color-claro);
+#espacioFooter {
+  margin-top: 70;
 }
 
-
-
 @media (min-width: 760px) and (max-width: 998px) {
-  .contenedor_principal_iniciarsesion {
+
+  .contenedor_principal_contactanos {
+    
     position: relative;
     top: 0;
     margin-top: 0px;
-    left: 0;
     width: 100%;
+    padding: 0;
     margin-bottom: 0px;
     background-color: #fff9ec;
   }
 
-  .contenedor-imagen-iniciarsesion {
-    background: rgba(255, 255, 255, 0.112);
+  .contenedor_imagen_registro {
+    background-color: #645E4E;
+    /* background: rgba(255, 255, 255, 0.112); */
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
   }
 
+  .contenedor_imagen_registro img {
+    width: 102%;
+    height: 101vh;
+    z-index: 1;
+    object-fit: cover;
+    object-position: 0 30%;
+  }
 
-  .formulario-iniciar-sesion {
+  .foot-item{
+    text-decoration: none;
+  }
+
+
+  .formularioContactanos {
     color: #a1c9c1;
     background-color: #fff9ec;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 60px;
     align-items: center;
     width: 50%;
-    height: 80%;
+    height: 100%;
     z-index: 2;
     position: absolute;
     top: 0;
@@ -180,51 +136,29 @@ body {
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
   }
-
 }
 
-@media (min-width: 230px) and (max-width: 575px) {
+@media (min-width: 230px) and (max-width: 750px) {
   #textCrear {
     margin-top: 0px;
   }
 
-  .contenedor_principal_iniciarsesion {
+  .contenedor_principal_contactanos {
     top: 0;
     margin-bottom: 0px;
     background-color: #fff9ec;
-    display: flex;
-    text-align: center;
-    align-items: center;
   }
 
-  .formulario-iniciar-sesion {
+  .formularioContactanos {
     color: #a1c9c1;
     background-color: #fff9ec;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 60px;
-    align-items: center;
-    width: 50%;
-    height: 80%;
-    z-index: 2;
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.112);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-  }
-  .campo-formulario {
-    width: 40vh;
-    /* background-color: #645E4E; */
-    margin-bottom: 30px;
-  }
-  
-  .campo-formulario input {
+    /* Reducir la altura del contenedor */
+    margin-top: 80px;
+    left: 0;
     width: 100%;
-  
+    z-index: 2;
   }
 
   #espacioFooter {
@@ -232,3 +166,5 @@ body {
   }
 
 }
+
+/* ================ FORMULARIO ================ */
