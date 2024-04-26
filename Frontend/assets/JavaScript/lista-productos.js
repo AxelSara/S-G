@@ -1,6 +1,16 @@
 const rutaJSON = "../../json/productos.json";
 const rutaIMG = "../img/productos/";
 
+const datLS = async () => {
+    const responseJson = await fetch(rutaJSON);
+    const dataLS = await responseJson.json();
+    localStorage.setItem("database", JSON.stringify(dataLS));
+    const dataLocalStorage = JSON.parse(localStorage.getItem("database"));
+    console.log(dataLocalStorage)
+}
+
+datLS();
+
 const findData = (data) => {
     let cards = "";
     data.map(dat => {
@@ -22,7 +32,7 @@ const findData = (data) => {
                         <p class="list-card-precio">$${dat.precio}.00</p>
                     </div>
                     <div class="list-card-button col-7">
-                        <button>Comprar</button>
+                        <a href="./producto.html" onclick="producto(${dat.id})">Comprar</a>
                     </div>
                 </div>
             </div>
@@ -30,6 +40,11 @@ const findData = (data) => {
         `;
     });
     document.getElementById("lista").innerHTML = cards;
+}
+
+const producto = () => {
+    const idProducto = id;
+    localStorage.setItem("id-producto", JSON.stringify(idProducto));
 }
 
 const filterData = (fildata, data) => {
@@ -68,9 +83,10 @@ const filterData = (fildata, data) => {
 }
 
 const init = async () => {
-    const response = await fetch(rutaJSON);
-    const data = await response.json();
-    findData(data)
+    const responseJson = await fetch(rutaJSON);
+    const dataLS = await responseJson.json();
+    const dataLocalStorage = JSON.parse(localStorage.getItem("database"));
+    findData(dataLS)
 }
 
 init();

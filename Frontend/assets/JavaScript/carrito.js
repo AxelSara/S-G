@@ -129,13 +129,16 @@ function realizarPago() {
     console.log("Eso es todo, se está realizando el pago...");
 
     // Limpiar el carrito del localStorage
-    localStorage.removeItem("carrito");
+    // localStorage.removeItem("carrito");
 
     // Actualizar la visualización del carrito (opcional)
+
+    /*
     const tablaProductos = document.getElementById('tablaProductos');
     tablaProductos.getElementsByTagName('tbody')[0].innerHTML = ''; // Limpiar la tabla
     const totalCarritoCell = document.getElementById('totalCarrito');
     totalCarritoCell.textContent = '$0.00'; // Actualizar el total a cero
+    */
 }
 
 // Agregar el evento click al botón de checkout para llamar a la función realizarPago

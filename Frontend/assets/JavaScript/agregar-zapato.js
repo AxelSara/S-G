@@ -19,6 +19,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.log(" ===== Boton ============");
     console.log(btnSubmit);
 
+
+
+
     let tallasSeleccionadas = [];
         // Manejo de los eventos de clic para los label que actúan como botones de radio
         const labels = document.querySelectorAll('.form-check-label');

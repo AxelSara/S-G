@@ -95,7 +95,7 @@
                             </li>
 
                             <li class="nav-item-icon">
-                                <a class="icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cuenta" href="./Frontend/assets/pages/iniciar-sesion.html"
+                                <a class="icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cuenta" href="./Frontend/assets/pages/loginRegistro.html"
                                 id="navbar_cuenta"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-person"
@@ -171,7 +171,7 @@
                     <div class="row">
                         <div class="description col-md-4 col-lg-5 col-sm-6">
                             <div class="row">
-                                <div class="banner-content col-md-3 d-none d-md-block">
+                                <div class="banner-content col-md-3 d-none d-md-block" id="index-buttons">
                                     <ul class="slide_navigation" id="banner__menu">
                                         <li id="li1"><a id="a1" href="#" class="active">01</a></li>
                                         <li id="li2"><a id="a2" href="#">02</a></li>
@@ -204,7 +204,7 @@
                     </div>
 
                     <div class="indicarContenidoAbajo" id="showBottomContent">
-                        <button id="scrollButton" onclick="scrollDown()">
+                        <button id="scrollButton" onclick="scrollPageDown()">
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
                               <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v10.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 12.293V1.5A.5.5 0 0 1 8 1z"/>
                             </svg> -->
@@ -347,7 +347,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!--=============== SCRIPT ===============-->
-    <script src="./Frontend/assets/JavaScript/navbar.js" defer></script>
+    <script src="./Frontend/assets/JavaScript/navbar.js"></script>
     <script src="./Frontend/assets/JavaScript/slider.js"></script>
     <script src="./Frontend/assets/JavaScript/index.js"></script>
 
@@ -392,12 +392,15 @@
 
 
     const navbar_inicio = document.getElementById("navbar_inicio");
+
     const navbar_listaProductosHombre = document.getElementById("navbar_listaProductosHombre");
     const navbar_listaProductosMujer = document.getElementById("navbar_listaProductosMujer");
 
     const navbar_sobreNosotros = document.getElementById("navbar_sobreNosotros");
     const navbar_contactanos = document.getElementById("navbar_contactanos");
+    // const navbar_productos = document.getElementById("navbar_productos");
     const navbar_cuenta = document.getElementById("navbar_cuenta");
+
     const navbar_carrito = document.getElementById("navbar_carrito");
 
     // saber si se presiono navbar_sobreNosotros
@@ -428,13 +431,19 @@
 
     navbar_contactanos.addEventListener("click", () => {
         console.log("SE hizo click sobre nosotros")
-        window.location.href = "./Frontend/assets/pages/sobre-nosotros.html";
+        window.location.href = "./Frontend/assets/pages/contactanos.html";
     });
 
 
+    // navbar_productos.addEventListener("click", () => {
+    //     // scrollDown();
+    //     console.log("SE hizo click sobre nosotros")
+    //     window.location.href = "./Frontend/assets/pages/sobre-nosotros.html";
+    // });
+
     navbar_cuenta.addEventListener("click", () => {
         console.log("SE hizo click sobre cuenta")
-        window.location.href = "./Frontend/assets/pages/iniciar-sesion.html";
+        window.location.href = "./Frontend/assets/pages/loginRegistro.html";
     });
 
     navbar_carrito.addEventListener("click", () => {
@@ -442,13 +451,8 @@
         window.location.href = "./Frontend/assets/pages/carrito.html";
     });
 
-    const navbar_administrador = document.getElementById("navbarAdmin");
-    console.log(" ======= Administrador: ", navbar_administrador);
 
-    navbar_administrador.addEventListener("click", () => {
-        console.log("SE hizo click sobre administrador")
-        window.location.href = "./Frontend/assets/pages/admin.html";
-    });
+
 
     </script>
 

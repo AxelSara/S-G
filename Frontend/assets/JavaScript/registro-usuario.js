@@ -1,20 +1,8 @@
 //===============JSON==========//
+    let dataUsuarios = [];
 document.addEventListener("DOMContentLoaded", function() {
     
-    let dataUsuarios = [];
     const formulario = document.querySelector('.formularioRegistro');
-
-    const nombre = document.getElementById("inputNombreRegistro");
-    const email = document.getElementById("inputEmailRegistro")
-    const telefono = document.getElementById("inputTelefonoRegistro");
-    const contraseña = document.getElementById("inputContraseña");
-    const contraseñaConfirm = document.getElementById("inputConfirmarContraseña");
-
-    const usuariosLocalStorage = localStorage.getItem("usuarios") || [];
-    dataUsuarios = JSON.parse(usuariosLocalStorage);
-
-    console.log("======== usuarios existentes ============");
-    console.log(dataUsuarios);
 
     formulario.addEventListener('submit',function(ev){
         ev.preventDefault();
@@ -32,21 +20,36 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
         else{
-            dataUsuarios.push({
-                "nombre": nombre.value,
-                "telefono": telefono.value,
-                "email": email.value,
-                "contraseña": contraseña.value
-            });
-            console.log(dataUsuarios);
-            localStorage.setItem("usuarios", JSON.stringify(dataUsuarios));
+            procesaTodo(ev, dataUsuarios);
         }
     });
 })
 
+
+const procesaTodo = (event) =>{
+    event.preventDefault();
+    dataUsuarios.push({
+        "nombre": document.getElementById("inputNombreRegistro").value,
+        "telefono": document.getElementById("inputTelefonoRegistro").value,
+        "email": document.getElementById("inputEmailRegistro").value,
+        "contraseña": document.getElementById("inputContraseña").value
+    });
+    console.log(dataUsuarios);
+    localStorage.setItem("usuarios", JSON.stringify(dataUsuarios));
+    const usuariosLocalStorage = localStorage.getItem("usuarios");
+}
+
 function validarCamposRegistro(nombre, email, telefono, contraseña, contraseñaConfirm){   
     let validacion = true;
     const contenedorErrores = document.querySelector('.contenedor_errores_registro');
+
+
+    const nombre = document.getElementById("inputNombreRegistro");
+    const email = document.getElementById("inputEmailRegistro");
+    const telefono = document.getElementById("inputTelefonoRegistro");
+    const contraseña = document.getElementById("inputContraseña");
+    const contraseñaConfirm = document.getElementById("inputConfirmarContraseña");
+    const parrafo = document.getElementById("warnings");
 
     let regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
@@ -87,11 +90,11 @@ function validarCamposRegistro(nombre, email, telefono, contraseña, contraseña
         }, 5500);
     }
 
-    if (contraseña.value.length < 8 ) {
+    if (contraseña.value.length < 9 ) {
 
         contenedorErrores.innerHTML += `
         <div class="alert alert-danger" role="alert">
-            La contraseña no es valida, debe contener por lo menos caracteres;
+            La contraseña no es valida, debe contener por lo menos 9 caracteres;
         </div>
         `;
 
@@ -102,10 +105,10 @@ function validarCamposRegistro(nombre, email, telefono, contraseña, contraseña
         }, 5500);
     }
 
-    if (contraseñaConfirm.value.length < 8) {
+    if (contraseñaConfirm.value.length < 9) {
         contenedorErrores.innerHTML += `
         <div class="alert alert-danger" role="alert">
-            La contraseña no es valida, debe contener por lo menos caracteres;
+            La contraseña no es valida, debe contener por lo menos 9 caracteres;
         </div>
         `;
         validacion = false; 

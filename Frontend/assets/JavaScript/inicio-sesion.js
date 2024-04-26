@@ -101,13 +101,15 @@ function iniciarSesionUsuario(formulario, usuarios){
             // guardar el usuario en el localStorage para poder usarlo en direcciones
             localStorage.setItem(verificacion,"usuarioAdmin"); // saber cual es usuario actual
             // falta reedirigir a la pagina index
+            window.location.href = "../../../index.html";
         }
         //usuario normal 
         else{
             // guardar el usuario en el localStorage para poder usarlo en direcciones
-            localStorage.setItem(verificacion,"usuarioActual"); // saber cual es usuario actual
+            localStorage.setItem("usuarioActual", JSON.stringify(verificacion)); // saber cual es usuario actual
            // reedirigir
            const usuarioGuardado = localStorage.getItem
+           window.location.href = "../../../index.html";
         }
     } 
     

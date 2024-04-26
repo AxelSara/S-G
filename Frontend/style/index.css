@@ -267,8 +267,6 @@ main a {
   color: inherit;
 }
 
-
-
 main li {
   display: block;
   margin-top: 10px;
@@ -323,7 +321,7 @@ ul {
 }
 
 .slider-banner {
-  background-color: rebeccapurple;
+  /* background-color: rebeccapurple; */
   color: var(--color-contraste);
   position: relative;
   display: grid;
@@ -331,7 +329,7 @@ ul {
 }
 
 .slides-banner .slide-banner {
-  min-height: calc(100%);
+  /* min-height: calc(100%); */
 
   width: 100%;
   position: relative;
@@ -342,15 +340,16 @@ ul {
 .slides-banner {
   overflow-y: auto;
   scrollbar-width: none;
+  /* height: 100%; */
   height: 100vh;
-  max-height: 900px;
   max-width: 100%;
   overflow: hidden;
+  /* box-shadow: 0px 0px 0px 3px pink; */
 }
 
 .img-banner {
   width: 100%;
-  max-height: 100vh;
+  height: 100vh;
   /* margin: 0 auto;
   position: relative;
   z-index: 5;
@@ -362,10 +361,13 @@ ul {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  height: 100vh;
+  /* box-shadow: 0px 0px 0px 3px red; */
 }
 
 .banner-content {
   padding: 0rem 2.5rem;
+  /* box-shadow: 0px 0px 0px 3px #7cc25c; */
 }
 
 .carrusel-banner .carousel-caption {
@@ -387,6 +389,7 @@ ul {
 
   .description {
     margin: 0.5rem 0rem;
+    height: 10%;
     /* display: flex;
     flex-direction: column;
     justify-content: center;
@@ -398,11 +401,12 @@ ul {
 
   #img__banner {
     order: -1;
-    max-height: 30rem;
+    /* max-height: 30rem; */
+    min-height: 100%;
     align-items: center;
     justify-content: center;
     vertical-align: baseline;
-    box-shadow: 0px 0px 0px 3px green;
+    /* box-shadow: 0px 0px 0px 3px green; */
     overflow: hidden;
   }
 
@@ -411,25 +415,41 @@ ul {
 @media (min-width: 769px) and (max-width: 900px) {
 
   .slider-banner {
-    background-color: rebeccapurple;
+    /* background-color: rebeccapurple; */
     color: var(--color-contraste);
-    height: 50vh;
+    min-height: 75vh;
   }
 
   .description {
     margin: 0.5rem 0rem;
+    min-height: 75vh;
   }
 
   #img__banner {
     /* order: -1; */
-    max-height: 30rem;
+    /* max-height: 30rem; */
+    min-height: 75vh;
     align-items: center;
     justify-content: center;
     vertical-align: baseline;
-    box-shadow: 0px 0px 0px 3px green;
+    /* box-shadow: 0px 0px 0px 3px green; */
     overflow: hidden;
   }
 
+  
+
+}
+
+@media (min-width: 768px) and (max-width: 915px){
+  .buttons{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+  }
+  .banner-pdt{
+    width: 100px;
+    text-align: center;
+  }
 }
 
 

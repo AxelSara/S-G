@@ -1,0 +1,80 @@
+:root {
+    /*========== Colores ==========*/
+    --color-principal: #fff9ec;
+    --color-contraste: #645e4e;
+    --color-contraste-transparente: rgb(100, 94, 78, 0.9);
+    --color-claro: #b2ab99;
+    --color_footer: #a1c9c1;
+    --color-claro-azul: #d8fff9;
+    --color-header: background-color: rgba(255, 255, 255, 0);
+    /* Fondo transparente */
+  }
+
+  /*==================Agregar zapato================*/
+
+  /* .contenedor_principal_agregarZapato {
+    background-color: var(--color-principal);
+  } */
+  
+  @media (max-width: 768px) {
+    .contenedor_principal_agregarZapato {
+      height: 1150px;
+    }
+  }
+  
+  .tituloAgregarZapato {
+    height: 5vh;
+    z-index: 5;
+    /* background-color: #0f0f0f; */
+  }
+
+  /* === seleccionador de talla === */
+  .talla-selector {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .talla-checkbox {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .talla-checkbox input[type="checkbox"] {
+    display: none;
+  }
+  
+  .talla-checkbox label {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .talla-checkbox input[type="checkbox"]:checked+label {
+    background-color: #0070d2;
+    color: white;
+  }
+
+  .talla-mostradas {
+    font-weight: bold;
+  }
+  
+  .hidden-radio {
+    display: none;
+  }
+
+  .form-check-label {
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  
+  .form-check-input:checked + .form-check-label {
+    background-color: #007bff;
+    color: white;
+  }

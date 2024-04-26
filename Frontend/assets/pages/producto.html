@@ -13,8 +13,9 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../style/producto.css">
     <link rel="stylesheet" href="../../style/navbar_footer.css">
-    <link rel="stylesheet" href="../../style/carrito.css">
+    <!--   <link rel="stylesheet" href="../../style/style.css">  -->
     <!-- icono del footer -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
@@ -141,43 +142,228 @@
 
     </header>
     <!--=============== HEADER ===============-->
-
     <main>
-        <div class="container" id="contenedor-principal-carrito">
-            <h3>Carrito</h3>
-            <table class=" mt-5" id="tablaProductos">
-                <thead>
-                    <tr>
-                        <td></td>
-                        <th>Producto</th>
-                        <th>Color</th>
-                        <th>Precio</th>
-                        <th>Talla</th>
-                        <th>Cantidad</th>
-                        <th></th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Aquí se listarían los productos agregados al carrito -->
 
 
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="3">Total:</td>
-                        <td id="totalCarrito">$0.00</td> <!-- Celva para mostrar el total -->
-                        <td></td>
-                    </tr>
-                </tfoot>
 
-            </table>
-            <br>
-            <a class="checkout-btn" id="checkoutBtn" href="./detalles-compra.html">Pagar</a>
+        <div class="container-info-producto" id="ciproducto">
+            <div class="container-name">
+                <h3 id="namezap">CH38</h3>
+
+            </div>
+            <div class="container-price">
+                <span>$440.00</span>
+
+            </div>
+            <div class="container-details-product">
+
+                <div class="form-group">
+                    <!--productos prueba seleccion color -->
+
+                    <h2 id="scolor">Color</h2>
+                    <div id="color-container">
+                        <button class="color-btn" data-color="shedron"></button>
+                        <button class="color-btn" data-color="Negro"></button>
+                        <button class="color-btn" data-color="Cafe"></button>
+                        <button class="color-btn" data-color="Verde"></button>
+                        <button class="color-btn" data-color="Azul"></button>
+                    </div>
+                    <!------------------------------------------------------------------------------->
+
+                </div>
+
+                <div class="form-group">
+                    <!--productos prueba seleccion talla -->
+
+                    <h2 id="stalla">Selecciona tu talla:</h2>
+                    <div id="tallas-container">
+                        <button class="talla-btn" data-talla="6">6</button>
+                        <button class="talla-btn" data-talla="6.5">6.5</button>
+                        <button class="talla-btn" data-talla="7">7</button>
+                        <button class="talla-btn" data-talla="7.5">7.5</button>
+                        <button class="talla-btn" data-talla="8">8</button>
+                        <button class="talla-btn" data-talla="8.5">8.5</button>
+                        <button class="talla-btn" data-talla="9">9</button>
+                        <button class="talla-btn" data-talla="9.5">9.5</button>
+                        <button class="talla-btn" data-talla="10">10</button>
+                    </div>
+
+                    <!------------------------------------------------------------------------------->
+
+                </div>
+                <p id="ptalla">Seleccionaste la talla: <span id="talla-seleccionada"></span></p>
+
+            </div>
+            <div class="container-add-cart">
+                <div class="container-quantity">
+                    <input type="number" placeholder="1" value="1" min="1" class="imput-quantity">
+
+
+                </div>
+                <button class="btn-add-to-cart">
+                    <i img class="fa-solid fa-cart-plus"></i>
+                    Añadir al carrito
+                </button>
+            </div>
+
+            <div class="container-description">
+                <div class="title-description">
+                    <h4>Descripción</h4>
+                   
+                </div>
+                <div class="text-description ">
+                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem pariatur nesciunt
+                        ratione autem voluptas dolorum libero possimus dolores maxime, vitae, enim neque expedita qui id
+                        voluptate aut maiores reprehenderit? Fugiat! Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Natus, facilis quibusdam? Rem minima quos temporibus, iure beatae amet blanditiis voluptas
+                        qui iste explicabo autem similique. Atque pariatur excepturi dolor veniam? </p>
+                </div>
+            </div>
+
         </div>
+
+
+       
+
+        <div class="mostrador-imagenes">
+            <div class="imagen-principal">
+                <img id="imagen-principal" src="..//img/productos/01-gris-muestra.jpeg" alt="imagen 1">
+            </div>
+            <div class="imagenes-chicas">
+                <div class="imagen-chica">
+                    <img src="../img/productos/01-gris-lateral.jpeg" alt="imagen 2">
+                </div>
+                <div class="imagen-chica">
+                    <img src="../img/productos/01-gris-muestra.jpeg" alt="imagen 3">
+                </div>
+                <div class="imagen-chica">
+                    <img src="../img/productos/01-gris-superior.jpeg" alt=" imagen 4">
+                </div>
+                <div class="imagen-chica">
+                    <img src="../img/productos/01-gris-frontal.jpeg" alt="imagen 5">
+                </div>
+            </div>
+        </div>
+
+
     </main>
 
-    <!-- ================ FOOTER =============== -->
+    <section>
+        <div class="container-related-products">
+
+            <h2>Productos relacionados</h2>
+            <div class="card-list-products">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="../img/productos/01-gris-muestra.jpeg" alt="producto-1">
+                    </div>
+                    <div class="info-card">
+                        <div class="text-product">
+                            <h3>zapato</h3>
+                            <p class="category">
+                                zapato para caballero
+                            </p>
+                            <p class="price">$400.00</p>
+                            
+                        </div>
+                        <div><button class="btn-add-to-cart" >
+                            <i img class="fa-solid fa-cart-plus"></i>
+                            Añadir al carrito
+                        </button></div>
+                        
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="../img/productos/01-miel-muestra.jpeg" alt="producto-1">
+                    </div>
+                    <div class="info-card">
+                        <div class="text-product">
+                            <h3>zapato</h3>
+                            <p class="category">
+                                zapato para caballero
+                            </p>
+                            <p class="price">$400.00</p>
+                             </div>
+                             <div><button class="btn-add-to-cart" >
+                                <i img class="fa-solid fa-cart-plus"></i>
+                                Añadir al carrito
+                            </button></div>
+                    </div>
+                </div>
+
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="../img/productos/01-negro-muestra.jpeg" alt="producto-1">
+                    </div>
+                    <div class="info-card">
+                        <div class="text-product">
+                            <h3>zapato</h3>
+                            <p class="category">
+                                zapato para caballero
+                            </p>
+                            <p class="price">$400.00</p>
+                             </div>
+                             <div><button class="btn-add-to-cart" >
+                                <i img class="fa-solid fa-cart-plus"></i>
+                                Añadir al carrito
+                            </button></div>
+                    </div>
+                </div>
+
+               
+                <div class="card">
+                    <div class="card-img">
+                        <img src="../img/productos/04-cafe-muestra.jpeg" alt="producto-1">
+                    </div>
+                    <div class="info-card">
+                        <div class="text-product">
+                            <h3>zapato</h3>
+                            <p class="category">
+                                zapato para caballero
+                            </p>
+                            <p class="price">$400.00</p>
+                             </div>
+                             <div><button class="btn-add-to-cart" >
+                                <i img class="fa-solid fa-cart-plus"></i>
+                                Añadir al carrito
+                            </button></div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--footer-->
     <footer >
         <section class="container-fluid footer_section text-center" id="spacefooter">
             <div class="row content-footer">
@@ -244,10 +430,8 @@
       
         </section>
     </footer>
-    <!-- =============== Fin del footer =============== -->
+    <!--footer-->
 
-    <script src="../JavaScript/carrito.js"></script>
-    <script src="../JavaScript/navbar.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
@@ -256,7 +440,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/061eb90a81.js" crossorigin="anonymous"></script>
 
+    <script src="../JavaScript/producto.js"></script>
+    <script src="../JavaScript/navbar.js"></script>
 </body>
 
 </html>

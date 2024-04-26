@@ -108,7 +108,7 @@
     align-items: center;
   }
   
-  .list-card-button button{
+  .list-card-button a{
     margin: 0;
     padding: 0.5rem;
     background-color: var(--color-contraste);
@@ -133,6 +133,10 @@
     color: #8c8c8c;
   }
   
+  .filters a{
+    color: var(--color-contraste);
+  }
+
   .filters label{
     margin-left: 1rem;
     font-size: medium;
