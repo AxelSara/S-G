@@ -7,6 +7,13 @@ document.addEventListener("DOMContentLoaded", function() {
     formulario.addEventListener('submit',function(ev){
         ev.preventDefault();
 
+        const nombre = document.getElementById("inputNombreRegistro");
+        const email = document.getElementById("inputEmailRegistro");
+        const telefono = document.getElementById("inputTelefonoRegistro");
+        const contraseña = document.getElementById("inputContraseña");
+        const contraseñaConfirm = document.getElementById("inputConfirmarContraseña");
+        const parrafo = document.getElementById("warnings");
+
         const validarCamposDeEntrada = validarCamposRegistro(nombre, email, telefono, contraseña, contraseñaConfirm);
 
         console.log("Nombre: ", nombre.value);
@@ -21,6 +28,10 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         else{
             procesaTodo(ev, dataUsuarios);
+            mostrarTaskSession("Usuario registrado con exito", "success");
+            setTimeout(function() {
+                window.location.href = "../../../index.html";
+            }, 3300);
         }
     });
 })
@@ -37,19 +48,13 @@ const procesaTodo = (event) =>{
     console.log(dataUsuarios);
     localStorage.setItem("usuarios", JSON.stringify(dataUsuarios));
     const usuariosLocalStorage = localStorage.getItem("usuarios");
+    // mostrar una alerta de usuario registrado
 }
 
 function validarCamposRegistro(nombre, email, telefono, contraseña, contraseñaConfirm){   
     let validacion = true;
     const contenedorErrores = document.querySelector('.contenedor_errores_registro');
 
-
-    const nombre = document.getElementById("inputNombreRegistro");
-    const email = document.getElementById("inputEmailRegistro");
-    const telefono = document.getElementById("inputTelefonoRegistro");
-    const contraseña = document.getElementById("inputContraseña");
-    const contraseñaConfirm = document.getElementById("inputConfirmarContraseña");
-    const parrafo = document.getElementById("warnings");
 
     let regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
@@ -132,6 +137,29 @@ function validarCamposRegistro(nombre, email, telefono, contraseña, contraseña
     }
 
     return validacion;
+}
+
+
+function mostrarTaskSession(mensaje, iconoTask, position = "top-end", tiempoVisible = 3000) {
+    const toast = Swal.mixin({
+        toast: true,
+        position: position,
+        showConfirmButton: false,
+        timer: tiempoVisible,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+    });
+
+    return toast.fire({
+        title: mensaje,
+        icon: iconoTask,
+        customClass: {
+            popup: 'rounded'
+        }
+    });
 }
 
 
