@@ -34,7 +34,7 @@ body {
 }
 
 .contenedor_imagen_registro {
-  /* background-color: var(--color-principal); */
+  background-color: var(--color-principal);
   left: 0;
   height: 100vh;
   top: 0;

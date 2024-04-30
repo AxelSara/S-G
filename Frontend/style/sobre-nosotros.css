@@ -33,7 +33,7 @@ body {
   display: flex;
   flex-wrap: nowrap;
 
-  /* background-color: var(--color-principal); */
+  background-color: var(--color-principal);
   height: 600px;
 }
 

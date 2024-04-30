@@ -15,7 +15,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  /*background-color: var(--color-principal); */
+  /* background-color: var(--color-principal); */
 }
 
 body {
@@ -28,7 +28,7 @@ body {
 /* --------------------------Direcciones-------------------- */
 .contenedorDirecciones{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items:center;
   height: 100%;
@@ -36,6 +36,14 @@ body {
   padding: 20px;
 }
 
+.button-back{
+  width: 100%;
+  margin-left: 3rem;
+  display: flex;
+  flex-grow: 1;
+  align-items: start;
+  text-align: left;
+}
 
 .container-derecha-direcciones{
   height: 50vh;

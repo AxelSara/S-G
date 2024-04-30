@@ -1,5 +1,5 @@
 //===============JSON==========//
-    let dataUsuarios = [];
+let dataUsuarios = [];
 document.addEventListener("DOMContentLoaded", function() {
     
     const formulario = document.querySelector('.formularioRegistro');

@@ -32,7 +32,7 @@ const findData = (data) => {
                         <p class="list-card-precio">$${dat.precio}.00</p>
                     </div>
                     <div class="list-card-button col-7">
-                        <a href="./producto.html" onclick="producto(${dat.id})">Comprar</a>
+                        <a href="./producto.html" onclick="producto(${dat.id})">Ver más</a>
                     </div>
                 </div>
             </div>
