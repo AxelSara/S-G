@@ -14,7 +14,7 @@ const showData = (data, event) => {
     const banner = document.querySelector("#swiper-wrapperProductosRecientes");
 
     console.log("========== banner ===========");
-    console.log("banner: ", banner);
+    // console.log("banner: ", banner);
 
     data.reverse().forEach(dat => {
         for (let i = data.length; i >= 0; i--) {
@@ -45,7 +45,10 @@ const showData = (data, event) => {
                         </div>
                         <div class="carrito-button col-7">   
                             <div class="card-link">
-                                <button class="buy button-pr" onclick="addCartCarrusel(${dat.id})" id=""> Agregar al carrito </button>
+                                <!-- <button class="buy button-pr" onclick="addCartCarrusel(${dat.id})" id=""> Agregar al carrito </button> -->
+                                <button class="buy button-pr" onclick="" id="">
+                                    <a href="./Frontend/assets/pages/producto.html">Ver más</a>
+                                </button>
                             </div>
                         </div>
                     </div>

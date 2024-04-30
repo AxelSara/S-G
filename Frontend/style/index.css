@@ -336,7 +336,7 @@ ul {
   justify-content: space-evenly;
 }
 
-#buy {
+.buy {
   background-color: var(--color-contraste);
   color: var(--color-principal);
 }

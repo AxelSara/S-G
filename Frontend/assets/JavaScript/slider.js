@@ -117,8 +117,9 @@ const showImgCarrusel = (data) => {
                     </div>
                     <div class="buttons">
                         <div class="banner-button">
-                            <button class="buy banner-pdt" id="buy1"
-                                onclick="AddCarritoBannerCarrusel1()">Comprar</button>
+                            <button class="buy banner-pdt" id="buy1" onclick="">
+                                <a href="./Frontend/assets/pages/producto.html">Ver más</a>
+                            </button>
                         </div>
                         <div class="banner-button">
                             <p class="banner-pdt" id="price">$${data[5].precio}.00</p>
@@ -138,8 +139,9 @@ const showImgCarrusel = (data) => {
                     </div>
                     <div class="buttons">
                         <div class="banner-button">
-                            <button class="buy banner-pdt" id="buy2"
-                                onclick="AddCarritoBannerCarrusel2()">Comprar</button>
+                            <button class="buy banner-pdt" id="buy2" onclick="">
+                                <a href="./Frontend/assets/pages/producto.html">Ver más</a>
+                            </button>
                         </div>
                         <div class="banner-button">
                             <p class="banner-pdt" id="price">$${data[7].precio}.00</p>
@@ -159,8 +161,9 @@ const showImgCarrusel = (data) => {
                     </div>
                     <div class="buttons">
                         <div class="banner-button">
-                            <button class="buy banner-pdt" id="buy3"
-                                onclick="AddCarritoBannerCarrusel3()">Comprar</button>
+                            <button class="buy banner-pdt" id="buy3" onclick="">
+                                <a href="./Frontend/assets/pages/producto.html">Ver más</a>
+                            </button>
                         </div>
                         <div class="banner-button">
                             <p class="banner-pdt" id="price">$${data[11].precio}.00</p>

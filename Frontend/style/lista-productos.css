@@ -15,7 +15,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    background-color: var(--color-principal);
+    /* background-color: var(--color-principal); */
   }
   
   body {
@@ -28,7 +28,7 @@
   
 /*=============== PRODUCT LIST ===============*/
 .contenedor-lista-productos{
-    background-color: var(--color-principal);
+    /* background-color: var(--color-principal); */
     background-color: white;
   }
   
