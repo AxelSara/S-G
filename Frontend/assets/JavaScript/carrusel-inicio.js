@@ -19,7 +19,12 @@ const showData = (data) => {
                         </div>
                         <div class="carrito-button col-7">   
                             <div class="card-link">
-                                <button class="buy button-pr" onclick="addCartCarrusel(${dat.id})" id=""> Agregar al carrito </button>
+                                <!-- <button class="buy button-pr" onclick="addCartCarrusel(${dat.id})" id="">
+                                    <a href="./Frontend/assets/pages/producto.html">Ver más</a>
+                                </button> -->
+                                <button class="buy button-pr" onclick="" id="">
+                                    <a href="./Frontend/assets/pages/producto.html">Ver más</a>
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -141,6 +141,18 @@ function realizarPago() {
     */
 }
 
+// Verificar si esta loggeado el usuario
+const verLogin = async () => {
+    const user = JSON.parse(localStorage.getItem("usuarioActual"));
+    
+    if(user == []){
+        console.log("Redirigir a log")
+    }else{
+        console.log(user);
+    }
+    realizarPago();
+}
+
 // Agregar el evento click al botón de checkout para llamar a la función realizarPago
 document.getElementById('checkoutBtn').addEventListener('click', realizarPago);
 

@@ -1,3 +1,35 @@
+const verficarUserLog = () => {
+    const user = JSON.parse(localStorage.getItem("usuarioActual"));
+
+    // Obtener la URL completa del documento actual
+    var currentHTML = document.URL;
+    // Obtener el nombre del archivo HTML actual
+    var fileName = currentHTML.substring(currentHTML.lastIndexOf('/') + 1);
+    
+    
+    if(fileName == "index.html"){
+        console.log(fileName)
+        if(user == null){
+            console.log("Redirigir a log")
+            window.location.href = "./Frontend/assets/pages/loginRegistro.html";
+        }else{
+            console.log(user);
+            window.location.href = "./Frontend/assets/pages/carrito.html";
+        }
+    }else{
+        console.log(fileName)
+        if(user == null){
+            console.log("Redirigir a log")
+            window.location.href = "./loginRegistro.html";
+        }else{
+            console.log(user);
+            window.location.href = "./carrito.html";
+        }
+    }
+    
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const listaElementosNavbar = document.querySelector(".listaElementosNavbar");
     const botonFavoritoNavbar = document.querySelector(".botonFavoritoNavbar");
