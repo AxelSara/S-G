@@ -1,241 +1,218 @@
-// const inputQuantity = document.querySelector('.input-quantity')
-// const btnIncrement = document.querySelector('#increment')
-// const btnDecrement = document.querySelector('#decrement')
-
-// let valueByDefault = parseInt(inputQuantity.value)
-
-// // funciones click
-
-// btnIncrement.addEventListener('click', () => {
-// valueByDefault +=1
-
-// inputQuantity.value = valueByDefault
-
-// })
-
-// btnDecrement.addEventListener('click', () => {
-//     valueByDefault -=1
-    
-//     inputQuantity.value = valueByDefault
-    
-//     })
-
-//     // togle
-
-//      const toggleDescription = document.querySelector('.title-description')
-     
-//      const contentDescription = document.querySelector('.text-description')
-
-     
-    
-//      toggleDescription.addEventListener('click', ()=>{
-//         contentDescription.classList.toggle('hidden');
-//      });
-
-
-/*--------------------JSON object------------------------------- */
-const idProducto = 3;
+const idProducto = 0; 
 
 const dataProductos = async (id) => {
-  const response = await fetch("./productos.json");
+  const response = await fetch("../../json/productos.json");
   const data = await response.json();
   const modeloDom = document.getElementById("namezap");
   const precioDom = document.getElementById("priceDom");
-  const descDom = document.getElementById("descriptionDom");
+  const descripcionDom = document.getElementById("pdescripcion");
+  const colorDom = document.getElementById("color-container");
+  const tallaDom = document.getElementById("talla-container");
+  const imagenesDom = document.querySelector(".mostrador-imagenes");
+  const colorSeleccionadaDom = document.getElementById("color-seleccionada");
+  const tallaSeleccionadaDom = document.getElementById("talla-seleccionada");
+  
+  let coloresUnicos = [];
+  let productoSeleccionado; // Variable para almacenar el producto actualmente seleccionado
 
-  data.map(dat => {
-    if(id == dat.id){
-      console.log(dat);
-      modeloDom.innerHTML = dat.modelo
-      precioDom.innerHTML = `$${dat.precio}.00`;
-      descDom.innerHTML = "kasjdh";
+  // Filtrar los datos para obtener solo los relacionados con el modelo específico
+  const productosModelo = data.filter(item => item.modelo === data.find(item => item.id === id).modelo);
+
+  // Inicializar el producto seleccionado con el producto que coincide con el ID especificado
+  productoSeleccionado = productosModelo.find(item => item.id === id);
+
+  // Función para actualizar todas las imágenes con las del producto seleccionado
+  const actualizarImagenes = () => {
+    imagenesDom.querySelector("#imagen-principal").src = `../img/productos/${productoSeleccionado.imgMuestra}`;
+    imagenesDom.querySelectorAll(".imagen-chica img").forEach((imagen, index) => {
+      const imgKey = index === 0 ? "imgLateral" : index === 1 ? "imgMuestra" : index === 2 ? "imgSuperior" : "imgFrontal";
+      imagen.src = `../img/productos/${productoSeleccionado[imgKey]}`;
+    });
+  };
+
+  // Llamar a la función actualizarImagenes al cargar la página para mostrar las imágenes del producto seleccionado
+  actualizarImagenes();
+
+  // Recorrer los productos del mismo modelo para obtener los colores únicos
+  productosModelo.forEach(producto => {
+    if (!coloresUnicos.includes(producto.color)) {
+      coloresUnicos.push(producto.color);
     }
-  })
-  console.log(modelo);
-}
+  });
+
+  modeloDom.innerHTML = productosModelo[0].modelo; // Asignar el modelo del primer producto
+  precioDom.innerHTML = `$${productosModelo[0].precio}.00`; // Asignar el precio del primer producto
+  descripcionDom.innerHTML = ` ${productosModelo[0].descripcion}    -   ${productosModelo[0].marca} - ${productosModelo[0].genero}`; // Asignar la descripción del primer producto
+
+  // Limpiar y mostrar los botones de colores únicos
+  colorDom.innerHTML = "";
+  coloresUnicos.forEach(color => {
+    const colorButton = document.createElement("button");
+    colorButton.style.backgroundColor = color; 
+    colorButton.classList.add("color-btn");
+    colorButton.setAttribute("data-color", color);
+    if (color === productoSeleccionado.color) {
+      colorButton.classList.add('seleccionado');
+    }
+    colorButton.addEventListener("click", () => {
+      // Al hacer clic en el botón de color, se busca el producto correspondiente a ese color
+      productoSeleccionado = productosModelo.find(item => item.color === color);
+      // Se actualizan todas las imágenes con las del producto seleccionado
+      actualizarImagenes();
+      // Remover la clase 'seleccionado' de todos los botones de color
+      colorDom.querySelectorAll('.color-btn').forEach(btn => {
+        btn.classList.remove('seleccionado');
+      });
+      // Agregar la clase 'seleccionado' al botón actual
+      colorButton.classList.add('seleccionado');
+    });
+    colorDom.appendChild(colorButton);
+  });
+
+  // Mostrar las tallas (supongo que para todos los productos del mismo modelo son las mismas tallas)
+  tallaDom.innerHTML = "";
+  if (typeof productosModelo[0].talla === "object") {
+    Object.keys(productosModelo[0].talla).forEach(talla => {
+      const tallaButton = document.createElement("button");
+      tallaButton.textContent = talla;
+      tallaButton.classList.add("talla-btn");
+      tallaButton.setAttribute("data-talla", talla);
+      tallaButton.addEventListener("click", function() {
+        // Resaltar el botón seleccionado
+        tallaDom.querySelectorAll('.talla-btn').forEach(btn => {
+          btn.classList.remove('seleccionado');
+        });
+        this.classList.add('seleccionado');
+        
+        // Mostrar la talla seleccionada
+        const tallaSeleccionada = this.getAttribute('data-talla');
+        tallaSeleccionadaDom.textContent = tallaSeleccionada;
+
+        // Resaltar el botón de color seleccionado
+        colorDom.querySelectorAll('.color-btn').forEach(btn => {
+          btn.classList.remove('seleccionado');
+          if (btn.getAttribute('data-color') === productoSeleccionado.color) {
+            btn.classList.add('seleccionado');
+          }
+        });
+      });
+      tallaDom.appendChild(tallaButton);
+    });
+  }
+
+};
 
 dataProductos(idProducto);
 
+/*-------------------------prueba zapatos principal y chicas------------------*/
 
+const imagenesChicas = document.querySelectorAll('.imagen-chica img');
 
-     /*--------------------prueba botones talla------------------------------- */
-
-     document.addEventListener('DOMContentLoaded', function() {
-        const botonesTalla = document.querySelectorAll('.talla-btn');
-        const tallaSeleccionada = document.getElementById('talla-seleccionada');
-      
-        botonesTalla.forEach(function(boton) {
-          boton.addEventListener('click', function() {
-            // Resaltar el botón seleccionado
-            botonesTalla.forEach(function(boton) {
-              boton.classList.remove('seleccionado');
-            });
-            this.classList.add('seleccionado');
-      
-            // Mostrar la talla seleccionada
-            const talla = this.getAttribute('data-talla');
-            tallaSeleccionada.textContent = talla;
-          });
-        });
-      });
-      
-       /*--------------------prueba botones color------------------------------- */
-  
-       document.addEventListener('DOMContentLoaded', function() {
-        const botonesColor = document.querySelectorAll('.color-btn');
-        const colorSeleccionado = document.getElementById('color-seleccionado');
-      
-        botonesColor.forEach(function(boton) {
-          
-        });
-      });      
-  
-      function addButtonListener(event) {
-        //Resaltar el botón seleccionado
-        // event.preventDefault();
-        button = event.target;
-        // console.log(button.classList)
-        button.classList.toggle('seleccionado');
-
-        // console.log(button.classList.includes('seleccinado') !== -1)
-        
-        // if(button.classList.indexOf('seleccinado') !== -1) {
-        // } else  {
-          // button.classList.add('seleccionado');
-        // }
-
-        // Mostrar la talla seleccionada
-        // const color = this.getAttribute('data-color');
-        // colorSeleccionado.textContent = color;
-      }
-
-      /*-------------------------prueba zapatos principal y chicas------------------*/
-  
-      const imagenesChicas = document.querySelectorAll('.imagen-chica img');
-  
-  // Agregar evento click a cada imagen chica
-  imagenesChicas.forEach(imagen => {
-      imagen.addEventListener('click', () => {
-          const imagenPrincipal = document.getElementById('imagen-principal');
-          imagenPrincipal.src = imagen.src;
-          imagenPrincipal.alt = imagen.alt;
-      });
-  });
-  
-  /*-------------boton agregar carrito------------*/
-  
-  
-  $('.btn-add-to-cart').click(function() {
-    Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Se ha agregado al carrito",
-        showConfirmButton: false,
-        timer: 1500
+// Agregar evento click a cada imagen chica
+imagenesChicas.forEach(imagen => {
+    imagen.addEventListener('click', () => {
+        const imagenPrincipal = document.getElementById('imagen-principal');
+        imagenPrincipal.src = imagen.src;
+        imagenPrincipal.alt = imagen.alt;
     });
-  
-    // Restablecer valores de los elementos
-    $('#namezap').text('nombrezap'); // Restablecer el nombre del producto
-    $('#scolor').text('Color'); // Restablecer el título del color
-    $('#ptalla').text('Seleccionaste la talla:'); // Restablecer el texto de la talla seleccionada
-    $('#talla-seleccionada').text(''); // Restablecer la talla seleccionada
-    $('.imput-quantity').val(1); // Restablecer la cantidad a 1
-  
-    // Remover la clase 'selected' de todos los botones de color y talla
-    $('.color-btn.selected').removeClass('selected');
-    $('.talla-btn.selected').removeClass('selected');
-  });
-  
-
-
-/*------------------------------------------------------------------------*/
-// Obtener el ID del local storage
-const idAlmacenado = localStorage.getItem('id');
-
-// Verificar si el ID está presente en el local storage
-if (idAlmacenado) {
-    // Utilizar el ID obtenido para seleccionar el elemento correspondiente
-    const elemento = document.getElementById(idAlmacenado);
-
-    // Verificar si el elemento existe en el DOM
-    if (elemento) {
-        // Hacer algo con el elemento, por ejemplo, cambiar su contenido
-        elemento.textContent = '¡Este es el elemento seleccionado!';
-    } else {
-        console.log('El elemento no se encuentra en el DOM.');
-    }
-} else {
-    console.log('No se encontró ningún ID en el local storage.');
-}
-
-/*-------------------------------------------------------------------------*/
-document.addEventListener('DOMContentLoaded', function() {
-  fetch('productos.json')
-      .then(response => response.json())
-      .then(data => {
-          // Selecciona el contenedor de colores y tallas
-          const colorContainer = document.getElementById('color-container');
-          const tallasContainer = document.getElementById('tallas-container');
-
-          // Función para crear botones de colores
-          const crearBotonColor = (color) => {
-              const button = document.createElement('button');
-              button.className = 'color-btn';
-              button.dataset.color = color;
-              button.addEventListener('click', addButtonListener);
-              colorContainer.appendChild(button);
-          };
-
-          // Función para crear botones de talla
-          const crearBotonTalla = (talla) => {
-              const button = document.createElement('button');
-              button.className = 'talla-btn';
-              button.dataset.talla = talla;
-              button.addEventListener('click', addButtonListener);
-              talla-container.appendChild(button); // Adjunta al contenedor de tallas
-          };
-
-
-            // Itera sobre cada producto en el JSON
-            data.forEach(producto => {
-                // Actualiza nombre del producto
-                document.getElementById('namezap').textContent = producto.modelo;
-                
-                // Actualiza precio
-                document.querySelector('.container-price span').textContent = `$${producto.precio}.00`;
-                
-                // Crea botones de colores
-                crearBotonColor(producto.color);
-                
-                // Crea botones de tallas
-                Object.keys(producto.talla).forEach(talla => {
-                    if (producto.talla[talla]) {
-                        crearBotonTalla(talla);
-                    }
-                });
-                
-                // Actualiza descripción (producto.modelo)
-                document.getElementById('descripcion').textContent = producto.marca;
-                
-                // Actualiza imagen principal (si es necesario)
-                const img = document.createElement('img');
-            img.src = "../img/productos/" + elemento.imgMuestra;
-            img.alt = "Imagen del producto";
-            img.classList.add('imagen-principal'); // Añadir una clase específica
-                
-                // Actualiza imágenes chicas (si es necesario)
-                const imagenesChicasContainer = document.getElementById('imagenes-chicas');
-                const imagenes = [producto.imgLateral, producto.imgFrontal, producto.imgSuperior];
-                imagenes.forEach(imagen => {
-                    const img = document.createElement('img');
-                    img.src = imagen;
-                    imagenesChicasContainer.appendChild(img);
-                });
-            });
-        })
-        .catch(error => console.error('Error al cargar el JSON:', error));
 });
 
+/*-------------boton agregar carrito------------*/
 
+$('.btn-add-to-cart').click(function() {
+  // Verificar si se ha seleccionado una talla
+  const tallaSeleccionada = document.querySelector('.talla-btn.seleccionado');
+  if (!tallaSeleccionada) {
+    // Si no se ha seleccionado una talla, mostrar un alert y salir de la función
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Por favor, selecciona una talla antes de agregar al carrito",
+      showConfirmButton: false,
+      timer: 2000
+    });
+    return;
+  }
 
+  // Si se ha seleccionado una talla, mostrar el mensaje de éxito
+  Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Se ha agregado al carrito",
+      showConfirmButton: false,
+      timer: 1500
+  });
+});
 
+/*-----------------productos relacionados------------------ */
+const mostrarProductosRelacionados = async () => {
+  const response = await fetch("../../json/productos.json");
+  const data = await response.json();
+  const containerProductosRelacionados = document.querySelector(".card-list-products");
+
+  // Generar cuatro números aleatorios únicos entre 0 y la longitud del array de productos
+  const indicesAleatorios = [];
+  while (indicesAleatorios.length < 4) {
+    const indice = Math.floor(Math.random() * data.length);
+    if (!indicesAleatorios.includes(indice)) {
+      indicesAleatorios.push(indice);
+    }
+  }
+
+  // Construir el HTML para cada producto aleatorio
+  indicesAleatorios.forEach((indice, i) => {
+    const producto = data[indice];
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const imagen = document.createElement("div");
+    imagen.classList.add("card-img");
+    const img = document.createElement("img");
+    img.src = `../img/productos/${producto.imgMuestra}`;
+    img.alt = `producto-${i + 1}`;
+    imagen.appendChild(img);
+    card.appendChild(imagen);
+
+    const info = document.createElement("div");
+    info.classList.add("info-card");
+
+    const textProduct = document.createElement("div");
+    textProduct.classList.add("text-product");
+    const h3 = document.createElement("h3");
+    h3.textContent = producto.modelo;
+    const pCategory = document.createElement("p");
+    pCategory.classList.add("category");
+    pCategory.textContent = `${producto.marca} - ${producto.genero}`;
+    const pPrice = document.createElement("p");
+    pPrice.classList.add("price");
+    pPrice.textContent = `$${producto.precio}.00`;
+    textProduct.appendChild(h3);
+    textProduct.appendChild(pCategory);
+    textProduct.appendChild(pPrice);
+    info.appendChild(textProduct);
+
+    const button = document.createElement("button");
+    button.classList.add("btn-add-to-cart");
+    button.textContent = "Ver más";
+    
+    // Usar el dataset para almacenar el ID del producto
+    button.dataset.productId = producto.id;
+    
+    info.appendChild(button);
+
+    card.appendChild(info);
+    containerProductosRelacionados.appendChild(card);
+  });
+};
+
+mostrarProductosRelacionados();
+
+// Agregar el evento clic utilizando delegación de eventos
+document.querySelector(".card-list-products").addEventListener("click", (event) => {
+  // Verificar si el elemento clickeado es un botón "Ver más"
+  if (event.target.classList.contains("btn-add-to-cart")) {
+    // Obtener el ID del producto del dataset del botón
+    const productId = event.target.dataset.productId;
+    window.location.href = `producto.html?id=${productId}`;
+  }
+});

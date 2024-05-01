@@ -1,3 +1,5 @@
+
+
 :root {
   /*========== Colores ==========*/
   --color-principal: #fff9ec;
@@ -17,7 +19,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  background-color: var(--color-principal);
+  /* background-color: var(--color-principal); */
 }
 
 body {
@@ -259,6 +261,7 @@ footer p {
   }
 }
 
+
 /*---------------productos-----------------*/
 
 *{
@@ -478,7 +481,7 @@ button{
   padding-left: 100px;
   padding-right: 100px;
   
-
+  
 }
 
 .card{
@@ -495,11 +498,10 @@ margin-bottom: 15px;
 }
 
 .card-img img{
-  width: 100%;
-  height: 300px;
+  height: 400px;
   object-fit: cover;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
- 
+  max-width: 100%;
   
 }
 
@@ -517,7 +519,7 @@ margin-bottom: 15px;
 }
 
 .text-product h3{
-  color: inherit;
+color: inherit;
   font-weight: 500;
   font-size: 25px;
   margin-top: -60px;
@@ -528,8 +530,7 @@ margin-bottom: 15px;
 
 .text-product p{
 color: #666;
-font-size: 16px;
-margin-top: -7px;
+font-size: 13px;
 }
 .price{
   margin-top: -11px;
@@ -539,11 +540,12 @@ margin-top: -7px;
 }
 /*----------------prueba botones talla------------------------*/
 
+
 .talla-btn {
   border: 2px solid #ccc;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   margin: 8px;
   background-color: transparent;
   font-size: 13px;
@@ -553,11 +555,19 @@ margin-top: -7px;
 
 }
 
+/* Estilos para los botones con números decimales */
+.talla-btn[data-talla*=".5"] {
+  font-size: 13px; /* Tamaño de fuente más pequeño para números decimales */
+  padding-left: 0px;
+}
+
+
+
 .talla-btn.seleccionado {
   border-color: #007bff;
 }
 
-#tallas-container {
+#talla-container {
   display: flex;
   flex-wrap: wrap;
 }
@@ -598,7 +608,7 @@ margin-top: -7px;
   flex-wrap: wrap;
 }
 
-#color-seleccionada {
+#color-seleccionado {
   font-weight: bold;
 }
 #scolor{
@@ -611,26 +621,48 @@ margin-top: -7px;
 
 /*------------botones color---------------*/
 
-.color-btn[data-color="shedron"] {
+.color-btn[data-color="Shedron"] {
   background-color: #492d19;
 }
 
 .color-btn[data-color="Azul"] {
-  background-color: #1b2046;
+  background-color: #2636b2;
 }
 
 .color-btn[data-color="Verde"] {
-  background-color: #383e3a;
+  background-color: #095523;
 }
 
 .color-btn[data-color="Negro"] {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   /* color: white; /* Cambia el color del texto para que sea visible en botones oscuros */
 } 
 
-.color-btn[data-color="Cafe"] {
-  background-color: brown;
+.color-btn[data-color="Marino-Café"] {
+  background-color: rgb(45, 64, 88);
 }
+
+.color-btn[data-color="Vino"] {
+  background-color: #7f3d3d;
+}
+
+.color-btn[data-color="Marino"] {
+  background-color: #1d1d77;
+}
+
+.color-btn[data-color="Miel"] {
+  background-color: #998513;
+}
+
+.color-btn[data-color="Gris"] {
+  background-color: #676767aa;
+}
+
+.color-btn[data-color="Cafe"] {
+  background-color: #56400daa;
+}
+
+
 
 /*------------------prueba zapto grande y chicas---------------------*/
 
@@ -668,4 +700,107 @@ margin-top: -7px;
 
 .namezap{
   padding-left: 10px;
+  
 }
+
+/* == Carrousel de productos recentes ==*/
+
+/* Estilos base para el carrusel */
+.carrouselProductosRecientes {
+  /* background-color: #0070d2; */
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+ }
+
+
+
+ 
+ .carrouselProductosRecientes > #swiper-containerProductosRecientes {
+  /* background-color: #00d282; */
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+ }
+
+ .card-description{
+  padding: 1rem;
+ }
+
+ .card-title,
+ .card-text{
+  margin: 0rem 2rem;
+ }
+
+ .carrito-button{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+ }
+
+
+ /* .card-link button{
+  background-color: var(--color-contraste);
+  color: var(--color-principal);
+ } */
+
+
+ .card-link button{
+  margin: 0rem 0.5rem;
+  padding: 0.4rem 0.5rem;
+  /* border-radius:15px; */
+ }
+ 
+ #swiper-wrapperProductosRecientes {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: start;
+  justify-content: start;
+  /* background-color: #d26d00; */
+  width: 100%;
+  height: 420px;
+ }
+
+ 
+ #swiper-wrapperProductosRecientes > .cardProductosRecientes {
+  position: relative;
+  box-shadow: 0px 4px 4px rgba(196, 196, 196, 0.25);
+  background: #fff;
+  justify-content: center;
+  width: auto;
+ }
+
+ 
+ .cardProductosRecientes .card-imgProductosRecientes {
+  width: 100%;
+  height: 300px;
+  padding: 1.5%;
+ }
+ 
+ .cardProductosRecientes .card-imgProductosRecientes img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+ }
+
+
+ /* .swiper-button-next,
+ .swiper-button-prev{
+  box-shadow: 0px 0px 0px 3px red;
+ } */
+
+ .swiper-button-next:after{
+  margin-top: 83rem;
+}
+.swiper-button-prev:after{
+  margin-top: 83rem;
+}
+
+@media screen and (max-width: 920px) {
+  .swiper-button-next,
+.swiper-button-prev{
+  visibility: hidden;
+}
+}
+
+/* == Fin de Carrousel de productos recentes ==*/
