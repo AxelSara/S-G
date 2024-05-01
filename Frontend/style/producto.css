@@ -1,5 +1,3 @@
-
-
 :root {
   /*========== Colores ==========*/
   --color-principal: #fff9ec;
@@ -12,11 +10,7 @@
   background-color: #FFF9EC;
   /* Fondo transparente */
 }
-<<<<<<< HEAD
-
-=======
   
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
 * {
 
   font-optical-sizing: auto;
@@ -265,10 +259,7 @@ footer p {
   }
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
 /*---------------productos-----------------*/
 
 *{
@@ -277,20 +268,11 @@ footer p {
   box-sizing: border-box;
 }
 
-<<<<<<< HEAD
-body{
-  max-width: 1200px;
-  margin: 0 auto;
-
-}
-
-=======
 /* body{
   max-width: 1200px;
   margin: 0 auto;
 
 } */
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
 .card-img{
   max-width:100%;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
@@ -311,20 +293,14 @@ main{
   flex: 1;
 }
 
-<<<<<<< HEAD
-=======
 #ciproducto{
   padding-left: 100px;
 }
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
 .container-info-product{
   flex: 1;
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
-=======
   padding-right: 75px;
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
 }
 .container-price{
   padding-bottom:20px ;
@@ -332,10 +308,7 @@ main{
   display: flex;
   align-items: center;
   justify-content: space-between;
-<<<<<<< HEAD
-=======
   padding-left: 10px;
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
 }
 
 .container-price span {
@@ -503,39 +476,34 @@ button{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
-<<<<<<< HEAD
-=======
   padding-left: 100px;
   padding-right: 100px;
   
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
   
 }
 
 .card{
   cursor: pointer;
   background-color: #FFF9EC;
-<<<<<<< HEAD
-=======
   border: none;
-
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
+  box-shadow: -6px -6px 15px rgba(255, 255, 255, 1),
+  6px 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card-img{
-background-color: transparet;
+background-color:#FFF9EC;
 margin-bottom: 15px;
-<<<<<<< HEAD
-=======
 
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
 }
 
 .card-img img{
-  height: 400px;
+  height: 300px;
+  width: 100%;
   object-fit: cover;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: -6px -6px 15px rgba(255, 255, 255, 1),
+  6px 6px 15px rgba(0, 0, 0, 0.1);
   max-width: 100%;
+  border-radius: 15px;
   
 }
 
@@ -554,12 +522,6 @@ margin-bottom: 15px;
 
 .text-product h3{
 color: inherit;
-<<<<<<< HEAD
-font-weight: inherit;
-font-size: 25px;
-}
-
-=======
   font-weight: 500;
   font-size: 25px;
   margin-top: -60px;
@@ -568,21 +530,10 @@ font-size: 25px;
 }
 
 
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
 .text-product p{
 color: #666;
 font-size: 13px;
 }
-<<<<<<< HEAD
-
-/*----------------prueba botones talla------------------------*/
-
-.talla-btn {
-  border: 2px solid #ccc;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-=======
 .price{
   margin-top: -11px;
   margin-bottom: 1rem;
@@ -597,7 +548,6 @@ font-size: 13px;
   border-radius: 50%;
   width: 32px;
   height: 32px;
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
   margin: 8px;
   background-color: transparent;
   font-size: 13px;
@@ -607,8 +557,6 @@ font-size: 13px;
 
 }
 
-<<<<<<< HEAD
-=======
 /* Estilos para los botones con números decimales */
 .talla-btn[data-talla*=".5"] {
   font-size: 13px; /* Tamaño de fuente más pequeño para números decimales */
@@ -617,16 +565,11 @@ font-size: 13px;
 
 
 
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
 .talla-btn.seleccionado {
   border-color: #007bff;
 }
 
-<<<<<<< HEAD
-#tallas-container {
-=======
 #talla-container {
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
   display: flex;
   flex-wrap: wrap;
 }
@@ -667,11 +610,7 @@ font-size: 13px;
   flex-wrap: wrap;
 }
 
-<<<<<<< HEAD
-#color-seleccionada {
-=======
 #color-seleccionado {
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
   font-weight: bold;
 }
 #scolor{
@@ -684,29 +623,6 @@ font-size: 13px;
 
 /*------------botones color---------------*/
 
-<<<<<<< HEAD
-.color-btn[data-color="Rojo"] {
-  background-color: red;
-}
-
-.color-btn[data-color="Azul"] {
-  background-color: blue;
-}
-
-.color-btn[data-color="Verde"] {
-  background-color: green;
-}
-
-.color-btn[data-color="Negro"] {
-  background-color: black;
-  color: white; /* Cambia el color del texto para que sea visible en botones oscuros */
-}
-
-.color-btn[data-color="Cafe"] {
-  background-color: brown;
-}
-
-=======
 .color-btn[data-color="Shedron"] {
   background-color: #492d19;
 }
@@ -750,30 +666,22 @@ font-size: 13px;
 
 
 
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
 /*------------------prueba zapto grande y chicas---------------------*/
 
 .mostrador-imagenes {
   display: flex;
   align-items: flex-start; /* Alinea los elementos en la parte superior */
-<<<<<<< HEAD
-=======
   margin-top: -5%;
   padding-right: 68px;
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
 }
 
 .imagen-principal {
   flex: 1; /* La imagen principal ocupa el espacio restante */
   margin-right: 20px; /* Espacio entre la imagen principal y las imágenes chicas */
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+
 }
 #imagen-principal {
-<<<<<<< HEAD
-  max-width: 400px;
-=======
   max-width: 546px;
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
 
 }
 .imagen-chica {
@@ -781,11 +689,7 @@ font-size: 13px;
 }
 
 .imagen-chica img {
-<<<<<<< HEAD
-  width: 100px; /* Tamaño de las imágenes chicas */
-=======
   width: 131px; /* Tamaño de las imágenes chicas */
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
   height: auto;
   border-radius: 5px;
   cursor: pointer; /* Cambia el cursor al pasar sobre las imágenes chicas */
@@ -794,8 +698,6 @@ font-size: 13px;
 .imagen-chica img:hover {
   opacity: 0.7; /* Reduce la opacidad de las imágenes chicas al pasar sobre ellas */
 }
-<<<<<<< HEAD
-=======
 /*------------------------*/
 
 .namezap{
@@ -904,4 +806,124 @@ font-size: 13px;
 }
 
 /* == Fin de Carrousel de productos recentes ==*/
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
+
+/*----------responsive prodcuctos --------------------*/
+/* Estilos base */
+@media (max-width: 819px) {
+  #scolor {
+    display: none; /* Oculta el encabezado "Color" */
+  }
+
+  #color-container {
+    display: flex; /* Alinea los botones horizontalmente */
+  }
+}
+@media (max-width: 819px) {
+  #stalla {
+    display: none; /* Oculta el encabezado "Color" */
+  }
+
+  #talla-container {
+    display: flex; /* Alinea los botones horizontalmente */
+  }
+}
+
+@media (max-width: 819px) {
+  .container-name-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: none;
+  }
+  main,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0; /* Asegura que no haya márgenes predeterminados */
+    padding: 0; /* Asegura que no haya padding predeterminado */
+}
+   #ptalla,
+  h2,
+  #namezap {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%; /* Asegura que el título ocupe todo el ancho disponible */
+    box-sizing: border-box; /* Considera el padding y el borde dentro del ancho */
+    padding: 0 20px; /* Agrega un poco de relleno a los lados para evitar que se corte */
+  }
+  h2{
+    margin-top: 20%;
+   }
+  .mostrador-imagenes {
+    width: 100%; /* Asegura que las imágenes ocupen todo el ancho disponible */
+    overflow-x: auto;
+    white-space: nowrap;
+    box-shadow: none;
+  }
+img {
+    max-width: 100%; /* Ajusta el ancho de las imágenes según tu diseño */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    box-shadow: none;
+}
+
+  /* .mostrador-imagenes:hover .imagenes-chicas {
+    display: flex; /* Muestra las imágenes chicas cuando se pasa el ratón sobre el mostrador de imágenes *
+  } */
+
+  .imagenes-chicas {
+    display: none; /* Oculta las imágenes chicas por defecto */
+    box-shadow: none;
+  }
+
+  #imagen-principal {
+    width: 100%; /* Asegura que la imagen principal ocupe todo el ancho disponible */
+    margin-left: 16%;
+    border-radius: 10%;
+    margin-top: 10%;
+    box-shadow: none;
+  }
+
+  #color-container,
+  #talla-container {
+    width: 100%; /* Asegura que los contenedores de botones ocupen todo el ancho disponible */
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    flex-wrap: wrap; /* Permite que los botones se envuelvan si no caben en una sola línea */
+    
+  }
+  #priceDom{
+    font-size: 20px;
+    justify-content: center;
+  }
+  .container-add-cart {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%; /* Asegura que el contenedor de botón de agregar al carrito ocupe todo el ancho disponible */
+  }
+   h4{
+    text-align: center;
+   }
+   .container-quantity{
+    
+   }
+   .btn-add-to-cart{
+   justify-content: center;
+   }
+  .text-description {
+    display: flex; /* Oculta la descripción del producto y los productos relacionados por defecto */
+    text-align: center;
+    margin-top: 20px;
+    width: 100%; /* Asegura que el título ocupe todo el ancho disponible */
+    box-sizing: border-box; /* Considera el padding y el borde dentro del ancho */
+    padding: 0 20px; /* Agrega un poco de relleno a los lados para evitar que se corte */
+  }
+
+  
+  .container-related-products {
+    display: none; /* Oculta la descripción del producto y los productos relacionados por defecto */
+  }
+  #ciproducto{
+    padding: 0%;
+  }
+}

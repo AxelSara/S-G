@@ -1,84 +1,3 @@
-<<<<<<< HEAD
-// const inputQuantity = document.querySelector('.input-quantity')
-// const btnIncrement = document.querySelector('#increment')
-// const btnDecrement = document.querySelector('#decrement')
-
-// let valueByDefault = parseInt(inputQuantity.value)
-
-// // funciones click
-
-// btnIncrement.addEventListener('click', () => {
-// valueByDefault +=1
-
-// inputQuantity.value = valueByDefault
-
-// })
-
-// btnDecrement.addEventListener('click', () => {
-//     valueByDefault -=1
-    
-//     inputQuantity.value = valueByDefault
-    
-//     })
-
-//     // togle
-
-//      const toggleDescription = document.querySelector('.title-description')
-     
-//      const contentDescription = document.querySelector('.text-description')
-
-     
-    
-//      toggleDescription.addEventListener('click', ()=>{
-//         contentDescription.classList.toggle('hidden');
-//      });
-
-     /*--------------------prueba botones talla------------------------------- */
-
-     document.addEventListener('DOMContentLoaded', function() {
-      const botonesTalla = document.querySelectorAll('.talla-btn');
-      const tallaSeleccionada = document.getElementById('talla-seleccionada');
-    
-      botonesTalla.forEach(function(boton) {
-        boton.addEventListener('click', function() {
-          // Resaltar el botón seleccionado
-          botonesTalla.forEach(function(boton) {
-            boton.classList.remove('seleccionado');
-          });
-          this.classList.add('seleccionado');
-    
-          // Mostrar la talla seleccionada
-          const talla = this.getAttribute('data-talla');
-          tallaSeleccionada.textContent = talla;
-        });
-      });
-    });
-    
-     /*--------------------prueba botones color------------------------------- */
-
-     document.addEventListener('DOMContentLoaded', function() {
-      const botonesColor = document.querySelectorAll('.color-btn');
-      const colorSeleccionado = document.getElementById('color-seleccionado');
-    
-      botonesColor.forEach(function(boton) {
-        boton.addEventListener('click', function() {
-          // Resaltar el botón seleccionado
-          botonesColor.forEach(function(boton) {
-            boton.classList.remove('seleccionado');
-          });
-          this.classList.add('seleccionado');
-    
-          // Mostrar la talla seleccionada
-          const color = this.getAttribute('data-color');
-          colorSeleccionado.textContent = color;
-        });
-      });
-    });      
-
-    /*-------------------------prueba zapatos principal y chicas------------------*/
-
-    const imagenesChicas = document.querySelectorAll('.imagen-chica img');
-=======
 const idProducto = 0; 
 
 const dataProductos = async (id) => {
@@ -188,7 +107,6 @@ dataProductos(idProducto);
 /*-------------------------prueba zapatos principal y chicas------------------*/
 
 const imagenesChicas = document.querySelectorAll('.imagen-chica img');
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
 
 // Agregar evento click a cada imagen chica
 imagenesChicas.forEach(imagen => {
@@ -200,12 +118,29 @@ imagenesChicas.forEach(imagen => {
 });
 
 /*-------------boton agregar carrito------------*/
-
-<<<<<<< HEAD
-
 $('.btn-add-to-cart').click(function() {
-=======
-$('.btn-add-to-cart').click(function() {
+  // Verificar si el usuario está autenticado
+  const user = JSON.parse(localStorage.getItem("usuarioActual"));
+  if (!user) {
+    // Mostrar un mensaje de alerta solicitando al usuario que inicie sesión antes de agregar productos al carrito
+    Swal.fire({
+      icon: "warning",
+      title: "Iniciar Sesión",
+      text: "Por favor, inicia sesión antes de agregar productos al carrito",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Iniciar Sesión",
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Si el usuario hace clic en "Iniciar Sesión", redirigirlo a la página de inicio de sesión
+        window.location.href = "./loginRegistro.html";
+      }
+    });
+    return; // Detener la ejecución del resto del código
+  }
+  
   // Verificar si se ha seleccionado una talla
   const tallaSeleccionada = document.querySelector('.talla-btn.seleccionado');
   if (!tallaSeleccionada) {
@@ -220,8 +155,7 @@ $('.btn-add-to-cart').click(function() {
     return;
   }
 
-  // Si se ha seleccionado una talla, mostrar el mensaje de éxito
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
+  // Si se ha seleccionado una talla y el usuario está autenticado, mostrar el mensaje de éxito
   Swal.fire({
       position: "center",
       icon: "success",
@@ -229,20 +163,6 @@ $('.btn-add-to-cart').click(function() {
       showConfirmButton: false,
       timer: 1500
   });
-<<<<<<< HEAD
-
-  // Restablecer valores de los elementos
-  $('#namezap').text('nombrezap'); // Restablecer el nombre del producto
-  $('#scolor').text('Color'); // Restablecer el título del color
-  $('#ptalla').text('Seleccionaste la talla:'); // Restablecer el texto de la talla seleccionada
-  $('#talla-seleccionada').text(''); // Restablecer la talla seleccionada
-  $('.imput-quantity').val(1); // Restablecer la cantidad a 1
-
-  // Remover la clase 'selected' de todos los botones de color y talla
-  $('.color-btn.selected').removeClass('selected');
-  $('.talla-btn.selected').removeClass('selected');
-});
-=======
 });
 
 /*-----------------productos relacionados------------------ */
@@ -317,4 +237,24 @@ document.querySelector(".card-list-products").addEventListener("click", (event) 
     window.location.href = `producto.html?id=${productId}`;
   }
 });
->>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
+
+// --------------
+
+window.addEventListener('resize', () => {
+  const containerName = document.querySelector('.container-name');
+  const mostradorImagenes = document.querySelector('.mostrador-imagenes');
+
+  // Obtener el ancho de la ventana
+  const windowWidth = window.innerWidth;
+
+  // Si el ancho de la ventana es menor a 820px y el mostrador de imágenes no está dentro del contenedor de nombre, lo movemos.
+  if (windowWidth < 820 && !containerName.contains(mostradorImagenes)) {
+    containerName.appendChild(mostradorImagenes);
+  } else if (windowWidth >= 820 && containerName.contains(mostradorImagenes)) {
+    // Si el ancho de la ventana es mayor o igual a 820px y el mostrador de imágenes está dentro del contenedor de nombre, lo sacamos.
+    document.querySelector('main').appendChild(mostradorImagenes);
+  }
+});
+
+// Disparamos el evento de redimensionamiento para que se ejecute al cargar la página
+window.dispatchEvent(new Event('resize'));
