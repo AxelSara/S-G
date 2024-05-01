@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seleccionar Delegación y Colonia en la CDMX</title>
+<script src="https://maps.googleapis.com/maps/api/js?key=TU_CLAVE_DE_API&libraries=places"></script>
+<script>
+function cargarColonias() {
+  // Obtener la delegación seleccionada
+  var delegacion = document.getElementById('delegacion').value;
+
+  // Crear la solicitud para la API de Geocodificación de Google Maps
+  var geocoder = new google.maps.Geocoder();
+
+  // Realizar la solicitud para obtener las coordenadas geográficas de la delegación
+  geocoder.geocode({ 'address': delegacion + ', Ciudad de México' }, function(results, status) {
+    if (status === 'OK') {
+      // Filtrar los resultados para obtener solo las colonias
+      var colonias = results[0].address_components.filter(component => component.types.includes('neighborhood'));
+
+      // Limpiar el campo de selección de colonias
+      var selectColonias = document.getElementById('colonias');
+      selectColonias.innerHTML = '';
+
+      // Agregar las colonias al campo de selección
+      colonias.forEach(colonia => {
+        var option = document.createElement('option');
+        option.value = colonia.long_name;
+        option.text = colonia.long_name;
+        selectColonias.appendChild(option);
+      });
+    } else {
+      console.error('Error al geocodificar la delegación:', status);
+    }
+  });
+}
+</script>
+</head>
+<body>
+<h1>Seleccionar Delegación y Colonia en la CDMX</h1>
+<label for="delegacion">Seleccione una delegación:</label><br>
+<select id="delegacion">
+  <option value="Álvaro Obregón">Álvaro Obregón</option>
+  <option value="Azcapotzalco">Azcapotzalco</option>
+  <option value="Benito Juárez">Benito Juárez</option>
+  <!-- Agrega más opciones para otras delegaciones -->
+</select><br>
+<label for="colonias">Seleccione una colonia:</label><br>
+<select id="colonias"></select><br>
+<button onclick="cargarColonias()">Cargar Colonias</button>
+</body>
+</html>

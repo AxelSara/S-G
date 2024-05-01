@@ -1,0 +1,171 @@
+:root {
+    /*========== Colores ==========*/
+    --color-principal: #fff9ec;
+    --color-contraste: #645e4e;
+    --color-contraste-transparente: rgb(100, 94, 78, 0.9);
+    --color-claro: #b2ab99;
+    --color_footer: #a1c9c1;
+    --color-claro-azul: #d8fff9;
+    --color-header: background-color: rgba(255, 255, 255, 0);
+    /* Fondo transparente */
+  }
+  
+  * {
+  
+    font-optical-sizing: auto;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /* background-color: var(--color-principal); */
+  }
+  
+  body {
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;/*elimina el scroll del eje x*/
+    background-color: var(--color-principal);
+  }
+
+/* ================ Admin panel ================ */
+
+.contenedor-principal-panel-admin{
+  margin-top: 3rem;
+}
+
+.panel-section{
+  display: flex;
+  flex-direction: row;
+}
+
+.admin-title{
+    text-align: center;
+}
+
+#admin-panel{
+  flex-grow: 1;
+}
+
+#blank-panel{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#blank-panel .admin-table{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  vertical-align: bottom;
+  color: #686871;
+}
+
+#admin-panel ul{
+  text-align: center;
+  list-style-type: none;
+}
+
+#admin-panel svg{
+  margin-right: 1rem;
+}
+
+/* ================ Admin panel ================ */
+
+/* ================ Tabla admin ================ */
+
+.admin-table{
+    margin: 1rem;
+}
+
+.admin-table tr{
+    vertical-align: text-top;
+}
+
+.admin-table img{
+    height: 10rem;
+}
+
+.admin-table button{
+    padding: 0.3rem 0.3rem;
+    border: none;
+    background-color: rgb(0, 0, 0, 0);
+}
+
+#admin-table-data input{
+  width: 7rem;
+}
+
+/* ================ Tabla admin ================ */
+
+/*=================Side-menu====================*/
+
+.side-menu-admin{
+
+  background-color: rgb(178, 171, 153, 0.5);
+  height: 80vh;
+  width: 10vh;
+
+  overflow: hidden;
+  transition: width 0.2s linear;
+  box-shadow: 0px 20px 35px #b2ab99;
+  box-sizing: border-box;
+}
+
+.side-menu-admin ul{
+  margin: 0;
+  padding: 0rem 0.5rem;
+  list-style-type: none;
+}
+
+.side-menu-admin li{
+  padding: 1rem 0rem;
+}
+
+/* .side-menu-admin a{
+  position: relative;
+} */
+
+.side-menu-admin svg{
+  color: #979284;
+}
+
+.side-menu-admin svg:hover{
+  color: var(--color-contraste);
+}
+
+.side-menu-admin div:hover{
+  background: var(--color-claro);
+}
+
+.side-menu-list{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.side-menu-list span{
+  /* position: fixed;
+  top: 50%;
+  left: 10%; */
+  color: black;
+  padding: 1rem;
+}
+
+.side-menu-extended .bi{
+  position: relative;
+  width: 70px;
+  height: 70px;
+  top: 0px;
+  text-align: center;
+}
+
+/* .nav-item-menu{
+  position: relative;
+  top: 12px;
+  margin-left: 10px;
+} */
+
+main nav:hover{
+  width: 280px;
+  transition: all 0.5s ease;
+}

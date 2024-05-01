@@ -1,0 +1,183 @@
+:root {
+    /*========== Colores ==========*/
+    --color-principal: #fff9ec;
+    --color-contraste: #645e4e;
+    --color-contraste-transparente: rgb(100, 94, 78, 0.9);
+    --color-claro: #b2ab99;
+    --color_footer: #a1c9c1;
+    --color-claro-azul: #d8fff9;
+    --color-header: background-color: rgba(255, 255, 255, 0);
+    /* Fondo transparente */
+  }
+  
+  * {
+    font-optical-sizing: auto;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /* background-color: var(--color-principal); */
+  }
+  
+  body {
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;/*elimina el scroll del eje x*/
+    background-color: var(--color-principal);
+   }
+
+.contenedor_principal_detallesCompra{
+    overflow-y: hidden;
+    height: 80vh;
+    margin-top: 70px;
+    color: #fff9ec;
+}
+
+
+.contenedorDatosUsuarioCompra{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    /* background-color: #645e4e; */
+    color: #fff9ec;
+}
+
+.contenedorResumenCompra{
+    display: flex;
+    /* background-color: #927525; */
+    color: var(--color-contraste);
+}
+
+
+/* ======= DATOS DE ENTREGA ======= */
+
+.contenedorDatosEntrega{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* background-color: #927525; */
+    color: var(--color-contraste);
+}
+
+.contenedorDatosEntrega > .contenedorInfoEntrega {
+    width: 80%;
+    padding: 0px;
+}
+
+.infoEntrega {
+    width: 80%;
+    padding: 0px 20px;
+}
+
+.contenedorDatosEntrega > .contenedorInfoResumen {
+    width: 20%;
+    padding: 20px;
+    /* centrar el contenido */
+    display: flex;
+}
+
+.contenedorDatosEntrega > .contenedorCambiarDireccion{
+    width: 20%;
+    padding: 20px;
+    /* centrar el contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #927525; */
+    color: #fff9ec;
+}
+
+.contenedorCambiarDireccion a{
+    cursor: pointer;
+    background-color: var(--color-contraste);
+    color: #fff9ec;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+.contenedorMetodoPago{
+    margin-top: 3rem;
+    /* background-color: #308630; */
+    color: var(--color-contraste);
+}
+
+.pagoReferencia{
+    margin: 1rem 1.5rem;
+}
+
+.pagoReferencia label{
+    margin-left:1.5rem;
+    text-align: center;
+}
+
+.pagoReferencia input{
+    text-align: center;
+}
+
+.contenedorMetodoPago img{
+    width: 5rem;
+}
+
+.contenedorCambiarDireccion a:hover{
+    cursor: pointer;
+    background-color: #5936b0;
+}
+
+#carrito{
+    width: 100%;
+    height: 65vh;
+    overflow-y: auto;
+}
+
+
+/* ========== Fin de DATOS DE ENTREGA ========= */
+
+
+
+
+/* ========== DATOS DE PEDIDO ========= */
+
+#admin-table-data{
+    vertical-align: text-top;
+    align-items: center;
+}
+
+#admin-table-data img{
+    height: 10rem;
+    width: auto;
+}
+
+.contenedorBotonPago{
+    display: flex;
+    justify-content: end;
+    max-height: 5rem;
+    padding: 1rem 3rem 0rem 0rem;
+}
+
+.contenedorBotonPago button{
+    cursor: pointer;
+    background-color: var(--color-contraste);
+    max-height: 3rem;
+    color: #fff9ec;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+#SweetAlertButton{
+    color: white;
+}
+
+.contenedorDetallesPedido{
+    flex-grow: 1;
+}
+
+@media (max-width: 600px) {
+    #admin-table-data img{
+        height: 6rem;
+        width: auto;
+    }
+}

@@ -4,7 +4,7 @@ const showData = (data) => {
         for (let i = data.length; i >= 0; i--) {
             if(i == dat.id && i > data.length - 7){
                 banner += `
-                <div class="swiper-slide cardProductosRecientes">
+                <div class="cardProductosRecientes">
                     <div class="card-imgProductosRecientes">
                         <img src="./Frontend/assets/img/productos/${dat.imgMuestra}" alt="${dat.imgMuestra}">
                     </div>
@@ -19,7 +19,12 @@ const showData = (data) => {
                         </div>
                         <div class="carrito-button col-7">   
                             <div class="card-link">
-                                <button class="buy button-pr" onclick="addCartCarrusel(${dat.id})" id=""> Agregar al carrito </button>
+                                <!-- <button class="buy button-pr" onclick="addCartCarrusel(${dat.id})" id="">
+                                    <a href="./Frontend/assets/pages/producto.html">Ver más</a>
+                                </button> -->
+                                <button class="buy button-pr" onclick="" id="">
+                                    <a href="./Frontend/assets/pages/producto.html">Ver más</a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -31,7 +36,29 @@ const showData = (data) => {
         document.getElementById("swiper-wrapperProductosRecientes").innerHTML = banner;
       });
   }
-  
+
+  function alert() {
+    const toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+    });
+
+    return toast.fire({
+        title: "Añadido a favoritos",
+        icon: "success",
+        customClass: {
+            popup: 'rounded'
+        }
+    });
+}
+   
   const carrito = JSON.parse(localStorage.getItem("carrito"));
 
   const addCartCarrusel = async (id) =>{

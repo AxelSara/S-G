@@ -127,14 +127,23 @@ function realizarPago() {
     console.log("Eso es todo, se está realizando el pago...");
 
     // Limpiar el carrito del localStorage
+<<<<<<< HEAD
     
     localStorage.removeItem("carrito");
 
     // Actualizar la visualización del carrito (opcional)
+=======
+    // localStorage.removeItem("carrito");
+
+    // Actualizar la visualización del carrito (opcional)
+
+    /*
+>>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503
     const tablaProductos = document.getElementById('tablaProductos');
     tablaProductos.getElementsByTagName('tbody')[0].innerHTML = ''; // Limpiar la tabla
     const totalCarritoCell = document.getElementById('totalCarrito');
     totalCarritoCell.textContent = '$0.00'; // Actualizar el total a cero
+<<<<<<< HEAD
 }
 
 // Agregar el evento click al botón de checkout para llamar a la función realizarPago
@@ -151,3 +160,34 @@ $('.checkout-btn').click(function() {
     });
     // Aquí puedes agregar cualquier otra acción que necesites realizar después de que se haya hecho el pago
   });
+=======
+    */
+}
+
+// Verificar si esta loggeado el usuario
+const verLogin = async () => {
+    const user = JSON.parse(localStorage.getItem("usuarioActual"));
+    
+    if(user == []){
+        console.log("Redirigir a log")
+    }else{
+        console.log(user);
+    }
+    realizarPago();
+}
+
+// Agregar el evento click al botón de checkout para llamar a la función realizarPago
+document.getElementById('checkoutBtn').addEventListener('click', realizarPago);
+
+// // boton pagar reaccion alert modo alan 
+// $('.checkout-btn').click(function() {
+//     Swal.fire({
+//       position: "center",
+//       icon: "success",
+//       title: "Tu pago se ha realizado con éxito",
+//       showConfirmButton: false,
+//       timer: 1500
+//     });
+//     // Aquí puedes agregar cualquier otra acción que necesites realizar después de que se haya hecho el pago
+//   });
+>>>>>>> 2d93fd8b89f06d31f76675129fc4fbb26e689503

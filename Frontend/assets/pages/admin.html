@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel administrador</title>
+    
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../style/admin.css">
+    <link rel="stylesheet" href="../../style/navbar_footer.css">
+    <link rel="stylesheet" href="../../style/agregar-zapato.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+    <!-- Incluye SweetAlert2 desde su CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- icono del footer -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- ----------ICONS FONTAWESOME---------- -->
+    <script src="https://kit.fontawesome.com/d0be8199f6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!--=============== HEADER ===============-->
+    <header id="headerZapateria">
+        <div class="header-nav">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid" id="navbar-bg" bg-transparent>
+                    <a class="iconLogo mt-1" href="#">
+                        <img class="nav-link" src="../img/icon/logo.png" alt="LogoS&G" width="100"
+                            height="auto">
+                    </a>
+
+                    <!-- Boton hamburguesa en pantallas pequeñas -->
+                    <button class="navbar-toggler btnHamburguesa" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto listaElementosNavbar">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="../../../index.html">Inicio</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="./lista-productos.html" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Productos
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item"
+                                            href="./lista-productos.html">Mujer</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <!-- Elemento Hombre -->
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="./lista-productos.html">
+                                            Hombre
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./sobre-nosotros.html">Acerca de
+                                    nosotros</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./contactanos.html">Contáctanos</a>
+                            </li>
+
+                            <li class="nav-item-icon">
+                                <a class="icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cuenta" href="./loginRegistro.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-person"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                                    </svg>
+                                </a>
+                            </li>
+
+                            <li class="nav-item-icon">
+                                <a data-bs-toggle="tooltip" data-bs-placement="bottom" title="Favoritos"   class="botonFavoritoNavbar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-heart"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                    </svg>
+                                </a>
+                            </li>
+
+                            <li class="nav-item-icon">
+                                <!--<a class="icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Carrito" href="./Frontend/assets/pages/carrito.html" id="navbar_carrito">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-cart2 m-1"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+                                    </svg>
+                                </a>-->
+                                <a class="icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Carrito" onclick="verficarUserLog()" id="navbar_carrito">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="bi bi-cart2 m-1"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+                                    </svg>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                        <style>
+                            a {
+                                text-decoration: none;
+                                margin-right: 12px;
+                            }
+
+                            .nav-item:hover {
+                                background-color: #B8AA87 !important;
+                                /* Cambia el color de fondo al pasar el mouse */
+                                transition: background-color 0.3s ease;
+                                /* Agrega una transición suave */
+                                border-radius: 20px;
+                            }
+                            .nav-item-icon:hover {
+                                background-color: #B8AA87 !important;
+                                /* Cambia el color de fondo al pasar el mouse */
+                                transition: background-color 0.3s ease;
+                                /* Agrega una transición suave */
+                                border-radius: 65px;
+                            }
+                            
+                            .adminText{
+                                font-size: 8px;
+                            }
+                            
+                        </style>
+                    </div>
+            </nav>
+        </div>
+
+    </header>
+    <!--=============== HEADER ===============-->
+    <!--=============== MAIN ===============-->
+    <main class="contenedor-principal-panel-admin">
+        <div class="admin-title">
+            <h2>Panel de administrador</h2>
+        </div>
+        <article class="panel-section">
+            <nav class="side-menu-admin">
+                <ul class="side-menu-extended">
+                    <!-- <li>
+                        <div class="side-menu-list" onclick="blank()">
+                            <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                            </svg><span class="nav-item-menu">Administrador</span>
+                            </a>
+                        </div>
+                    </li> -->
+                    <li>
+                        <div class="side-menu-list" onclick="agregarZapato()">
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-cloud-plus" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5"/>
+                                    <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
+                                </svg><span class="nav-item-menu">Agregar zapato</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="side-menu-list" onclick="table()">
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+                                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+                                </svg><span class="nav-item-menu">Productos</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <section id="admin-panel">
+                
+                <section class="contenedor_principal_agregarZapato">
+            
+                    <header class="tituloAgregarZapato">
+                        <h1>Agregar zapato</h1>    
+                    </header>
+                    
+                    <form class="form-group mt-3" id="form">
+        
+                        <div class="row">
+                            <!-- Columna 1 de la fila 1 (campos de entrada)-->
+                            <div class="col-md-8 col-sm-12">
+                                <div class="form-group mt-2">
+        
+                                    <div>
+                                        <label for="nombreZapatoAgregar" class="form-label">Nombre del zapato</label>
+                                        <input type="text" class="form-control" id="nombre_zapato_agregar" name="nombreZapatoAgregar">
+                                    </div>
+        
+                                    <!-- campo color -->
+                                    <div>               
+                                        <label for="nombreZapatoAgregar" class="form-label">Color</label>
+                                        <input type="text" class="form-control" id="color_zapato_agregar" name="nombreZapatoAgregar">
+                                    </div>
+        
+                                    <!-- campo precio -->
+                                    <div>
+                                        
+                                        <label for="nombreZapatoAgregar" class="form-label">Precio</label>
+                                        <input type="text" class="form-control" id="precio_zapato_agregar" name="nombreZapatoAgregar">
+                                    </div>
+        
+                                    <!-- campo marca -->
+                                    <div class="mb-3">    
+                                        <label for="nombreZapatoAgregar" class="form-label">Marca</label>
+                                        <input type="text" class="form-control" id="marca_zapato_agregar" name="nombreZapatoAgregar">
+                                    </div>
+        
+        
+                                    <!-- campo talla -->
+                                    <label for="talla-selector">Seleccione las tallas </label>
+        
+        
+                                    <div class="talla-selector">
+                                        
+                                        <div class="talla-checkbox">
+                                            <input type="checkbox" id="talla-24" value="24" name="talla">
+                                            <label for="talla-24">24</label>
+                                        </div>
+        
+                                        <div class="talla-checkbox">
+                                            <input type="checkbox" id="talla-24.5" value="24.5" name="talla">
+                                            <label for="talla-24.5">24.5</label>
+                                        </div>
+        
+                                        <div class="talla-checkbox">
+                                            <input type="checkbox" id="talla-25" value="25" name="talla">
+                                            <label for="talla-25">25</label>
+                                        </div>
+        
+                                        <div class="talla-checkbox">
+                                            <input type="checkbox" id="talla-25.5" value="25.5" name="talla">
+                                            <label for="talla-25.5">25.5</label>
+                                        </div>
+        
+                                        <div class="talla-checkbox">
+                                            <input type="checkbox" id="talla-26" value="26" name="talla">
+                                            <label for="talla-26">26</label>
+                                        </div>
+        
+                                        <div class="talla-checkbox">
+                                            <input type="checkbox" id="talla-26.5" value="26.5" name="talla">
+                                            <label for="talla-26.5">26.5</label>
+                                        </div>
+        
+                                        <div class="talla-checkbox">
+                                            <input type="checkbox" id="talla-27" value="27" name="talla">
+                                            <label for="talla-27">27</label>
+                                        </div>
+        
+                                        <div class="talla-checkbox">
+                                            <input type="checkbox" id="talla-27.5" value="27.5" name="talla">
+                                            <label for="talla-27.5">27.5</label>
+                                        </div>
+        
+                                        <div class="talla-checkbox">
+                                            <input type="checkbox" id="talla-28" value="28" name="talla">
+                                            <label for="talla-28">28</label>
+                                        </div>
+        
+                                        <div class="talla-checkbox">
+                                            <input type="checkbox" id="talla-28.5" value="28.5" name="talla">
+                                            <label for="talla-28.5">28.5</label>
+                                        </div>
+        
+                                        <div class="talla-checkbox">
+                                            <input type="checkbox" id="talla-29" value="29" name="talla">
+                                            <label for="talla-29">29</label>
+                                        </div>
+        
+                                        <div class="talla-checkbox">
+                                            <input type="checkbox" id="talla-29.5" value="29.5" name="talla">
+                                            <label for="talla-29.5">29.5</label>
+                                        </div>
+        
+                                        <div class="talla-checkbox">
+                                            <input type="checkbox" id="talla-30" value="30" name="talla">
+                                            <label for="talla-30">30</label>
+                                        </div>
+        
+                                    </div>
+                                    <div class="talla-mostradas">
+                                        <p>Tallas seleccionadas: <span id="tallas-mostradas">Ninguna</span></p>
+                                    </div>
+        
+                                    <!-- campo  radio boton género -->
+                                    <div class="form-group mt-3">
+                                        <h6>Género</h6>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input hidden-radio" type="radio" name="inlineRadioOptions" id="inlineHombre1" value="Hombre">
+                                            <label class="form-check-label" for="inlineHombre1">
+                                                <i class="fas fa-male"></i> Hombre
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input hidden-radio" type="radio" name="inlineRadioOptions" id="inlineMujer" value="Mujer">
+                                            <label class="form-check-label" for="inlineMujer">
+                                                <i class="fas fa-female"></i> Mujer
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input hidden-radio" type="radio" name="inlineRadioOptions" id="inlineUnisex" value="Unisex">
+                                            <label class="form-check-label" for="inlineUnisex">
+                                                <i class="fas fa-genderless"></i> Unisex
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    
+        
+                                </div>                  
+                            </div>
+        
+                            <!-- Columna 2 de la fila 1  (Campo imagen)-->
+                            <div class="col-md-4 col-sm-12 form-group mt-3 contenedorImagenAgregarZapato">
+        
+                                <!-- contenedor carousel -->
+        
+                                <div id="carouselAddZapato" class="carousel slide " data-ride="carousel">
+                                    <div class="carousel-inner">
+        
+                                        <div class="carousel-item active contenedorImagenAgregar">
+                                            <label class="custom-file-label" for="img_captada_principal">Selecciona la imagen principal</label>
+                                            <img class="imagenSeleccionada" id="imagenPrincipal" src="../img/admin/subir.png" alt="Selecciona una imagen">
+                                            <input type="file" class="form-control-file" id="img_captada_principal" readonly>
+                                        </div>
+                                        
+                                        <div class="carousel-item contenedorImagenAgregar">
+                                            <label class="custom-file-label" for="img_captada_frontal">Selecciona una imagen frontal</label>
+                                            <img class="imagenSeleccionada" id="imagenFrontal" src="../img/admin/subir.png" alt="Selecciona una imagen">
+                                            <input type="file" class="custom-file-input" id="img_captada_frontal">
+                                        </div>
+                                        
+                                        <div class="carousel-item contenedorImagenAgregar">
+                                            <label class="custom-file-label" for="img_captada_lateral">Selecciona una imagen lateral</label>
+                                            <img class="imagenSeleccionada" id="imagenLateral" src="../img/admin/subir.png" alt="Selecciona una imagen">
+                                            <input type="file" class="custom-file-input" id="img_captada_lateral">
+                                        </div>
+                                        
+                                        <div class="carousel-item contenedorImagenAgregar"> 
+                                            <label class="custom-file-label" for="img_captada_superior">Selecciona una imagen superior</label>
+                                            <img class="imagenSeleccionada" id="imagenSuperior" src="../img/admin/subir.png" alt="Selecciona una imagen">
+                                            <input type="file" class="custom-file-input" id="img_captada_superior">
+                                        </div>
+                                        
+        
+                                    </div>
+                                    <!-- Botones del carousel -->
+                                    <div class="carousel-control-prev" id="previaImagenAgregarZapato" data-bs-target="#carouselAddZapato" data-bs-slide="prev">
+                                        <!-- Utiliza un div como el botón circular -->
+                                        <button class="carousel-control-icon" id="botonCarouselAgregarZapato" type="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                            </svg>
+                                        </button>
+                                        <span class="visually-hidden">Previous</span>
+                                    </div>
+                                    <div class="carousel-control-next" id="siguienteImagenAgregarZapato" data-bs-target="#carouselAddZapato" data-bs-slide="next">
+                                        <!-- Utiliza un div como el botón circular -->
+                                        <button class="carousel-control-icon" id="botonCarouselAgregarZapato" type="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                            </svg>
+                                        </button>
+                                        <span class="visually-hidden">next</span>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        
+                        </div> <!-- Fin de la fila -->
+        
+                            <!-- Fila 2 -->
+                            
+                        <div class="row mt-3">
+                            <div class="col-md-12 contenedorBotonAgregarZapato">
+                                <button type="submit" class="btn btn-primary btnSubmitAddZapato">Agregar Zapato</button>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </section>
+
+                <!-- <div id="blank-panel">
+                    <ul>
+                        <h5>Menú administrador</h5>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-cloud-plus" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5"/>
+                                <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
+                            </svg>Sección para agregar productos
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                                <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+                                <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+                            </svg>Sección para visualizar, modificar y eliminar los productos almacenados
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
+                                <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1zm1 12h2V2h-2zm-3 0V7H7v7zm-5 0v-3H2v3z"/>
+                            </svg>Sección para resumen de ventas
+                        </li>
+                    </ul>
+                </div> -->
+            </section>
+        </article>
+    </main>
+    <!--=============== MAIN ===============-->
+    <!--=============== FOOTER ===============-->
+    <footer >
+        <section class="container-fluid footer_section text-center" id="spacefooter">
+            <div class="row content-footer">
+
+                <div class="col-md-4 col-sm-12 titulo-footer">
+                    <h2> ZAPATERÍA P&G</h2>
+                    <ul>
+                        <li class="foot-item"><a href="./index.html">Inicio</a></li>
+                        <li class="foot-item"><a href="./index.html">Nosotros</a></li>
+                        <li class="foot-item"><a href="./index.html">Servicios</a></li>
+                        <li class="foot-item"><a href="./index.html">Contacto</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col-md-4 col-sm-12 titulo-footer">
+                    <h2>CONTÁCTANOS</h2>
+                    <ul>
+                        <li class="foot-item"><a href="./sobre-nosotros.html">Obtener ayuda</a></li>
+                        <li class="foot-item"><a href="./sobre-nosotros.html">Política de privacidad</a></li>
+                        <li class="foot-item"><a href="./sobre-nosotros.html">Términos y Condiciones</a></li>
+                        <li class="foot-item"><a href="./sobre-nosotros.html">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col-md-4 col-sm-12 titulo-footer footer-col">
+                    <h2>REDES SOCIALES</h2>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com" target="_blank" title="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                              </svg>
+                        </i></a>
+                        <a href= "https://www.instagram.com/calzado_gus_prinsess?igsh=cWwxZWN3NTR3N2Zi" target="_blank" title="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                              </svg>
+                        </a>
+                        <a href="https://www.twitter.com" target="_blank" title="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                                <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                              </svg>
+                        </a>
+                        <a href="https://www.tiktok.com" target="_blank" title="Tiktok">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
+                                <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+                              </svg>
+                        </a>
+                    </div>
+
+                </div>
+
+                <style>
+                    .foot-item:hover {
+                        background-color: rgba(255, 255, 255, 0.4) !important;
+                        /* Cambia el color de fondo al pasar el mouse */
+                        transition: background-color 0.3s ease;
+                        /* Agrega una transición suave */
+                        border-radius: 25px;
+                    }
+                    
+                </style>
+            
+            </div>
+      
+        </section>
+    </footer>
+    <!--=============== FOOTER ===============-->
+    <!--=============== JavaScript ===============-->
+    <script src="../JavaScript/navbar.js"></script>
+    <script src="../JavaScript/admin-panel.js"></script>
+    <script src="../JavaScript/agregar-zapato.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <!--=============== BOOTSTRAP ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
