@@ -21,7 +21,7 @@
 body {
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
-  background-color: var(--color-principal);
+  /* background-color: var(--color-principal); */
   /*elimina el scroll del eje x*/
 }
 
@@ -37,7 +37,7 @@ body {
 
 
  #banner-home {
-  background-color: var(--color-principal);
+  /* background-color: var(--color-principal); */
 }
 
 .list-products-home img {
@@ -125,7 +125,7 @@ body {
 
 /* Estilos base para el carrusel */
 .carrouselProductosRecientes {
-  background-color: var(--color-principal);
+  /* background-color: var(--color-principal); */
   /* background-color: #0070d2; */
   /* background-color: #0070d2; */
   width: 100%;

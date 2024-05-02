@@ -1,12 +1,30 @@
 //===============JSON==========//
 
-const userDB = async () => {
-    const response = await fetch("http://localhost:8080/api/usuarios/");
+const userDB = async (mail, pw) => {
+    const response = await fetch("http://localhost:8080/api/usuarios");
     const data = await response.json();
-    console.log(data);
+    console.log(data)
+    /*data.map( user => {
+        if(mail == user.email && pw == user.password){
+            console.log(user);
+            console.log("Sesión iniciada");
+        }else{
+            console.log("Usuario no encontrado");
+        }
+    })*/
+    
+    for (const user of data) {
+        if(mail == user.email && pw == user.password){
+            console.log(user);
+            console.log("Sesión iniciada");
+            break;
+        }else{
+            console.log("Usuario no encontrado");
+        }
+    }
 }
 
-//userDB()
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const formulario = document.querySelector('.formulario-iniciar-sesion');
@@ -25,7 +43,13 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
         else{
-            iniciarSesionUsuario(formulario, usuariosParse);
+            //iniciarSesionUsuario(formulario, usuariosParse);
+            const formData = new FormData(formulario);
+
+            // Obtener los valores del formulario
+            const correo = formData.get('nameCorreo');
+            const password = formData.get('namePasswordLogin');
+            userDB(correo, password);
         }
         
 

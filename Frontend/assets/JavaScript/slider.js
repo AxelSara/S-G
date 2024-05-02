@@ -117,8 +117,8 @@ const showImgCarrusel = (data) => {
                     </div>
                     <div class="buttons">
                         <div class="banner-button">
-                            <button class="buy banner-pdt" id="buy1" onclick="">
-                                <a href="./Frontend/assets/pages/producto.html">Ver más</a>
+                            <button class="buy banner-pdt" id="buy1" onclick="producto(${data[5].id})">
+                            <a href="./Frontend/assets/pages/producto.html">Ver más</a>
                             </button>
                         </div>
                         <div class="banner-button">
@@ -139,8 +139,8 @@ const showImgCarrusel = (data) => {
                     </div>
                     <div class="buttons">
                         <div class="banner-button">
-                            <button class="buy banner-pdt" id="buy2" onclick="">
-                                <a href="./Frontend/assets/pages/producto.html">Ver más</a>
+                            <button class="buy banner-pdt" id="buy2" onclick="producto(${data[7].id})">
+                            <a href="./Frontend/assets/pages/producto.html">Ver más</a>
                             </button>
                         </div>
                         <div class="banner-button">
@@ -161,7 +161,7 @@ const showImgCarrusel = (data) => {
                     </div>
                     <div class="buttons">
                         <div class="banner-button">
-                            <button class="buy banner-pdt" id="buy3" onclick="">
+                            <button class="buy banner-pdt" id="buy3" onclick="producto(${data[11].id})">
                                 <a href="./Frontend/assets/pages/producto.html">Ver más</a>
                             </button>
                         </div>
@@ -250,6 +250,8 @@ const AddCarritoBanner = async () => {
     const data = await response.json();
     for (const product of data) {
         if (modelo === product.modelo && color === product.color) {
+            producto(product.id);
+            /*
             cart.push({
                 "id": product.id,
                 "modelo": product.modelo,
@@ -262,12 +264,13 @@ const AddCarritoBanner = async () => {
                 "imgLateral": product.imgLateral,
                 "imgFrontal": product.imgFrontal,
                 "imgSuperior": product.imgSuperior
-            });
+            }
+        );*/
         }
     }
-    localStorage.setItem("carrito", JSON.stringify(cart));
-    const carritoLocalStorage = localStorage.getItem("carrito");
-    alert();
+    //localStorage.setItem("carrito", JSON.stringify(cart));
+    //const carritoLocalStorage = localStorage.getItem("carrito");
+    //alert();
 }
 
 const AddCarritoBannerCarrusel1 = async () => {
@@ -383,4 +386,11 @@ const scrollUp = () => {
             </svg>
         </button>
     `;
+}
+
+
+const producto = (id) => {
+    console.log(id)
+    const idProducto = id;
+    localStorage.setItem("id-producto", JSON.stringify(idProducto));
 }

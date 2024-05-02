@@ -42,7 +42,8 @@ const findData = (data) => {
     document.getElementById("lista").innerHTML = cards;
 }
 
-const producto = () => {
+const producto = (id) => {
+    console.log(id)
     const idProducto = id;
     localStorage.setItem("id-producto", JSON.stringify(idProducto));
 }

@@ -2,12 +2,13 @@ const verficarUserLog = () => {
     const user = JSON.parse(localStorage.getItem("usuarioActual"));
 
     // Obtener la URL completa del documento actual
-    var currentHTML = document.URL;
+    let currentHTML = document.URL;
+
     // Obtener el nombre del archivo HTML actual
-    var fileName = currentHTML.substring(currentHTML.lastIndexOf('/') + 1);
+    let fileName = currentHTML.substring(currentHTML.lastIndexOf('/') + 1);
     
     
-    if(fileName == "index.html"){
+    if(fileName == "index.html" || fileName == ""){
         console.log(fileName)
         if(user == null){
             console.log("Redirigir a log")

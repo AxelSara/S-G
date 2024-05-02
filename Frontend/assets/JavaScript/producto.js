@@ -1,4 +1,12 @@
-const idProducto = 0; 
+const rutaIMG = "../img/productos/";
+
+const findID = () => {
+  const id = JSON.parse(localStorage.getItem("id-producto"));
+  return id
+}
+
+const idp = findID();
+const idProducto = idp; 
 
 const dataProductos = async (id) => {
   const response = await fetch("../../json/productos.json");
@@ -145,7 +153,7 @@ $('.btn-add-to-cart').click(function() {
 });
 
 /*-----------------productos relacionados------------------ */
-const mostrarProductosRelacionados = async () => {
+const mostrarProductosRelacionados1 = async () => {
   const response = await fetch("../../json/productos.json");
   const data = await response.json();
   const containerProductosRelacionados = document.querySelector(".card-list-products");
@@ -194,6 +202,9 @@ const mostrarProductosRelacionados = async () => {
     const button = document.createElement("button");
     button.classList.add("btn-add-to-cart");
     button.textContent = "Ver más";
+
+    //Agregar esto en un solo innerHTML
+    button.onclick = productoID(producto.id);
     
     // Usar el dataset para almacenar el ID del producto
     button.dataset.productId = producto.id;
@@ -204,6 +215,42 @@ const mostrarProductosRelacionados = async () => {
     containerProductosRelacionados.appendChild(card);
   });
 };
+
+const mostrarProductosRelacionados = async () => {
+  const response = await fetch("../../json/productos.json");
+  const data = await response.json();
+  let cards = "";
+  let i = 0;
+  while( i < 4 ){
+    const random = Math.floor(Math.random()*30);
+      cards += `
+      <div class="card__lista__productos">
+        <div class="col">
+            <div class="iconHeart-lista">
+                <a onclick="alert(${data[random].id})"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+                </svg></a>
+            </div>
+            <div class="imagen-lista">
+                <img src="${rutaIMG+data[random].imgMuestra}" class="card-img-top">
+            </div>
+            <div class="row card-body">
+                <div class="list-card-info col-5">
+                    <h5 class="list-card-title">${data[random].modelo}</h5>
+                    <p class="list-card-text">${data[random].color}</p>
+                    <p class="list-card-precio">$${data[random].precio}.00</p>
+                </div>
+                <div class="list-card-button col-7">
+                    <a href="./producto.html" onclick="producto(${data[random].id})">Ver más</a>
+                </div>
+            </div>
+        </div>
+      </div>
+    `;
+    i++;
+  }
+  document.getElementById("card-list-products").innerHTML = cards;
+}
 
 mostrarProductosRelacionados();
 
@@ -216,3 +263,9 @@ document.querySelector(".card-list-products").addEventListener("click", (event) 
     window.location.href = `producto.html?id=${productId}`;
   }
 });
+
+const producto = (id) => {
+  //console.log(id)
+  const idProducto = id;
+  localStorage.setItem("id-producto", JSON.stringify(idProducto));
+}
