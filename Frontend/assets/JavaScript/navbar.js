@@ -102,6 +102,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function cargarContenedorFavoritos(valor) {
+
+    
+
     const contenedorFavoritosExistente = document.querySelector(".contenedorFavoritos");
 
     if (!contenedorFavoritosExistente) {

@@ -9,7 +9,7 @@ async function cargarDatos() {
         const datos = await response.json();
 
         const tabla = document.getElementById('tablaProductos');
-        const tbody = tabla.getElementsByTagName('tbody')[0];
+        const tbody = tabla.getElementsByTagName('tbody');
 
         let totalCarrito = 0; // Inicializamos el total
 
