@@ -309,3 +309,8 @@
   }
 
 }
+
+#navbar_cuenta .bi {
+  color: black; /* Cambia el color del icono a rojo */
+  font-size: 25px; /* Cambia el tamaño del icono a 24px */
+}
