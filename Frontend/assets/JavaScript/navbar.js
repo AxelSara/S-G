@@ -364,3 +364,18 @@ const removeCarritoFav = (id) => {
         }
     })
 }
+
+const cambiarIconoUsuario = () => {
+    const navbarUsuarioIcon = document.querySelector("#navbar_cuenta");
+    const user = JSON.parse(localStorage.getItem("usuarioActual"));
+    if (user !== null) {
+        
+        navbarUsuarioIcon.innerHTML = '<i class="bi bi-box-arrow-left" id="logoutIcon"></i>';
+        const logoutIcon = document.getElementById('logoutIcon');
+        logoutIcon.addEventListener('click', function() {
+            localStorage.removeItem('usuarioActual');
+            window.location.href = './login.html'; 
+        });
+    }
+};
+cambiarIconoUsuario();
