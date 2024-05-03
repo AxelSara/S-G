@@ -302,7 +302,7 @@ const carrito = JSON.parse(localStorage.getItem("carrito"));
         }
     }
     //localStorage.setItem("carrito", JSON.stringify(cart));
-    alert()
+    // alert()
   }
 
   const carrusel = async (event) => {

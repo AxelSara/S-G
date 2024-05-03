@@ -303,7 +303,7 @@ const AddCarritoBannerCarrusel1 = async () => {
     }
     localStorage.setItem("carrito", JSON.stringify(cart));
     const carritoLocalStorage = localStorage.getItem("carrito");
-    alert();
+    //alert();
 }
 
 const AddCarritoBannerCarrusel2 = async () => {
@@ -330,7 +330,7 @@ const AddCarritoBannerCarrusel2 = async () => {
     }
     localStorage.setItem("carrito", JSON.stringify(cart));
     const carritoLocalStorage = localStorage.getItem("carrito");
-    alert();
+    //alert();
 }
 
 const AddCarritoBannerCarrusel3 = async () => {
@@ -357,7 +357,7 @@ const AddCarritoBannerCarrusel3 = async () => {
     }
     localStorage.setItem("carrito", JSON.stringify(cart));
     const carritoLocalStorage = localStorage.getItem("carrito");
-    alert();
+    //alert();
 }
 
 imgInit();  

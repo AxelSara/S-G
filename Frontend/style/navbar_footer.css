@@ -59,6 +59,14 @@
   align-items: center;
 
 } */
+.listaElementosNavbar{
+  text-align: start;
+}
+
+.nav-item{
+  text-align: start;
+}
+
 .nav-item-icon {
   display: flex;
   justify-content: center;
