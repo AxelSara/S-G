@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     if(payload != null){
-        isAdmin = payload.authorities[0].authority === "ROLE_ADMIN";
+        isAdmin = payload.authorities[0].authority === "ROL_admin";
         console.log("isAdmin: ", payload.authorities[0].authority);
     }
 
