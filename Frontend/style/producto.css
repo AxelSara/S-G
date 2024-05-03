@@ -337,78 +337,163 @@ button{
 
 /*-------------------productos relacionados-----------------*/
 
-.container-related-products h2{
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.card-list-products{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-  padding-left: 100px;
-  padding-right: 100px;
-  
-  
-}
-
-.card{
-  cursor: pointer;
-  background-color: #FFF9EC ;
-  border: none;
-  box-shadow: 0px 0px 0px rgba(255, 255, 255, 1),
-  6px 6px 15px rgba(0, 0, 0, 0.1);
-  padding: 8px;
-}
-
-.card-img{
-background-color:#FFF9EC;
-margin-bottom: 15px;
-
-}
-
-.card-img img{
-  height: 300px;
-  width: 100%;
-  object-fit: cover;
-  
-  max-width: 100%;
-  border-radius: 8px;
-  
-}
-
-.info-card{
+#card-list-products{
   display: flex;
-  justify-content: space-between;
-  
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-.text-product{
-  color: #222;
-  font-size: 300;
-  line-height: 1.4;
-  margin-top: 50px;
+.contenedor-lista-productos{
+  /* background-color: var(--color-principal); */
+  background-color: white;
 }
 
-.text-product h3{
-color: inherit;
-  font-weight: 500;
-  font-size: 25px;
-  margin-top: -60px;
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
+.encabezado{
+  /* margin: 6rem 0rem 4rem 3rem; */
+  padding: 6rem 0rem 2rem 0rem;
+  text-align: center;
+}
+
+#encabezado-filtro{
+  margin-left: 1rem;
+}
+
+/* .filters{
+  box-shadow: 0px 0px 0px 3px red;
+} */
+
+.product-list{
+  display: flex;
+  justify-content: center;
+  width: 5rem;
+}
+
+.card__lista__productos{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 30rem;
+  margin: 1rem 1rem;
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: 0px 4px 4px rgba(196, 196, 196, 0.25);
+}
+
+.iconHeart-lista{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.iconHeart-lista:hover{
+  color: black;
+  background-color: rgba(1, 1, 1, 0);
+}
+
+.imagen-lista{
+  width: 100%;
+  /* height: 20rem; */
+  border-radius: 1rem 1rem 0rem 0rem;
+  overflow: hidden;
+}
+
+.card__lista__productos img{
+  width: 100%;
+  max-height: 35vh;
+  border-radius: 1rem 1rem 0rem 0rem;
+  object-fit: cover;
+}
+
+/* .card__lista__productos img:hover{
+  transform: scale(1.4);
+  transition: all 0.8s;
+  border-radius: 1rem;
+} */
+
+.card__lista__productos .card-body{
+  margin: 0.5rem;
+}
+
+.card__lista__productos .list-card-title,
+.card__lista__productos .list-card-text{
+  margin: 0.5rem 0rem;
+}
+
+.list-card-button{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.list-card-button a{
+  margin: 0;
+  padding: 0.5rem;
+  background-color: var(--color-contraste);
+  color: var(--color-principal);
+  box-shadow: 0px 0px 0px 2px var(--color-contraste);
+  border: none;
+  border-radius: 0rem;
+}
+
+.card__lista__productos a,
+.card__lista__productos .list-card-button{
+  visibility: hidden;
+}
+
+.card__lista__productos:hover a,
+.card__lista__productos:hover .list-card-button{
+  visibility: visible;
 }
 
 
-.text-product p{
-color: #666;
-font-size: 13px;
+.list-card-text{
+  color: #8c8c8c;
 }
-.price{
-  margin-top: -11px;
-  margin-bottom: 1rem;
+
+.cardProductosRecientes {
+  /* position: relative; */
+  /* background-color: #007bff; */
+  box-shadow: -6px -6px 15px rgba(255, 255, 255, 1),
+              6px 6px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  padding: 5px;
+  width: auto;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* ======= Fin de Zona critica ============ */
 
 
+.cardProductosRecientes .card-imgProductosRecientes {
+  width: 100%;
+  height: 65%;
+  padding: 1%;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.cardProductosRecientes > .contenedor_Botonfavorito{
+  position: absolute;
+  top: 12px;
+  left: 13px;
+}
+
+.cardProductosRecientes .card-datosProductosRecientes{
+  /* background-color: orange; */
+  width: 100%;
+  height: 25%;
+  margin: 0 auto;
+  border-radius: 25px;
+}
+
+
+
+.cardProductosRecientes .card-imgProductosRecientes img {
+  width: 100%;
+  height: 300px;
+  border-radius: 15px;
+  object-fit: cover;
 }
 /*----------------prueba botones talla------------------------*/
 

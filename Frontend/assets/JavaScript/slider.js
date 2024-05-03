@@ -242,6 +242,12 @@ function alert() {
     });
 }
 
+const producto = (id) => {
+    console.log(id)
+    const idProducto = id;
+    localStorage.setItem("id-producto", JSON.stringify(idProducto));
+}
+
 let cart = [];
 const AddCarritoBanner = async () => {
     const modelo = document.getElementById("Modelo").innerHTML;
@@ -389,8 +395,3 @@ const scrollUp = () => {
 }
 
 
-const producto = (id) => {
-    console.log(id)
-    const idProducto = id;
-    localStorage.setItem("id-producto", JSON.stringify(idProducto));
-}

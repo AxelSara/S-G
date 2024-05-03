@@ -139,9 +139,9 @@ const showData = (data, event) => {
                         </div>
                         <div class="carrito-button col-7">   
                             <div class="card-link">
-                                <!-- <button class="buy button-pr" onclick="addCartCarrusel(${dat.id})" id=""> Agregar al carrito </button> -->
+                                <!-- <button class="buy button-pr" id=""> Agregar al carrito </button> -->
                                 <button class="buy button-pr" onclick="" id="">
-                                    <a href="./Frontend/assets/pages/producto.html">Ver más</a>
+                                    <a onclick="addCartCarrusel(${dat.id})" href="./Frontend/assets/pages/producto.html">Ver más</a>
                                 </button>
                             </div>
                         </div>
@@ -285,7 +285,8 @@ const carrito = JSON.parse(localStorage.getItem("carrito"));
     const data = await response.json();
     for (const product of data) {
         if(id == product.id){
-            cart.push({
+            productoPage(product.id);
+            /*cart.push({
                 "id": product.id,
                 "modelo": product.modelo,
                 "color": product.color,
@@ -297,10 +298,10 @@ const carrito = JSON.parse(localStorage.getItem("carrito"));
                 "imgLateral": product.imgLateral,
                 "imgFrontal": product.imgFrontal,
                 "imgSuperior": product.imgSuperior
-            });
+            });*/
         }
     }
-    localStorage.setItem("carrito", JSON.stringify(cart));
+    //localStorage.setItem("carrito", JSON.stringify(cart));
     alert()
   }
 
@@ -361,4 +362,10 @@ function mostrarTaskSession(mensaje, iconoTask, position = "top-end", tiempoVisi
             popup: 'rounded'
         }
     });
+}
+
+const productoPage = (id) => {
+    console.log(id)
+    const idProducto = id;
+    localStorage.setItem("id-producto", JSON.stringify(idProducto));
 }
