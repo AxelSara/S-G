@@ -367,7 +367,8 @@ const removeCarritoFav = (id) => {
 
 const cambiarIconoUsuario = () => {
     const navbarUsuarioIcon = document.querySelector("#navbar_cuenta");
-    const user = JSON.parse(localStorage.getItem("usuarioLog"));
+    const user = JSON.parse(localStorage.getItem("token"));
+    console.log("login" + user)
     if (user !== null) {
         const iconURL = `
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
@@ -377,7 +378,7 @@ const cambiarIconoUsuario = () => {
         navbarUsuarioIcon.innerHTML = iconURL;
         const logoutIcon = document.getElementById('logoutIcon');
         logoutIcon.addEventListener('click', function() {
-            localStorage.removeItem('usuarioLog');
+            localStorage.removeItem('token');
             window.location.href = './login.html'; 
         });
     }

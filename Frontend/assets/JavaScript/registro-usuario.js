@@ -97,7 +97,7 @@ const procesaTodo = async (event, formulario) => {
             console.log('Inicio de sesión exitoso. Token JWT:', token);
             setTimeout(function() {
                 window.location.href = "../../../index.html";
-            }, 3300);        
+            }, 2500);        
 
             
         }
