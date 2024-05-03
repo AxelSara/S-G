@@ -1,5 +1,3 @@
-//===============JSON==========//
-let dataUsuarios = [];
 document.addEventListener("DOMContentLoaded", function() {
     
     const formulario = document.querySelector('.formularioRegistro');
@@ -22,34 +20,72 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("contraseña: ", contraseña.value);
         console.log("contraseñaConfirm: ", contraseñaConfirm.value);
 
-
         if(validarCamposDeEntrada == false){
             return;
         }
         else{
-            procesaTodo(ev, dataUsuarios);
+            procesaTodo(ev, formulario);
             mostrarTaskSession("Usuario registrado con exito", "success");
-            setTimeout(function() {
-                window.location.href = "../../../index.html";
-            }, 3300);
+            // setTimeout(function() {
+            //     window.location.href = "../../../index.html";
+            // }, 3300);
         }
     });
 })
 
 
-const procesaTodo = (event) =>{
+const procesaTodo = async (event, formulario) => {
     event.preventDefault();
-    dataUsuarios.push({
-        "nombre": document.getElementById("inputNombreRegistro").value,
-        "telefono": document.getElementById("inputTelefonoRegistro").value,
-        "email": document.getElementById("inputEmailRegistro").value,
-        "contraseña": document.getElementById("inputContraseña").value
+    // obtener los datos del formulario
+    const formData = new FormData(formulario);
+    const nombre = formData.get('inputNombreRegistro');
+    const email = formData.get('emailRegistro');
+    const telefono = formData.get('telefonoRegistro');
+    const contraseña = formData.get('contraseñaRegistro');
+    
+    // Asumiendo que tienes un campo oculto en tu formulario para el ID del rol
+    const idRol = formData.get('idRol'); // Asegúrate de que este campo exista en tu formulario
+
+    const url = "http://localhost:8080/api/usuarios";
+
+    const usuario = {
+        nombre: nombre,
+        email: email,
+        telefono: telefono,
+        password: contraseña,
+        rol: {
+            idRol: 1,
+            nombreRol: "admin", // Puedes obtener este valor de alguna manera, como un campo oculto en el formulario
+            descripcionRol: "Administrador de la ecommerce"
+        }
+    };
+
+    console.log("usuario: ", usuario);
+
+    // Solicitar al servidor la creación del usuario
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(usuario)
     });
-    console.log(dataUsuarios);
-    localStorage.setItem("usuarios", JSON.stringify(dataUsuarios));
-    const usuariosLocalStorage = localStorage.getItem("usuarios");
-    // mostrar una alerta de usuario registrado
+    const data = await response.json();
+    console.log("data: ", data);
+
+    if(response.ok){
+        mostrarTaskSession("Usuario registrado con exito", "success");
+        setTimeout(function() {
+            window.location.href = "../../../index.html";
+        }, 3300);
+    }
+    else{
+        mostrarTaskSession("Error al registrar usuario", "error");
+    }
 }
+
+
+
 
 function validarCamposRegistro(nombre, email, telefono, contraseña, contraseñaConfirm){   
     let validacion = true;
@@ -161,5 +197,3 @@ function mostrarTaskSession(mensaje, iconoTask, position = "top-end", tiempoVisi
         }
     });
 }
-
-

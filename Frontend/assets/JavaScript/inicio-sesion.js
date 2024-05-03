@@ -1,16 +1,10 @@
 //===============JSON==========//
 
-const userDB = async () => {
-    const response = await fetch("http://localhost:8080/api/usuarios/");
-    const data = await response.json();
-    console.log(data);
-}
-
-//userDB()
-
 document.addEventListener("DOMContentLoaded", function() {
     const formulario = document.querySelector('.formulario-iniciar-sesion');
     const usuariosParse  = JSON.parse(localStorage.getItem("usuarios"));
+    // eliminar el local storage de usuarios
+    localStorage.removeItem("usuarios");
     console.log(usuariosParse);
 
     formulario.addEventListener("submit", function(ev){
@@ -79,7 +73,7 @@ function validarDatos() {
     return validacion;
 }
 
-function iniciarSesionUsuario(formulario, usuarios){
+async function iniciarSesionUsuario(formulario, usuarios){
 
     const formData = new FormData(formulario);
 
@@ -87,53 +81,58 @@ function iniciarSesionUsuario(formulario, usuarios){
     const correo = formData.get('nameCorreo');
     const contrasena = formData.get('namePasswordLogin');
 
-    console.log("Correo: ", correo);
-    console.log("Contraseña: ", contrasena);
-
     // Crear el objeto de usuario
     const usuario = {
-        correo: correo,
+        email: correo,
         password: contrasena
     };
 
-    console.log(usuario);
-    
-    const verificacion = verificarUsuario(correo, contrasena);
-    console.log(verificacion);
+    const url = "http://localhost:8080/login";
 
-    if(verificacion){
-        console.log("Usuario verificado");
-        console.log("USuario: ", verificacion);
-        if(verificacion.email==="correoadmin@gmail.com" && verificacion.contraseña==="contraseñaAdmin"){
-            console.log("Administrador");
-            // guardar el usuario en el localStorage para poder usarlo en direcciones
-            localStorage.setItem(verificacion,"usuarioAdmin"); // saber cual es usuario actual
-            // falta reedirigir a la pagina index
-            window.location.href = "../../../index.html";
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(usuario)
+        });
+
+        console.log("Response: ",response);
+
+        if (response.ok) {
+            const data = await response.json();
+            const token = data.token; // Extraer el token de la respuesta JSON
+            // Almacenar el token en el almacenamiento local del navegador
+            localStorage.setItem('token', token);
+            console.log('Inicio de sesión exitoso. Token JWT:', token);
+
+            // Mostrar alerta de inicio de sesión exitoso
+            mostrarTaskSession("¡Inicio de sesión exitoso!", "success", "top-end", 3000);
+            // reedirir al index
+            setTimeout(() => {
+                window.location.href = "../../../index.html";    
+            }, 5000);
+            
+
+        } else {
+            console.log('Error al iniciar sesión:', response.statusText);
         }
-        //usuario normal 
-        else{
-            // guardar el usuario en el localStorage para poder usarlo en direcciones
-            localStorage.setItem("usuarioActual", JSON.stringify(verificacion)); // saber cual es usuario actual
-           // reedirigir
-           const usuarioGuardado = localStorage.getItem
-           window.location.href = "../../../index.html";
-        }
-    } 
-    
-    else {
-        console.log("Usuario no verificado");
-        // Falta mostrar un popup
+    } catch (error) {
+        console.error('Error al procesar la solicitud:', error);
     }
     
+    localStorage.setItem("usuarioLog", JSON.stringify(usuario));
+    
 }
+
+
 
 function verificarUsuario(correo, contraseña) {
     const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || []; // registro
     // Verificar si el usuario existe en el localStorage y lo devuelve
     console.log(usuariosGuardados.length);
     return usuariosGuardados.find(usuario => usuario.email === correo && usuario.contraseña === contraseña);
- 
 }
 
 
@@ -157,4 +156,38 @@ function mostrarTaskSession(mensaje, iconoTask, position = "top-end", tiempoVisi
             popup: 'rounded'
         }
     });
+}
+
+
+async function verificarExpiracionToken() {
+    // Obtener el token del almacenamiento local
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        // No hay token almacenado
+        return null;
+    }
+
+    try {
+        // Decodificar el token
+        const payload = jwtDecode(token);
+
+        // Obtener la fecha de expiración del token
+        const fechaExpiracion = new Date(payload.exp * 1000);
+
+        // Comparar la fecha de expiración con la hora actual
+        if (fechaExpiracion < new Date()) {
+            // El token ha expirado
+            return false;
+        } 
+        else {
+            // El token aún es válido
+            return true;
+        }
+    } 
+    catch (error) {
+        // Error al decodificar el token
+        console.error('Error al verificar el token:', error);
+        return false;
+    }
 }

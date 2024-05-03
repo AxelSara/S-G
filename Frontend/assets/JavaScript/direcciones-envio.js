@@ -27,6 +27,67 @@ establecer la direccion fija --->
 
 */
 
+// Verifica los datos de usuario logeado
+const test = async () => {
+    // Realiza solicitud GET de usuarios
+    const url = "http://localhost:8080/api/usuarios";
+    const response = await fetch(url);
+    const data = await response.json();
+    // Toma la información del User loggeado (previamente guardarda en ls {mail, password})
+    const userLog = JSON.parse(localStorage.getItem("usuarioLog"));
+    const userNombre = userLog.nombre;
+    const userEmail = userLog.email;
+    // Guarda información del usuario
+    for (const user of data) {
+        if(userEmail == user.email){
+            userData = user;
+            console.log(user.idUsuario);
+            const name = user.idUsuario
+            return name;
+        }
+    }
+    
+}
+
+const testName = async () => {
+    // Realiza solicitud GET de usuarios
+    const url = "http://localhost:8080/api/usuarios";
+    const response = await fetch(url);
+    const data = await response.json();
+    // Toma la información del User loggeado (previamente guardarda en ls {mail, password})
+    const userLog = JSON.parse(localStorage.getItem("usuarioLog"));
+    const userNombre = userLog.nombre;
+    const userEmail = userLog.email;
+    // Guarda información del usuario
+    for (const user of data) {
+        if(userEmail == user.email){
+            console.log(user.nombre);
+            userData = user;
+            return user.nombre;
+        }
+    }
+    
+}
+
+//test()
+
+const verUserLog = async () => {
+    const response = await fetch("http://localhost:8080/api/direcciones");
+    const data = await response.json();
+    console.log(data)
+    for (const user of data) {
+        if(mail == user.email && pw == user.password){
+            console.log(user);
+            console.log("Sesión iniciada");
+            break;
+        }else{
+            console.log("Usuario no encontrado");
+        }
+    }
+}
+
+// verUserLog()
+
 // Verifica si el usuario tiene direcciones guardadas
 const direccionesUsersVerification = (user) => {
     let dirUser ="";
@@ -61,7 +122,7 @@ const direccionesUsersVerification = (user) => {
 
 // Verifica que usuario loggeado y muestra su nombre
 const showInfoUser = () => {
-    const user = JSON.parse(localStorage.getItem("usuarioActual"));
+    const user = JSON.parse(localStorage.getItem("usuarioLog"));
     document.getElementById("titulo-direcciones").innerHTML = `
         <h2>Directorio</h2>
         <p>Hola ${user.nombre}</p>
@@ -82,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-addDirecciones = (formulario) => {
+addDirecciones = async (formulario) => {
     const formData = new FormData(formulario);
     const nombre_domicilio = formData.get('nombre_domicilio');
     const calleDireccion = formData.get('calleDireccion');
@@ -97,114 +158,122 @@ addDirecciones = (formulario) => {
     
 
     //asociar datos del usuario a la dirección
-    const usuarioActual = localStorage.getItem("usuarioActual");
+    const usuarioActual = localStorage.getItem("usuarioLog");
     const usuario = JSON.parse(usuarioActual);
-    // console.log("Usuario: ", usuario);
-    const id =  usuario.telefono;
-    const correo = usuario.email;
-    const name = usuario.nombre;
+
+    const url = "http://localhost:8080/api/usuarios";
+    const response = await fetch(url);
+    const dataUsers = await response.json();
+    // Toma la información del User loggeado (previamente guardarda en ls {mail, password})
+    const userLog = JSON.parse(localStorage.getItem("usuarioLog"));
+    const userNombre = userLog.nombre;
+    const userEmail = userLog.email;
     
+    // Guarda información del usuario
+    for (const user of dataUsers) {
+        if(userEmail == user.email){
+            const userId = user.idUsuario;
+            const userName = user.nombre;
+            const userMail = user.email;
 
-    // Verificar telefono, cp
+            const contenedorErrores = document.getElementById("contenedor_errores_registro");
+            contenedorErrores.innerHTML = ``;
+            let verificación = false;
 
-    const contenedorErrores = document.getElementById("contenedor_errores_registro");
-    contenedorErrores.innerHTML = ``;
-    let verificación = false;
+            if(typeof cp != Number && cp.length < 5 && cp.length > 5){
+                contenedorErrores.innerHTML += `
+                <div class="alert alert-danger" role="alert">
+                    El código postal debe tener 5 carácteres numéricos
+                </div>
+                `;
+                verificación = false;
+            }else verificación = true;
+            if(typeof telefono != Number && telefono.length < 10 && telefono.length > 10){
+                contenedorErrores.innerHTML += `
+                <div class="alert alert-danger" role="alert">
+                    El teléfono debe tener 10 carácteres numéricos
+                </div>
+                `;verificación = false;
+            }else verificación = true;
+            
+            if(verificación == true){
+                const direcciones = {
+                    nombre_usuario: userName,
+                    nombre_domicilio: nombre_domicilio,
+                    calle: calleDireccion,
+                    no_exterior: noExterior,
+                    no_interior: noInterior,
+                    cp: cp,
+                    telefono: telefono,
+                    estado: estadoDireccion,
+                    delegacion_municipio: delegacion_municipio,
+                    colonia: coloniaDireccion,
+                    indicaciones_especiales: indicaciones_especiales,        
+                    id_usuario: userId,
+                    email: userMail,
+                    // fav: false
+                }
 
-    if(typeof cp != Number && cp.length < 5 && cp.length > 5){
-        contenedorErrores.innerHTML += `
-        <div class="alert alert-danger" role="alert">
-            El código postal debe tener 5 carácteres numéricos
-        </div>
-        `;
-        verificación = false;
-    }else verificación = true;
-    if(typeof telefono != Number && telefono.length < 10 && telefono.length > 10){
-        contenedorErrores.innerHTML += `
-        <div class="alert alert-danger" role="alert">
-            El teléfono debe tener 10 carácteres numéricos
-        </div>
-        `;verificación = false;
-    }else verificación = true;
-    
-    if(verificación == true){
-        let direcciones = {
-            nombre_usuario: name,
-            nombre_domicilio: nombre_domicilio,
-            calle: calleDireccion,
-            noExterior: noExterior,
-            noInterior: noInterior,
-            cp: cp,
-            telefono: telefono,
-            estado: estadoDireccion,
-            delegacion_municipio: delegacion_municipio,
-            colonia: coloniaDireccion,
-            indicaciones_especiales: indicaciones_especiales,        
-            id: id,
-            correo: correo,
-            fav: false
+                const response = await fetch("http://localhost:8080/api/direcciones", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(direcciones)
+                });
+                const data = await response.json();
+                console.log("data: ", data);
+            
+                if(response.ok){
+                    /*mostrarTaskSession("Dirección registrada con exito", "success");
+                    setTimeout(function() {
+                        window.location.href = "../../../index.html";
+                    }, 3300);*/
+                    console.log("Dirección registrada con exito");
+                }
+                else{
+                    //mostrarTaskSession("Error al registrar usuario", "error");
+                    console.log("Error al registrar dirección")
+                }
+
+                
+                
+                // obtener el array de direcciones existentes
+                /*
+                let direccionesUser = localStorage.getItem("direcciones");
+                let dirUsers = JSON.parse(direccionesUser);
+                let i = 0;
+                
+                if(direccionesUser == null){
+                    console.log("uwu = 0")
+                    console.log(direcciones)
+                    
+                    let direccionesLocalStorage = [];
+                    direccionesLocalStorage.push(direcciones);
+                    localStorage.setItem("direcciones", JSON.stringify(direccionesLocalStorage));
+                    direccionesUsersVerification();
+
+                }else{
+                    dirUsers.map( () => i++);
+                    if(i <= 3){
+
+                        let direccionesLocalStorage = JSON.parse(localStorage.getItem("direcciones"))
+                        direccionesLocalStorage.push(direcciones);
+                        localStorage.setItem("direcciones", JSON.stringify(direccionesLocalStorage));
+                        direccionesUsersVerification();
+
+                        console.log("uwu < 0")
+
+                    }else if(i > 3) alert("Lo sentimos, solo puedes guardar un máximo de 4 direcciones");
+                }
+
+                const clearInput = document.querySelectorAll(".form-control");
+                clearInput.forEach( e => {
+                    e.value = ``;
+                })*/
+            }
         }
-        // console.log(direcciones);
-    
-
-
-        // obtener el array de direcciones existentes
-        
-        let direccionesUser = localStorage.getItem("direcciones");
-        let dirUsers = JSON.parse(direccionesUser);
-        let i = 0;
-        
-        if(direccionesUser == null){
-            let direccionesLocalStorage = [];
-            direccionesLocalStorage.push(direcciones);
-            localStorage.setItem("direcciones", JSON.stringify(direccionesLocalStorage));
-            direccionesUsersVerification();
-        }else{
-            dirUsers.map( () => i++);
-            if(i <= 3){
-                let direccionesLocalStorage = JSON.parse(localStorage.getItem("direcciones"))
-                direccionesLocalStorage.push(direcciones);
-                localStorage.setItem("direcciones", JSON.stringify(direccionesLocalStorage));
-                direccionesUsersVerification();
-            }else if(i > 3) alert("Lo sentimos, solo puedes guardar un máximo de 4 direcciones");
-        }
-
-        const clearInput = document.querySelectorAll(".form-control");
-        clearInput.forEach( e => {
-            e.value = ``;
-        })
-
-        /*
-        let direccionesExistentes = localStorage.getItem("direcciones");
-        if (direccionesExistentes == null) direccionesExistentes = [];
-        else{
-            direccionesExistentes = JSON.parse(direccionesExistentes);
-        }*/
-
-        
-
-        // verificar si el usuario actual con el correo registrado ya tiene 4 direcciones guardadas
-
-        /*
-        let direccionesDelUsuario = direccionesExistentes.filter(direccion => direccion.correo == correo);
-        if (direccionesUser.length >= 4) {
-            alert("Lo sentimos, solo puedes guardar un máximo de 4 direcciones");
-            return;
-        }
-
-        else {
-            // guardar la dirección en el localStorage
-            localStorage.setItem("direcciones", JSON.stringify(direccionesDelUsuario));
-            alert("Dirección guardada correctamente");
-            // agregar la nueva dirección al array
-            direcciones.push(direccionesDelUsuario);
-            localStorage.setItem("direcciones", JSON.stringify(direccionesDelUsuario));
-
-        }*/
-
     }
-
-
 }
 
 // Seleccionar direccion predeterminada
@@ -225,23 +294,25 @@ const starDireccion = (nameDir) => {
 
 const star = () => {
     const direcciones = JSON.parse(localStorage.getItem("direcciones"));
-    direcciones.map( dir => {
-        if(dir.fav == true){
-            document.getElementById(dir.id+dir.noExterior).innerHTML = `
-                <h5>${dir.nombre_domicilio}</h5>
-                <svg xmlns="http://www.w3.org/2000/svg" onclick="starDireccion(${dir.id}${dir.noExterior})" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                </svg>
-            `;
-        }else if(dir.fav == false){
-            document.getElementById(dir.id+dir.noExterior).innerHTML = `
-                <h5>${dir.nombre_domicilio}</h5>
-                <svg xmlns="http://www.w3.org/2000/svg" onclick="starDireccion(${dir.id}${dir.noExterior})" width="15" height="15" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                    <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
-                </svg>
-            `;
-        }
-    });
+    if(direcciones != null){
+        direcciones.map( dir => {
+            if(dir.fav == true){
+                document.getElementById(dir.id+dir.noExterior).innerHTML = `
+                    <h5>${dir.nombre_domicilio}</h5>
+                    <svg xmlns="http://www.w3.org/2000/svg" onclick="starDireccion(${dir.id}${dir.noExterior})" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                `;
+            }else if(dir.fav == false){
+                document.getElementById(dir.id+dir.noExterior).innerHTML = `
+                    <h5>${dir.nombre_domicilio}</h5>
+                    <svg xmlns="http://www.w3.org/2000/svg" onclick="starDireccion(${dir.id}${dir.noExterior})" width="15" height="15" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
+                    </svg>
+                `;
+            }
+        });
+    }
 }
 
 star();
