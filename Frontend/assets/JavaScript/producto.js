@@ -1,4 +1,4 @@
-const idProducto = 0; 
+const idProducto = 0;
 
 const dataProductos = async (id) => {
   const response = await fetch("../../json/productos.json");
@@ -11,7 +11,7 @@ const dataProductos = async (id) => {
   const imagenesDom = document.querySelector(".mostrador-imagenes");
   const colorSeleccionadaDom = document.getElementById("color-seleccionada");
   const tallaSeleccionadaDom = document.getElementById("talla-seleccionada");
-  
+
   let coloresUnicos = [];
   let productoSeleccionado; // Variable para almacenar el producto actualmente seleccionado
 
@@ -117,6 +117,32 @@ imagenesChicas.forEach(imagen => {
     });
 });
 
+// Función para cambiar la imagen principal a la imagen anterior
+const cambiarImagenAnterior = () => {
+    const imagenPrincipal = document.getElementById('imagen-principal');
+    const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+    let indiceActual = Array.from(imagenesChicas).findIndex(img => img.src === imagenPrincipal.src);
+    indiceActual = (indiceActual === 0) ? imagenesChicas.length - 1 : indiceActual - 1;
+    imagenPrincipal.src = imagenesChicas[indiceActual].src;
+    imagenPrincipal.alt = imagenesChicas[indiceActual].alt;
+};
+
+// Función para cambiar la imagen principal a la imagen siguiente
+const cambiarImagenSiguiente = () => {
+    const imagenPrincipal = document.getElementById('imagen-principal');
+    const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+    let indiceActual = Array.from(imagenesChicas).findIndex(img => img.src === imagenPrincipal.src);
+    indiceActual = (indiceActual === imagenesChicas.length - 1) ? 0 : indiceActual + 1;
+    imagenPrincipal.src = imagenesChicas[indiceActual].src;
+    imagenPrincipal.alt = imagenesChicas[indiceActual].alt;
+};
+
+// Agregar evento click al botón para cambiar a la imagen anterior
+document.getElementById('boton-').addEventListener('click', cambiarImagenAnterior);
+
+// Agregar evento click al botón para cambiar a la imagen siguiente
+document.getElementById('botonplus').addEventListener('click', cambiarImagenSiguiente);
+
 /*-------------boton agregar carrito------------*/
 $('.btn-add-to-cart').click(function() {
   // Verificar si el usuario está autenticado
@@ -213,7 +239,7 @@ const mostrarProductosRelacionados = async () => {
     info.appendChild(textProduct);
 
     const button = document.createElement("button");
-    button.classList.add("btn-add-to-cart");
+    button.classList.add("ver-mas");
     button.textContent = "Ver más";
     
     // Usar el dataset para almacenar el ID del producto
@@ -231,7 +257,7 @@ mostrarProductosRelacionados();
 // Agregar el evento clic utilizando delegación de eventos
 document.querySelector(".card-list-products").addEventListener("click", (event) => {
   // Verificar si el elemento clickeado es un botón "Ver más"
-  if (event.target.classList.contains("btn-add-to-cart")) {
+  if (event.target.classList.contains("ver-mas")) {
     // Obtener el ID del producto del dataset del botón
     const productId = event.target.dataset.productId;
     window.location.href = `producto.html?id=${productId}`;
@@ -258,3 +284,47 @@ window.addEventListener('resize', () => {
 
 // Disparamos el evento de redimensionamiento para que se ejecute al cargar la página
 window.dispatchEvent(new Event('resize'));
+
+// Variables para controlar el deslizamiento
+let touchStartX = 0;
+let touchEndX = 0;
+const minDistanceToSwipe = 50; // Distancia mínima de desplazamiento para considerar como un deslizamiento
+
+// Función para cambiar la imagen principal
+const cambiarImagen = () => {
+    // Calcular la distancia recorrida durante el deslizamiento
+    const swipeDistance = touchEndX - touchStartX;
+
+    // Determinar la dirección del deslizamiento
+    const direccion = (swipeDistance > 0) ? 'derecha' : 'izquierda';
+
+    // Obtener la imagen principal y las imágenes chicas
+    const imagenPrincipal = document.getElementById('imagen-principal');
+    const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+
+    // Encontrar el índice de la imagen actualmente mostrada
+    let indiceActual = Array.from(imagenesChicas).findIndex(img => img.src === imagenPrincipal.src);
+
+    // Cambiar la imagen según la dirección del deslizamiento
+    if (Math.abs(swipeDistance) >= minDistanceToSwipe) {
+        if (direccion === 'izquierda') {
+            indiceActual = (indiceActual === imagenesChicas.length - 1) ? 0 : indiceActual + 1;
+        } else {
+            indiceActual = (indiceActual === 0) ? imagenesChicas.length - 1 : indiceActual - 1;
+        }
+        // Cambiar la imagen principal a la nueva imagen
+        imagenPrincipal.src = imagenesChicas[indiceActual].src;
+        imagenPrincipal.alt = imagenesChicas[indiceActual].alt;
+    }
+};
+
+// Evento para detectar el inicio del deslizamiento
+document.getElementById('imagen-principal').addEventListener('touchstart', (event) => {
+    touchStartX = event.touches[0].clientX;
+});
+
+// Evento para detectar el final del deslizamiento
+document.getElementById('imagen-principal').addEventListener('touchend', (event) => {
+    touchEndX = event.changedTouches[0].clientX;
+    cambiarImagen();
+});
