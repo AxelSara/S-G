@@ -1,13 +1,107 @@
-document.addEventListener('DOMContentLoaded', function(event){
+// importar jwt_decode
+
+document.addEventListener('DOMContentLoaded', async function(event){
     // Asegúrate de que el elemento exista antes de intentar interactuar con él
     const swiperWrapperProductosRecientes = document.getElementById("swiper-wrapperProductosRecientes");
     if (swiperWrapperProductosRecientes) {
         carrusel(event);
     } else {
         console.error("El elemento swiper-wrapperProductosRecientes no se encontró en el DOM.");
+
     }
 
+
+    // controlar el mensaje de bienvenida con localStorage
+    
+    // localStorage.removeItem("contadorCorreoBienvenida");
+    const numMensajeBienvenida = localStorage.getItem("contadorCorreoBienvenida") || 0;
+    
+
+    verificarExpiracionToken().then(result => {
+        if(result == true){
+            console.log("========== Usuario activo ===========");
+            const token = localStorage.getItem("token");
+            console.log("result: ", result);    
+            const payload = obtenerPayload(token);
+            if(numMensajeBienvenida == 0){
+                mostrarTaskSession(`Bienvenido ${payload.name}`, "success");        
+                console.log("payload: ", payload);
+                localStorage.setItem("contadorCorreoBienvenida", 1);
+            }
+
+        }
+
+        else{
+            console.log("========== Usuario inactivo ===========");            
+
+            mostrarTaskSession("Estas como invitado", "warning");
+            // quitar los token del local storage
+            
+        }
+
+
+    }).catch((err) => {
+        console.error("Error al verificar el token de inicio de sesión: ", err);
+        throw err; 
+    });
+
+
 });
+
+function verificarExpiracionToken() {
+    return new Promise((resolve, reject) => {
+        // Verificar si el token existe en el localStorage
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.log("No hay token en el localStorage.");
+            resolve(false); // O puedes rechazar la promesa si prefieres
+            return;
+        }
+
+        try {
+            // Decodificar el token sin verificar la firma
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            const fechaExpiracion = new Date(payload.exp * 1000);
+
+            if (fechaExpiracion < new Date()) {
+                console.log("Token expirado.");
+                localStorage.removeItem('token');
+                resolve(false);
+            } else {
+                console.log("Token válido y no expirado.");
+                resolve(true);
+            }
+        } catch (error) {
+            localStorage.removeItem('token');
+            console.error("Error al verificar el token:", error);
+            reject(error);
+        }
+    });
+}
+
+
+
+function obtenerPayload(token) {
+    // Dividir el token en sus componentes
+    const tokenParts = token.split('.');
+    if (tokenParts.length!== 3) {
+        throw new Error('El token no tiene la estructura correcta.');
+    }
+
+    // El payload está en el segundo segmento
+    const payload = tokenParts[1];
+
+    // Decodificar el payload de Base64Url a una cadena
+    const decodedPayload = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
+
+    // Convertir la cadena decodificada a un objeto JSON
+    const payloadObj = JSON.parse(decodedPayload);
+
+    return payloadObj;
+}
+
+
+
 
 // ===================== Sección carrousel ===============
 const showData = (data, event) => {
@@ -46,7 +140,7 @@ const showData = (data, event) => {
                         <div class="carrito-button col-7">   
                             <div class="card-link">
                                 <!-- <button class="buy button-pr" onclick="addCartCarrusel(${dat.id})" id=""> Agregar al carrito </button> -->
-                                <button class="buy button-pr" onclick="productoLS(${dat.id})" id="">
+                                <button class="buy button-pr" onclick="" id="">
                                     <a href="./Frontend/assets/pages/producto.html">Ver más</a>
                                 </button>
                             </div>
@@ -58,12 +152,6 @@ const showData = (data, event) => {
             }
         }
     });
-}
-
-const productoLS = (id) => {
-    console.log(id)
-    const idProducto = id;
-    localStorage.setItem("id-producto", JSON.stringify(idProducto));
 }
 
 
@@ -249,6 +337,28 @@ function mostrarTaskFavoritos(mensaje, iconoTask, position = "top-end", tiempoVi
         icon: iconoTask,
         customClass: {
             popup: 'swiper-container'
+        }
+    });
+}
+
+function mostrarTaskSession(mensaje, iconoTask, position = "top-end", tiempoVisible = 3000) {
+    const toast = Swal.mixin({
+        toast: true,
+        position: position,
+        showConfirmButton: false,
+        timer: tiempoVisible,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+    });
+
+    return toast.fire({
+        title: mensaje,
+        icon: iconoTask,
+        customClass: {
+            popup: 'rounded'
         }
     });
 }

@@ -19,7 +19,7 @@ const dataProductos = async (id) => {
   const imagenesDom = document.querySelector(".mostrador-imagenes");
   const colorSeleccionadaDom = document.getElementById("color-seleccionada");
   const tallaSeleccionadaDom = document.getElementById("talla-seleccionada");
-  
+
   let coloresUnicos = [];
   let productoSeleccionado; // Variable para almacenar el producto actualmente seleccionado
 
@@ -36,6 +36,22 @@ const dataProductos = async (id) => {
       const imgKey = index === 0 ? "imgLateral" : index === 1 ? "imgMuestra" : index === 2 ? "imgSuperior" : "imgFrontal";
       imagen.src = `../img/productos/${productoSeleccionado[imgKey]}`;
     });
+   
+    const carruselIndicadores = document.getElementById('carrusel-indicadores');
+    const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+    const imagenPrincipal = document.getElementById('imagen-principal');
+    const imagenActual = Array.from(imagenesChicas).findIndex(img => img.src === imagenPrincipal.src);
+
+    carruselIndicadores.innerHTML = '';
+
+    for (let i = 0; i < imagenesChicas.length; i++) {
+        const indicador = document.createElement('span');
+        indicador.classList.add('carrusel-indicador');
+        if (i === imagenActual) {
+            indicador.classList.add('activo'); // Resaltar el indicador correspondiente a la imagen actual
+        }
+        carruselIndicadores.appendChild(indicador);
+    }
   };
 
   // Llamar a la función actualizarImagenes al cargar la página para mostrar las imágenes del producto seleccionado
@@ -77,7 +93,7 @@ const dataProductos = async (id) => {
     colorDom.appendChild(colorButton);
   });
 
-  // Mostrar las tallas (supongo que para todos los productos del mismo modelo son las mismas tallas)
+  // Mostrar las tallas 
   tallaDom.innerHTML = "";
   if (typeof productosModelo[0].talla === "object") {
     Object.keys(productosModelo[0].talla).forEach(talla => {
@@ -112,22 +128,83 @@ const dataProductos = async (id) => {
 
 dataProductos(idProducto);
 
-/*-------------------------prueba zapatos principal y chicas------------------*/
+// Función para cambiar la imagen principal
+const cambiarImagenPrincipal = (nuevaImagenSrc, nuevaImagenAlt) => {
+    const imagenPrincipal = document.getElementById('imagen-principal');
+    const imagenActual = imagenPrincipal.src;
+    const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+    
+    // Buscar la imagen chica correspondiente a la nueva imagen principal
+    const imagenChicaCorrespondiente = Array.from(imagenesChicas).find(img => img.src === nuevaImagenSrc);
 
-const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+    // Cambiar la imagen principal solo si la nueva imagen es diferente a la actual
+    if (imagenActual !== nuevaImagenSrc) {
+        imagenPrincipal.src = nuevaImagenSrc;
+        imagenPrincipal.alt = nuevaImagenAlt;
 
-// Agregar evento click a cada imagen chica
-imagenesChicas.forEach(imagen => {
+        // Actualizar el indicador del carrusel si la nueva imagen es una imagen chica
+        if (imagenChicaCorrespondiente) {
+            const indiceImagenChica = Array.from(imagenesChicas).indexOf(imagenChicaCorrespondiente);
+            actualizarIndicadorCarrusel(indiceImagenChica);
+        }
+    }
+};
+
+// Evento click para cambiar la imagen principal al hacer clic en una imagen chica
+document.querySelectorAll('.imagen-chica img').forEach(imagen => {
     imagen.addEventListener('click', () => {
-        const imagenPrincipal = document.getElementById('imagen-principal');
-        imagenPrincipal.src = imagen.src;
-        imagenPrincipal.alt = imagen.alt;
+        cambiarImagenPrincipal(imagen.src, imagen.alt);
     });
 });
 
-/*-------------boton agregar carrito------------*/
+// Función para cambiar la imagen principal a la imagen anterior
+const cambiarImagenAnterior = () => {
+    const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+    const imagenPrincipal = document.getElementById('imagen-principal');
+    let indiceActual = Array.from(imagenesChicas).findIndex(img => img.src === imagenPrincipal.src);
+    indiceActual = (indiceActual === 0) ? imagenesChicas.length - 1 : indiceActual - 1;
+    cambiarImagenPrincipal(imagenesChicas[indiceActual].src, imagenesChicas[indiceActual].alt);
+};
 
+// Función para cambiar la imagen principal a la imagen siguiente
+const cambiarImagenSiguiente = () => {
+    const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+    const imagenPrincipal = document.getElementById('imagen-principal');
+    let indiceActual = Array.from(imagenesChicas).findIndex(img => img.src === imagenPrincipal.src);
+    indiceActual = (indiceActual === imagenesChicas.length - 1) ? 0 : indiceActual + 1;
+    cambiarImagenPrincipal(imagenesChicas[indiceActual].src, imagenesChicas[indiceActual].alt);
+};
+
+// Agregar evento click al botón para cambiar a la imagen anterior
+document.getElementById('boton-').addEventListener('click', cambiarImagenAnterior);
+
+// Agregar evento click al botón para cambiar a la imagen siguiente
+document.getElementById('botonplus').addEventListener('click', cambiarImagenSiguiente);
+
+/*-------------boton agregar carrito------------*/
 $('.btn-add-to-cart').click(function() {
+  // Verificar si el usuario está autenticado
+  const user = JSON.parse(localStorage.getItem("usuarioActual"));
+  if (!user) {
+    // Mostrar un mensaje de alerta solicitando al usuario que inicie sesión antes de agregar productos al carrito
+    Swal.fire({
+      icon: "warning",
+      title: "Iniciar Sesión",
+      text: "Por favor, inicia sesión antes de agregar productos al carrito",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Iniciar Sesión",
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Si el usuario hace clic en "Iniciar Sesión", redirigirlo a la página de inicio de sesión
+        window.location.href = "./loginRegistro.html";
+      }
+    });
+    return; // Detener la ejecución del resto del código
+  }
+  
   // Verificar si se ha seleccionado una talla
   const tallaSeleccionada = document.querySelector('.talla-btn.seleccionado');
   if (!tallaSeleccionada) {
@@ -142,7 +219,7 @@ $('.btn-add-to-cart').click(function() {
     return;
   }
 
-  // Si se ha seleccionado una talla, mostrar el mensaje de éxito
+  // Si se ha seleccionado una talla y el usuario está autenticado, mostrar el mensaje de éxito
   Swal.fire({
       position: "center",
       icon: "success",
@@ -153,7 +230,7 @@ $('.btn-add-to-cart').click(function() {
 });
 
 /*-----------------productos relacionados------------------ */
-const mostrarProductosRelacionados1 = async () => {
+const mostrarProductosRelacionados = async () => {
   const response = await fetch("../../json/productos.json");
   const data = await response.json();
   const containerProductosRelacionados = document.querySelector(".card-list-products");
@@ -200,11 +277,8 @@ const mostrarProductosRelacionados1 = async () => {
     info.appendChild(textProduct);
 
     const button = document.createElement("button");
-    button.classList.add("btn-add-to-cart");
+    button.classList.add("ver-mas");
     button.textContent = "Ver más";
-
-    //Agregar esto en un solo innerHTML
-    button.onclick = productoID(producto.id);
     
     // Usar el dataset para almacenar el ID del producto
     button.dataset.productId = producto.id;
@@ -216,56 +290,96 @@ const mostrarProductosRelacionados1 = async () => {
   });
 };
 
-const mostrarProductosRelacionados = async () => {
-  const response = await fetch("../../json/productos.json");
-  const data = await response.json();
-  let cards = "";
-  let i = 0;
-  while( i < 4 ){
-    const random = Math.floor(Math.random()*30);
-      cards += `
-      <div class="card__lista__productos">
-        <div class="col">
-            <div class="iconHeart-lista">
-                <a onclick="alert(${data[random].id})"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
-                </svg></a>
-            </div>
-            <div class="imagen-lista">
-                <img src="${rutaIMG+data[random].imgMuestra}" class="card-img-top">
-            </div>
-            <div class="row card-body">
-                <div class="list-card-info col-5">
-                    <h5 class="list-card-title">${data[random].modelo}</h5>
-                    <p class="list-card-text">${data[random].color}</p>
-                    <p class="list-card-precio">$${data[random].precio}.00</p>
-                </div>
-                <div class="list-card-button col-7">
-                    <a href="./producto.html" onclick="producto(${data[random].id})">Ver más</a>
-                </div>
-            </div>
-        </div>
-      </div>
-    `;
-    i++;
-  }
-  document.getElementById("card-list-products").innerHTML = cards;
-}
-
 mostrarProductosRelacionados();
 
 // Agregar el evento clic utilizando delegación de eventos
 document.querySelector(".card-list-products").addEventListener("click", (event) => {
   // Verificar si el elemento clickeado es un botón "Ver más"
-  if (event.target.classList.contains("btn-add-to-cart")) {
+  if (event.target.classList.contains("ver-mas")) {
     // Obtener el ID del producto del dataset del botón
     const productId = event.target.dataset.productId;
     window.location.href = `producto.html?id=${productId}`;
   }
 });
 
-const producto = (id) => {
-  //console.log(id)
-  const idProducto = id;
-  localStorage.setItem("id-producto", JSON.stringify(idProducto));
+// --------------
+
+window.addEventListener('resize', () => {
+  const containerName = document.querySelector('.container-name');
+  const mostradorImagenes = document.querySelector('.mostrador-imagenes');
+
+  // Obtener el ancho de la ventana
+  const windowWidth = window.innerWidth;
+
+  // Si el ancho de la ventana es menor a 820px y el mostrador de imágenes no está dentro del contenedor de nombre, lo movemos.
+  if (windowWidth < 820 && !containerName.contains(mostradorImagenes)) {
+    containerName.appendChild(mostradorImagenes);
+  } else if (windowWidth >= 820 && containerName.contains(mostradorImagenes)) {
+    // Si el ancho de la ventana es mayor o igual a 820px y el mostrador de imágenes está dentro del contenedor de nombre, lo sacamos.
+    document.querySelector('main').appendChild(mostradorImagenes);
+  }
+});
+
+// Disparamos el evento de redimensionamiento para que se ejecute al cargar la página
+window.dispatchEvent(new Event('resize'));
+
+// Variables para controlar el deslizamiento
+let touchStartX = 0;
+let touchEndX = 0;
+const minDistanceToSwipe = 50; // Distancia mínima de desplazamiento para considerar como un deslizamiento
+
+// Función para cambiar la imagen principal
+const cambiarImagen = () => {
+    // Calcular la distancia recorrida durante el deslizamiento
+    const swipeDistance = touchEndX - touchStartX;
+
+    // Determinar la dirección del deslizamiento
+    const direccion = (swipeDistance > 0) ? 'derecha' : 'izquierda';
+
+    // Obtener la imagen principal y las imágenes chicas
+    const imagenPrincipal = document.getElementById('imagen-principal');
+    const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+
+    // Encontrar el índice de la imagen actualmente mostrada
+    let indiceActual = Array.from(imagenesChicas).findIndex(img => img.src === imagenPrincipal.src);
+
+    // Cambiar la imagen según la dirección del deslizamiento
+    if (Math.abs(swipeDistance) >= minDistanceToSwipe) {
+        if (direccion === 'izquierda') {
+            indiceActual = (indiceActual === imagenesChicas.length - 1) ? 0 : indiceActual + 1;
+        } else {
+            indiceActual = (indiceActual === 0) ? imagenesChicas.length - 1 : indiceActual - 1;
+        }
+        // Cambiar la imagen principal a la nueva imagen
+        imagenPrincipal.src = imagenesChicas[indiceActual].src;
+        imagenPrincipal.alt = imagenesChicas[indiceActual].alt;
+    }
+};
+
+// Evento para detectar el inicio del deslizamiento
+document.getElementById('imagen-principal').addEventListener('touchstart', (event) => {
+    touchStartX = event.touches[0].clientX;
+});
+
+// Evento para detectar el final del deslizamiento
+document.getElementById('imagen-principal').addEventListener('touchend', (event) => {
+    touchEndX = event.changedTouches[0].clientX;
+    cambiarImagen();
+});
+
+/*------------------- */
+
+function moveParagraph() {
+  var paragraph = document.getElementById('ptalla');
+  var container = document.getElementById('ctalla-s');
+  var containerParent = container.parentElement;
+
+  if (window.innerWidth <= 820) {
+    container.appendChild(paragraph);
+  } else {
+    containerParent.insertBefore(paragraph, container.nextSibling);
+  }
 }
+
+window.addEventListener('resize', moveParagraph);
+moveParagraph();

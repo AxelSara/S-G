@@ -44,9 +44,28 @@ async function cargarDatos() {
             tdPrecio.textContent = `$${elemento.precio}.00`; // Fatla agregar signo de peso y agregar centavos
             fila.appendChild(tdPrecio);
 
+            
+            
             const tdTalla = document.createElement('td');
             // tdTalla.textContent = elemento.talla;
-            tdTalla.textContent = 7;
+            tdTalla.innerHTML = `
+                <select name="pets" id="talla-select" class="tallas-select">
+                <option value="">--Selecciona una talla--</option>
+                <option value="24">24</option>
+                <option value="24.5">24.5</option>
+                <option value="25">25</option>
+                <option value="25.5">25.5</option>
+                <option value="26">26</option>
+                <option value="26.5">26.5</option>
+                <option value="27">27</option>
+                <option value="27.5">27.5</option>
+                <option value="28">28</option>
+                <option value="28.5">28.5</option>
+                <option value="29">29</option>
+                <option value="29.5">29.5</option>
+                <option value="30">30</option>
+            </select>
+            `;
             fila.appendChild(tdTalla);
 
             const tdCantidad = document.createElement('td');
@@ -97,12 +116,25 @@ function sumarCantidad(button) {
     actualizarTotal(); 
 }
 
+const carrito = JSON.parse(localStorage.getItem("carrito"));
+
 // Función para eliminar un producto de JSON según su id 
 function eliminarProducto(id, botonEliminar) {
+    let i = 0;
+    console.log(carrito)
+    carrito.map( cart => {
+        if(id != cart.id ) i++;
+        else if(id == cart.id){
+            console.log(carrito[i]);
+            carrito.splice(i, 1);
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+        }
+    })
     // Eliminamos la fila correspondiente al botón eliminar
     const filaAEliminar = botonEliminar.closest('tr');
     filaAEliminar.remove();
     actualizarTotal();
+    
 }
 
 // Función para actualizar el total del carrito
@@ -123,20 +155,22 @@ function actualizarTotal() {
 
 // Función para realizar el pago y limpiar el carrito
 function realizarPago() {
-    // Aquí puedes poner cualquier lógica relacionada con el pago
+    const tallaSelect = [];
+    let cartOk = true;
+    const tallas = document.getElementsByClassName("tallas-select");
+    for (let i = 0; i < tallas.length; i++) {
+        tallaSelect.push(tallas[i].value)
+    }
+    tallaSelect.map(talla => {
+        if(talla == ""){
+            Swal.fire("Asegúrese de seleccionar las tallas");
+            cartOk = false;
+        }
+    })
+    if(cartOk == true) window.location.href = "./detalles-compra.html";
+    
     console.log("Eso es todo, se está realizando el pago...");
 
-    // Limpiar el carrito del localStorage
-    // localStorage.removeItem("carrito");
-
-    // Actualizar la visualización del carrito (opcional)
-
-    /*
-    const tablaProductos = document.getElementById('tablaProductos');
-    tablaProductos.getElementsByTagName('tbody')[0].innerHTML = ''; // Limpiar la tabla
-    const totalCarritoCell = document.getElementById('totalCarrito');
-    totalCarritoCell.textContent = '$0.00'; // Actualizar el total a cero
-    */
 }
 
 // Verificar si esta loggeado el usuario

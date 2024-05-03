@@ -1,13 +1,27 @@
 const showOptions = () => {
     const direcciones = JSON.parse(localStorage.getItem("direcciones"));
-    direcciones.map( dir => {
-        if(dir.fav == true){
-            document.getElementById("user").innerHTML = `${dir.nombre_usuario}`;
-            document.getElementById("direccionEntrega").innerHTML = `${dir.calle}, ${dir.colonia}`;
-            document.getElementById("direccionEstado").innerHTML = `${dir.estado}`;
-            document.getElementById("telefonoEntrega").innerHTML = `${dir.telefono}`;
-        }
-    })
+    if(direcciones == null){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            confirmButtonText: "Agregar direcciones",
+            text: "No tienes direcciones agregadas",
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                window.location.href = "./direcciones-envio.html";
+            }
+          });
+    }else{
+        direcciones.map( dir => {
+            if(dir.fav == true){
+                document.getElementById("user").innerHTML = `${dir.nombre_domicilio}`;
+                document.getElementById("direccionEntrega").innerHTML = `${dir.calle}, ${dir.colonia}`;
+                document.getElementById("direccionEstado").innerHTML = `${dir.estado}`;
+                document.getElementById("telefonoEntrega").innerHTML = `${dir.telefono}`;
+            }
+        })
+    }
 }
 
 const showCart = () => {
