@@ -329,6 +329,22 @@ const addCarritoFav = async (id) => {
         }
     });
     localStorage.setItem("carrito", JSON.stringify(carritoLocalStorage));
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Agregado al carrito"
+      });
+      removeCarritoFav(id)
 }
 
 const favoritosLocalStorage = JSON.parse(localStorage.getItem("zapatosFavoritos"));
