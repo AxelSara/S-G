@@ -1,6 +1,3 @@
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const listaElementosNavbar = document.querySelector(".listaElementosNavbar");
     const botonFavoritoNavbar = document.querySelector(".botonFavoritoNavbar");
