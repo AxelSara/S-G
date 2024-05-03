@@ -55,8 +55,8 @@ const procesaTodo = async (event, formulario) => {
         password: contraseña,
         rol: {
             idRol: 1,
-            nombreRol: "admin", // Puedes obtener este valor de alguna manera, como un campo oculto en el formulario
-            descripcionRol: "Administrador de la ecommerce"
+            nombreRol: "cliente",
+            descripcionRol: "Cliente de la ecommerce"
         }
     };
 
@@ -74,10 +74,34 @@ const procesaTodo = async (event, formulario) => {
     console.log("data: ", data);
 
     if(response.ok){
-        mostrarTaskSession("Usuario registrado con exito", "success");
-        setTimeout(function() {
-            window.location.href = "../../../index.html";
-        }, 3300);
+
+        // obtener el token de la respuesta
+        const urlLogin = "http://localhost:8080/login";
+        const usuarioLogueado = {
+            email: email,
+            password: contraseña
+        };
+
+        const responseRegistro = await fetch(urlLogin, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(usuarioLogueado)
+        });
+        const dataRegistro = await responseRegistro.json();
+
+        if (responseRegistro.ok) {
+            const token = dataRegistro.token; // Extraer el token de la respuesta JSON
+            localStorage.setItem('token', token);
+            console.log('Inicio de sesión exitoso. Token JWT:', token);
+            setTimeout(function() {
+                window.location.href = "../../../index.html";
+            }, 3300);        
+
+            
+        }
+
     }
     else{
         mostrarTaskSession("Error al registrar usuario", "error");
