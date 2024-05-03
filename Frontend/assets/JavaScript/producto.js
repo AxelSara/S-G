@@ -28,6 +28,22 @@ const dataProductos = async (id) => {
       const imgKey = index === 0 ? "imgLateral" : index === 1 ? "imgMuestra" : index === 2 ? "imgSuperior" : "imgFrontal";
       imagen.src = `../img/productos/${productoSeleccionado[imgKey]}`;
     });
+   
+    const carruselIndicadores = document.getElementById('carrusel-indicadores');
+    const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+    const imagenPrincipal = document.getElementById('imagen-principal');
+    const imagenActual = Array.from(imagenesChicas).findIndex(img => img.src === imagenPrincipal.src);
+
+    carruselIndicadores.innerHTML = '';
+
+    for (let i = 0; i < imagenesChicas.length; i++) {
+        const indicador = document.createElement('span');
+        indicador.classList.add('carrusel-indicador');
+        if (i === imagenActual) {
+            indicador.classList.add('activo'); // Resaltar el indicador correspondiente a la imagen actual
+        }
+        carruselIndicadores.appendChild(indicador);
+    }
   };
 
   // Llamar a la función actualizarImagenes al cargar la página para mostrar las imágenes del producto seleccionado
@@ -69,7 +85,7 @@ const dataProductos = async (id) => {
     colorDom.appendChild(colorButton);
   });
 
-  // Mostrar las tallas (supongo que para todos los productos del mismo modelo son las mismas tallas)
+  // Mostrar las tallas 
   tallaDom.innerHTML = "";
   if (typeof productosModelo[0].talla === "object") {
     Object.keys(productosModelo[0].talla).forEach(talla => {
@@ -104,37 +120,51 @@ const dataProductos = async (id) => {
 
 dataProductos(idProducto);
 
-/*-------------------------prueba zapatos principal y chicas------------------*/
+// Función para cambiar la imagen principal
+const cambiarImagenPrincipal = (nuevaImagenSrc, nuevaImagenAlt) => {
+    const imagenPrincipal = document.getElementById('imagen-principal');
+    const imagenActual = imagenPrincipal.src;
+    const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+    
+    // Buscar la imagen chica correspondiente a la nueva imagen principal
+    const imagenChicaCorrespondiente = Array.from(imagenesChicas).find(img => img.src === nuevaImagenSrc);
 
-const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+    // Cambiar la imagen principal solo si la nueva imagen es diferente a la actual
+    if (imagenActual !== nuevaImagenSrc) {
+        imagenPrincipal.src = nuevaImagenSrc;
+        imagenPrincipal.alt = nuevaImagenAlt;
 
-// Agregar evento click a cada imagen chica
-imagenesChicas.forEach(imagen => {
+        // Actualizar el indicador del carrusel si la nueva imagen es una imagen chica
+        if (imagenChicaCorrespondiente) {
+            const indiceImagenChica = Array.from(imagenesChicas).indexOf(imagenChicaCorrespondiente);
+            actualizarIndicadorCarrusel(indiceImagenChica);
+        }
+    }
+};
+
+// Evento click para cambiar la imagen principal al hacer clic en una imagen chica
+document.querySelectorAll('.imagen-chica img').forEach(imagen => {
     imagen.addEventListener('click', () => {
-        const imagenPrincipal = document.getElementById('imagen-principal');
-        imagenPrincipal.src = imagen.src;
-        imagenPrincipal.alt = imagen.alt;
+        cambiarImagenPrincipal(imagen.src, imagen.alt);
     });
 });
 
 // Función para cambiar la imagen principal a la imagen anterior
 const cambiarImagenAnterior = () => {
-    const imagenPrincipal = document.getElementById('imagen-principal');
     const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+    const imagenPrincipal = document.getElementById('imagen-principal');
     let indiceActual = Array.from(imagenesChicas).findIndex(img => img.src === imagenPrincipal.src);
     indiceActual = (indiceActual === 0) ? imagenesChicas.length - 1 : indiceActual - 1;
-    imagenPrincipal.src = imagenesChicas[indiceActual].src;
-    imagenPrincipal.alt = imagenesChicas[indiceActual].alt;
+    cambiarImagenPrincipal(imagenesChicas[indiceActual].src, imagenesChicas[indiceActual].alt);
 };
 
 // Función para cambiar la imagen principal a la imagen siguiente
 const cambiarImagenSiguiente = () => {
-    const imagenPrincipal = document.getElementById('imagen-principal');
     const imagenesChicas = document.querySelectorAll('.imagen-chica img');
+    const imagenPrincipal = document.getElementById('imagen-principal');
     let indiceActual = Array.from(imagenesChicas).findIndex(img => img.src === imagenPrincipal.src);
     indiceActual = (indiceActual === imagenesChicas.length - 1) ? 0 : indiceActual + 1;
-    imagenPrincipal.src = imagenesChicas[indiceActual].src;
-    imagenPrincipal.alt = imagenesChicas[indiceActual].alt;
+    cambiarImagenPrincipal(imagenesChicas[indiceActual].src, imagenesChicas[indiceActual].alt);
 };
 
 // Agregar evento click al botón para cambiar a la imagen anterior
@@ -328,3 +358,20 @@ document.getElementById('imagen-principal').addEventListener('touchend', (event)
     touchEndX = event.changedTouches[0].clientX;
     cambiarImagen();
 });
+
+/*------------------- */
+
+function moveParagraph() {
+  var paragraph = document.getElementById('ptalla');
+  var container = document.getElementById('ctalla-s');
+  var containerParent = container.parentElement;
+
+  if (window.innerWidth <= 820) {
+    container.appendChild(paragraph);
+  } else {
+    containerParent.insertBefore(paragraph, container.nextSibling);
+  }
+}
+
+window.addEventListener('resize', moveParagraph);
+moveParagraph();
