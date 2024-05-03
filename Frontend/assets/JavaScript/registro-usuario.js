@@ -20,22 +20,21 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("contraseña: ", contraseña.value);
         console.log("contraseñaConfirm: ", contraseñaConfirm.value);
 
-
         if(validarCamposDeEntrada == false){
             return;
         }
         else{
             procesaTodo(ev, formulario);
             mostrarTaskSession("Usuario registrado con exito", "success");
-            setTimeout(function() {
-                window.location.href = "../../../index.html";
-            }, 3300);
+            // setTimeout(function() {
+            //     window.location.href = "../../../index.html";
+            // }, 3300);
         }
     });
 })
 
 
-const procesaTodo = async (event, formulario) =>{
+const procesaTodo = async (event, formulario) => {
     event.preventDefault();
     // obtener los datos del formulario
     const formData = new FormData(formulario);
@@ -44,16 +43,24 @@ const procesaTodo = async (event, formulario) =>{
     const telefono = formData.get('telefonoRegistro');
     const contraseña = formData.get('contraseñaRegistro');
     
-    const url = "http://localhost:8080/usuarios";
+    // Asumiendo que tienes un campo oculto en tu formulario para el ID del rol
+    const idRol = formData.get('idRol'); // Asegúrate de que este campo exista en tu formulario
 
+    const url = "http://localhost:8080/api/usuarios";
 
     const usuario = {
         nombre: nombre,
         email: email,
         telefono: telefono,
-        password: contraseña
+        password: contraseña,
+        rol: {
+            idRol: 1,
+            nombreRol: "admin", // Puedes obtener este valor de alguna manera, como un campo oculto en el formulario
+            descripcionRol: "Administrador de la ecommerce"
+        }
     };
 
+    console.log("usuario: ", usuario);
 
     // Solicitar al servidor la creación del usuario
     const response = await fetch(url, {
@@ -66,7 +73,7 @@ const procesaTodo = async (event, formulario) =>{
     const data = await response.json();
     console.log("data: ", data);
 
-    if(data.status == "ok"){
+    if(response.ok){
         mostrarTaskSession("Usuario registrado con exito", "success");
         setTimeout(function() {
             window.location.href = "../../../index.html";
@@ -75,8 +82,10 @@ const procesaTodo = async (event, formulario) =>{
     else{
         mostrarTaskSession("Error al registrar usuario", "error");
     }
-
 }
+
+
+
 
 function validarCamposRegistro(nombre, email, telefono, contraseña, contraseñaConfirm){   
     let validacion = true;

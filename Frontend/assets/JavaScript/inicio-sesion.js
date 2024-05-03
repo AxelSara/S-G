@@ -106,6 +106,15 @@ async function iniciarSesionUsuario(formulario, usuarios){
             // Almacenar el token en el almacenamiento local del navegador
             localStorage.setItem('token', token);
             console.log('Inicio de sesión exitoso. Token JWT:', token);
+
+            // Mostrar alerta de inicio de sesión exitoso
+            mostrarTaskSession("¡Inicio de sesión exitoso!", "success", "top-end", 3000);
+            // reedirir al index
+            setTimeout(() => {
+                window.location.href = "../../../index.html";    
+            }, 5000);
+            
+
         } else {
             console.log('Error al iniciar sesión:', response.statusText);
         }
@@ -121,7 +130,6 @@ function verificarUsuario(correo, contraseña) {
     // Verificar si el usuario existe en el localStorage y lo devuelve
     console.log(usuariosGuardados.length);
     return usuariosGuardados.find(usuario => usuario.email === correo && usuario.contraseña === contraseña);
- 
 }
 
 
@@ -145,4 +153,38 @@ function mostrarTaskSession(mensaje, iconoTask, position = "top-end", tiempoVisi
             popup: 'rounded'
         }
     });
+}
+
+
+async function verificarExpiracionToken() {
+    // Obtener el token del almacenamiento local
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        // No hay token almacenado
+        return null;
+    }
+
+    try {
+        // Decodificar el token
+        const payload = jwtDecode(token);
+
+        // Obtener la fecha de expiración del token
+        const fechaExpiracion = new Date(payload.exp * 1000);
+
+        // Comparar la fecha de expiración con la hora actual
+        if (fechaExpiracion < new Date()) {
+            // El token ha expirado
+            return false;
+        } 
+        else {
+            // El token aún es válido
+            return true;
+        }
+    } 
+    catch (error) {
+        // Error al decodificar el token
+        console.error('Error al verificar el token:', error);
+        return false;
+    }
 }

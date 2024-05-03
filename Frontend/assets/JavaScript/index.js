@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function(event){
     // Asegúrate de que el elemento exista antes de intentar interactuar con él
     const swiperWrapperProductosRecientes = document.getElementById("swiper-wrapperProductosRecientes");
@@ -5,7 +7,29 @@ document.addEventListener('DOMContentLoaded', function(event){
         carrusel(event);
     } else {
         console.error("El elemento swiper-wrapperProductosRecientes no se encontró en el DOM.");
+
     }
+
+    // cargamos el local storage del token del usuario
+    // const token = localStorage.getItem('token');
+    // console.log("token: ", token);
+
+
+    // verificarExpiracionToken().then(result => {
+    //     if(result == true){
+    //         console.log("========== Usuario activo ===========");
+    //         console.log("result: ", result);            
+    //     }
+
+    //     else{
+    //         console.log("========== Usuario inactivo ===========");
+    //     }
+
+
+    // }).catch((err) => {
+    //     throw Error("Error al verificar el token de inicio de sesión: ", err);
+    // });
+
 
 });
 
