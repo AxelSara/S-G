@@ -8,9 +8,25 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log("===== cargando navbar ======")
 
     // Verificar si usuario logeado es el admin
-    const isAdmin = true;
+    const token = localStorage.getItem("token");
+    const payload = obtenerPayload(token);
+    console.log("payload de la barra: ", payload);
 
-    if (isAdmin) {
+    let isAdmin;
+
+
+
+    if(payload != null){
+        isAdmin = payload.authorities[0].authority === "ROLE_ADMIN";
+        console.log("isAdmin: ", payload.authorities[0].authority);
+    }
+
+    
+
+    
+
+
+    if (payload!=null && isAdmin ) {
         const adminSection = document.createElement('li');
         adminSection.innerHTML = `
             <a id="navbarAdmin" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Admin" class="icon" href="./Frontend/assets/pages/admin.html" style="color: black;">
@@ -69,7 +85,109 @@ document.addEventListener('DOMContentLoaded', function () {
     btnHamburguesa.addEventListener('click', eliminarContenedorFavoritos);
 });
 
+
+const verficarUserLog = () => {
+    const token = localStorage.getItem("token");
+
+    // Obtener la URL completa del documento actual
+    var currentHTML = document.URL;
+    // Obtener el nombre del archivo HTML actual
+    var fileName = currentHTML.substring(currentHTML.lastIndexOf('/') + 1);
+    
+    verificarExpiracionToken().then(result => {
+        console.log("resultado de token: ",result);
+        console.log("fileName:",fileName)
+        const payload = obtenerPayload(token);
+        if(fileName == "index.html"){
+            
+            if(result == false){
+                console.log("Redirigir a log")
+                window.location.href = "./Frontend/assets/pages/loginRegistro.html";
+                
+            }
+            else{
+                obtenerPayload(token);
+                console.log("Esta logeado");
+                window.location.href = "./Frontend/assets/pages/carrito.html";
+            }
+        }
+        // si el archivo no es index.html
+        else{
+            console.log(fileName)
+            if(result == false){
+                console.log("Redirigir a log")
+                window.location.href = "./loginRegistro.html";
+            }else{
+                console.log(user);
+                console.log("Esta logeado");
+                window.location.href = "./carrito.html";
+            }
+        }
+
+    });
+}
+
+function verificarExpiracionToken() {
+    return new Promise((resolve, reject) => {
+        // Verificar si el token existe en el localStorage
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.log("No hay token en el localStorage.");
+            resolve(false); 
+            return;
+        }
+
+        try {
+            // Decodificar el token sin verificar la firma
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            const fechaExpiracion = new Date(payload.exp * 1000);
+
+            if (fechaExpiracion < new Date()) {
+                console.log("Token expirado.");
+                localStorage.removeItem('token');
+                resolve(false);
+            } else {
+                console.log("Token válido y no expirado.");
+                resolve(true);
+            }
+        } catch (error) {
+            localStorage.removeItem('token');
+            console.error("Error al verificar el token:", error);
+            reject(error);
+        }
+    });
+}
+
+function obtenerPayload(token) {
+    // Verificar si el token existe
+    if (!token) {
+        console.log("No hay token disponible.");
+        return null; // O puedes lanzar un error si prefieres
+    }
+
+    // Dividir el token en sus componentes
+    const tokenParts = token.split('.');
+    if (tokenParts.length!== 3) {
+        throw new Error('El token no tiene la estructura correcta.');
+    }
+
+    // El payload está en el segundo segmento
+    const payload = tokenParts[1];
+
+    // Decodificar el payload de Base64Url a una cadena
+    const decodedPayload = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
+
+    // Convertir la cadena decodificada a un objeto JSON
+    const payloadObj = JSON.parse(decodedPayload);
+
+    return payloadObj;
+}
+
+
 function cargarContenedorFavoritos(valor) {
+
+    
+
     const contenedorFavoritosExistente = document.querySelector(".contenedorFavoritos");
 
     if (!contenedorFavoritosExistente) {
